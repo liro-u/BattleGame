@@ -1,0 +1,20 @@
+Pour commencé j'avais besoin d'un character par defaut alors jai pris un rectangle et je lui ai creer quelque animation vraiment basique (idle, attack, take_damage, die)
+j'ai donc obtenu u character par defaut avec des animation par defaut
+
+j'ai decider de me pencher sur une barre de progression, jai donc coder les transition et quelque autre fonction
+on a par exemple le choix des couleur, d'afficher value/value ou non
+
+ensuite je me suis penché sur les stats, jai donc donné a mon character des stats (name,chemin du skin, rareté, max vie, max mana, force, vitesse, defense, critique)
+puis en liant les stats avec une GUI composé de label et de barre de progression je pouvais invoquer mon character avec une gui indiquant quelque une de ces stats pendant les combats
+
+j'ai ajouter quelque touche de dev pour infliger des degat et en redoné avec fleche_bas et fleche_haut pour tester ma gui
+
+ensuite il fallai que le joueur puisse monter le character en lvl, j'ai opté pour sauvegarder le lvl du char separement de ces stats ce qui me premetra par la suite de reutilisé un char avec un lvl different par exemple
+pour un ajout potentiel de multijoueur egalement cela faciliterai les echange
+
+jai ajouter quelque touche de dev pour changer le niveau du char avec + et - pour tester mon stats system
+
+
+
+
+

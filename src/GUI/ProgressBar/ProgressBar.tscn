@@ -1,0 +1,86 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/GUI/ProgressBar/ProgressBar.gd" type="Script" id=1]
+[ext_resource path="res://asset/GUI/lifebar/over.png" type="Texture" id=2]
+[ext_resource path="res://asset/GUI/lifebar/under.png" type="Texture" id=3]
+[ext_resource path="res://asset/GUI/lifebar/progress.png" type="Texture" id=4]
+[ext_resource path="res://src/class/CurveTween.gd" type="Script" id=5]
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[node name="Control" type="Control"]
+margin_right = 350.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 350, 28 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UnderProgressBar" type="TextureProgress" parent="."]
+margin_right = 700.0
+margin_bottom = 56.0
+rect_scale = Vector2( 0.5, 0.5 )
+mouse_filter = 2
+max_value = 300.0
+value = 300.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+tint_progress = Color( 0.498039, 0.45098, 0.0627451, 0 )
+nine_patch_stretch = true
+stretch_margin_left = 28
+stretch_margin_top = 28
+stretch_margin_right = 28
+stretch_margin_bottom = 28
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OverProgressBar" type="TextureProgress" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 350.0
+margin_bottom = 28.0
+rect_scale = Vector2( 0.5, 0.5 )
+mouse_filter = 2
+max_value = 300.0
+value = 300.0
+texture_over = ExtResource( 2 )
+texture_progress = ExtResource( 4 )
+tint_progress = Color( 260, 0, 0, 1 )
+nine_patch_stretch = true
+stretch_margin_left = 28
+stretch_margin_top = 28
+stretch_margin_right = 28
+stretch_margin_bottom = 28
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AlphaCurveTween" type="Tween" parent="."]
+script = ExtResource( 5 )
+curve = SubResource( 2 )
+
+[node name="ValueCurveTween" type="Tween" parent="."]
+script = ExtResource( 5 )
+curve = SubResource( 1 )
+
+[node name="value" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "300/300"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="curve_tween" from="AlphaCurveTween" to="." method="_on_AlphaCurveTween_curve_tween"]
+[connection signal="curve_tween" from="ValueCurveTween" to="." method="_on_ValueCurveTween_curve_tween"]

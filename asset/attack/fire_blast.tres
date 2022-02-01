@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Resource/attack/hit.gd" type="Script" id=1]
+[ext_resource path="res://Resource/element/element.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+element = "fire"
+
+[resource]
+script = ExtResource( 1 )
+damage = 20
+mana_cost = 55
+attack_name = "fire blast"
+element = SubResource( 1 )
+for_team = false

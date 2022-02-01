@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/GUI/button/defaultButton/basicButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/GUI/button/attackButton/attackButton.gd" type="Script" id=2]
+
+
+[node name="Button" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+background_color = Color( 0.41, 0.41, 0.41, 1 )
+
+[node name="Texture" parent="." index="0"]
+modulate = Color( 0.41, 0.41, 0.41, 1 )
+
+[node name="Label" parent="VBoxContainer" index="0"]
+text = ""

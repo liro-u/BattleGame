@@ -1,0 +1,25 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Resource/stats/stats.gd" type="Script" id=1]
+[ext_resource path="res://asset/attack/hydro_splash.tres" type="Resource" id=2]
+[ext_resource path="res://asset/attack/air_slash.tres" type="Resource" id=3]
+[ext_resource path="res://asset/chararacters/001_testChar/dragonbones/Lynn_hit_ske.json" type="GDDragonBonesResource" id=4]
+
+[resource]
+script = ExtResource( 1 )
+name_char = "GreenSquare"
+rarity = "Common"
+ske = ExtResource( 4 )
+health_gain = 17.1
+mana_gain = 0.6
+strength_gain = 4.3
+defense_gain = 2.1
+speed_gain = 3.2
+crit_gain = 0.4
+max_health = 341.9
+max_mana = 100.0
+strength = 85.0
+defense = 34.3
+speed = 14.0
+crit = 6.5
+attack_list = [ ExtResource( 3 ), ExtResource( 2 ) ]

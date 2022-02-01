@@ -1,0 +1,202 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://asset/theme/GUI.tres" type="Theme" id=1]
+[ext_resource path="res://src/GUI/button/attackButton/AttackButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://asset/font/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://src/GUI/Battle_selection_action/GUI.gd" type="Script" id=4]
+[ext_resource path="res://src/GUI/Battle_selection_action/Message.gd" type="Script" id=5]
+[ext_resource path="res://src/GUI/button/defaultButton/basicButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/GUI/Battle_selection_action/set_attack_button.gd" type="Script" id=7]
+[ext_resource path="res://src/GUI/Battle_selection_action/ButtonListAction.gd" type="Script" id=8]
+[ext_resource path="res://src/GUI/Battle_selection_action/selectable_button.gd" type="Script" id=9]
+
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_top = 1
+font_data = ExtResource( 3 )
+
+[node name="GUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="ColorRect" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 0, 120 )
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Message" type="VBoxContainer" parent="TextureRect"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Message" type="Label" parent="TextureRect/Message"]
+margin_top = 28.0
+margin_right = 1024.0
+margin_bottom = 52.0
+text = "Message 1"
+align = 1
+valign = 1
+
+[node name="Message2" type="Label" parent="TextureRect/Message"]
+margin_top = 56.0
+margin_right = 1024.0
+margin_bottom = 92.0
+custom_fonts/font = SubResource( 1 )
+text = "Message 2"
+align = 1
+valign = 1
+
+[node name="selectable" type="MarginContainer" parent="TextureRect"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="TextureRect/selectable"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1014.0
+margin_bottom = 110.0
+
+[node name="Label" type="Label" parent="TextureRect/selectable/Control"]
+anchor_right = 1.0
+margin_top = -40.0
+margin_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "select your target"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttonList" type="HBoxContainer" parent="TextureRect/selectable"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1014.0
+margin_bottom = 110.0
+script = ExtResource( 9 )
+
+[node name="Button" parent="TextureRect/selectable/buttonList" instance=ExtResource( 6 )]
+anchor_right = 0.0
+margin_right = 1004.0
+margin_bottom = 100.0
+text = "Return"
+background_color = Color( 0.501961, 0.494118, 0.494118, 1 )
+
+[node name="ButtonList" type="MarginContainer" parent="TextureRect"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/ButtonList"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1014.0
+margin_bottom = 110.0
+custom_constants/separation = 10
+
+[node name="ButtonListAttack" type="HBoxContainer" parent="TextureRect/ButtonList/HBoxContainer"]
+margin_right = 794.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+custom_constants/separation = 10
+script = ExtResource( 7 )
+
+[node name="Button" parent="TextureRect/ButtonList/HBoxContainer/ButtonListAttack" instance=ExtResource( 2 )]
+modulate = Color( 1, 1, 1, 0.5 )
+anchor_right = 0.0
+margin_right = 191.0
+margin_bottom = 100.0
+disabled = true
+
+[node name="Button2" parent="TextureRect/ButtonList/HBoxContainer/ButtonListAttack" instance=ExtResource( 2 )]
+modulate = Color( 1, 1, 1, 0.5 )
+anchor_right = 0.0
+margin_left = 201.0
+margin_right = 392.0
+margin_bottom = 100.0
+disabled = true
+
+[node name="Button3" parent="TextureRect/ButtonList/HBoxContainer/ButtonListAttack" instance=ExtResource( 2 )]
+modulate = Color( 1, 1, 1, 0.5 )
+anchor_right = 0.0
+margin_left = 402.0
+margin_right = 593.0
+margin_bottom = 100.0
+disabled = true
+
+[node name="Button4" parent="TextureRect/ButtonList/HBoxContainer/ButtonListAttack" instance=ExtResource( 2 )]
+modulate = Color( 1, 1, 1, 0.5 )
+anchor_right = 0.0
+margin_left = 603.0
+margin_right = 794.0
+margin_bottom = 100.0
+disabled = true
+
+[node name="ButtonListAction" type="HBoxContainer" parent="TextureRect/ButtonList/HBoxContainer"]
+margin_left = 804.0
+margin_right = 1004.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 200, 0 )
+custom_constants/separation = 10
+alignment = 1
+script = ExtResource( 8 )
+
+[node name="Button" parent="TextureRect/ButtonList/HBoxContainer/ButtonListAction" instance=ExtResource( 6 )]
+anchor_right = 0.0
+margin_left = 45.0
+margin_right = 155.0
+margin_bottom = 100.0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+text = "recharge"
+background_color = Color( 0, 0.835294, 1, 1 )
+
+[connection signal="pressed" from="TextureRect/selectable/buttonList/Button" to="." method="back_to_attack"]
+[connection signal="button_pressed" from="TextureRect/ButtonList/HBoxContainer/ButtonListAttack" to="." method="button_pressed"]
+[connection signal="pressed" from="TextureRect/ButtonList/HBoxContainer/ButtonListAttack/Button" to="TextureRect/ButtonList/HBoxContainer/ButtonListAttack" method="button_pressed" binds= [ 0 ]]
+[connection signal="pressed" from="TextureRect/ButtonList/HBoxContainer/ButtonListAttack/Button2" to="TextureRect/ButtonList/HBoxContainer/ButtonListAttack" method="button_pressed" binds= [ 1 ]]
+[connection signal="pressed" from="TextureRect/ButtonList/HBoxContainer/ButtonListAttack/Button3" to="TextureRect/ButtonList/HBoxContainer/ButtonListAttack" method="button_pressed" binds= [ 2 ]]
+[connection signal="pressed" from="TextureRect/ButtonList/HBoxContainer/ButtonListAttack/Button4" to="TextureRect/ButtonList/HBoxContainer/ButtonListAttack" method="button_pressed" binds= [ 3 ]]
+[connection signal="button_pressed" from="TextureRect/ButtonList/HBoxContainer/ButtonListAction" to="." method="button_pressed"]
+[connection signal="pressed" from="TextureRect/ButtonList/HBoxContainer/ButtonListAction/Button" to="TextureRect/ButtonList/HBoxContainer/ButtonListAction" method="button_pressed" binds= [ 4 ]]

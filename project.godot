@@ -19,11 +19,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/character/stats/BattlerStats.gd"
 }, {
-"base": "Node2D",
-"class": "Charact",
-"language": "GDScript",
-"path": "res://src/charact/Charact.gd"
-}, {
 "base": "Area2D",
 "class": "ClickableArea",
 "language": "GDScript",
@@ -38,11 +33,6 @@ _global_script_classes=[ {
 "class": "Element",
 "language": "GDScript",
 "path": "res://Resource/element/element.gd"
-}, {
-"base": "Node2D",
-"class": "Mesh2D",
-"language": "GDScript",
-"path": "res://src/charact/mesh/2d_mesh.gd"
 }, {
 "base": "Resource",
 "class": "OwnerStats",
@@ -67,11 +57,9 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Battler": "",
 "BattlerStats": "",
-"Charact": "",
 "ClickableArea": "",
 "CurveTween": "",
 "Element": "",
-"Mesh2D": "",
 "OwnerStats": "",
 "StartingStats": "",
 "StatsWithLevel": "",

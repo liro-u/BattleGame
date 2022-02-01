@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grasslands.png-2e04d3816ceb964306b2567b719c606f.stex"
+path="res://.import/grasslands.png-51579d0658c668c2096cce0fe86ae877.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/world/background/grasslands.png"
-dest_files=[ "res://.import/grasslands.png-2e04d3816ceb964306b2567b719c606f.stex" ]
+source_file="res://asset/background/grasslands.png"
+dest_files=[ "res://.import/grasslands.png-51579d0658c668c2096cce0fe86ae877.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

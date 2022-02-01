@@ -9,17 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-<<<<<<< Updated upstream
-"base": "Node2D",
-"class": "Charact",
-"language": "GDScript",
-"path": "res://src/charact/Charact.gd"
-=======
-"base": "Node",
-"class": "BattleWorld",
-"language": "GDScript",
-"path": "res://src/battle/world/world.gd"
-}, {
 "base": "Node2D",
 "class": "Battler",
 "language": "GDScript",
@@ -30,42 +19,35 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/character/stats/BattlerStats.gd"
 }, {
+"base": "Node2D",
+"class": "Charact",
+"language": "GDScript",
+"path": "res://src/charact/Charact.gd"
+}, {
 "base": "Area2D",
 "class": "ClickableArea",
 "language": "GDScript",
 "path": "res://src/character/ClickableArea.gd"
->>>>>>> Stashed changes
 }, {
 "base": "Tween",
 "class": "CurveTween",
 "language": "GDScript",
 "path": "res://src/class/CurveTween.gd"
 }, {
-<<<<<<< Updated upstream
-"base": "Node2D",
-"class": "Mesh2D",
-"language": "GDScript",
-"path": "res://src/charact/mesh/2d_mesh.gd"
-} ]
-_global_script_class_icons={
-"Charact": "",
-"CurveTween": "",
-"Mesh2D": ""
-=======
 "base": "Resource",
 "class": "Element",
 "language": "GDScript",
 "path": "res://Resource/element/element.gd"
 }, {
+"base": "Node2D",
+"class": "Mesh2D",
+"language": "GDScript",
+"path": "res://src/charact/mesh/2d_mesh.gd"
+}, {
 "base": "Resource",
 "class": "OwnerStats",
 "language": "GDScript",
 "path": "res://Resource/stats/ownerStats.gd"
-}, {
-"base": "Node2D",
-"class": "SpawnPosition",
-"language": "GDScript",
-"path": "res://src/battle/spawn_position/spawn_position.gd"
 }, {
 "base": "Resource",
 "class": "StartingStats",
@@ -77,41 +59,29 @@ _global_script_class_icons={
 "language": "GDScript",
 "path": "res://src/character/stats/StatsWithLevel.gd"
 }, {
-"base": "Node2D",
-"class": "TurnQueue",
-"language": "GDScript",
-"path": "res://src/battle/TurnQueue.gd"
-}, {
 "base": "Resource",
 "class": "start_hit",
 "language": "GDScript",
 "path": "res://Resource/attack/hit.gd"
-}, {
-"base": "Node2D",
-"class": "team_position",
-"language": "GDScript",
-"path": "res://src/battle/spawn_position/team_position.gd"
 } ]
 _global_script_class_icons={
-"BattleWorld": "",
 "Battler": "",
 "BattlerStats": "",
+"Charact": "",
 "ClickableArea": "",
 "CurveTween": "",
 "Element": "",
+"Mesh2D": "",
 "OwnerStats": "",
-"SpawnPosition": "",
 "StartingStats": "",
 "StatsWithLevel": "",
-"TurnQueue": "",
-"start_hit": "",
-"team_position": ""
->>>>>>> Stashed changes
+"start_hit": ""
 }
 
 [application]
 
 config/name="Battle Game"
+run/main_scene="res://src/world/Test.tscn"
 config/icon="res://icon.png"
 
 [autoload]

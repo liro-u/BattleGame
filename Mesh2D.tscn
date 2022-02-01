@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/charact/mesh/2d_mesh.gd" type="Script" id=1]
+[ext_resource path="res://asset/chararacters/lynn/Lynn_hit_ske.json" type="GDDragonBonesResource" id=2]
+
+[node name="Mesh2D" type="Node2D"]
+position = Vector2( 182.5, 114 )
+scale = Vector2( 0.1, 0.1 )
+script = ExtResource( 1 )
+ske = ExtResource( 2 )
+speed = 0.2
+next_animation = {
+"animtion0": "animtion0",
+"attack": "idle",
+"idle": "idle",
+"take_damage": "idle"
+}

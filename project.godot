@@ -9,97 +9,30 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
-"class": "Attack",
+"base": "Node2D",
+"class": "Charact",
 "language": "GDScript",
-"path": "res://src/character/default/attack/attack.gd"
-}, {
-"base": "Node",
-"class": "BattleWorld",
-"language": "GDScript",
-"path": "res://src/battle/world/world.gd"
-}, {
-"base": "Node",
-"class": "BattlerStats",
-"language": "GDScript",
-"path": "res://src/character/default/stats/BattlerStats.gd"
-}, {
-"base": "Area2D",
-"class": "ClickableArea",
-"language": "GDScript",
-"path": "res://src/character/default/ClickableArea.gd"
+"path": "res://src/charact/Charact.gd"
 }, {
 "base": "Tween",
 "class": "CurveTween",
 "language": "GDScript",
 "path": "res://src/class/CurveTween.gd"
 }, {
-"base": "Resource",
-"class": "Element",
-"language": "GDScript",
-"path": "res://src/character/default/element/element.gd"
-}, {
-"base": "Resource",
-"class": "OwnerStats",
-"language": "GDScript",
-"path": "res://src/character/default/stats/ownerStats.gd"
-}, {
-"base": "Node",
-"class": "RealStatsCalculator",
-"language": "GDScript",
-"path": "res://src/class/RealStatsCalculator.gd"
-}, {
 "base": "Node2D",
-"class": "SpawnPosition",
+"class": "Mesh2D",
 "language": "GDScript",
-"path": "res://src/battle/spawn_position/spawn_position.gd"
-}, {
-"base": "Resource",
-"class": "StartingStats",
-"language": "GDScript",
-"path": "res://src/character/default/stats/stats.gd"
-}, {
-"base": "Node2D",
-"class": "TurnQueue",
-"language": "GDScript",
-"path": "res://src/battle/TurnQueue.gd"
-}, {
-"base": "Resource",
-"class": "start_hit",
-"language": "GDScript",
-"path": "res://src/character/default/attack/hit.gd"
-}, {
-"base": "Node2D",
-"class": "team_position",
-"language": "GDScript",
-"path": "res://src/battle/spawn_position/team_position.gd"
-}, {
-"base": "Node2D",
-"class": "weapon",
-"language": "GDScript",
-"path": "res://src/weapon/weapon.gd"
+"path": "res://src/charact/mesh/2d_mesh.gd"
 } ]
 _global_script_class_icons={
-"Attack": "",
-"BattleWorld": "",
-"BattlerStats": "",
-"ClickableArea": "",
+"Charact": "",
 "CurveTween": "",
-"Element": "",
-"OwnerStats": "",
-"RealStatsCalculator": "",
-"SpawnPosition": "",
-"StartingStats": "",
-"TurnQueue": "",
-"start_hit": "",
-"team_position": "",
-"weapon": ""
+"Mesh2D": ""
 }
 
 [application]
 
 config/name="Battle Game"
-run/main_scene="res://src/world/Test.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -139,27 +72,27 @@ texture={
 
 dev_take_damage={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777234,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 dev_grab_health={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777232,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 dev_down_level={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777347,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 dev_up_level={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777349,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 devlog_screenshot={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":47,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 select={

@@ -10,7 +10,6 @@
 [ext_resource path="res://src/GUI/Battle_selection_action/ButtonListAction.gd" type="Script" id=8]
 [ext_resource path="res://src/GUI/Battle_selection_action/selectable_button.gd" type="Script" id=9]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 30
 outline_size = 2

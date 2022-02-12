@@ -6,8 +6,17 @@ onready var level_label = $Stats/Text/Level
 onready var health_bar = $Stats/health
 onready var mana_bar = $Stats/mana
 
-func initialize(stats):
-	health_bar.initialize(stats.max_health)
-	mana_bar.initialize(stats.max_mana)
-	name_label.text = stats.name_char
-	level_label.text = "Niv" + str(stats.level)
+func initialize(battler) -> void:
+	health_bar.initialize(battler.stats.max_health)
+	battler.stats.connect("shield_created", self, "shield_created")
+	battler.stats.connect("health_changed", health_bar, "update_first_value")
+	battler.stats.connect("shield_changed", health_bar, "update_value")
+	mana_bar.initialize(battler.stats.max_mana)
+	battler.stats.connect("mana_changed", mana_bar, "update_value")
+	name_label.text = battler.startingStats.name_char
+	level_label.text = "Niv" + str(battler.stats.level)
+
+func shield_created(new_shield : float) -> void:
+	health_bar.add_bar(new_shield)
+	health_bar.set_value(1)
+	health_bar.update_value(new_shield)

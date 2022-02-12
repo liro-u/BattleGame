@@ -9,12 +9,17 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "BattleWorld",
+"language": "GDScript",
+"path": "res://src/battle/world/world.gd"
+}, {
 "base": "Node2D",
 "class": "Battler",
 "language": "GDScript",
 "path": "res://src/character/Battler.gd"
 }, {
-"base": "Node",
+"base": "StatsWithLevel",
 "class": "BattlerStats",
 "language": "GDScript",
 "path": "res://src/character/stats/BattlerStats.gd"
@@ -34,10 +39,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Resource/element/element.gd"
 }, {
+"base": "TweenProgressBar",
+"class": "MultiProgressBar",
+"language": "GDScript",
+"path": "res://src/GUI/ProgressBar/multiprogressbar/MultiProgressBar.gd"
+}, {
 "base": "Resource",
 "class": "OwnerStats",
 "language": "GDScript",
 "path": "res://Resource/stats/ownerStats.gd"
+}, {
+"base": "Node2D",
+"class": "SpawnPosition",
+"language": "GDScript",
+"path": "res://src/battle/spawn_position/spawn_position.gd"
 }, {
 "base": "Resource",
 "class": "StartingStats",
@@ -49,21 +64,48 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/character/stats/StatsWithLevel.gd"
 }, {
+"base": "YSort",
+"class": "TurnQueue",
+"language": "GDScript",
+"path": "res://src/battle/TurnQueue.gd"
+}, {
+"base": "Control",
+"class": "TweenProgressBar",
+"language": "GDScript",
+"path": "res://src/GUI/ProgressBar/TweenProgressBar/TweenProgressBar.gd"
+}, {
+"base": "Node",
+"class": "dev_tool",
+"language": "GDScript",
+"path": "res://src/dev_tool/action_dev.gd"
+}, {
 "base": "Resource",
 "class": "start_hit",
 "language": "GDScript",
 "path": "res://Resource/attack/hit.gd"
+}, {
+"base": "Node2D",
+"class": "team_position",
+"language": "GDScript",
+"path": "res://src/battle/spawn_position/team_position.gd"
 } ]
 _global_script_class_icons={
+"BattleWorld": "",
 "Battler": "",
 "BattlerStats": "",
 "ClickableArea": "",
 "CurveTween": "",
 "Element": "",
+"MultiProgressBar": "",
 "OwnerStats": "",
+"SpawnPosition": "",
 "StartingStats": "",
 "StatsWithLevel": "",
-"start_hit": ""
+"TurnQueue": "",
+"TweenProgressBar": "",
+"dev_tool": "",
+"start_hit": "",
+"team_position": ""
 }
 
 [application]
@@ -109,27 +151,27 @@ texture={
 
 dev_take_damage={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
  ]
 }
 dev_grab_health={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
  ]
 }
 dev_down_level={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777347,"unicode":0,"echo":false,"script":null)
  ]
 }
 dev_up_level={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777349,"unicode":0,"echo":false,"script":null)
  ]
 }
 devlog_screenshot={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":61,"unicode":0,"echo":false,"script":null)
  ]
 }
 select={

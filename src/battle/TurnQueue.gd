@@ -1,9 +1,9 @@
 tool
-extends Node2D
+extends YSort
 class_name TurnQueue
 
 var active_battler
-	
+
 func initialize():
 	var battlers = get_children()
 	battlers.sort_custom(self, "sort_battlers")

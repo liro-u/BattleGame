@@ -1,26 +1,43 @@
 extends Area2D
 class_name ClickableArea
 
-onready var charact = get_parent()
+#-----------VARIABLES-------------#
+export var collision_shape : Shape2D = null setget set_collision_shape
+export var collision_position : Vector2 = Vector2.ZERO setget set_collision_position
+#loaded node path
+var collision
 
-func can_be_selected(target_team = -1, equal = false):
-	var b_disabled
-	if ((target_team == charact.team and equal and (charact.stats.health < charact.stats.max_health)) or (target_team != charact.team and not equal)) and charact.stats.health > 0 :
-		b_disabled = false
-	else:
-		b_disabled = true
-	charact.shade(b_disabled)
-	if target_team == -1:
-		b_disabled = true
-	for child in get_children():
-		child.disabled = b_disabled
-	if b_disabled:
-		return null
-	else:
-		return charact
+#-----------SETGET------------#
+func set_collision_shape(new_value: Shape2D = collision_shape) -> void:
+	collision_shape = new_value
+	collision.shape = collision_shape
 
-func _on_ClickableArea_input_event(viewport, event, shape_idx):
+func set_collision_position(new_value : Vector2 = collision_position) -> void:
+	collision_position = new_value
+	collision.position = collision_position
+
+#------------FUNCTION-----------#
+#init
+func _init() -> void:
+	if collision:
+		collision.queue_free()
+	collision = CollisionShape2D.new()
+	add_child(collision)
+
+#ready
+func _ready() -> void:
+	initialize()
+
+#initialize node
+func initialize() -> void:
+	connect("input_event", self, "area_is_clicked")
+
+#verify if clickable area can be clicked
+func can_be_selected() -> void:
+	pass
+
+func area_is_clicked(_viewport, event, _shape_idx) -> void:
 	if event.is_action_pressed("select"):
 		if ! get_tree().is_input_handled():
-			charact.get_parent().get_parent().GUI.target_selected(charact)
 			get_tree().set_input_as_handled()
+			#make action when clicked here

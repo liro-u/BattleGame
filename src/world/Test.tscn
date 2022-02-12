@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://asset/background/grasslands.png" type="Texture" id=1]
 [ext_resource path="res://src/battle/TurnQueue.gd" type="Script" id=2]
@@ -7,48 +7,49 @@
 [ext_resource path="res://asset/world/test/team_position/team_2.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/battle/world/world.gd" type="Script" id=6]
 [ext_resource path="res://src/character/Battler.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/GUI/Battle_selection_action/GUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Resource/stats/ownerStats.gd" type="Script" id=9]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 9 )
+level = 80
+xp = 0.0
 
 [node name="World" type="Node2D"]
 script = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.552778, 0.552778 )
+scale = Vector2( 0.56761, 0.56761 )
 texture = ExtResource( 1 )
 centered = false
 
-[node name="TurnQueue" type="Node2D" parent="."]
+[node name="TurnQueue" type="YSort" parent="."]
 script = ExtResource( 2 )
 
 [node name="Character2" parent="TurnQueue" instance=ExtResource( 7 )]
-position = Vector2( 246, 340 )
+position = Vector2( 139.238, 482.083 )
+ownerStats = SubResource( 1 )
 
 [node name="Character3" parent="TurnQueue" instance=ExtResource( 7 )]
-position = Vector2( 246, 340 )
+position = Vector2( 281.238, 377.083 )
 
 [node name="Character7" parent="TurnQueue" instance=ExtResource( 7 )]
-position = Vector2( 119.008, 216.183 )
+position = Vector2( 99.238, 330.083 )
 
 [node name="Character4" parent="TurnQueue" instance=ExtResource( 7 )]
-position = Vector2( 924, 398 )
+position = Vector2( 914.476, 504.356 )
 team = 1
 
 [node name="Character5" parent="TurnQueue" instance=ExtResource( 7 )]
-position = Vector2( 924, 398 )
+position = Vector2( 886.078, 338.307 )
 team = 1
 
 [node name="Character6" parent="TurnQueue" instance=ExtResource( 7 )]
-position = Vector2( 921, 251 )
+position = Vector2( 774.126, 428.006 )
 team = 1
 
 [node name="spawn_position" type="Node2D" parent="."]
 script = ExtResource( 3 )
 list_team_position = [ ExtResource( 4 ), ExtResource( 5 ) ]
-
-[node name="GUI" parent="." instance=ExtResource( 8 )]
-rect_min_size = Vector2( 1024, 600 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

@@ -8,5 +8,5 @@ func initialize(list_battlers):
 	for team_pos in list_team_position:
 		add_child(team_pos.instance())
 	for battler in list_battlers:
-		battler.position = get_children()[battler.stats.team].get_next_pos()
+		battler.position = get_children()[battler.team].get_next_pos()
 	

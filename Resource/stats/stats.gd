@@ -4,6 +4,8 @@ class_name StartingStats
 export(String) var name_char = "Default"
 export(String) var rarity = "Common"
 export(GDDragonBonesResource) var ske
+export(Shape2D) var collision
+export(Vector2) var collision_position
 
 export var health_gain : float
 export var mana_gain : float

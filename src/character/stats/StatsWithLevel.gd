@@ -31,6 +31,15 @@ func set_startingStats(new_value : Resource) -> void:
 	update_stats()
 
 #---------FUNCTION---------#
+#ready
+func _ready() -> void:
+	initialize()
+
+#initialize node
+func initialize(selected_ownerStats : OwnerStats = null, selected_startingStats : StartingStats = null) -> void:
+	set("startingStats", selected_startingStats)
+	set("ownerStats", selected_ownerStats)
+
 #start calcul
 func update_stats(selected_ownerStats = ownerStats, selected_startingStats = startingStats) -> void:
 	if selected_ownerStats and selected_startingStats:

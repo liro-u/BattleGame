@@ -1,15 +1,18 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=6 format=2]
 
 [ext_resource path="res://Resource/stats/stats.gd" type="Script" id=1]
 [ext_resource path="res://asset/attack/hydro_splash.tres" type="Resource" id=2]
 [ext_resource path="res://asset/attack/air_slash.tres" type="Resource" id=3]
 [ext_resource path="res://asset/chararacters/001_testChar/dragonbones/Lynn_hit_ske.json" type="GDDragonBonesResource" id=4]
+[ext_resource path="res://asset/chararacters/001_testChar/collision.tres" type="Shape2D" id=5]
 
 [resource]
 script = ExtResource( 1 )
-name_char = "GreenSquare"
+name_char = "Lynn"
 rarity = "Common"
 ske = ExtResource( 4 )
+collision = ExtResource( 5 )
+collision_position = Vector2( 2, -90 )
 health_gain = 17.1
 mana_gain = 0.6
 strength_gain = 4.3

@@ -5,20 +5,26 @@ onready var test_node = self.get_parent()
 	
 func _input(_event):
 	if Input.is_action_just_pressed("dev_take_damage"):
-		take_damage()
+		action1()
 	elif Input.is_action_just_pressed("dev_grab_health"):
-		up_health()
+		action2()
 	elif Input.is_action_just_pressed("dev_down_level"):
-		add_shield()
+		action3()
 	elif Input.is_action_just_pressed("dev_up_level"):
-		pass
+		action4()
 		
 		
-func take_damage():
-	test_node.stats.health_changed(-65)
+func action1():
+	test_node.add_case()
 
-func up_health():
-	test_node.stats.health_changed(70)
+func action2():
+	test_node.add_case(1)
 
-func add_shield():
-	test_node.stats.create_shield(300)
+func action3():
+	test_node.del_case()
+	test_node.add_case(1)
+
+func action4():
+	test_node.del_case()
+	test_node.add_case()
+

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://asset/background/grasslands.png" type="Texture" id=1]
+
+[node name="Sprite" type="Sprite"]
+position = Vector2( -23.9882, 0 )
+scale = Vector2( 0.557027, 0.557027 )
+z_index = -1
+texture = ExtResource( 1 )
+centered = false

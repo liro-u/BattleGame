@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/dev_tool/action_dev.gd" type="Script" id=1]
+[ext_resource path="res://asset/chararacters/001_testChar/icon.png" type="Texture" id=3]
+[ext_resource path="res://asset/GUI/turnline/arrow.png" type="Texture" id=6]
+[ext_resource path="res://asset/GUI/turnline/line.png" type="Texture" id=7]
+[ext_resource path="res://src/GUI/turn_line/turnline.gd" type="Script" id=8]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0249847, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=2]
+
+[node name="lineturn" type="Control"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 600.0
+margin_bottom = 42.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+nbr_case = 6
+adding_pos = Vector2( -70, 30 )
+space_border = 0
+curve_move = SubResource( 1 )
+curve_alpha = SubResource( 2 )
+spawn_point = Vector2( 2000, 0 )
+default_profile_texture = ExtResource( 3 )
+
+[node name="arrow" type="TextureRect" parent="."]
+margin_top = 12.0
+margin_right = 60.0
+margin_bottom = 72.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="line" type="TextureRect" parent="."]
+margin_top = 12.0
+margin_right = 2000.0
+margin_bottom = 72.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dev_tool" type="Node" parent="."]
+script = ExtResource( 1 )

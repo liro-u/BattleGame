@@ -1,13 +1,26 @@
 tool
 extends Node2D
-class_name team_position
+class_name TeamPosition
 
-var current_position = 0
+#-------VARIABLES----------#
+export(Array, Vector2) var list_position = [] setget set_list_position
+var current_position = list_position.size() - 1
 
-func get_next_pos():
-	if get_child_count() > 0:
-		var pos = get_child(current_position).position
-		current_position = (current_position + 1) % get_child_count()
-		return pos
+#---------SETGET-----#
+func set_list_position(new_value : Array = list_position) -> void:
+	list_position = new_value
+	current_position = list_position.size() - 1
+
+#---------FUNCTIONS---------#
+func get_next_pos() -> Vector2:
+	if list_position.size() > 0:
+		current_position = (current_position + 1) % list_position.size()
+		return list_position[current_position]
+	else:
+		return Vector2.ZERO
+
+func get_pos() -> Vector2:
+	if list_position.size() > 0:
+		return list_position[current_position]
 	else:
 		return Vector2.ZERO

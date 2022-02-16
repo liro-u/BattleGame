@@ -29,7 +29,6 @@ func initialize(selected_ownerStats : OwnerStats = null, selected_startingStats 
 	set("ownerStats", selected_ownerStats)
 	health = max_health
 	mana = max_mana
-	print_changing_stats()
 
 #print just changing stats
 func print_changing_stats() -> void:
@@ -43,7 +42,6 @@ func create_shield(value : float) -> void:
 	if shield == 0:
 		shield = value
 		emit_signal("shield_created", value)
-	print_changing_stats()
 
 #change health
 func health_changed(additional_health : float) -> void:
@@ -76,11 +74,9 @@ func health_changed(additional_health : float) -> void:
 			emit_signal("health_changed", health)
 	if health == 0:
 		emit_signal("health_depleted")
-	print_changing_stats()
 
 #change mana
 func mana_changed(additional_mana : float) -> void:
 	mana += additional_mana
 	clamp(mana, 0, max_mana)
 	emit_signal("mana_changed", mana)
-	print_changing_stats()

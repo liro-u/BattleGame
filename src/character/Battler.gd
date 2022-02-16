@@ -4,15 +4,22 @@ class_name Battler
 
 #-----------VARIABLES--------------#
 #init
-export var startingStats : Resource
-export var ownerStats : Resource
-export var team : int
+var startingStats : Resource
+export var ownerStats : Resource = null setget set_owner_stats
+export(int, 0, 1) var team = 0
 #node path loaded
 onready var character_gui : Control = $CharacterGUI
 var clickable_area : ClickableArea
 var mesh2D : GDDragonBones
 var stats : BattlerStats
 
+#----------SETGET-----------#
+func set_owner_stats(new_value : Resource = ownerStats) -> void:
+	ownerStats = new_value
+	if ownerStats:
+		startingStats = ownerStats.stats_reference
+		update_stats()
+	
 #--------------FUNCTION--------------#
 #init
 func _init() -> void:
@@ -35,11 +42,16 @@ func _ready() -> void:
 
 #init
 func initialize() -> void:
+	set_owner_stats()
+	if ownerStats and startingStats:
+		character_gui.initialize(self)
+
+func update_stats() -> void:
 	stats.initialize(ownerStats, startingStats)
 	mesh2D.resource = startingStats.ske
 	clickable_area.collision_shape = startingStats.collision
 	clickable_area.collision_position = startingStats.collision_position
-	if team != 0:
-		mesh2D.flipX = true
 	mesh2D.scale = Vector2(0.1, 0.1)
-	character_gui.initialize(self)
+	mesh2D.flipX = (team == 1)
+	if character_gui:
+		character_gui.update_stats(self)

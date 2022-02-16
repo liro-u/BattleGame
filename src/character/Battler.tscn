@@ -1,17 +1,15 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/character/Battler.gd" type="Script" id=1]
 [ext_resource path="res://src/GUI/Character/CharacterGUI.gd" type="Script" id=3]
 [ext_resource path="res://src/GUI/ProgressBar/TweenProgressBar/TweenProgressBar.gd" type="Script" id=4]
 [ext_resource path="res://asset/theme/GUI.tres" type="Theme" id=5]
-[ext_resource path="res://asset/chararacters/001_testChar/stats.tres" type="Resource" id=6]
 [ext_resource path="res://asset/chararacters/001_testChar/ownerStats.tres" type="Resource" id=7]
 [ext_resource path="res://src/GUI/ProgressBar/multiprogressbar/MultiProgressBar.gd" type="Script" id=8]
 [ext_resource path="res://asset/GUI/lifebar/progress.png" type="Texture" id=9]
 [ext_resource path="res://asset/GUI/lifebar/over.png" type="Texture" id=10]
 [ext_resource path="res://asset/GUI/lifebar/under.png" type="Texture" id=11]
 [ext_resource path="res://asset/curve/ease_in.tres" type="Curve" id=12]
-[ext_resource path="res://src/dev_tool/action_dev.gd" type="Script" id=13]
 [ext_resource path="res://asset/font/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=14]
 
 [sub_resource type="DynamicFont" id=1]
@@ -37,7 +35,6 @@ font_data = ExtResource( 14 )
 ]]
 position = Vector2( 196.59, 283.129 )
 script = ExtResource( 1 )
-startingStats = ExtResource( 6 )
 ownerStats = ExtResource( 7 )
 
 [node name="CharacterGUI" type="Control" parent="."]
@@ -133,6 +130,3 @@ custom_font_color_progress_value = Color( 0, 0, 0, 1 )
 alpha_curve = ExtResource( 12 )
 value_curve = ExtResource( 12 )
 value_update = 100
-
-[node name="dev_tool" type="Node" parent="."]
-script = ExtResource( 13 )

@@ -54,7 +54,6 @@ func update_stats(selected_ownerStats = ownerStats, selected_startingStats = sta
 		crit = calcul_stat_by_level(selected_startingStats.crit, selected_startingStats.crit_gain)
 		#emit signal
 		emit_signal("stats_updated")
-		print_stats()
 
 #calcul stats by level
 func calcul_stat_by_level(starting_stat : float, gain : float, selected_level = level) -> float:

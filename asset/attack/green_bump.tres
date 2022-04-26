@@ -1,16 +1,16 @@
-[gd_resource type="Resource" load_steps=4 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Resource/attack/hit.gd" type="Script" id=1]
-[ext_resource path="res://Resource/element/element.gd" type="Script" id=2]
-
-[sub_resource type="Resource" id=1]
-script = ExtResource( 2 )
-element = "plant"
+[ext_resource path="res://asset/weapon/sword/sword-stick.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
-damage = 15
-mana_cost = 30
 attack_name = "green bump"
-element = SubResource( 1 )
-for_team = true
+icon = ExtResource( 2 )
+mana_cost = 30
+element = 1
+turn_needed = 1
+actual_turn = 0
+team_target_ennemy = false
+modifiers_for_team = [  ]
+modifiers_for_enemy = [  ]

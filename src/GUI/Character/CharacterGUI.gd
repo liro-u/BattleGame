@@ -6,12 +6,16 @@ onready var level_label = $Stats/Text/Level
 onready var health_bar = $Stats/health
 onready var mana_bar = $Stats/mana
 
+var is_init = false
+
 func initialize(battler) -> void:
 	update_stats(battler)
-	battler.stats.connect("shield_created", self, "shield_created")
-	battler.stats.connect("health_changed", health_bar, "update_first_value")
-	battler.stats.connect("shield_changed", health_bar, "update_value")
-	battler.stats.connect("mana_changed", mana_bar, "update_value")
+	if ! is_init:
+		is_init = true
+		battler.stats.connect("shield_created", self, "shield_created")
+		battler.stats.connect("health_changed", health_bar, "update_first_value")
+		battler.stats.connect("shield_changed", health_bar, "update_value")
+		battler.stats.connect("mana_changed", mana_bar, "update_value")
 
 func update_stats(battler) -> void:
 	name_label.text = battler.startingStats.name_char

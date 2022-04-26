@@ -9,6 +9,36 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Control",
+"class": "ActionStateMachine",
+"language": "GDScript",
+"path": "res://src/GUI/action_gui/action_state_machine.gd"
+}, {
+"base": "Control",
+"class": "AnimGUI",
+"language": "GDScript",
+"path": "res://src/GUI/animationGui/animGui.gd"
+}, {
+"base": "Node",
+"class": "Attack",
+"language": "GDScript",
+"path": "res://src/character/attack/attack.gd"
+}, {
+"base": "TeamIconBattler",
+"class": "AttackIcon",
+"language": "GDScript",
+"path": "res://src/GUI/action_gui/attackIcon.gd"
+}, {
+"base": "Node",
+"class": "AttackList",
+"language": "GDScript",
+"path": "res://src/character/attack/attack_list.gd"
+}, {
+"base": "Control",
+"class": "BattleGUI",
+"language": "GDScript",
+"path": "res://src/GUI/battle/BattleGUI.gd"
+}, {
 "base": "Node2D",
 "class": "BattleWorld",
 "language": "GDScript",
@@ -37,7 +67,12 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "Element",
 "language": "GDScript",
-"path": "res://Resource/element/element.gd"
+"path": "res://Resource/attack/element.gd"
+}, {
+"base": "Control",
+"class": "MovableTexture",
+"language": "GDScript",
+"path": "res://src/GUI/animationGui/movable_texture.gd"
 }, {
 "base": "TweenProgressBar",
 "class": "MultiProgressBar",
@@ -99,6 +134,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/GUI/turn_line/TweenTeamIconBattler.gd"
 }, {
+"base": "Resource",
+"class": "attack_modifier",
+"language": "GDScript",
+"path": "res://Resource/attack/modifier.gd"
+}, {
 "base": "Node",
 "class": "dev_tool",
 "language": "GDScript",
@@ -108,14 +148,26 @@ _global_script_classes=[ {
 "class": "start_hit",
 "language": "GDScript",
 "path": "res://Resource/attack/hit.gd"
+}, {
+"base": "TextureButton",
+"class": "ui_cancel",
+"language": "GDScript",
+"path": "res://src/GUI/ui_cancel.gd"
 } ]
 _global_script_class_icons={
+"ActionStateMachine": "",
+"AnimGUI": "",
+"Attack": "",
+"AttackIcon": "",
+"AttackList": "",
+"BattleGUI": "",
 "BattleWorld": "",
 "Battler": "",
 "BattlerStats": "",
 "ClickableArea": "",
 "CurveTween": "",
 "Element": "",
+"MovableTexture": "",
 "MultiProgressBar": "",
 "OwnerStats": "",
 "SpawnPosition": "",
@@ -128,8 +180,10 @@ _global_script_class_icons={
 "TurnQueue": "",
 "TweenProgressBar": "",
 "TweenTeamIconBattler": "",
+"attack_modifier": "",
 "dev_tool": "",
-"start_hit": ""
+"start_hit": "",
+"ui_cancel": ""
 }
 
 [application]
@@ -146,6 +200,12 @@ Screenshot="*res://devlog/screenshot.gd"
 
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[global]
+
+tooltip=false
+tool=false
+fps=false
 
 [importer_defaults]
 

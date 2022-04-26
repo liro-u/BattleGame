@@ -1,7 +1,7 @@
 extends Node
 class_name dev_tool
 
-onready var test_node = self.get_parent()
+onready var test_node = get_parent()
 	
 func _input(_event):
 	if Input.is_action_just_pressed("dev_take_damage"):
@@ -15,16 +15,14 @@ func _input(_event):
 		
 		
 func action1():
-	test_node.add_case()
+	test_node
 
 func action2():
-	test_node.add_case(1)
+	test_node
 
 func action3():
-	test_node.del_case()
-	test_node.add_case(1)
+	test_node
 
 func action4():
-	test_node.del_case()
-	test_node.add_case()
+	test_node.get_last_gui()
 

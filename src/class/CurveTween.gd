@@ -14,7 +14,9 @@ func play(duration, start_in, end_in):
 	start = start_in
 	end = end_in
 	interpolate_method(self, "interp", 0.0, 1.0, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	start()
+	if is_inside_tree():
+		start()
+	yield(self, "tween_all_completed")
 	
 func interp(var sat):
 	emit_signal("curve_tween", start + ((end - start) * curve.interpolate(sat)))

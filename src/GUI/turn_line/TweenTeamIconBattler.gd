@@ -18,10 +18,10 @@ func _init():
 	add_child(tween_alpha)
 	tween_alpha.connect("curve_tween", self, "set_alpha")
 
-func set_pos(new_pos):
+func set_pos(new_pos : Vector2):
 	rect_position = new_pos
 
-func set_alpha(new_value):
+func set_alpha(new_value : float):
 	modulate.a = new_value
 
 func appear(time : float):

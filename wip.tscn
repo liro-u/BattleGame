@@ -1,0 +1,146 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://asset/curve/ease_in.tres" type="Curve" id=1]
+[ext_resource path="res://asset/chararacters/001_testChar/icon.png" type="Texture" id=2]
+[ext_resource path="res://asset/GUI/lifebar/progress.png" type="Texture" id=3]
+[ext_resource path="res://asset/GUI/lifebar/under.png" type="Texture" id=4]
+[ext_resource path="res://asset/GUI/lifebar/over.png" type="Texture" id=5]
+[ext_resource path="res://src/GUI/ProgressBar/TweenProgressBar/TweenProgressBar.gd" type="Script" id=6]
+[ext_resource path="res://asset/theme/GUI.tres" type="Theme" id=7]
+[ext_resource path="res://asset/font/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://src/GUI/action_gui/attackIcon.gd" type="Script" id=9]
+[ext_resource path="res://asset/GUI/turnline/cadre.png" type="Texture" id=10]
+[ext_resource path="res://asset/GUI/turnline/fond.png" type="Texture" id=11]
+[ext_resource path="res://asset/font/dynamicfont/attackIcon/mana_font.tres" type="DynamicFont" id=12]
+[ext_resource path="res://asset/font/dynamicfont/attackIcon/turn_font.tres" type="DynamicFont" id=13]
+[ext_resource path="res://src/GUI/action_gui/ActionGUI.gd" type="Script" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_top = 1
+font_data = ExtResource( 8 )
+
+[node name="ActionGUI" type="HBoxContainer" groups=[
+"action_gui",
+]]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -252.0
+margin_top = -150.0
+margin_right = 252.0
+grow_horizontal = 2
+alignment = 1
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharactIcon" type="TextureRect" parent="."]
+margin_right = 150.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 154.0
+margin_right = 504.0
+margin_bottom = 150.0
+alignment = 1
+
+[node name="Name" type="Label" parent="VBoxContainer"]
+margin_top = 10.0
+margin_right = 350.0
+margin_bottom = 24.0
+text = "Lynn"
+align = 1
+
+[node name="AttackContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 28.0
+margin_right = 350.0
+margin_bottom = 108.0
+custom_constants/separation = 30
+alignment = 1
+
+[node name="Atk" type="Control" parent="VBoxContainer/AttackContainer"]
+margin_left = 25.0
+margin_right = 105.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+mouse_filter = 2
+script = ExtResource( 9 )
+nine_patch_value = 27
+margin_value = 3
+back_texture = ExtResource( 11 )
+back_color = Color( 0.0941176, 0.54902, 0, 1 )
+profil_texture = ExtResource( 2 )
+border_texture = ExtResource( 10 )
+border_color = Color( 0.196078, 1, 0, 1 )
+mana_cost = 55
+turn_needed = 0
+font_mana = ExtResource( 12 )
+font_turn = ExtResource( 13 )
+
+[node name="Atk2" type="Control" parent="VBoxContainer/AttackContainer"]
+margin_left = 135.0
+margin_right = 215.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+mouse_filter = 2
+script = ExtResource( 9 )
+nine_patch_value = 27
+margin_value = 3
+back_texture = ExtResource( 11 )
+back_color = Color( 0.0470588, 0.513726, 0.588235, 1 )
+profil_texture = ExtResource( 2 )
+border_texture = ExtResource( 10 )
+border_color = Color( 0.137255, 0.352941, 1, 1 )
+mana_cost = 55
+turn_needed = 0
+font_mana = ExtResource( 12 )
+font_turn = ExtResource( 13 )
+
+[node name="Atk3" type="Control" parent="VBoxContainer/AttackContainer"]
+margin_left = 245.0
+margin_right = 325.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+mouse_filter = 2
+script = ExtResource( 9 )
+nine_patch_value = 27
+margin_value = 3
+back_texture = ExtResource( 11 )
+back_color = Color( 0.588235, 0.0470588, 0.0470588, 1 )
+profil_texture = ExtResource( 2 )
+border_texture = ExtResource( 10 )
+border_color = Color( 0.984314, 0.0196078, 0.0196078, 1 )
+disabled = true
+mana_cost = 55
+turn_needed = 3
+font_mana = ExtResource( 12 )
+font_turn = ExtResource( 13 )
+
+[node name="ManaBar" type="Control" parent="VBoxContainer"]
+margin_top = 112.0
+margin_right = 350.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 350, 28 )
+theme = ExtResource( 7 )
+script = ExtResource( 6 )
+show_value = true
+direct_color = Color( 0, 0.694118, 1, 1 )
+down_color = Color( 0.686275, 0.0470588, 0.482353, 1 )
+up_color = Color( 0, 1, 0.764706, 1 )
+basic_under_texture = ExtResource( 4 )
+basic_over_texture = ExtResource( 5 )
+basic_progress_texture = ExtResource( 3 )
+custom_theme = ExtResource( 7 )
+custom_font_progress_value = SubResource( 1 )
+alpha_curve = ExtResource( 1 )
+value_curve = ExtResource( 1 )
+value_update = 100

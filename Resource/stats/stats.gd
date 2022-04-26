@@ -4,6 +4,9 @@ class_name StartingStats
 export(String) var name_char = "Default"
 export(String) var rarity = "Common"
 export(GDDragonBonesResource) var ske
+export(Texture) var icon
+export(Texture) var large_icon
+export(int) var X_size_large_icon = 150
 export(Shape2D) var collision
 export(Vector2) var collision_position
 

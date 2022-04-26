@@ -1,8 +1,13 @@
 extends Resource
 class_name start_hit
 
-export var damage : int
-export var mana_cost : int
 export var attack_name : String
-export var element : Resource
-export var for_team : bool
+export var icon : Texture
+export var mana_cost : int
+export var element : int = Element.Element.AIR
+export var turn_needed : int
+export var actual_turn : int
+
+export var team_target_ennemy : bool = true
+export var modifiers_for_team : Array
+export var modifiers_for_enemy : Array

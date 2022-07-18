@@ -34,6 +34,8 @@ var arrow
 var line
 #other var
 var list_case : Array = []
+var tween_line
+var curve_line = load("res://asset/GUI/animGui/anim_gui_curve.tres")
 
 #---------SETGET-------------#
 #set texture
@@ -53,6 +55,10 @@ func set_nbr_case(new_value : int = nbr_case) -> void:
 			else:
 				del_case()
 
+func disappear():
+	tween_line.play(0.5, rect_position.y, rect_position.y - rect_size.y * rect_scale.y * 2)
+func update_pos(sat):
+	rect_position.y = sat
 #position calculation
 func set_line_start_pos(new_value : Vector2 = line_start_pos) -> void:
 	line_start_pos = new_value
@@ -100,6 +106,12 @@ func set_curve_alpha(new_value : Curve = curve_alpha) -> void:
 #-----------FUNCTIONS----------#
 #init
 func _init():
+	if tween_line:
+		tween_line.queue_free()
+	tween_line = CurveTween.new()
+	add_child(tween_line)
+	tween_line.connect("curve_tween", self, "update_pos")
+	tween_line.curve = curve_line
 	if arrow:
 		arrow.queue_free()
 	arrow = TextureRect.new()
@@ -126,7 +138,7 @@ func initialise(children : Array, active_battler : int = 0) -> void:
 	if children.size() > 0:
 		while i < max_nbr_case + active_battler :
 			var child = children[i % children.size()]
-			info_battler_turnline.append([child.team, child.startingStats.icon])
+			info_battler_turnline.append(child)
 			i += 1
 	del_all_case()
 	add_case_by_list(info_battler_turnline)
@@ -152,8 +164,13 @@ func calcul_position(n : int = 1) -> Vector2:
 #manage case
 func add_case_by_list(list : Array) -> void:
 	for battler_data in list:
-		add_case(battler_data[0], battler_data[1])
-func add_case(team : int = 0, icon : Texture = default_profile_texture) -> void:
+		add_case(battler_data)
+func add_case(battler = null) -> void:
+	var team = 0
+	var icon = default_profile_texture
+	if battler:
+		team = battler.team
+		icon = battler.startingStats.icon
 	nbr_case += 1
 	var new_case : TweenTeamIconBattler = TweenTeamIconBattler.new()
 	line.add_child(new_case)
@@ -178,12 +195,16 @@ func add_case(team : int = 0, icon : Texture = default_profile_texture) -> void:
 	new_case.rect_position.y = spawn_point.y - size_icon.y / 2 + adding_pos.y
 	new_case.appear(time_tween_value * mult_alpha_speed)
 	update_position()
-func replace_case_by(team : int = 0, icon : Texture = default_profile_texture) -> void:
+	if battler:
+		battler.list_indicator_char_turn.append(new_case)
+		new_case.battler_properties = battler
+
+func replace_case_by(battler) -> void:
 	del_case()
-	add_case(team, icon)
+	add_case(battler)
 func replace_case_by_list(list : Array) -> void:
 	for battler_data in list:
-		replace_case_by(battler_data[0], battler_data[1])
+		replace_case_by(battler_data)
 func del_case(anim : bool = true) -> void:
 	del_case_pos(0, anim)
 func del_case_pos(n = list_case.size() - 1, anim : bool = true) -> void:
@@ -193,8 +214,13 @@ func del_case_pos(n = list_case.size() - 1, anim : bool = true) -> void:
 			list_case[n].delete(time_tween_value * mult_alpha_speed)
 		else:
 			list_case[n].queue_free()
+		if list_case[n].battler_properties:
+			list_case[n].battler_properties.list_indicator_char_turn.erase(list_case[n])
 		list_case.remove(n)
 		update_position()
+func del_this_case(case = null, anim = true):
+	var last_ocu = list_case.find(case)
+	del_case_pos(last_ocu, anim)
 func del_all_case() -> void:
 	while list_case.size() > 0:
 		del_case(false)

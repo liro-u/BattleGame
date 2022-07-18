@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/scenel_switcher/parent_switcher_indicator.gd" type="Script" id=1]
+[ext_resource path="res://asset/font/dynamicfont/basic_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://src/level_selector/ui/team_selector.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/level_selector/ui/manage_level.gd" type="Script" id=5]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.291992, 0, 0.272032, 1, 0.249279, 0.270947, 0.631836, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 1024
+
+[node name="chapitre 1" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="parent_switcher_indicator" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="level_selector" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 2 )
+expand = true
+stretch_mode = 2
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="level_selector"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="GridContainer" parent="level_selector/CenterContainer"]
+margin_left = 182.0
+margin_top = 273.0
+margin_right = 842.0
+margin_bottom = 326.0
+custom_constants/vseparation = 30
+custom_constants/hseparation = 30
+columns = 4
+
+[node name="Button" type="Button" parent="level_selector/CenterContainer/VBoxContainer"]
+margin_right = 136.0
+margin_bottom = 53.0
+custom_fonts/font = ExtResource( 3 )
+text = "level 1"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="level_selector/CenterContainer/VBoxContainer"]
+margin_left = 166.0
+margin_right = 310.0
+margin_bottom = 53.0
+custom_fonts/font = ExtResource( 3 )
+text = "level 2"
+flat = true
+
+[node name="Button3" type="Button" parent="level_selector/CenterContainer/VBoxContainer"]
+margin_left = 340.0
+margin_right = 484.0
+margin_bottom = 53.0
+custom_fonts/font = ExtResource( 3 )
+text = "level 3"
+flat = true
+
+[node name="Button4" type="Button" parent="level_selector/CenterContainer/VBoxContainer"]
+margin_left = 514.0
+margin_right = 660.0
+margin_bottom = 53.0
+custom_fonts/font = ExtResource( 3 )
+text = "level 4"
+flat = true
+
+[node name="team_selector" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[connection signal="pressed" from="level_selector/CenterContainer/VBoxContainer/Button" to="level_selector" method="select_level" binds= [ 1, 1 ]]
+[connection signal="pressed" from="level_selector/CenterContainer/VBoxContainer/Button2" to="level_selector" method="select_level" binds= [ 1, 2 ]]
+[connection signal="pressed" from="level_selector/CenterContainer/VBoxContainer/Button3" to="level_selector" method="select_level" binds= [ 1, 3 ]]
+[connection signal="pressed" from="level_selector/CenterContainer/VBoxContainer/Button4" to="level_selector" method="select_level" binds= [ 1, 4 ]]
+[connection signal="team_changed" from="team_selector" to="level_selector" method="team_changed"]
+
+[editable path="team_selector"]
+[editable path="team_selector/charact_selector"]

@@ -5,6 +5,6 @@
 [node name="Sprite" type="Sprite"]
 position = Vector2( -23.9882, 0 )
 scale = Vector2( 0.557027, 0.557027 )
-z_index = -1
+z_index = -20
 texture = ExtResource( 1 )
 centered = false

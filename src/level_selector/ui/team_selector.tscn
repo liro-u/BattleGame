@@ -1,0 +1,239 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://src/level_selector/ui/charact_selector.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/level_selector/ui/team_selector.gd" type="Script" id=2]
+[ext_resource path="res://src/GUI/select_team/select_player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/scenel_switcher/switch_scene_data.gd" type="Script" id=4]
+[ext_resource path="res://src/level_selector/ui/load_level_button.gd" type="Script" id=5]
+[ext_resource path="res://asset/GUI/chara_select/chara_selector_fond.png" type="Texture" id=6]
+[ext_resource path="res://asset/GUI/chara_select/start_fond.png" type="Texture" id=7]
+[ext_resource path="res://asset/GUI/chara_select/back_fond.png" type="Texture" id=8]
+[ext_resource path="res://asset/font/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://asset/GUI/chara_select/back_star.png" type="Texture" id=10]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.102865, 0.970859 ), 0.0, 0.0, 0, 0, Vector2( 0.884115, 0.995399 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+lifetime_randomness = 1.0
+emission_shape = 2
+emission_box_extents = Vector3( 524, 312, 1 )
+flag_disable_z = true
+direction = Vector3( 1, -0.5, 0 )
+initial_velocity = 18.0
+orbit_velocity = 0.01
+orbit_velocity_random = 0.0
+scale = 0.1
+scale_random = 0.3
+scale_curve = SubResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+extra_spacing_bottom = -3
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 30
+extra_spacing_bottom = -3
+font_data = ExtResource( 9 )
+
+[node name="team_selector" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Particles2D" type="Particles2D" parent="background"]
+position = Vector2( 512, 300 )
+amount = 200
+lifetime = 3.0
+preprocess = 5.0
+visibility_rect = Rect2( -524, -312, 1048, 624 )
+process_material = SubResource( 3 )
+texture = ExtResource( 10 )
+
+[node name="UI" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackContainer" type="Control" parent="UI"]
+margin_right = 1024.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 0, 60 )
+
+[node name="Back" type="TextureButton" parent="UI/BackContainer"]
+margin_right = 30.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 150, 60 )
+size_flags_horizontal = 3
+texture_normal = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/BackContainer/Back"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UI/BackContainer/Back/HBoxContainer"]
+margin_left = 58.0
+margin_top = 20.0
+margin_right = 109.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="UI/BackContainer/Back/HBoxContainer"]
+margin_left = 113.0
+margin_right = 150.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 37, 60 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+
+[node name="ListeButton" type="HBoxContainer" parent="UI"]
+margin_top = 90.0
+margin_right = 1024.0
+margin_bottom = 468.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="ButtonContainer" type="Control" parent="UI/ListeButton"]
+margin_left = 208.0
+margin_right = 397.0
+margin_bottom = 378.0
+rect_min_size = Vector2( 189, 378 )
+mouse_filter = 2
+
+[node name="BattlerSelector" parent="UI/ListeButton/ButtonContainer" instance=ExtResource( 3 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -119.0
+margin_bottom = -238.0
+rect_scale = Vector2( 2.7, 2.7 )
+
+[node name="ButtonContainer2" type="Control" parent="UI/ListeButton"]
+margin_left = 417.0
+margin_right = 606.0
+margin_bottom = 378.0
+rect_min_size = Vector2( 189, 378 )
+mouse_filter = 2
+
+[node name="BattlerSelector" parent="UI/ListeButton/ButtonContainer2" instance=ExtResource( 3 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -119.0
+margin_bottom = -238.0
+rect_scale = Vector2( 2.7, 2.7 )
+
+[node name="ButtonContainer3" type="Control" parent="UI/ListeButton"]
+margin_left = 626.0
+margin_right = 815.0
+margin_bottom = 378.0
+rect_min_size = Vector2( 189, 378 )
+mouse_filter = 2
+
+[node name="BattlerSelector" parent="UI/ListeButton/ButtonContainer3" instance=ExtResource( 3 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -119.0
+margin_bottom = -238.0
+rect_scale = Vector2( 2.7, 2.7 )
+
+[node name="Start" type="Control" parent="UI"]
+margin_top = 498.0
+margin_right = 1024.0
+margin_bottom = 598.0
+rect_min_size = Vector2( 0, 100 )
+mouse_filter = 2
+
+[node name="Start" type="TextureButton" parent="UI/Start"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -214.0
+margin_top = -50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 214, 100 )
+size_flags_horizontal = 3
+texture_normal = ExtResource( 7 )
+expand = true
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SwitchSceneData" type="Node" parent="UI/Start/Start"]
+script = ExtResource( 4 )
+next_scene_data = [ "level", 1, 1, [  ] ]
+signal_name = "load_level"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Start/Start"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="UI/Start/Start/HBoxContainer"]
+margin_right = 52.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 52, 100 )
+mouse_filter = 2
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="UI/Start/Start/HBoxContainer"]
+margin_left = 56.0
+margin_top = 34.0
+margin_right = 136.0
+margin_bottom = 66.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="charact_selector" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[connection signal="pressed" from="UI/BackContainer/Back" to="." method="back"]
+[connection signal="want_change_char" from="UI/ListeButton/ButtonContainer/BattlerSelector" to="." method="need_choose_player"]
+[connection signal="want_change_char" from="UI/ListeButton/ButtonContainer2/BattlerSelector" to="." method="need_choose_player"]
+[connection signal="want_change_char" from="UI/ListeButton/ButtonContainer3/BattlerSelector" to="." method="need_choose_player"]
+[connection signal="player_selected" from="charact_selector" to="." method="player_selected"]
+
+[editable path="charact_selector"]

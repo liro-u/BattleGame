@@ -7,7 +7,20 @@
 [sub_resource type="Resource" id=1]
 script = ExtResource( 1 )
 multi_target = false
-health = 0
+element = 3
+turn = 1
+texture = ""
+with_weakness = true
+with_crit = true
+health = -17.0
+shield = 0.0
+mana = 0.0
+strength = 0.0
+defense = 0.0
+speed = 0.0
+crit = 0.0
+crit_mult = 0.0
+magie = 0.0
 
 [resource]
 script = ExtResource( 2 )
@@ -18,5 +31,5 @@ element = 3
 turn_needed = 0
 actual_turn = 0
 team_target_ennemy = true
-modifiers_for_team = [ SubResource( 1 ) ]
-modifiers_for_enemy = [  ]
+modifiers_for_team = [  ]
+modifiers_for_enemy = [ SubResource( 1 ) ]

@@ -50,7 +50,7 @@ var direct_progress_bar : TextureProgress
 var tween_progress_bar : TextureProgress
 #preview
 export(int) var value_update = start_value setget update_tool
-
+export(int) var duration = 1
 #----------SIGNALE---------#
 signal bar_is_empty(rest_value)
 var signal_was_emit : bool = false
@@ -319,13 +319,13 @@ func update_value(new_value : int) -> void:
 	if current_value != new_value:
 		if current_value > new_value:
 			set_down_mode(true)
-			alpha_tween.play(1, 0.8, 0.35)
+			alpha_tween.play(duration, 0.8, 0.35)
 		else:
 			alpha_tween.remove_all()
 			set_down_mode(false)
 		calcul_value(new_value)
 		direct_progress_bar.value = current_value
-		value_tween.play(1, tween_progress_bar.value, current_value)
+		value_tween.play(duration, tween_progress_bar.value, current_value)
 
 func update_tween_value(sat : float) -> void:
 	tween_progress_bar.value = sat

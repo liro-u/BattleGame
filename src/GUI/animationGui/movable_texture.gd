@@ -31,7 +31,7 @@ func _init(init_start_at = start_at, init_end_at = end_at, init_duration = durat
 	add_child(tween_node)
 	tween_node.connect("curve_tween", self, "update_pos")
 	tween_node.connect("tween_all_completed", self, "restart")
-
+	
 func _ready():
 	texture_node.rect_size = basic_size
 	texture_node.texture = base_texture
@@ -40,6 +40,10 @@ func _ready():
 		texture_node.rect_pivot_offset = texture_node.rect_size / 2
 	texture_node.rect_rotation = rotate
 	rect_min_size = texture_node.rect_size
+	reset()
+
+func reset():
+	tween_node.remove_all()
 	if state_is_start:
 		texture_node.rect_position = start_at
 	else:

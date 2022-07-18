@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/character/attack/attack_list.gd"
 }, {
+"base": "Node",
+"class": "BaseConditionVictory",
+"language": "GDScript",
+"path": "res://src/battle/condition_victory/base_victory_condition.gd"
+}, {
 "base": "Control",
 "class": "BattleGUI",
 "language": "GDScript",
@@ -69,6 +74,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Resource/attack/element.gd"
 }, {
+"base": "Node",
+"class": "ElementCalculation",
+"language": "GDScript",
+"path": "res://src/character/attack/element_calculation.gd"
+}, {
+"base": "Resource",
+"class": "LevelData",
+"language": "GDScript",
+"path": "res://Resource/level_data/levelData.gd"
+}, {
 "base": "Control",
 "class": "MovableTexture",
 "language": "GDScript",
@@ -83,6 +98,21 @@ _global_script_classes=[ {
 "class": "OwnerStats",
 "language": "GDScript",
 "path": "res://Resource/stats/ownerStats.gd"
+}, {
+"base": "Node",
+"class": "ParentSwitchIndicator",
+"language": "GDScript",
+"path": "res://src/scenel_switcher/parent_switcher_indicator.gd"
+}, {
+"base": "TextureButton",
+"class": "RechargeMana",
+"language": "GDScript",
+"path": "res://src/GUI/action_gui/RechargeMana.gd"
+}, {
+"base": "Node",
+"class": "SceneSwitcher",
+"language": "GDScript",
+"path": "res://src/scenel_switcher/scene_switcher.gd"
 }, {
 "base": "Node2D",
 "class": "SpawnPosition",
@@ -103,6 +133,11 @@ _global_script_classes=[ {
 "class": "StatsWithLevel",
 "language": "GDScript",
 "path": "res://src/character/stats/StatsWithLevel.gd"
+}, {
+"base": "Node",
+"class": "SwitchSceneData",
+"language": "GDScript",
+"path": "res://src/scenel_switcher/switch_scene_data.gd"
 }, {
 "base": "Control",
 "class": "TeamIconBattler",
@@ -139,10 +174,35 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Resource/attack/modifier.gd"
 }, {
+"base": "TextureButton",
+"class": "chooseCharButton",
+"language": "GDScript",
+"path": "res://src/level_selector/ui/select_player_button.gd"
+}, {
 "base": "Node",
 "class": "dev_tool",
 "language": "GDScript",
 "path": "res://src/dev_tool/action_dev.gd"
+}, {
+"base": "Node",
+"class": "levelCalculation",
+"language": "GDScript",
+"path": "res://src/character/stats/level_calculation.gd"
+}, {
+"base": "Node",
+"class": "modifierList",
+"language": "GDScript",
+"path": "res://src/character/modifier/modifier_list.gd"
+}, {
+"base": "Node",
+"class": "modifier_apply",
+"language": "GDScript",
+"path": "res://src/character/modifier/modifier_apply.gd"
+}, {
+"base": "TextureButton",
+"class": "selectPlayer",
+"language": "GDScript",
+"path": "res://src/level_selector/ui/selectplayer.gd"
 }, {
 "base": "Resource",
 "class": "start_hit",
@@ -160,6 +220,7 @@ _global_script_class_icons={
 "Attack": "",
 "AttackIcon": "",
 "AttackList": "",
+"BaseConditionVictory": "",
 "BattleGUI": "",
 "BattleWorld": "",
 "Battler": "",
@@ -167,13 +228,19 @@ _global_script_class_icons={
 "ClickableArea": "",
 "CurveTween": "",
 "Element": "",
+"ElementCalculation": "",
+"LevelData": "",
 "MovableTexture": "",
 "MultiProgressBar": "",
 "OwnerStats": "",
+"ParentSwitchIndicator": "",
+"RechargeMana": "",
+"SceneSwitcher": "",
 "SpawnPosition": "",
 "StartWorld": "",
 "StartingStats": "",
 "StatsWithLevel": "",
+"SwitchSceneData": "",
 "TeamIconBattler": "",
 "TeamPosition": "",
 "TurnLine": "",
@@ -181,7 +248,12 @@ _global_script_class_icons={
 "TweenProgressBar": "",
 "TweenTeamIconBattler": "",
 "attack_modifier": "",
+"chooseCharButton": "",
 "dev_tool": "",
+"levelCalculation": "",
+"modifierList": "",
+"modifier_apply": "",
+"selectPlayer": "",
 "start_hit": "",
 "ui_cancel": ""
 }
@@ -189,7 +261,8 @@ _global_script_class_icons={
 [application]
 
 config/name="Battle Game"
-run/main_scene="res://BattleWorld.tscn"
+config/description="un tour par tour qui prend place dans un monde fantasy ui melange des combat intense et du gacha "
+run/main_scene="res://src/scenel_switcher/scene_switcher.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -206,6 +279,8 @@ window/stretch/aspect="keep"
 tooltip=false
 tool=false
 fps=false
+android=false
+click=false
 
 [importer_defaults]
 
@@ -260,9 +335,13 @@ devlog_screenshot={
 }
 select={
 "deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [physics]
 

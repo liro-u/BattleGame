@@ -39,44 +39,45 @@ func print_changing_stats() -> void:
 
 #create new shield
 func create_shield(value : float) -> void:
-	if shield == 0:
+	if shield < value:
 		shield = value
 		emit_signal("shield_created", value)
 
 #change health
 func health_changed(additional_health : float) -> void:
-	#adding health
-	if additional_health > 0:
-		health += additional_health
-		health = clamp(health, 0, max_health)
-		emit_signal("health_changed", health)
-	#substract health
-	else:
-		#substract from shield
-		if shield > 0.0:
-			#shield will be > 0 after substract
-			if shield > -additional_health:
-				shield += additional_health
-				additional_health = 0
-				emit_signal("shield_changed", shield)
-			#shield will not exist after substract
-			else:
-				additional_health += shield
-				shield = 0
-				emit_signal("shield_changed", additional_health)
-			#manage rest life after shield substract
-			health += additional_health
-			health = clamp(health, 0, max_health)
-		#substract from health
-		else:
+	if additional_health != 0:
+		#adding health
+		if additional_health > 0:
 			health += additional_health
 			health = clamp(health, 0, max_health)
 			emit_signal("health_changed", health)
-	if health == 0:
-		emit_signal("health_depleted")
+		#substract health
+		else:
+			#substract from shield
+			if shield > 0.0:
+				#shield will be > 0 after substract
+				if shield > -additional_health:
+					shield += additional_health
+					additional_health = 0
+					emit_signal("shield_changed", shield)
+				#shield will not exist after substract
+				else:
+					additional_health += shield
+					shield = 0
+					emit_signal("shield_changed", additional_health)
+				#manage rest life after shield substract
+				health += additional_health
+				health = clamp(health, 0, max_health)
+			#substract from health
+			else:
+				health += additional_health
+				health = clamp(health, 0, max_health)
+				emit_signal("health_changed", health)
+		if health == 0:
+			emit_signal("health_depleted")
 
 #change mana
 func mana_changed(additional_mana : float) -> void:
 	mana += additional_mana
-	clamp(mana, 0, max_mana)
+	mana = clamp(mana, 0, max_mana)
 	emit_signal("mana_changed", mana)

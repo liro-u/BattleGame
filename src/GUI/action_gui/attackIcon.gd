@@ -21,13 +21,14 @@ func set_grey_color(new_value : Color = grey_color) -> void:
 	grey_color = new_value
 	grey_rect.self_modulate = grey_color
 #set disabled
-func set_disabled(new_value: bool = disabled) -> void:
-	disabled = new_value
-	button.disabled = disabled
-	if disabled:
-		grey_rect.show()
-	else:
-		grey_rect.hide()
+func set_disabled(new_value: bool = disabled, force: bool = false) -> void:
+	if !disabled or force:
+		disabled = new_value
+		button.disabled = disabled
+		if disabled:
+			grey_rect.show()
+		else:
+			grey_rect.hide()
 #set back and grey texture
 func set_back_texture(new_value : Texture = back_texture) -> void:
 	back_texture = new_value
@@ -36,11 +37,17 @@ func set_back_texture(new_value : Texture = back_texture) -> void:
 #set text label
 func set_mana_cost(new_value : int = mana_cost) -> void:
 	mana_cost = new_value
+	if (get_owner() and get_tree().get_nodes_in_group("turn_queue")[0].active_battler):
+		var active_battler = get_tree().get_nodes_in_group("turn_queue")[0].active_battler
+		set_disabled(mana_cost > active_battler.stats.mana)
 	mana_cost_label.text = str(mana_cost)
 func set_turn_needed(new_value : int = turn_needed) -> void:
 	turn_needed = new_value
 	set_disabled(turn_needed > 0)
-	turn_needed_label.text = str(turn_needed)
+	var text = ""
+	if turn_needed > 0:
+		text = str(turn_needed)
+	turn_needed_label.text = text
 #set font
 func set_mana_font(new_value : DynamicFont = font_mana) -> void:
 	font_mana = new_value
@@ -119,6 +126,7 @@ func initialize() -> void:
 	update_all()
 
 func setup_from_attack(attack : Attack = null):
+	disabled = false
 	if attack != null:
 		attack_node = attack
 		set_mana_cost(attack.mana_cost)
@@ -144,4 +152,11 @@ func setup_from_attack(attack : Attack = null):
 		attack_node = null
 
 func pressed() -> void:
+	get_tree().get_nodes_in_group("action_gui")[0].disabled_all_button()
 	attack_node.ask_use_attack()
+
+func desactivate(Bool : bool = true):
+	if Bool:
+		button.disabled = false
+	else:
+		button.disabled = disabled

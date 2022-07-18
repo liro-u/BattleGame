@@ -15,6 +15,8 @@ var strength : float
 var defense : float
 var speed : float
 var crit : float
+var crit_mult : float
+var magie : float
 
 #----------SIGNAL-----------#
 signal stats_updated()
@@ -51,14 +53,67 @@ func update_stats(selected_ownerStats = ownerStats, selected_startingStats = sta
 		strength = calcul_stat_by_level(selected_startingStats.strength, selected_startingStats.strength_gain)
 		defense = calcul_stat_by_level(selected_startingStats.defense, selected_startingStats.defense_gain)
 		speed = calcul_stat_by_level(selected_startingStats.speed, selected_startingStats.speed_gain)
-		crit = calcul_stat_by_level(selected_startingStats.crit, selected_startingStats.crit_gain)
+		crit = min(calcul_stat_by_level(selected_startingStats.crit, selected_startingStats.crit_gain), 100)
+		crit_mult = calcul_stat_by_level(selected_startingStats.crit_mult, selected_startingStats.crit_mult_gain)
+		magie = calcul_stat_by_level(selected_startingStats.magie, selected_startingStats.magie_gain)
 		#emit signal
 		emit_signal("stats_updated")
 
 #calcul stats by level
 func calcul_stat_by_level(starting_stat : float, gain : float, selected_level = level) -> float:
-	starting_stat += (selected_level - 1) * gain
+	starting_stat += (selected_level - 1) * gain * 5
 	return starting_stat
+
+func combine(mod):
+	var possible 
+	var diff
+	
+	possible =  max(strength + mod.modifier.strength, 1)
+	diff = possible - (strength + mod.modifier.strength)
+	if (diff != 0):
+		mod.modifier.strength = mod.modifier.strength + diff
+	strength = possible
+	
+	possible =  max(defense + mod.modifier.defense, 1)
+	diff = possible - (defense + mod.modifier.defense)
+	if (diff != 0):
+		mod.modifier.defense = mod.modifier.defense + diff
+	defense = possible
+	
+	possible =  max(speed + mod.modifier.speed, 1)
+	diff = possible - (speed + mod.modifier.speed)
+	if (diff != 0):
+		mod.modifier.speed = mod.modifier.speed + diff
+	speed = possible
+	
+	possible =  min(max(crit + mod.modifier.crit, 1), 100)
+	diff = possible - (crit + mod.modifier.crit)
+	if (diff != 0):
+		mod.modifier.crit = mod.modifier.crit + diff
+	crit = possible
+	
+	possible =  max(crit_mult + mod.modifier.crit_mult, 1)
+	diff = possible - (crit_mult + mod.modifier.crit_mult)
+	if (diff != 0):
+		mod.modifier.crit_mult = mod.modifier.crit_mult + diff
+	crit_mult = possible
+	
+	possible =  max(magie + mod.modifier.magie, 1)
+	diff = possible - (magie + mod.modifier.magie)
+	if (diff != 0):
+		mod.modifier.magie = mod.modifier.magie + diff
+	magie = possible
+	
+	
+
+func uncombine(mod):
+	strength -= mod.strength
+	defense -= mod.defense
+	speed -= mod.speed
+	crit -= mod.crit
+	crit_mult -= mod.crit_mult
+	magie -= mod.magie
+
 
 #print all stats
 func print_stats() -> void:
@@ -70,3 +125,5 @@ func print_stats() -> void:
 	print("defense : ", defense)
 	print("speed : ", speed)
 	print("crit : ", crit)
+	print("crit_mult : ", crit_mult)
+	print("magie : ", magie)

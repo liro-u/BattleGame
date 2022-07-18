@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://asset/background/fond_aries.png" type="Texture" id=1]
+[ext_resource path="res://asset/GUI/chara_select/character_star.png" type="Texture" id=2]
+
+[sub_resource type="CurveTexture" id=1]
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.951823, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 2
+emission_box_extents = Vector3( 512, 15, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 100.0
+angular_velocity = 50.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping_curve = SubResource( 1 )
+scale = 0.1
+scale_curve = SubResource( 3 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 512, 300 )
+scale = Vector2( 0.3, 0.3 )
+z_index = -20
+texture = ExtResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 512, -60 )
+z_index = -1
+amount = 30
+lifetime = 5.0
+preprocess = 10.0
+randomness = 1.0
+visibility_rect = Rect2( -512, 60, 1024, 600 )
+process_material = SubResource( 4 )
+texture = ExtResource( 2 )

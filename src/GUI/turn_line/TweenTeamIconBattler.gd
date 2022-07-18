@@ -4,7 +4,7 @@ class_name TweenTeamIconBattler
 
 var tween_move
 var tween_alpha
-
+var battler_properties
 
 func _init():
 	if tween_move:

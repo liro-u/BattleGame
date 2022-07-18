@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Resource/world/world.gd" type="Script" id=1]
+[ext_resource path="res://asset/world/world_test2/aspect2.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name_world = "sky zone"
+aspect = ExtResource( 2 )
+team_pos = [ Vector2( 250, 420 ), Vector2( 150, 325 ), Vector2( 110, 505 ) ]
+enemy_pos = [ Vector2( 755, 410 ), Vector2( 895, 320 ), Vector2( 940, 495 ) ]

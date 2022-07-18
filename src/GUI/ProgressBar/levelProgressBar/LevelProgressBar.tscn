@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://asset/GUI/endscreen/circle_base.png" type="Texture" id=1]
+[ext_resource path="res://asset/GUI/endscreen/circle_exp.png" type="Texture" id=2]
+[ext_resource path="res://asset/font/dynamicfont/attackIcon/turn_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://asset/font/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://src/GUI/ProgressBar/levelProgressBar/LevelProgressBar.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_top = 1
+font_data = ExtResource( 4 )
+
+[node name="LevelProgressBar" type="Control"]
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 100, 100 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="TextureProgress" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+max_value = 1000.0
+value = 999.0
+texture_progress = ExtResource( 2 )
+fill_mode = 4
+tint_progress = Color( 0, 0.509804, 0.764706, 1 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Data" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Data"]
+margin_left = 30.0
+margin_top = 14.0
+margin_right = 69.0
+margin_bottom = 85.0
+
+[node name="NameValue" type="Label" parent="Data/VBoxContainer"]
+margin_right = 39.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 3 )
+text = "Lv."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="Data/VBoxContainer"]
+margin_top = 24.0
+margin_right = 39.0
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 1 )
+text = "10"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -6,17 +6,24 @@ onready var select_target = $SelectTarget
 onready var starting_gui = action_gui
 export var start_gui = "choose_action"
 onready var active_gui = starting_gui
+onready var end_screen = $EndScreen
+onready var message_gui = $MessageGui
 var past_gui = []
 var last_gui = null
 var current_state = start_gui
-export var all_gui = ["end_turn", "choose_action", "select_target"]
+export var all_gui = ["end_turn", "choose_action", "select_target", "end_game", "message_gui"]
 var is_processing = false
+var state_of_game = BaseConditionVictory.NOT_FINISHED
 export var states = {
-	"end_turn":["choose_action"],
+	"end_turn":["choose_action", "message_gui"],
 	
-	"choose_action":["select_target"],
+	"choose_action":["select_target", "end_turn"],
 	
 	"select_target":["end_turn"],
+	
+	"end_game":[],
+	
+	"message_gui":["end_turn"],
 }
 
 func set_gui(next_gui):
@@ -48,6 +55,13 @@ func _ready():
 	call_deferred("initialize")
 
 func initialize():
+	if  get_tree().get_nodes_in_group("turn_queue")[0].active_battler.team == 0:
+		current_state = start_gui
+		active_gui = starting_gui
+	else:
+		current_state = "message_gui"
+		active_gui = message_gui
+		message_gui.get_node("Label").text = "Tour de l'adversaire"
 	for node in get_tree().get_nodes_in_group("ui_cancel"):
 		node.connect("pressed", self, "get_last_gui")
 	manage_ui_cancel()
@@ -60,23 +74,26 @@ func switch_gui() -> void:
 
 #state 2
 func switch_anim_ended() -> void:
-	is_processing = false
-	get_tree().call_group_flags(2, "ui_cancel", "activate")
-	
 	if active_gui.has_method("change_visible_state"):
 		yield(active_gui.change_visible_state(), "completed")
 	else:
+		yield(get_tree(), "idle_frame")
 		active_gui.show()
-		active_gui.is_hide = ! active_gui.is_hide
-	
+		if "is_hide" in active_gui:
+			active_gui.is_hide = ! active_gui.is_hide
 	match current_state:
 		"choose_action":
+			get_tree().get_nodes_in_group("action_gui")[0].disabled_all_button(false)
 			var active_battler = get_tree().get_nodes_in_group("turn_queue")[0].active_battler
 			for node in get_tree().get_nodes_in_group("active_attack"):
 				node.remove_from_group("active_attack")
 			for node in get_tree().get_nodes_in_group("charact"):
 				if node != active_battler:
 					node.shade()
+		"message_gui":
+			for node in get_tree().get_nodes_in_group("active_attack"):
+				node.remove_from_group("active_attack")
+			get_tree().get_nodes_in_group("turn_queue")[0].active_battler.play_auto()
 		"select_target":
 			var active_battler = get_tree().get_nodes_in_group("turn_queue")[0].active_battler
 			var active_attack = get_tree().get_nodes_in_group("active_attack")[0]
@@ -86,6 +103,13 @@ func switch_anim_ended() -> void:
 				else:
 					node.clickable_area.add_to_group("active_clickable_area")
 					node.clickable_area.collision.disabled = false
+		"end_game":
+			for node in get_tree().get_nodes_in_group("active_ui_xp_charact"):
+				node.show()
+				node.set_anim()
+			
+	get_tree().call_group_flags(2, "ui_cancel", "activate")
+	is_processing = false
 
 #state 1
 func switch_anim_started() -> void:
@@ -95,8 +119,10 @@ func switch_anim_started() -> void:
 	if active_gui.has_method("change_visible_state"):
 		yield(active_gui.change_visible_state(), "completed")
 	else:
+		yield(get_tree(), "idle_frame")
 		active_gui.hide()
-		active_gui.is_hide = ! active_gui.is_hide
+		if "is_hide" in active_gui:
+			active_gui.is_hide = ! active_gui.is_hide
 	
 	manage_ui_cancel()
 
@@ -108,6 +134,10 @@ func switch_anim_started() -> void:
 			for node in get_tree().get_nodes_in_group("active_clickable_area"):
 				node.remove_from_group("active_clickable_area")
 				node.collision.disabled = true
+		"message_gui":
+			get_tree().call_group_flags(2, "charact", "unshade")
+			for node in get_tree().get_nodes_in_group("active_clickable_area"):
+				node.remove_from_group("active_clickable_area")
 
 func manage_ui_cancel():
 	match current_state:
@@ -117,14 +147,43 @@ func manage_ui_cancel():
 			get_tree().call_group_flags(2, "ui_cancel", "disappear")
 		"select_target":
 			get_tree().call_group_flags(2, "ui_cancel", "appear")
+		"message_gui":
+			get_tree().call_group_flags(2, "ui_cancel", "disappear")
 
 func get_next_gui():
 	match current_state:
 		"end_turn":
 			past_gui = []
 			end_turn()
-			active_gui = starting_gui
-			current_state = start_gui
+			if state_of_game == BaseConditionVictory.NOT_FINISHED:
+				var turn_queue = get_tree().get_nodes_in_group("turn_queue")[0]
+				var next_active_battler = turn_queue.get_child((turn_queue.active_battler.get_index() + 1) % turn_queue.get_child_count())
+				if next_active_battler.team == 0:
+					active_gui = starting_gui
+					current_state = start_gui
+				else:
+					active_gui = message_gui
+					message_gui.get_node("Label").text = "Tour de l'adversaire"
+					current_state = "message_gui"
+			else:
+				current_state = "end_game"
+				active_gui = end_screen
+				get_parent().turnline.disappear()
+				
+				$EndScreen/MarginContainer/VBoxContainer/EndText.text = BaseConditionVictory.state2text[state_of_game]
+				var charact_xp_ui = get_tree().get_nodes_in_group("charact_xp_box")[0].get_children()
+				var list_team_battler = []
+				for node in get_tree().get_nodes_in_group("charact"):
+					if node.team == 0:
+						list_team_battler.append(node.ownerStats)
+				var index = 0
+				for team_battler in list_team_battler:
+					var final_team_battler = levelCalculation.add_xp(get_parent().get_parent().xp_gain, team_battler.duplicate())
+					charact_xp_ui[index].initialize(team_battler, final_team_battler)
+					charact_xp_ui[index].add_to_group("active_ui_xp_charact")
+					index += 1
+					if !team_battler.is_given:
+						ResourceSaver.save(team_battler.resource_path, final_team_battler)
 		"choose_action":
 			active_gui = action_gui
 		"select_target":
@@ -137,4 +196,7 @@ func get_last_gui() -> void:
 		switch_gui()
 	
 func end_turn():
-	get_tree().call_group("turn_queue", "get_next_battler")
+	get_tree().call_group_flags(2, "turn_queue", "end_turn")
+	state_of_game = get_tree().get_nodes_in_group("condition_victory")[0].victory_result()
+	if state_of_game == BaseConditionVictory.NOT_FINISHED:
+		get_tree().call_group("turn_queue", "get_next_battler")

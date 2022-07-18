@@ -1,16 +1,53 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=6 format=2]
 
 [ext_resource path="res://asset/weapon/sword/sword.png" type="Texture" id=1]
 [ext_resource path="res://Resource/attack/hit.gd" type="Script" id=2]
+[ext_resource path="res://Resource/attack/modifier.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 3 )
+multi_target = true
+element = 3
+turn = 1
+texture = "res://asset/modifier/icon/atck_up.png"
+with_weakness = true
+with_crit = true
+health = -35.0
+shield = 0.0
+mana = 0.0
+strength = 0.0
+defense = 0.0
+speed = 0.0
+crit = 0.0
+crit_mult = 0.0
+magie = 0.0
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 3 )
+multi_target = true
+element = 3
+turn = 1
+texture = "res://asset/modifier/icon/atck_down.png"
+with_weakness = true
+with_crit = true
+health = -28.0
+shield = 0.0
+mana = 0.0
+strength = 0.0
+defense = 0.0
+speed = 0.0
+crit = 0.0
+crit_mult = 0.0
+magie = 0.0
 
 [resource]
 script = ExtResource( 2 )
 attack_name = "hydro splash"
 icon = ExtResource( 1 )
-mana_cost = 20
-element = 1
+mana_cost = 47
+element = 2
 turn_needed = 0
 actual_turn = 0
 team_target_ennemy = true
-modifiers_for_team = [  ]
-modifiers_for_enemy = [  ]
+modifiers_for_team = [ SubResource( 2 ) ]
+modifiers_for_enemy = [ SubResource( 1 ) ]

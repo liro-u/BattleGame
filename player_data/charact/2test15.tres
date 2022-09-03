@@ -7,6 +7,6 @@
 script = ExtResource( 1 )
 stats_reference = ExtResource( 2 )
 is_given = false
-level = 101
-xp = 4383.0
+level = 112
+xp = 1663.0
 stars = 1

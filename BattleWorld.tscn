@@ -192,7 +192,6 @@ base_curve = ExtResource( 27 )
 duration = 0.4
 start_at = Vector2( 0, -10 )
 end_at = Vector2( 0, 10 )
-state_is_start = false
 
 [node name="MarginContainer" type="MarginContainer" parent="battleGUI/ActionStateMachine/SelectTarget"]
 margin_left = 55.0
@@ -232,7 +231,6 @@ base_curve = ExtResource( 27 )
 duration = 0.4
 start_at = Vector2( 0, -10 )
 end_at = Vector2( 0, 10 )
-state_is_start = false
 
 [node name="ActionGUI" parent="battleGUI/ActionStateMachine" instance=ExtResource( 11 )]
 margin_top = 0.0

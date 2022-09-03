@@ -64,6 +64,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/character/ClickableArea.gd"
 }, {
+"base": "Resource",
+"class": "ClientData",
+"language": "GDScript",
+"path": "res://Resource/data/clientdata.gd"
+}, {
 "base": "Tween",
 "class": "CurveTween",
 "language": "GDScript",
@@ -226,6 +231,7 @@ _global_script_class_icons={
 "Battler": "",
 "BattlerStats": "",
 "ClickableArea": "",
+"ClientData": "",
 "CurveTween": "",
 "Element": "",
 "ElementCalculation": "",

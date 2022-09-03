@@ -184,6 +184,37 @@ func get_next_gui():
 					index += 1
 					if !team_battler.is_given:
 						ResourceSaver.save(team_battler.resource_path, final_team_battler)
+				
+				var client_data = load("res://player_data/client/client_data.tres")
+				var client_level_ui =  get_tree().get_nodes_in_group("client_level")[0]
+				var client_xp_label_ui = get_tree().get_nodes_in_group("gain_client_xp")[0]
+				var client_player_animation = get_tree().get_nodes_in_group("client_level_player_animation")[0]
+				var final_client_data = levelCalculation.add_xp_client(get_parent().get_parent().xp_gain, client_data.duplicate())
+				var value_ratio
+				if client_data.xp == 0:
+					value_ratio = 0
+				else:
+					value_ratio = (levelCalculation.xp_needed_for_level(client_data.level + 1, client_data.starting_xp_needed, client_data.level_palier) / client_data.xp) * 999
+				client_level_ui.set_progress(value_ratio)
+				client_level_ui.set_value(client_data.level)
+				if client_data.level < client_data.max_level:
+					yield(get_tree().create_timer(1), "timeout")
+					client_player_animation.current_animation = "hide"
+					yield(client_player_animation, "animation_finished")
+					client_xp_label_ui.text = "+" + str(get_parent().get_parent().xp_gain) + " EXP"
+					if final_client_data.xp == 0:
+						value_ratio = 0
+					else:
+						value_ratio = (levelCalculation.xp_needed_for_level(final_client_data.level + 1, final_client_data.starting_xp_needed, final_client_data.level_palier) / final_client_data.xp) * 999
+					client_level_ui.set_progress(value_ratio)
+					client_level_ui.set_value(final_client_data.level)
+					client_player_animation.current_animation = "show"
+
+					ResourceSaver.save(client_data.resource_path, final_client_data)
+				else:
+					client_player_animation.current_animation = "max_level"
+					client_xp_label_ui.text = "MAX LVL"
+				
 		"choose_action":
 			active_gui = action_gui
 		"select_target":

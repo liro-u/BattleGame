@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Resource/data/clientdata.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+max_level = 100
+level = 62
+xp = 23.0
+starting_xp_needed = 0
+level_palier = {
+0: 0,
+1: 3
+}

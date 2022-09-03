@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/GUI/end_screen/EndScreen.gd" type="Script" id=1]
 [ext_resource path="res://src/GUI/ProgressBar/levelProgressBar/LevelProgressBar.tscn" type="PackedScene" id=2]
@@ -6,10 +6,210 @@
 [ext_resource path="res://asset/font/dynamicfont/basic_font.tres" type="DynamicFont" id=4]
 [ext_resource path="res://asset/font/dynamicfont/attackIcon/turn_font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://asset/font/dynamicfont/attackIcon/mana_font.tres" type="DynamicFont" id=6]
+[ext_resource path="res://asset/GUI/endscreen/start_light.png" type="Texture" id=7]
 [ext_resource path="res://src/GUI/end_screen/end_screen_level.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Animation" id=1]
-resource_name = "appear"
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Particles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Gain_xp:modulate:r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Gain_xp:modulate:g")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Gain_xp:modulate:b")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Gain_xp:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "hide"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Gain_xp:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Gain_xp:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Gain_xp:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Gain_xp:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Particles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "max_level"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Gain_xp:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "show"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Gain_xp:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Gain_xp:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Gain_xp:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Gain_xp:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.371106, -3, 0.25, 0 ),
+"times": PoolRealArray( 1.1, 1.6 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Particles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.52474, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -7.06748, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 50.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 360.0
+angle_random = 1.0
+scale = 0.07
+scale_random = 0.22
+scale_curve = SubResource( 5 )
+
+[sub_resource type="Animation" id=7]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -159,6 +359,14 @@ margin_right = 974.0
 margin_bottom = 226.0
 custom_constants/separation = 10
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/MarginContainer/HBoxContainer" groups=[
+"client_level_player_animation",
+]]
+anims/default = SubResource( 1 )
+anims/hide = SubResource( 2 )
+anims/max_level = SubResource( 8 )
+anims/show = SubResource( 3 )
+
 [node name="CenterContainer" type="CenterContainer" parent="ColorRect/MarginContainer/HBoxContainer"]
 margin_right = 100.0
 margin_bottom = 206.0
@@ -168,20 +376,32 @@ margin_top = 53.0
 margin_right = 100.0
 margin_bottom = 153.0
 
-[node name="TextureRect" parent="ColorRect/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer2" instance=ExtResource( 2 )]
+[node name="TextureRect" parent="ColorRect/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer2" groups=[
+"client_level",
+] instance=ExtResource( 2 )]
 margin_right = 100.0
 margin_bottom = 100.0
 
-[node name="Label" type="Label" parent="ColorRect/MarginContainer/HBoxContainer"]
+[node name="Gain_xp" type="Label" parent="ColorRect/MarginContainer/HBoxContainer" groups=[
+"gain_client_xp",
+]]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 110.0
-margin_top = 99.0
-margin_right = 148.0
-margin_bottom = 106.0
+margin_top = 95.0
+margin_right = 181.0
+margin_bottom = 110.0
 custom_fonts/font = ExtResource( 6 )
 text = "+100 EXP."
 
+[node name="Particles2D" type="Particles2D" parent="ColorRect/MarginContainer/HBoxContainer"]
+position = Vector2( 51.2564, 102.04 )
+emitting = false
+amount = 40
+process_material = SubResource( 6 )
+texture = ExtResource( 7 )
+
 [node name="reward" type="Control" parent="ColorRect/MarginContainer/HBoxContainer"]
-margin_left = 158.0
+margin_left = 191.0
 margin_right = 782.0
 margin_bottom = 206.0
 size_flags_horizontal = 3
@@ -201,6 +421,9 @@ __meta__ = {
 }
 
 [node name="end_screen_level" parent="ColorRect/MarginContainer/HBoxContainer/reward/charact_xp" instance=ExtResource( 9 )]
+margin_left = 240.0
+margin_right = 340.0
+margin_bottom = 215.0
 
 [node name="end_screen_level2" parent="ColorRect/MarginContainer/HBoxContainer/reward/charact_xp" instance=ExtResource( 9 )]
 
@@ -258,4 +481,4 @@ flat = true
 align = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/appear = SubResource( 1 )
+anims/appear = SubResource( 7 )

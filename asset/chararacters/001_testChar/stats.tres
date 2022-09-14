@@ -6,7 +6,7 @@
 [ext_resource path="res://asset/chararacters/001_testChar/dragonbones/Lynn_sprites_ske.json" type="GDDragonBonesResource" id=4]
 [ext_resource path="res://asset/chararacters/001_testChar/collision.tres" type="Shape2D" id=5]
 [ext_resource path="res://asset/chararacters/001_testChar/icon.png" type="Texture" id=6]
-[ext_resource path="res://asset/attack/fire_blast.tres" type="Resource" id=7]
+[ext_resource path="res://asset/attack/hydro_splash.tres" type="Resource" id=7]
 [ext_resource path="res://asset/chararacters/001_testChar/hight_icon.png" type="Texture" id=8]
 [ext_resource path="res://asset/chararacters/001_testChar/splash_art.png" type="Texture" id=9]
 
@@ -14,6 +14,7 @@
 script = ExtResource( 1 )
 name_char = "Lynn"
 element = 3
+type = 1
 rarity = "Common"
 ske = ExtResource( 4 )
 icon = ExtResource( 6 )

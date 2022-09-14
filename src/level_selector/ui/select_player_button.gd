@@ -6,6 +6,7 @@ onready var data = $Data
 onready var name_label = $"Data/Down/MarginContainer/Control/BattlerName"
 onready var stars = $"Data/Up/Control/Stars"
 onready var progressBar = $"Data/Down/Control/LevelProgressBar"
+onready var overTexture = $"OverTexture"
 
 export(Texture) var basic_texture 
 signal want_change_char

@@ -14,6 +14,7 @@
 script = ExtResource( 1 )
 name_char = "Marion"
 element = 4
+type = 2
 rarity = "Common"
 ske = ExtResource( 9 )
 icon = ExtResource( 2 )

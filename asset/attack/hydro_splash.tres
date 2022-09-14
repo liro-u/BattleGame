@@ -43,6 +43,7 @@ magie = 0.0
 [resource]
 script = ExtResource( 2 )
 attack_name = "hydro splash"
+attack_description = "magikarpe tmtc mais en plus fort"
 icon = ExtResource( 1 )
 mana_cost = 47
 element = 2

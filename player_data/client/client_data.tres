@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource( 1 )
 max_level = 100
-level = 62
-xp = 23.0
+level = 100
+xp = 0.0
 starting_xp_needed = 0
 level_palier = {
 0: 0,

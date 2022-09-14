@@ -6,6 +6,7 @@ onready var label = $Control/Label
 onready var anim_player_label = $Control/Label/AnimationPlayer
 onready var particle2D = $Control/Particles2D
 onready var texture = $TextureRect
+onready var level_label = $"XPBar/level_label"
 
 export var battler_data : Resource
 export var final_battler_data : Resource
@@ -28,6 +29,7 @@ func initialize(bat = battler_data, f_bat = final_battler_data):
 	starting_xp = battler_data.stats_reference.starting_xp_needed
 	level_palier = battler_data.stats_reference.level_palier
 
+	level_label.text = "LVL " + str(level)
 	final_xp = final_battler_data.xp
 	final_level = final_battler_data.level
 	#init for actual level and xp
@@ -55,9 +57,9 @@ func update_xp_level():
 			#update xp value at max value
 			max_xp_for_level = levelCalculation.xp_needed_for_level(level, starting_xp, level_palier)
 			xp_bar.update_value(100)
-			particle2D.emitting = true
-			particle2D.restart()
 			yield(xp_bar.value_tween, "tween_all_completed")
+			particle2D.restart()
+			particle2D.emitting = true
 			label.text = "Level Up !"
 			anim_player_label.current_animation = "level_up"
 			#init bar with next level xp needed
@@ -65,6 +67,7 @@ func update_xp_level():
 			max_xp_for_level = levelCalculation.xp_needed_for_level(level, starting_xp, level_palier)
 			xp = 0
 			xp_bar.set_value(xp / max_xp_for_level * 100)
+			level_label.text = "LVL " + str(level)
 		if level == final_level and xp != final_xp:
 			#update xp at good value
 			xp = final_xp

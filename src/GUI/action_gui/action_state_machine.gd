@@ -183,7 +183,9 @@ func get_next_gui():
 					charact_xp_ui[index].add_to_group("active_ui_xp_charact")
 					index += 1
 					if !team_battler.is_given:
-						ResourceSaver.save(team_battler.resource_path, final_team_battler)
+						var path_res = team_battler.resource_path
+						final_team_battler.take_over_path(path_res)
+						ResourceSaver.save(path_res, final_team_battler)
 				
 				var client_data = load("res://player_data/client/client_data.tres")
 				var client_level_ui =  get_tree().get_nodes_in_group("client_level")[0]

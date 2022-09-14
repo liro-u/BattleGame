@@ -25,6 +25,9 @@ magie = 0.0
 [resource]
 script = ExtResource( 2 )
 attack_name = "air slash"
+attack_description = "une attaque qui envoie du vent sa mere
+c'est a peu pres tout
+elle n'inflige que quelque degat"
 icon = ExtResource( 3 )
 mana_cost = 12
 element = 3

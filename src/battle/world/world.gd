@@ -60,8 +60,8 @@ func _ready() -> void:
 	randomize()
 	condition_victory.set_script(condition_victory_script)
 	var main_menu_switcher = SwitchSceneData.new()
-	var next_level_switcher = SwitchSceneData.new()
-	var restart_level_switcher = SwitchSceneData.new()
+	var next_level_switcher = SwitchSceneData.new("is_clicked")
+	var restart_level_switcher = SwitchSceneData.new("is_clicked")
 	match data_for_level[0]:
 		"level":
 			main_menu_switcher.next_scene_data = ["level_selector", data_for_level[1]]

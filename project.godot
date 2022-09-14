@@ -175,6 +175,11 @@ _global_script_classes=[ {
 "path": "res://src/GUI/turn_line/TweenTeamIconBattler.gd"
 }, {
 "base": "Resource",
+"class": "Type",
+"language": "GDScript",
+"path": "res://Resource/attack/type.gd"
+}, {
+"base": "Resource",
 "class": "attack_modifier",
 "language": "GDScript",
 "path": "res://Resource/attack/modifier.gd"
@@ -204,10 +209,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/character/modifier/modifier_apply.gd"
 }, {
-"base": "TextureButton",
+"base": "chooseCharButton",
 "class": "selectPlayer",
 "language": "GDScript",
-"path": "res://src/level_selector/ui/selectplayer.gd"
+"path": "res://src/GUI/select_team/select_charact.gd"
 }, {
 "base": "Resource",
 "class": "start_hit",
@@ -253,6 +258,7 @@ _global_script_class_icons={
 "TurnQueue": "",
 "TweenProgressBar": "",
 "TweenTeamIconBattler": "",
+"Type": "",
 "attack_modifier": "",
 "chooseCharButton": "",
 "dev_tool": "",

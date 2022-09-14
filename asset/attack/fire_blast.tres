@@ -25,6 +25,7 @@ magie = 0.0
 [resource]
 script = ExtResource( 1 )
 attack_name = "fire blast"
+attack_description = "une puissante attack qui va bruler les ennemie dans une puissante et chaude bourasque de feu des plus violente"
 icon = ExtResource( 2 )
 mana_cost = 55
 element = 4

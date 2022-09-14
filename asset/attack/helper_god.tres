@@ -25,6 +25,7 @@ magie = 0.0
 [resource]
 script = ExtResource( 1 )
 attack_name = "helper god"
+attack_description = "un soin sur 2 tours qui touche tous les alliés"
 icon = ExtResource( 2 )
 mana_cost = 70
 element = 1

@@ -25,6 +25,7 @@ magie = 0.0
 [resource]
 script = ExtResource( 1 )
 attack_name = "green bump"
+attack_description = "un simple soin"
 icon = ExtResource( 2 )
 mana_cost = 30
 element = 1

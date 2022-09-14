@@ -70,11 +70,11 @@ level = 40
 xp = 0.0
 stars = 1
 
-[sub_resource type="InputEventAction" id=7]
+[sub_resource type="InputEventAction" id=3]
 action = "ui_cancel"
 
-[sub_resource type="ShortCut" id=8]
-shortcut = SubResource( 7 )
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
 
 [sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 1.4, 0.0, 0, 0 ]
@@ -110,7 +110,7 @@ margin_top = 500.0
 margin_right = 110.0
 margin_bottom = 560.0
 rect_min_size = Vector2( 60, 60 )
-shortcut = SubResource( 8 )
+shortcut = SubResource( 4 )
 texture_normal = ExtResource( 24 )
 expand = true
 script = ExtResource( 23 )
@@ -192,6 +192,7 @@ base_curve = ExtResource( 27 )
 duration = 0.4
 start_at = Vector2( 0, -10 )
 end_at = Vector2( 0, 10 )
+state_is_start = false
 
 [node name="MarginContainer" type="MarginContainer" parent="battleGUI/ActionStateMachine/SelectTarget"]
 margin_left = 55.0
@@ -231,6 +232,7 @@ base_curve = ExtResource( 27 )
 duration = 0.4
 start_at = Vector2( 0, -10 )
 end_at = Vector2( 0, 10 )
+state_is_start = false
 
 [node name="ActionGUI" parent="battleGUI/ActionStateMachine" instance=ExtResource( 11 )]
 margin_top = 0.0

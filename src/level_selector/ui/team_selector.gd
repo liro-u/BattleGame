@@ -14,7 +14,7 @@ func need_choose_player(button_ref):
 	var exeptions = list_char.duplicate()
 	while exeptions.has(null):
 		exeptions.erase(null)
-	charact_selector.initialize(exeptions, list_char[button_ref.get_index()], battler_given.duplicate())
+	charact_selector.initialize(exeptions, list_char[button_ref.get_parent().get_index()], battler_given.duplicate())
 	charact_selector.show()
 
 func player_selected(player):

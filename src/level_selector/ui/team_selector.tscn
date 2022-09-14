@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/level_selector/ui/charact_selector.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/level_selector/ui/team_selector.gd" type="Script" id=2]
-[ext_resource path="res://src/GUI/select_team/select_player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/GUI/select_team/chooseCharButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/scenel_switcher/switch_scene_data.gd" type="Script" id=4]
 [ext_resource path="res://src/level_selector/ui/load_level_button.gd" type="Script" id=5]
 [ext_resource path="res://asset/GUI/chara_select/chara_selector_fond.png" type="Texture" id=6]

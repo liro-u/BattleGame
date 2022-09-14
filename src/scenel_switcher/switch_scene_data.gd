@@ -7,8 +7,9 @@ export var signal_name =  "pressed"
 
 signal need_switch_scene
 
-func _init():
+func _init(sig_name = signal_name):
 	add_to_group("switch_scene_data")
+	signal_name = sig_name
 
 func _ready():
 	get_parent().connect(signal_name, self, "switch_level")

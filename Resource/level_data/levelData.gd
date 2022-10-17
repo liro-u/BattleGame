@@ -8,3 +8,5 @@ export var xp_gain : float = 150
 export var list_player_battler : Array
 export var list_enemy_battler : Array
 export var condition_victory_script : Resource
+export(Array, Resource) var task = [null,null,null]
+export(Array, Resource) var loot_table

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Resource/inventaire/objet.gd" type="Script" id=1]
+[ext_resource path="res://Resource/inventaire/custom/goldPack.gd" type="Script" id=2]
+[ext_resource path="res://asset/future_asset/stone.png" type="Texture" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+quantity = 5000
+
+[resource]
+script = ExtResource( 1 )
+object_name = "Common Gold Pack"
+description = "+ 5K Gold when used"
+texture = ExtResource( 3 )
+max_quantity = 99
+data = SubResource( 1 )
+sell_price = -1
+categorie = "box"

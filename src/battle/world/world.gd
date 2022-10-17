@@ -10,12 +10,15 @@ export(Resource) var condition_victory_script
 export var data_for_level = ["level", 1, 1]
 export var level_name = "name of level"
 export var xp_gain = 0
+export var task_list_data = []
+export var loot_table = []
 #loaded node path
 onready var battleGUI = $battleGUI
 var turn_queue : TurnQueue
 var spawn_position : SpawnPosition
 var back_ui_cancel : Area2D
 var condition_victory : Node
+var task_list : Node
 
 export(PackedScene) var battler_scene
 
@@ -46,6 +49,8 @@ func _init() -> void:
 		turn_queue.queue_free()
 	turn_queue = TurnQueue.new()
 	add_child(turn_queue)
+			
+	
 
 func add_battler(list_battler: Array, team : int = 0) -> void:
 	if list_battler.size() > 0:
@@ -57,6 +62,27 @@ func add_battler(list_battler: Array, team : int = 0) -> void:
 
 #ready
 func _ready() -> void:
+	if task_list:
+		task_list.queue_free()
+	task_list = Node.new()
+	task_list.name = "TaskList"
+	task_list.add_to_group("task_list")
+	add_child(task_list)
+	for dat_task in task_list_data:
+		if dat_task and not dat_task.finished:
+			var new_task
+			match dat_task.type_name:
+				"ElementCondition":
+					new_task = TaskElementCondition.new()
+				"MinMaxBat":
+					new_task = TaskMinMaxBat.new()
+				"MinMaxTurn":
+					new_task = TaskMinMaxTurn.new()
+				"RequiredBattler":
+					new_task = TaskRequiredBat.new()
+			new_task.task_data = dat_task
+			task_list.add_child(new_task)
+			
 	randomize()
 	condition_victory.set_script(condition_victory_script)
 	var main_menu_switcher = SwitchSceneData.new()
@@ -92,3 +118,6 @@ func initialize() -> void:
 	spawn_position.initialize(turn_queue.get_children())
 	turn_queue.initialize()
 	battleGUI.initialize(turn_queue)
+	get_tree().call_group("element_condition", "check_element_condition", list_player_battler)
+	get_tree().call_group("min_max_bat_condition", "check_min_max_bat", list_player_battler)
+	get_tree().call_group("required_bat", "check_required_bat", list_player_battler)

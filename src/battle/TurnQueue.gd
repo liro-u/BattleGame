@@ -11,6 +11,7 @@ var turn_indicator_start : Vector2 = Vector2(20, 0)
 var turn_indicator_end : Vector2 = Vector2(-130, 0)
 var turn_indicator_duration : float = 0.2
 var last_children = []
+var turn = 0
 
 #--------FUNCTIONS----------#
 func _init():
@@ -60,3 +61,6 @@ func get_next_battler() -> void:
 func play_turn():
 	active_battler.ask_action_turn()
 	move_turn_indicator()
+	if turn == 0:
+		get_tree().call_group("min_max_turn", "add_one_turn")
+	turn = (turn + 1) % get_child_count()

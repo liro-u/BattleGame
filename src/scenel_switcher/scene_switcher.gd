@@ -35,7 +35,7 @@ func change_level(current_scene, data_for_next_scene):
 			var chapitre = data_for_next_scene[1]
 			var level = data_for_next_scene[2]
 			var list_team_battler = data_for_next_scene[3]
-			var level_data = load("res://asset/level_data/chapitre_" + str(chapitre) + "/level_" + str(level) + ".tres")
+			var level_data = load("res://asset/level_data/chapitre_" + str(chapitre) + "/level_" + str(level) + "/data.tres")
 			if level_data:
 				next_scene = load("res://BattleWorld.tscn").instance()
 				next_scene.world = level_data.world
@@ -45,6 +45,8 @@ func change_level(current_scene, data_for_next_scene):
 				next_scene.data_for_level = data_for_next_scene
 				next_scene.xp_gain = level_data.xp_gain
 				next_scene.level_name = level_data.level_name
+				next_scene.task_list_data = level_data.task.duplicate()
+				next_scene.loot_table = level_data.loot_table.duplicate()
 			else:
 				change_level(current_scene, ["level_selector", chapitre])
 		"level_selector":

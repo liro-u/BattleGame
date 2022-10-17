@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://asset/GUI/endscreen/start_success.png" type="Texture" id=1]
+[ext_resource path="res://asset/GUI/endscreen/start_fail.png" type="Texture" id=2]
+[ext_resource path="res://src/GUI/end_screen/StateStar.gd" type="Script" id=3]
+[ext_resource path="res://src/class/CurveTween.gd" type="Script" id=4]
+[ext_resource path="res://asset/GUI/endscreen/start_light.png" type="Texture" id=5]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.131783, 0.868217, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+flag_disable_z = true
+angular_velocity = 50.0
+angular_velocity_random = 0.2
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 360.0
+angle_random = 1.0
+scale = 0.1
+scale_random = 0.01
+color_ramp = SubResource( 3 )
+
+[node name="StateStar" type="TextureRect"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 0.796078, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 70, 70 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+win_texture = ExtResource( 1 )
+lose_texture = ExtResource( 2 )
+
+[node name="AlphaTween" type="Tween" parent="."]
+script = ExtResource( 4 )
+curve = SubResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+show_behind_parent = true
+position = Vector2( 512, 300 )
+amount = 12
+process_material = SubResource( 4 )
+texture = ExtResource( 5 )
+
+[connection signal="curve_tween" from="AlphaTween" to="." method="set_alpha_with_tween"]

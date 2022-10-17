@@ -26,8 +26,8 @@ direction = Vector3( 1, -0.5, 0 )
 initial_velocity = 18.0
 orbit_velocity = 0.01
 orbit_velocity_random = 0.0
-scale = 0.1
-scale_random = 0.3
+scale = 0.01
+scale_random = 0.1
 scale_curve = SubResource( 2 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -140,6 +140,12 @@ anchor_bottom = 1.0
 margin_right = -119.0
 margin_bottom = -238.0
 rect_scale = Vector2( 2.7, 2.7 )
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
 
 [node name="ButtonContainer2" type="Control" parent="UI/ListeButton"]
 margin_left = 417.0
@@ -154,6 +160,12 @@ anchor_bottom = 1.0
 margin_right = -119.0
 margin_bottom = -238.0
 rect_scale = Vector2( 2.7, 2.7 )
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
 
 [node name="ButtonContainer3" type="Control" parent="UI/ListeButton"]
 margin_left = 626.0
@@ -168,6 +180,12 @@ anchor_bottom = 1.0
 margin_right = -119.0
 margin_bottom = -238.0
 rect_scale = Vector2( 2.7, 2.7 )
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
 
 [node name="Start" type="Control" parent="UI"]
 margin_top = 498.0
@@ -229,6 +247,68 @@ __meta__ = {
 
 [node name="charact_selector" parent="." instance=ExtResource( 1 )]
 visible = false
+
+[node name="MarginContainer" parent="charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer" index="0"]
+margin_bottom = 312.0
+
+[node name="HBoxContainer" parent="charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer" index="0"]
+margin_bottom = 302.0
+
+[node name="BattlerSelector" parent="charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer" index="0"]
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
+
+[node name="BattlerSelector" parent="charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer2" index="0"]
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
+
+[node name="BattlerSelector" parent="charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer3" index="0"]
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
+
+[node name="BattlerSelector" parent="charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer4" index="0"]
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
+
+[node name="BattlerSelector" parent="charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer5" index="0"]
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
+
+[node name="BattlerSelector" parent="charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer6" index="0"]
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
+
+[node name="BattlerSelector" parent="charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer7" index="0"]
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
 
 [connection signal="pressed" from="UI/BackContainer/Back" to="." method="back"]
 [connection signal="want_change_char" from="UI/ListeButton/ButtonContainer/BattlerSelector" to="." method="need_choose_player"]

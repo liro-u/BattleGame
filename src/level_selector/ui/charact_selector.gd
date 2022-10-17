@@ -4,6 +4,7 @@ onready var list_char = $"TextureRect/MarginContainer/VBoxContainer/HBoxContaine
 onready var button_select = $"TextureRect/MarginContainer/VBoxContainer/HBoxContainer4/Button2"
 onready var info_list = $"TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"
 onready var display_only = $"TextureRect/Filter/BackgroundFilter/Container/Box2"
+onready var filter_by = $"TextureRect/Filter/BackgroundFilter/Container/Box1"
 onready var filter = $"TextureRect/Filter"
 export var charact_path = "res://player_data/charact/"
 var player = null
@@ -17,6 +18,7 @@ signal player_selected
 
 func _ready():
 	display_only.connect("filter_change", self, "reload_list_of_char")
+	filter_by.connect("filter_change", self, "reload_list_of_char")
 	
 func initialize(exeptions = [], asociate_select = null, given_battler = []):
 	change_filter_visibility(false)
@@ -56,6 +58,7 @@ func reload_list_of_char():
 		battler_given.append(load("res://player_data/charact/" + file))
 		
 	battler_given = display_only.display_only(battler_given)
+	battler_given = filter_by.filter_by(battler_given)
 		
 	for battler in battler_given:
 		var new_controle = Control.new()

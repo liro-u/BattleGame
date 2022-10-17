@@ -7,7 +7,9 @@ onready var name_label = $"Data/Down/MarginContainer/Control/BattlerName"
 onready var stars = $"Data/Up/Control/Stars"
 onready var progressBar = $"Data/Down/Control/LevelProgressBar"
 onready var overTexture = $"OverTexture"
+onready var TypeTexture = $Data/Up/ClassType
 
+export var color_element = {}
 export(Texture) var basic_texture 
 signal want_change_char
 
@@ -45,4 +47,11 @@ func initialize(data):
 	else:
 		xp_progress = clamp(data.xp / xp_needed * 1000, 0, 999)
 	progressBar.set_progress(xp_progress)
+	if data.stats_reference.type == Type.Type.DPS:
+		TypeTexture.texture = load("res://asset/GUI/chara_select/dps.png")
+	elif data.stats_reference.type == Type.Type.SUPPORT:
+		TypeTexture.texture = load("res://asset/GUI/chara_select/support.png")
+	else:
+		TypeTexture.texture = load("res://asset/GUI/chara_select/tank.png")
+	TypeTexture.modulate = color_element[data.stats_reference.element]
 	

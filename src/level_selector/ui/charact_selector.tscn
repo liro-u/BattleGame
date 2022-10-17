@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://src/level_selector/ui/charact_selector.gd" type="Script" id=1]
 [ext_resource path="res://src/GUI/select_team/chooseCharButton.tscn" type="PackedScene" id=2]
@@ -20,6 +20,9 @@
 [ext_resource path="res://asset/GUI/chara_member_select/filter/filter_bg.png" type="Texture" id=18]
 [ext_resource path="res://src/GUI/select_team/filter/buttonElement.gd" type="Script" id=19]
 [ext_resource path="res://src/GUI/select_team/filter/ButtonType.gd" type="Script" id=20]
+[ext_resource path="res://src/GUI/select_team/filter/FilterBy.gd" type="Script" id=21]
+[ext_resource path="res://src/GUI/select_team/filter/buttonFilterBy.gd" type="Script" id=22]
+[ext_resource path="res://asset/GUI/chara_member_select/arrow_dir.png" type="Texture" id=23]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -110,9 +113,28 @@ __meta__ = {
 [node name="VSeparator" type="VSeparator" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 67.0
-margin_right = 836.0
+margin_right = 803.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 807.0
+margin_right = 836.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 29, 29 )
+
+[node name="DirIndicator" type="TextureRect" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer/Control"]
+margin_right = 29.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 29, 29 )
+rect_rotation = -90.0
+rect_pivot_offset = Vector2( 14.5, 14.5 )
+texture = ExtResource( 23 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="level" type="Button" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 840.0
@@ -459,6 +481,12 @@ rect_min_size = Vector2( 140, 280 )
 [node name="BattlerSelector" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer" instance=ExtResource( 2 )]
 rect_scale = Vector2( 2, 2 )
 script = ExtResource( 3 )
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
 basic_texture = SubResource( 3 )
 
 [node name="SelectedIndicator" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer/BattlerSelector" instance=ExtResource( 14 )]
@@ -472,6 +500,12 @@ rect_min_size = Vector2( 140, 280 )
 [node name="BattlerSelector" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer2" instance=ExtResource( 2 )]
 rect_scale = Vector2( 2, 2 )
 script = ExtResource( 3 )
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
 basic_texture = SubResource( 3 )
 
 [node name="ButtonContainer3" type="Control" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer"]
@@ -483,6 +517,12 @@ rect_min_size = Vector2( 140, 280 )
 [node name="BattlerSelector" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer3" instance=ExtResource( 2 )]
 rect_scale = Vector2( 2, 2 )
 script = ExtResource( 3 )
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
 basic_texture = SubResource( 3 )
 
 [node name="ButtonContainer4" type="Control" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer"]
@@ -494,6 +534,12 @@ rect_min_size = Vector2( 140, 280 )
 [node name="BattlerSelector" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer4" instance=ExtResource( 2 )]
 rect_scale = Vector2( 2, 2 )
 script = ExtResource( 3 )
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
 basic_texture = SubResource( 3 )
 
 [node name="ButtonContainer5" type="Control" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer"]
@@ -505,6 +551,12 @@ rect_min_size = Vector2( 140, 280 )
 [node name="BattlerSelector" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer5" instance=ExtResource( 2 )]
 rect_scale = Vector2( 2, 2 )
 script = ExtResource( 3 )
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
 basic_texture = SubResource( 3 )
 
 [node name="ButtonContainer6" type="Control" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer"]
@@ -516,6 +568,12 @@ rect_min_size = Vector2( 140, 280 )
 [node name="BattlerSelector" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer6" instance=ExtResource( 2 )]
 rect_scale = Vector2( 2, 2 )
 script = ExtResource( 3 )
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
 basic_texture = SubResource( 3 )
 
 [node name="ButtonContainer7" type="Control" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer"]
@@ -527,6 +585,12 @@ rect_min_size = Vector2( 140, 280 )
 [node name="BattlerSelector" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer7" instance=ExtResource( 2 )]
 rect_scale = Vector2( 2, 2 )
 script = ExtResource( 3 )
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
 basic_texture = SubResource( 3 )
 
 [node name="HSeparator2" type="HSeparator" parent="TextureRect/MarginContainer/VBoxContainer"]
@@ -606,6 +670,7 @@ margin_top = 182.0
 margin_right = 645.0
 margin_bottom = 255.0
 custom_constants/separation = 15
+script = ExtResource( 21 )
 
 [node name="SortByLabel" type="Label" parent="TextureRect/Filter/BackgroundFilter/Container/Box1"]
 margin_right = 645.0
@@ -624,12 +689,14 @@ alignment = 1
 
 [node name="Level" type="TextureButton" parent="TextureRect/Filter/BackgroundFilter/Container/Box1/SortByBox"]
 self_modulate = Color( 0.262745, 0.337255, 0.4, 1 )
-margin_left = 157.0
-margin_right = 257.0
+margin_left = 100.0
+margin_right = 200.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 100, 35 )
 texture_normal = ExtResource( 17 )
 expand = true
+script = ExtResource( 22 )
+tag = "level"
 
 [node name="Label" type="Label" parent="TextureRect/Filter/BackgroundFilter/Container/Box1/SortByBox/Level"]
 anchor_right = 1.0
@@ -643,19 +710,42 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Class" type="TextureButton" parent="TextureRect/Filter/BackgroundFilter/Container/Box1/SortByBox"]
+[node name="Rank" type="TextureButton" parent="TextureRect/Filter/BackgroundFilter/Container/Box1/SortByBox"]
 self_modulate = Color( 0.262745, 0.337255, 0.4, 1 )
-margin_left = 272.0
-margin_right = 372.0
+margin_left = 215.0
+margin_right = 315.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 100, 35 )
 texture_normal = ExtResource( 17 )
 expand = true
+script = ExtResource( 22 )
+tag = "rank"
 
-[node name="Label" type="Label" parent="TextureRect/Filter/BackgroundFilter/Container/Box1/SortByBox/Class"]
+[node name="Label" type="Label" parent="TextureRect/Filter/BackgroundFilter/Container/Box1/SortByBox/Rank"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "Class"
+text = "Rank"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Type" type="TextureButton" parent="TextureRect/Filter/BackgroundFilter/Container/Box1/SortByBox"]
+self_modulate = Color( 0.262745, 0.337255, 0.4, 1 )
+margin_left = 330.0
+margin_right = 430.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 100, 35 )
+texture_normal = ExtResource( 17 )
+expand = true
+script = ExtResource( 22 )
+tag = "type"
+
+[node name="Label" type="Label" parent="TextureRect/Filter/BackgroundFilter/Container/Box1/SortByBox/Type"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Type"
 align = 1
 valign = 1
 __meta__ = {
@@ -664,12 +754,14 @@ __meta__ = {
 
 [node name="Element" type="TextureButton" parent="TextureRect/Filter/BackgroundFilter/Container/Box1/SortByBox"]
 self_modulate = Color( 0.262745, 0.337255, 0.4, 1 )
-margin_left = 387.0
-margin_right = 487.0
+margin_left = 445.0
+margin_right = 545.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 100, 35 )
 texture_normal = ExtResource( 17 )
 expand = true
+script = ExtResource( 22 )
+tag = "element"
 
 [node name="Label" type="Label" parent="TextureRect/Filter/BackgroundFilter/Container/Box1/SortByBox/Element"]
 anchor_right = 1.0

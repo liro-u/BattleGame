@@ -8,6 +8,7 @@ export var startingStats : Resource = null setget set_startingStats
 export var ownerStats : Resource = null setget set_ownerStats
 #information
 var level : int
+var rank : int
 #stats
 var max_health : float
 var max_mana : float
@@ -47,6 +48,7 @@ func update_stats(selected_ownerStats = ownerStats, selected_startingStats = sta
 	if selected_ownerStats and selected_startingStats:
 		#level
 		level = selected_ownerStats.level
+		rank = selected_ownerStats.stars
 		#stats
 		max_health = calcul_stat_by_level(selected_startingStats.max_health, selected_startingStats.health_gain)
 		max_mana = calcul_stat_by_level(selected_startingStats.max_mana, selected_startingStats.mana_gain)
@@ -60,8 +62,9 @@ func update_stats(selected_ownerStats = ownerStats, selected_startingStats = sta
 		emit_signal("stats_updated")
 
 #calcul stats by level
-func calcul_stat_by_level(starting_stat : float, gain : float, selected_level = level) -> float:
+func calcul_stat_by_level(starting_stat : float, gain : float, selected_level = level, selected_rank = rank) -> float:
 	starting_stat += (selected_level - 1) * gain * 5
+	starting_stat *= (selected_rank + 1) * 0.5
 	return starting_stat
 
 func combine(mod):

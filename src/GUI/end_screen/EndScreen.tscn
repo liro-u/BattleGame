@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/GUI/end_screen/EndScreen.gd" type="Script" id=1]
 [ext_resource path="res://src/GUI/ProgressBar/levelProgressBar/LevelProgressBar.tscn" type="PackedScene" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://asset/GUI/endscreen/start_light.png" type="Texture" id=7]
 [ext_resource path="res://src/GUI/end_screen/refresh_data_next_game.gd" type="Script" id=8]
 [ext_resource path="res://src/GUI/end_screen/end_screen_level.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/GUI/end_screen/StateStar.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/GUI/end_screen/loot.gd" type="Script" id=11]
+[ext_resource path="res://src/GUI/end_screen/LootNode.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -258,25 +261,27 @@ custom_fonts/font = ExtResource( 4 )
 text = "XX-XX"
 align = 1
 
-[node name="Control" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="StarsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" groups=[
+"task_container",
+]]
 margin_top = 51.0
 margin_right = 924.0
 margin_bottom = 199.0
 size_flags_vertical = 3
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Control"]
+[node name="StarBox1" type="VBoxContainer" parent="MarginContainer/VBoxContainer/StarsContainer"]
 margin_left = 353.0
 margin_right = 423.0
 margin_bottom = 148.0
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/Control/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/StarsContainer/StarBox1"]
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 70.0
 margin_bottom = 20.0
 custom_constants/separation = 20
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Control/VBoxContainer"]
+[node name="Star" type="TextureRect" parent="MarginContainer/VBoxContainer/StarsContainer/StarBox1"]
 margin_top = 24.0
 margin_right = 70.0
 margin_bottom = 94.0
@@ -285,17 +290,19 @@ texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Control"]
+[node name="StateStar" parent="MarginContainer/VBoxContainer/StarsContainer/StarBox1/Star" instance=ExtResource( 10 )]
+
+[node name="StarBox2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/StarsContainer"]
 margin_left = 427.0
 margin_right = 497.0
 margin_bottom = 148.0
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/Control/VBoxContainer2"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/StarsContainer/StarBox2"]
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 70.0
 margin_bottom = 4.0
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Control/VBoxContainer2"]
+[node name="Star" type="TextureRect" parent="MarginContainer/VBoxContainer/StarsContainer/StarBox2"]
 margin_top = 8.0
 margin_right = 70.0
 margin_bottom = 78.0
@@ -304,18 +311,20 @@ texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Control"]
+[node name="StateStar" parent="MarginContainer/VBoxContainer/StarsContainer/StarBox2/Star" instance=ExtResource( 10 )]
+
+[node name="StarBox3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/StarsContainer"]
 margin_left = 501.0
 margin_right = 571.0
 margin_bottom = 148.0
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/Control/VBoxContainer3"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/StarsContainer/StarBox3"]
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 70.0
 margin_bottom = 20.0
 custom_constants/separation = 20
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Control/VBoxContainer3"]
+[node name="Star" type="TextureRect" parent="MarginContainer/VBoxContainer/StarsContainer/StarBox3"]
 margin_top = 24.0
 margin_right = 70.0
 margin_bottom = 94.0
@@ -323,6 +332,8 @@ rect_min_size = Vector2( 70, 70 )
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
+
+[node name="StateStar" parent="MarginContainer/VBoxContainer/StarsContainer/StarBox3/Star" instance=ExtResource( 10 )]
 
 [node name="EndText" type="Label" parent="MarginContainer/VBoxContainer"]
 margin_top = 203.0
@@ -435,16 +446,19 @@ margin_left = 390.0
 margin_right = 490.0
 margin_bottom = 215.0
 
-[node name="loot" type="HBoxContainer" parent="ColorRect/MarginContainer/HBoxContainer/reward"]
+[node name="loot" type="GridContainer" parent="ColorRect/MarginContainer/HBoxContainer/reward" groups=[
+"loot_recap",
+]]
 margin_left = 10.0
 margin_right = 591.0
 margin_bottom = 215.0
 size_flags_horizontal = 3
-custom_constants/separation = 50
-alignment = 1
+columns = 5
+script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+loot_node_instance = ExtResource( 12 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/HBoxContainer"]
 margin_left = 792.0

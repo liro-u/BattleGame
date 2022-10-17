@@ -1,0 +1,913 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://asset/GUI/custom_charact/tab_skills.png" type="Texture" id=1]
+[ext_resource path="res://asset/GUI/custom_charact/icon_accessory.png" type="Texture" id=2]
+[ext_resource path="res://asset/GUI/custom_charact/tab_stat.png" type="Texture" id=3]
+[ext_resource path="res://asset/GUI/custom_charact/background.png" type="Texture" id=4]
+[ext_resource path="res://asset/GUI/turnline/arrow.png" type="Texture" id=5]
+[ext_resource path="res://asset/GUI/custom_charact/tab_story.png" type="Texture" id=6]
+[ext_resource path="res://asset/chararacters/001_testChar/splash_art.png" type="Texture" id=7]
+[ext_resource path="res://asset/GUI/custom_charact/icon_shoes.png" type="Texture" id=8]
+[ext_resource path="res://asset/GUI/custom_charact/icon_bracer.png" type="Texture" id=9]
+[ext_resource path="res://asset/GUI/custom_charact/icon_weapon.png" type="Texture" id=10]
+[ext_resource path="res://asset/GUI/custom_charact/icon_armor.png" type="Texture" id=11]
+[ext_resource path="res://asset/GUI/custom_charact/icon_helmet.png" type="Texture" id=12]
+[ext_resource path="res://asset/GUI/custom_charact/chara_page_equip_slot.png" type="Texture" id=13]
+[ext_resource path="res://asset/GUI/chara_member_select/button_filter.png" type="Texture" id=14]
+[ext_resource path="res://asset/GUI/chara_select/character_star.png" type="Texture" id=15]
+[ext_resource path="res://asset/GUI/chara_select/dps.png" type="Texture" id=16]
+[ext_resource path="res://src/GUI/ProgressBar/levelProgressBar/LevelProgressBar.tscn" type="PackedScene" id=17]
+[ext_resource path="res://asset/font/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=18]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 18 )
+
+[node name="CustomCharact" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 580.0
+custom_constants/separation = 30
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftArrow" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+margin_right = 60.0
+margin_bottom = 560.0
+
+[node name="Arrow" type="TextureButton" parent="MarginContainer/HBoxContainer/LeftArrow"]
+margin_top = 250.0
+margin_right = 60.0
+margin_bottom = 310.0
+rect_pivot_offset = Vector2( 30, 30 )
+texture_normal = ExtResource( 5 )
+stretch_mode = 5
+
+[node name="VSeparator3" type="VSeparator" parent="MarginContainer/HBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 90.0
+margin_right = 90.0
+margin_bottom = 560.0
+custom_constants/separation = 0
+
+[node name="LeftSlot" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 120.0
+margin_right = 220.0
+margin_bottom = 560.0
+rect_min_size = Vector2( 100, 0 )
+custom_constants/separation = 40
+alignment = 1
+
+[node name="SlotLefter" type="HBoxContainer" parent="MarginContainer/HBoxContainer/LeftSlot"]
+margin_top = 150.0
+margin_right = 100.0
+margin_bottom = 210.0
+alignment = 2
+
+[node name="BackSlot" type="TextureButton" parent="MarginContainer/HBoxContainer/LeftSlot/SlotLefter"]
+margin_left = 40.0
+margin_right = 100.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture_normal = ExtResource( 13 )
+expand = true
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/LeftSlot/SlotLefter/BackSlot"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftSlot/SlotLefter/BackSlot/CenterContainer"]
+margin_left = 13.0
+margin_top = 12.0
+margin_right = 46.0
+margin_bottom = 48.0
+texture = ExtResource( 10 )
+
+[node name="SlotLefter3" type="HBoxContainer" parent="MarginContainer/HBoxContainer/LeftSlot"]
+margin_top = 250.0
+margin_right = 100.0
+margin_bottom = 310.0
+
+[node name="BackSlot" type="TextureButton" parent="MarginContainer/HBoxContainer/LeftSlot/SlotLefter3"]
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture_normal = ExtResource( 13 )
+expand = true
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/LeftSlot/SlotLefter3/BackSlot"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftSlot/SlotLefter3/BackSlot/CenterContainer"]
+margin_left = 5.0
+margin_top = 9.0
+margin_right = 54.0
+margin_bottom = 51.0
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SlotLefter2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/LeftSlot"]
+margin_top = 350.0
+margin_right = 100.0
+margin_bottom = 410.0
+alignment = 2
+
+[node name="BackSlot3" type="TextureButton" parent="MarginContainer/HBoxContainer/LeftSlot/SlotLefter2"]
+margin_left = 40.0
+margin_right = 100.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture_normal = ExtResource( 13 )
+expand = true
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/LeftSlot/SlotLefter2/BackSlot3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftSlot/SlotLefter2/BackSlot3/CenterContainer"]
+margin_left = 3.0
+margin_top = 15.0
+margin_right = 56.0
+margin_bottom = 45.0
+texture = ExtResource( 8 )
+
+[node name="VSeparator" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+show_behind_parent = true
+margin_left = 250.0
+margin_right = 404.0
+margin_bottom = 560.0
+size_flags_horizontal = 3
+custom_constants/margin_right = -300
+custom_constants/margin_top = 100
+custom_constants/margin_left = -250
+custom_constants/margin_bottom = -100
+
+[node name="SplashArt" type="TextureRect" parent="MarginContainer/HBoxContainer/VSeparator"]
+margin_left = -250.0
+margin_top = 100.0
+margin_right = 454.0
+margin_bottom = 660.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightSlot" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 434.0
+margin_right = 534.0
+margin_bottom = 560.0
+rect_min_size = Vector2( 100, 0 )
+custom_constants/separation = 40
+alignment = 1
+
+[node name="SlotLefter4" type="HBoxContainer" parent="MarginContainer/HBoxContainer/RightSlot"]
+margin_top = 150.0
+margin_right = 100.0
+margin_bottom = 210.0
+
+[node name="BackSlot3" type="TextureButton" parent="MarginContainer/HBoxContainer/RightSlot/SlotLefter4"]
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture_normal = ExtResource( 13 )
+expand = true
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/RightSlot/SlotLefter4/BackSlot3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot2" type="TextureRect" parent="MarginContainer/HBoxContainer/RightSlot/SlotLefter4/BackSlot3/CenterContainer"]
+margin_left = 13.0
+margin_top = 10.0
+margin_right = 47.0
+margin_bottom = 50.0
+texture = ExtResource( 12 )
+
+[node name="SlotLefter5" type="HBoxContainer" parent="MarginContainer/HBoxContainer/RightSlot"]
+margin_top = 250.0
+margin_right = 100.0
+margin_bottom = 310.0
+alignment = 2
+
+[node name="BackSlot3" type="TextureButton" parent="MarginContainer/HBoxContainer/RightSlot/SlotLefter5"]
+margin_left = 40.0
+margin_right = 100.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture_normal = ExtResource( 13 )
+expand = true
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/RightSlot/SlotLefter5/BackSlot3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot" type="TextureRect" parent="MarginContainer/HBoxContainer/RightSlot/SlotLefter5/BackSlot3/CenterContainer"]
+margin_left = 6.0
+margin_top = 7.0
+margin_right = 54.0
+margin_bottom = 52.0
+texture = ExtResource( 9 )
+
+[node name="SlotLefter6" type="HBoxContainer" parent="MarginContainer/HBoxContainer/RightSlot"]
+margin_top = 350.0
+margin_right = 100.0
+margin_bottom = 410.0
+
+[node name="BackSlot3" type="TextureButton" parent="MarginContainer/HBoxContainer/RightSlot/SlotLefter6"]
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture_normal = ExtResource( 13 )
+expand = true
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/RightSlot/SlotLefter6/BackSlot3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot" type="TextureRect" parent="MarginContainer/HBoxContainer/RightSlot/SlotLefter6/BackSlot3/CenterContainer"]
+margin_left = 11.0
+margin_top = 8.0
+margin_right = 49.0
+margin_bottom = 51.0
+texture = ExtResource( 2 )
+
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/HBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 564.0
+margin_right = 564.0
+margin_bottom = 560.0
+custom_constants/separation = 0
+
+[node name="Tab" type="Control" parent="MarginContainer/HBoxContainer"]
+margin_left = 594.0
+margin_right = 894.0
+margin_bottom = 560.0
+rect_min_size = Vector2( 300, 0 )
+
+[node name="Stats" type="TextureRect" parent="MarginContainer/HBoxContainer/Tab"]
+self_modulate = Color( 0.472656, 0.536438, 0.6875, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Content" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Stats"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/Tab/Stats/Content"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 300.0
+margin_bottom = 50.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content"]
+margin_top = 50.0
+margin_right = 300.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 0, 35 )
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Button" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 100, 35 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "stats"
+flat = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content"]
+margin_top = 85.0
+margin_right = 300.0
+margin_bottom = 510.0
+rect_min_size = Vector2( 300, 425 )
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 290.0
+margin_bottom = 415.0
+
+[node name="StatsData" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer"]
+margin_right = 280.0
+margin_bottom = 405.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FirstData" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData"]
+margin_right = 280.0
+margin_bottom = 70.0
+
+[node name="TypeBattler" type="TextureRect" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/FirstData"]
+margin_right = 70.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+texture = ExtResource( 16 )
+expand = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/FirstData"]
+margin_left = 74.0
+margin_right = 240.0
+margin_bottom = 70.0
+
+[node name="NameChar" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/FirstData/VBoxContainer"]
+margin_right = 166.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 1 )
+text = "Character"
+
+[node name="StarsList" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/FirstData/VBoxContainer"]
+margin_top = 39.0
+margin_right = 166.0
+margin_bottom = 69.0
+
+[node name="Star" type="TextureRect" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/FirstData/VBoxContainer/StarsList"]
+margin_right = 30.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 15 )
+expand = true
+
+[node name="Star2" type="TextureRect" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/FirstData/VBoxContainer/StarsList"]
+margin_left = 34.0
+margin_right = 64.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 15 )
+expand = true
+
+[node name="Star3" type="TextureRect" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/FirstData/VBoxContainer/StarsList"]
+margin_left = 68.0
+margin_right = 98.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 15 )
+expand = true
+
+[node name="Star4" type="TextureRect" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/FirstData/VBoxContainer/StarsList"]
+margin_left = 102.0
+margin_right = 132.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 15 )
+expand = true
+
+[node name="Star5" type="TextureRect" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/FirstData/VBoxContainer/StarsList"]
+margin_left = 136.0
+margin_right = 166.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 15 )
+expand = true
+
+[node name="SecondData" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData"]
+margin_top = 74.0
+margin_right = 280.0
+margin_bottom = 174.0
+
+[node name="LevelProgressBar" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData" instance=ExtResource( 17 )]
+margin_right = 100.0
+margin_bottom = 100.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData"]
+margin_left = 104.0
+margin_right = 156.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData/VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 52.0
+margin_bottom = 73.0
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData/VBoxContainer"]
+margin_top = 77.0
+margin_right = 52.0
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 2 )
+text = "/90"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData"]
+margin_left = 160.0
+margin_right = 280.0
+margin_bottom = 100.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 110.0
+margin_bottom = 90.0
+alignment = 1
+
+[node name="TextureButton2" type="TextureButton" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData/MarginContainer/VBoxContainer2"]
+self_modulate = Color( 0.286275, 0.278431, 0.396078, 1 )
+margin_right = 100.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 30 )
+texture_normal = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData/MarginContainer/VBoxContainer2/TextureButton2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Upgrade"
+align = 1
+valign = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData/MarginContainer/VBoxContainer2"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 34.0
+margin_right = 100.0
+margin_bottom = 46.0
+size_flags_vertical = 3
+
+[node name="TextureButton3" type="TextureButton" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData/MarginContainer/VBoxContainer2"]
+self_modulate = Color( 0.286275, 0.278431, 0.396078, 1 )
+margin_top = 50.0
+margin_right = 100.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 100, 30 )
+texture_normal = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData/MarginContainer/VBoxContainer2/TextureButton3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Awaken"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ThirdData" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData"]
+margin_top = 178.0
+margin_right = 280.0
+margin_bottom = 301.0
+
+[node name="HP" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/ThirdData"]
+margin_right = 280.0
+margin_bottom = 14.0
+
+[node name="Text" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/ThirdData/HP"]
+margin_right = 244.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "HP"
+
+[node name="Value" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/ThirdData/HP"]
+margin_left = 248.0
+margin_right = 280.0
+margin_bottom = 14.0
+text = "XXXX"
+
+[node name="ATK" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/ThirdData"]
+margin_top = 18.0
+margin_right = 280.0
+margin_bottom = 32.0
+
+[node name="Text" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/ThirdData/ATK"]
+margin_right = 244.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "ATK"
+
+[node name="Value" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/ThirdData/ATK"]
+margin_left = 248.0
+margin_right = 280.0
+margin_bottom = 14.0
+text = "XXXX"
+
+[node name="DEF" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/ThirdData"]
+margin_top = 36.0
+margin_right = 280.0
+margin_bottom = 50.0
+
+[node name="Text" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/ThirdData/DEF"]
+margin_right = 244.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "DEF"
+
+[node name="Value" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/ThirdData/DEF"]
+margin_left = 248.0
+margin_right = 280.0
+margin_bottom = 14.0
+text = "XXXX"
+
+[node name="VIT" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/ThirdData"]
+margin_top = 54.0
+margin_right = 280.0
+margin_bottom = 68.0
+
+[node name="Text" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/ThirdData/VIT"]
+margin_right = 244.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "VIT"
+
+[node name="Value" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/ThirdData/VIT"]
+margin_left = 248.0
+margin_right = 280.0
+margin_bottom = 14.0
+text = "XXXX"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/ThirdData"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 72.0
+margin_right = 280.0
+margin_bottom = 87.0
+custom_constants/separation = 15
+
+[node name="CRIT_RATE" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/ThirdData"]
+margin_top = 91.0
+margin_right = 280.0
+margin_bottom = 105.0
+
+[node name="Text" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/ThirdData/CRIT_RATE"]
+margin_right = 240.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "CRIT RATE"
+
+[node name="Value" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/ThirdData/CRIT_RATE"]
+margin_left = 244.0
+margin_right = 280.0
+margin_bottom = 14.0
+text = "XXX%"
+
+[node name="CRIT_DAMAGE" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/ThirdData"]
+margin_top = 109.0
+margin_right = 280.0
+margin_bottom = 123.0
+
+[node name="Text" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/ThirdData/CRIT_DAMAGE"]
+margin_right = 240.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "CRIT DAMAGE"
+
+[node name="Value" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/ThirdData/CRIT_DAMAGE"]
+margin_left = 244.0
+margin_right = 280.0
+margin_bottom = 14.0
+text = "XXX%"
+
+[node name="Skills" type="TextureRect" parent="MarginContainer/HBoxContainer/Tab"]
+self_modulate = Color( 0.472656, 0.536438, 0.6875, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Content" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Skills"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/Tab/Skills/Content"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 300.0
+margin_bottom = 50.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Skills/Content"]
+margin_top = 50.0
+margin_right = 300.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 0, 35 )
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/HBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 100.0
+margin_bottom = 35.0
+custom_constants/separation = 100
+
+[node name="Label" type="Button" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/HBoxContainer"]
+margin_left = 100.0
+margin_right = 200.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 100, 35 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Skills"
+flat = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/Tab/Skills/Content"]
+margin_top = 85.0
+margin_right = 300.0
+margin_bottom = 510.0
+rect_min_size = Vector2( 300, 425 )
+custom_constants/margin_right = 30
+custom_constants/margin_top = 30
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/MarginContainer2"]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 270.0
+margin_bottom = 395.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/MarginContainer2/ScrollContainer"]
+margin_right = 240.0
+margin_bottom = 365.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 25
+alignment = 1
+
+[node name="ATK1" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/MarginContainer2/ScrollContainer/VBoxContainer"]
+margin_top = 109.0
+margin_right = 240.0
+margin_bottom = 141.0
+
+[node name="ATKName" type="Label" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/MarginContainer2/ScrollContainer/VBoxContainer/ATK1"]
+margin_right = 240.0
+margin_bottom = 14.0
+text = "Basic Attack"
+
+[node name="ATKDescription" type="Label" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/MarginContainer2/ScrollContainer/VBoxContainer/ATK1"]
+margin_top = 18.0
+margin_right = 240.0
+margin_bottom = 32.0
+text = "Deal 70% Damage to 1 enemy"
+
+[node name="ATK2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/MarginContainer2/ScrollContainer/VBoxContainer"]
+margin_top = 166.0
+margin_right = 240.0
+margin_bottom = 198.0
+
+[node name="ATKName" type="Label" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/MarginContainer2/ScrollContainer/VBoxContainer/ATK2"]
+margin_right = 240.0
+margin_bottom = 14.0
+text = "Basic Attack"
+
+[node name="ATKDescription" type="Label" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/MarginContainer2/ScrollContainer/VBoxContainer/ATK2"]
+margin_top = 18.0
+margin_right = 240.0
+margin_bottom = 32.0
+text = "Deal 70% Damage to 1 enemy"
+
+[node name="ATK3" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/MarginContainer2/ScrollContainer/VBoxContainer"]
+margin_top = 223.0
+margin_right = 240.0
+margin_bottom = 255.0
+
+[node name="ATKName" type="Label" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/MarginContainer2/ScrollContainer/VBoxContainer/ATK3"]
+margin_right = 240.0
+margin_bottom = 14.0
+text = "Basic Attack"
+
+[node name="ATKDescription" type="Label" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/MarginContainer2/ScrollContainer/VBoxContainer/ATK3"]
+margin_top = 18.0
+margin_right = 240.0
+margin_bottom = 32.0
+text = "Deal 70% Damage to 1 enemy"
+
+[node name="Story" type="TextureRect" parent="MarginContainer/HBoxContainer/Tab"]
+self_modulate = Color( 0.286275, 0.278431, 0.396078, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Content" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Story"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/Tab/Story/Content"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 300.0
+margin_bottom = 50.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Story/Content"]
+margin_top = 50.0
+margin_right = 300.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 0, 35 )
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/HBoxContainer/Tab/Story/Content/HBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 200.0
+margin_bottom = 35.0
+custom_constants/separation = 200
+
+[node name="Label" type="Button" parent="MarginContainer/HBoxContainer/Tab/Story/Content/HBoxContainer"]
+margin_left = 200.0
+margin_right = 300.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 100, 35 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Story"
+flat = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Tab/Story/Content"]
+margin_top = 85.0
+margin_right = 300.0
+margin_bottom = 510.0
+rect_min_size = Vector2( 300, 425 )
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/Tab/Story/Content/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 290.0
+margin_bottom = 415.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/Tab/Story/Content/MarginContainer/ScrollContainer"]
+margin_right = 280.0
+margin_bottom = 405.0
+rect_min_size = Vector2( 280, 0 )
+size_flags_vertical = 3
+text = "Origine :
+
+Ce pauvre enfant a été abandonné et a developper des technique pour survivre puis un moine surpuissant du nom de po l'a elever et former a tuer les demon present dans tous le royaume
+
+Lieux : 
+Montagne de mitsubitchy
+
+Age :
+Inconnu
+
+
+
+
+
+
+Metier :
+Tueur de Monstre
+Chasseur de magie
+
+
+Restaurant préfferé : 
+Chez pika ca pikpik
+pokamon fire!!!
+
+bizarre l'ambiance"
+
+[node name="RightArrow" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 924.0
+margin_right = 984.0
+margin_bottom = 560.0
+
+[node name="Arrow" type="TextureButton" parent="MarginContainer/HBoxContainer/RightArrow"]
+margin_top = 250.0
+margin_right = 60.0
+margin_bottom = 310.0
+rect_pivot_offset = Vector2( 30, 30 )
+texture_normal = ExtResource( 5 )
+stretch_mode = 5
+
+[node name="Button" type="Control" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 580.0
+mouse_filter = 2
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/Button"]
+self_modulate = Color( 0.286275, 0.278431, 0.396078, 1 )
+margin_right = 150.0
+margin_bottom = 50.0
+texture_normal = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/Button/TextureButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Retour"
+align = 1
+valign = 1

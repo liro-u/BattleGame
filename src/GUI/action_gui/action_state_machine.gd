@@ -8,6 +8,7 @@ export var start_gui = "choose_action"
 onready var active_gui = starting_gui
 onready var end_screen = $EndScreen
 onready var message_gui = $MessageGui
+var final_loot = []
 var past_gui = []
 var last_gui = null
 var current_state = start_gui
@@ -104,9 +105,7 @@ func switch_anim_ended() -> void:
 					node.clickable_area.add_to_group("active_clickable_area")
 					node.clickable_area.collision.disabled = false
 		"end_game":
-			for node in get_tree().get_nodes_in_group("active_ui_xp_charact"):
-				node.show()
-				node.set_anim()
+			show_loot()
 			
 	get_tree().call_group_flags(2, "ui_cancel", "activate")
 	is_processing = false
@@ -172,6 +171,12 @@ func get_next_gui():
 				
 				$EndScreen/MarginContainer/VBoxContainer/EndText.text = BaseConditionVictory.state2text[state_of_game]
 				var charact_xp_ui = get_tree().get_nodes_in_group("charact_xp_box")[0].get_children()
+				var task_box = get_tree().get_nodes_in_group("task_container")[0].get_children()
+				var list_task = get_parent().get_parent().task_list_data
+				for task_node in task_box:
+					var task = list_task[task_node.get_index()]
+					var star_state_node = task_node.get_node("Star").get_node("StateStar")
+					star_state_node.appear(task and task.finished)
 				var list_team_battler = []
 				for node in get_tree().get_nodes_in_group("charact"):
 					if node.team == 0:
@@ -186,6 +191,11 @@ func get_next_gui():
 						var path_res = team_battler.resource_path
 						final_team_battler.take_over_path(path_res)
 						ResourceSaver.save(path_res, final_team_battler)
+				
+				for possible_loot in get_parent().get_parent().loot_table:
+					if possible_loot.proba >= randf():
+						final_loot.append(possible_loot.loot)
+						SaverInventory.AddNewObject(possible_loot.loot)
 				
 				var client_data = load("res://player_data/client/client_data.tres")
 				var client_level_ui =  get_tree().get_nodes_in_group("client_level")[0]
@@ -233,3 +243,12 @@ func end_turn():
 	state_of_game = get_tree().get_nodes_in_group("condition_victory")[0].victory_result()
 	if state_of_game == BaseConditionVictory.NOT_FINISHED:
 		get_tree().call_group("turn_queue", "get_next_battler")
+
+func show_charact_final():
+	for node in get_tree().get_nodes_in_group("active_ui_xp_charact"):
+		node.show()
+		node.set_anim()
+
+func show_loot():
+	get_tree().call_group("loot_recap", "initialize", final_loot, self)
+	get_tree().call_group("loot_recap", "next_loot")

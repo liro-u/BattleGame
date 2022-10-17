@@ -46,7 +46,6 @@ func anim_ended(anim_name):
 	match anim_name:
 		"appear":
 			if !battler_data.is_given:
-				print(battler_data.is_given)
 				update_xp_level()
 		"disappear":
 			queue_free()

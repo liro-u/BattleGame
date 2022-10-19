@@ -169,63 +169,71 @@ func get_next_gui():
 				active_gui = end_screen
 				get_parent().turnline.disappear()
 				
+				#show text win / defeat
 				$EndScreen/MarginContainer/VBoxContainer/EndText.text = BaseConditionVictory.state2text[state_of_game]
+				#get node
 				var charact_xp_ui = get_tree().get_nodes_in_group("charact_xp_box")[0].get_children()
 				var task_box = get_tree().get_nodes_in_group("task_container")[0].get_children()
 				var list_task = get_parent().get_parent().task_list_data
+				#show task state
 				for task_node in task_box:
 					var task = list_task[task_node.get_index()]
 					var star_state_node = task_node.get_node("Star").get_node("StateStar")
 					star_state_node.appear(task and task.finished)
-				var list_team_battler = []
-				for node in get_tree().get_nodes_in_group("charact"):
-					if node.team == 0:
-						list_team_battler.append(node.ownerStats)
-				var index = 0
-				for team_battler in list_team_battler:
-					var final_team_battler = levelCalculation.add_xp(get_parent().get_parent().xp_gain, team_battler.duplicate())
-					charact_xp_ui[index].initialize(team_battler, final_team_battler)
-					charact_xp_ui[index].add_to_group("active_ui_xp_charact")
-					index += 1
-					if !team_battler.is_given:
-						var path_res = team_battler.resource_path
-						final_team_battler.take_over_path(path_res)
-						ResourceSaver.save(path_res, final_team_battler)
-				
-				for possible_loot in get_parent().get_parent().loot_table:
-					if possible_loot.proba >= randf():
-						final_loot.append(possible_loot.loot)
-						SaverInventory.AddNewObject(possible_loot.loot)
-				
+				#if win
+				if BaseConditionVictory.VICTORY == state_of_game:
+					#update xp battler
+					var list_team_battler = []
+					for node in get_tree().get_nodes_in_group("charact"):
+						if node.team == 0:
+							list_team_battler.append(node.ownerStats)
+					var index = 0
+					for team_battler in list_team_battler:
+						var final_team_battler = levelCalculation.add_xp(get_parent().get_parent().xp_gain, team_battler.duplicate())
+						charact_xp_ui[index].initialize(team_battler, final_team_battler)
+						charact_xp_ui[index].add_to_group("active_ui_xp_charact")
+						index += 1
+						if !team_battler.is_given:
+							var path_res = team_battler.resource_path
+							final_team_battler.take_over_path(path_res)
+							ResourceSaver.save(path_res, final_team_battler)
+					#update loot win
+					for possible_loot in get_parent().get_parent().loot_table:
+						if possible_loot.proba >= randf():
+							final_loot.append(possible_loot.loot)
+							SaverInventory.AddNewObject(possible_loot.loot)
+				#update client level
 				var client_data = load("res://player_data/client/client_data.tres")
 				var client_level_ui =  get_tree().get_nodes_in_group("client_level")[0]
 				var client_xp_label_ui = get_tree().get_nodes_in_group("gain_client_xp")[0]
 				var client_player_animation = get_tree().get_nodes_in_group("client_level_player_animation")[0]
-				var final_client_data = levelCalculation.add_xp_client(get_parent().get_parent().xp_gain, client_data.duplicate())
 				var value_ratio
 				if client_data.xp == 0:
 					value_ratio = 0
 				else:
-					value_ratio = (levelCalculation.xp_needed_for_level(client_data.level + 1, client_data.starting_xp_needed, client_data.level_palier) / client_data.xp) * 999
+					value_ratio = (client_data.xp / levelCalculation.xp_needed_for_level(client_data.level + 1, client_data.starting_xp_needed, client_data.level_palier)) * 999
 				client_level_ui.set_progress(value_ratio)
 				client_level_ui.set_value(client_data.level)
-				if client_data.level < client_data.max_level:
-					yield(get_tree().create_timer(1), "timeout")
-					client_player_animation.current_animation = "hide"
-					yield(client_player_animation, "animation_finished")
-					client_xp_label_ui.text = "+" + str(get_parent().get_parent().xp_gain) + " EXP"
-					if final_client_data.xp == 0:
-						value_ratio = 0
-					else:
-						value_ratio = (levelCalculation.xp_needed_for_level(final_client_data.level + 1, final_client_data.starting_xp_needed, final_client_data.level_palier) / final_client_data.xp) * 999
-					client_level_ui.set_progress(value_ratio)
-					client_level_ui.set_value(final_client_data.level)
-					client_player_animation.current_animation = "show"
+				#if win
+				if BaseConditionVictory.VICTORY == state_of_game:
+					if client_data.level < client_data.max_level:
+						var final_client_data = levelCalculation.add_xp_client(get_parent().get_parent().xp_gain, client_data.duplicate())
+						yield(get_tree().create_timer(1), "timeout")
+						client_player_animation.current_animation = "hide"
+						yield(client_player_animation, "animation_finished")
+						client_xp_label_ui.text = "+" + str(get_parent().get_parent().xp_gain) + " EXP"
+						if final_client_data.xp == 0:
+							value_ratio = 0
+						else:
+							value_ratio = (final_client_data.xp / levelCalculation.xp_needed_for_level(final_client_data.level + 1, final_client_data.starting_xp_needed, final_client_data.level_palier)) * 999
+						client_level_ui.set_progress(value_ratio)
+						client_level_ui.set_value(final_client_data.level)
+						client_player_animation.current_animation = "show"
 
-					ResourceSaver.save(client_data.resource_path, final_client_data)
-				else:
-					client_player_animation.current_animation = "max_level"
-					client_xp_label_ui.text = "MAX LVL"
+						ResourceSaver.save(client_data.resource_path, final_client_data)
+					else:
+						client_player_animation.current_animation = "max_level"
+						client_xp_label_ui.text = "MAX LVL"
 				
 		"choose_action":
 			active_gui = action_gui

@@ -1,8 +1,8 @@
 extends Control
 
-onready var list_char = $"TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer"
-onready var button_select = $"TextureRect/MarginContainer/VBoxContainer/HBoxContainer4/Button2"
-onready var info_list = $"TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"
+onready var list_char = $"TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer"
+onready var button_select = $"TextureRect/ButtonContainer/VBoxContainer/BottomButtonContainer/Button2"
+onready var info_list = $"TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats"
 onready var display_only = $"TextureRect/Filter/BackgroundFilter/Container/Box2"
 onready var filter_by = $"TextureRect/Filter/BackgroundFilter/Container/Box1"
 onready var filter = $"TextureRect/Filter"

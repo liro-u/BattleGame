@@ -49,7 +49,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/GUI/battle/BattleGUI.gd"
 }, {
-"base": "Node2D",
+"base": "Control",
 "class": "BattleWorld",
 "language": "GDScript",
 "path": "res://src/battle/world/world.gd"

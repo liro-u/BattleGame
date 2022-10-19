@@ -411,12 +411,19 @@ amount = 40
 process_material = SubResource( 7 )
 texture = ExtResource( 7 )
 
-[node name="reward" type="Control" parent="ColorRect/MarginContainer/HBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="ColorRect/MarginContainer/HBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 191.0
-margin_right = 782.0
+margin_right = 191.0
 margin_bottom = 206.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
+custom_constants/separation = 0
+
+[node name="reward" type="Control" parent="ColorRect/MarginContainer/HBoxContainer"]
+margin_left = 201.0
+margin_right = 772.0
+margin_bottom = 206.0
+rect_min_size = Vector2( 571, 206 )
 
 [node name="charact_xp" type="HBoxContainer" parent="ColorRect/MarginContainer/HBoxContainer/reward" groups=[
 "charact_xp_box",
@@ -459,6 +466,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 loot_node_instance = ExtResource( 12 )
+
+[node name="VSeparator" type="VSeparator" parent="ColorRect/MarginContainer/HBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 782.0
+margin_right = 782.0
+margin_bottom = 206.0
+size_flags_horizontal = 3
+custom_constants/separation = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/HBoxContainer"]
 margin_left = 792.0

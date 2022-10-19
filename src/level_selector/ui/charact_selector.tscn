@@ -25,16 +25,16 @@
 [ext_resource path="res://asset/GUI/chara_member_select/arrow_dir.png" type="Texture" id=23]
 [ext_resource path="res://src/GUI/custom_charact/CustomCharact.tscn" type="PackedScene" id=24]
 
-[sub_resource type="DynamicFont" id=1]
-size = 20
-font_data = ExtResource( 4 )
-
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.129534, 0.891192, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 20
@@ -58,9 +58,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SideBackground" type="TextureRect" parent="TextureRect/HBoxContainer"]
+margin_right = 412.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 412, 600 )
+mouse_filter = 2
 texture = ExtResource( 10 )
 expand = true
 stretch_mode = 5
@@ -68,7 +78,463 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/HBoxContainer/SideBackground"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_right = 50
+custom_constants/margin_top = 100
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 100
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsWithLevel" type="Node" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer"]
+script = ExtResource( 6 )
+
+[node name="Stats" type="VBoxContainer" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer"]
+margin_left = 30.0
+margin_top = 100.0
+margin_right = 362.0
+margin_bottom = 500.0
+size_flags_horizontal = 3
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats"]
+margin_right = 332.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "character name"
+
+[node name="Level" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats"]
+margin_top = 18.0
+margin_right = 332.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Level XX"
+
+[node name="HSeparator3" type="HSeparator" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 36.0
+margin_right = 332.0
+margin_bottom = 51.0
+custom_constants/separation = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats"]
+margin_top = 55.0
+margin_right = 332.0
+margin_bottom = 85.0
+
+[node name="TextureButton" type="TextureButton" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/HBoxContainer"]
+self_modulate = Color( 0.0901961, 0.145098, 0.192157, 1 )
+margin_right = 100.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 30 )
+texture_normal = ExtResource( 12 )
+expand = true
+
+[node name="Label" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/HBoxContainer/TextureButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Level Up"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 89.0
+margin_right = 332.0
+margin_bottom = 104.0
+custom_constants/separation = 15
+
+[node name="HP" type="HBoxContainer" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats"]
+margin_top = 108.0
+margin_right = 332.0
+margin_bottom = 122.0
+
+[node name="text" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/HP"]
+margin_right = 164.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "HP"
+
+[node name="value" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/HP"]
+margin_left = 168.0
+margin_right = 332.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "XXXX"
+
+[node name="MANA" type="HBoxContainer" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats"]
+margin_top = 126.0
+margin_right = 332.0
+margin_bottom = 140.0
+
+[node name="text" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/MANA"]
+margin_right = 164.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "MANA"
+
+[node name="value" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/MANA"]
+margin_left = 168.0
+margin_right = 332.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "XXXX"
+
+[node name="ATK" type="HBoxContainer" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats"]
+margin_top = 144.0
+margin_right = 332.0
+margin_bottom = 158.0
+
+[node name="text" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ATK"]
+margin_right = 164.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "ATK"
+
+[node name="value" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ATK"]
+margin_left = 168.0
+margin_right = 332.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "XXXX"
+
+[node name="VIT" type="HBoxContainer" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats"]
+margin_top = 162.0
+margin_right = 332.0
+margin_bottom = 176.0
+
+[node name="text" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/VIT"]
+margin_right = 164.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "VIT"
+
+[node name="value" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/VIT"]
+margin_left = 168.0
+margin_right = 332.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "XXXX"
+
+[node name="DEF" type="HBoxContainer" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats"]
+margin_top = 180.0
+margin_right = 332.0
+margin_bottom = 194.0
+
+[node name="text" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/DEF"]
+margin_right = 164.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "DEF"
+
+[node name="value" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/DEF"]
+margin_left = 168.0
+margin_right = 332.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "XXXX"
+
+[node name="CritRate" type="HBoxContainer" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats"]
+margin_top = 198.0
+margin_right = 332.0
+margin_bottom = 212.0
+
+[node name="text" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/CritRate"]
+margin_right = 164.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Crit Rate"
+
+[node name="value" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/CritRate"]
+margin_left = 168.0
+margin_right = 332.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "XXXX"
+
+[node name="CritDamage" type="HBoxContainer" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats"]
+margin_top = 216.0
+margin_right = 332.0
+margin_bottom = 230.0
+
+[node name="text" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/CritDamage"]
+margin_right = 164.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Crit Damage"
+
+[node name="value" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/CritDamage"]
+margin_left = 168.0
+margin_right = 332.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "XXXX"
+
+[node name="HSeparator2" type="HSeparator" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 234.0
+margin_right = 332.0
+margin_bottom = 249.0
+custom_constants/separation = 15
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats"]
+margin_top = 253.0
+margin_right = 332.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 76, 100 )
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ScrollContainer"]
+margin_right = 260.0
+margin_bottom = 177.0
+custom_constants/separation = 15
+script = ExtResource( 7 )
+
+[node name="attack1" type="VBoxContainer" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ScrollContainer/VBoxContainer"]
+margin_right = 260.0
+margin_bottom = 32.0
+
+[node name="attackName" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ScrollContainer/VBoxContainer/attack1"]
+margin_right = 260.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Basic attack"
+
+[node name="attackDescription" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ScrollContainer/VBoxContainer/attack1"]
+margin_top = 18.0
+margin_right = 260.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 260, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Deal 70% ATK to 1 Enemy"
+autowrap = true
+
+[node name="attack2" type="VBoxContainer" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ScrollContainer/VBoxContainer"]
+margin_top = 47.0
+margin_right = 260.0
+margin_bottom = 79.0
+
+[node name="attackName" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ScrollContainer/VBoxContainer/attack2"]
+margin_right = 260.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Skill 2"
+
+[node name="attackDescription" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ScrollContainer/VBoxContainer/attack2"]
+margin_top = 18.0
+margin_right = 260.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 260, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Gain 30% VIT for 2 turns"
+autowrap = true
+
+[node name="attack3" type="VBoxContainer" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ScrollContainer/VBoxContainer"]
+margin_top = 94.0
+margin_right = 260.0
+margin_bottom = 177.0
+
+[node name="attackName" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ScrollContainer/VBoxContainer/attack3"]
+margin_right = 260.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Skill 3"
+
+[node name="attackDescription" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ScrollContainer/VBoxContainer/attack3"]
+margin_top = 18.0
+margin_right = 260.0
+margin_bottom = 83.0
+rect_min_size = Vector2( 260, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Deal 200% ATK to 1 Enemy
+Gain 20% DEF for 3 turns
+Heal 1 member of the team for 3 turns so this is very powerfull"
+autowrap = true
+
+[node name="ListChar" type="ScrollContainer" parent="TextureRect/HBoxContainer"]
+margin_left = 416.0
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 140, 280 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.77
+scroll_vertical_enabled = false
+scroll_deadzone = 25
+script = ExtResource( 5 )
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/HBoxContainer/ListChar"]
+margin_right = 1150.0
+margin_bottom = 588.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="TextureRect/HBoxContainer/ListChar/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1140.0
+margin_bottom = 578.0
+mouse_filter = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2"]
+margin_top = 144.0
+margin_right = 1130.0
+margin_bottom = 424.0
+mouse_filter = 2
+size_flags_stretch_ratio = 2.4
+custom_constants/separation = 25
+
+[node name="ButtonContainer" type="Control" parent="TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer"]
+margin_right = 140.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 140, 280 )
+
+[node name="BattlerSelector" parent="TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer" instance=ExtResource( 2 )]
+rect_scale = Vector2( 2, 2 )
+script = ExtResource( 3 )
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
+basic_texture = SubResource( 2 )
+
+[node name="SelectedIndicator" parent="TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer/BattlerSelector" instance=ExtResource( 14 )]
+
+[node name="ButtonContainer2" type="Control" parent="TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer"]
+margin_left = 165.0
+margin_right = 305.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 140, 280 )
+
+[node name="BattlerSelector" parent="TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer2" instance=ExtResource( 2 )]
+rect_scale = Vector2( 2, 2 )
+script = ExtResource( 3 )
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
+basic_texture = SubResource( 2 )
+
+[node name="ButtonContainer3" type="Control" parent="TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer"]
+margin_left = 330.0
+margin_right = 470.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 140, 280 )
+
+[node name="BattlerSelector" parent="TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer3" instance=ExtResource( 2 )]
+rect_scale = Vector2( 2, 2 )
+script = ExtResource( 3 )
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
+basic_texture = SubResource( 2 )
+
+[node name="ButtonContainer4" type="Control" parent="TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer"]
+margin_left = 495.0
+margin_right = 635.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 140, 280 )
+
+[node name="BattlerSelector" parent="TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer4" instance=ExtResource( 2 )]
+rect_scale = Vector2( 2, 2 )
+script = ExtResource( 3 )
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
+basic_texture = SubResource( 2 )
+
+[node name="ButtonContainer5" type="Control" parent="TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer"]
+margin_left = 660.0
+margin_right = 800.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 140, 280 )
+
+[node name="BattlerSelector" parent="TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer5" instance=ExtResource( 2 )]
+rect_scale = Vector2( 2, 2 )
+script = ExtResource( 3 )
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
+basic_texture = SubResource( 2 )
+
+[node name="ButtonContainer6" type="Control" parent="TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer"]
+margin_left = 825.0
+margin_right = 965.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 140, 280 )
+
+[node name="BattlerSelector" parent="TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer6" instance=ExtResource( 2 )]
+rect_scale = Vector2( 2, 2 )
+script = ExtResource( 3 )
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
+basic_texture = SubResource( 2 )
+
+[node name="ButtonContainer7" type="Control" parent="TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer"]
+margin_left = 990.0
+margin_right = 1130.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 140, 280 )
+
+[node name="BattlerSelector" parent="TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer7" instance=ExtResource( 2 )]
+rect_scale = Vector2( 2, 2 )
+script = ExtResource( 3 )
+color_element = {
+1: Color( 1, 0.788235, 0.505882, 1 ),
+2: Color( 0.360784, 0.486275, 0.811765, 1 ),
+3: Color( 0.647059, 1, 0.976471, 1 ),
+4: Color( 0.741176, 0.309804, 0.219608, 1 )
+}
+basic_texture = SubResource( 2 )
+
+[node name="ButtonContainer" type="MarginContainer" parent="TextureRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -80,26 +546,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/ButtonContainer"]
 margin_left = 30.0
 margin_top = 30.0
 margin_right = 994.0
 margin_bottom = 570.0
+mouse_filter = 2
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer"]
+[node name="TopButtonContainer" type="HBoxContainer" parent="TextureRect/ButtonContainer/VBoxContainer"]
 margin_right = 964.0
 margin_bottom = 29.0
+mouse_filter = 2
 
-[node name="back" type="Button" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="back" type="Button" parent="TextureRect/ButtonContainer/VBoxContainer/TopButtonContainer"]
 margin_right = 63.0
 margin_bottom = 29.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_hover = Color( 0.172549, 0.266667, 0.34902, 1 )
 text = "back"
 flat = true
 
-[node name="TextureRect" type="TextureRect" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer/back"]
+[node name="TextureRect" type="TextureRect" parent="TextureRect/ButtonContainer/VBoxContainer/TopButtonContainer/back"]
 modulate = Color( 0.0901961, 0.145098, 0.192157, 1 )
 show_behind_parent = true
 anchor_right = 1.0
@@ -111,20 +579,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VSeparator" type="VSeparator" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="TextureRect/ButtonContainer/VBoxContainer/TopButtonContainer"]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 67.0
 margin_right = 803.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
 
-[node name="Control" type="Control" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="TextureRect/ButtonContainer/VBoxContainer/TopButtonContainer"]
 margin_left = 807.0
 margin_right = 836.0
 margin_bottom = 29.0
 rect_min_size = Vector2( 29, 29 )
 
-[node name="DirIndicator" type="TextureRect" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer/Control"]
+[node name="DirIndicator" type="TextureRect" parent="TextureRect/ButtonContainer/VBoxContainer/TopButtonContainer/Control"]
 margin_right = 29.0
 margin_bottom = 29.0
 rect_min_size = Vector2( 29, 29 )
@@ -137,18 +605,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="level" type="Button" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="level" type="Button" parent="TextureRect/ButtonContainer/VBoxContainer/TopButtonContainer"]
 margin_left = 840.0
 margin_right = 899.0
 margin_bottom = 29.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 0.490196, 0, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 text = "level"
 flat = true
 
-[node name="TextureRect" type="TextureRect" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer/level"]
+[node name="TextureRect" type="TextureRect" parent="TextureRect/ButtonContainer/VBoxContainer/TopButtonContainer/level"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -159,18 +627,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="filter" type="Button" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="filter" type="Button" parent="TextureRect/ButtonContainer/VBoxContainer/TopButtonContainer"]
 margin_left = 903.0
 margin_right = 964.0
 margin_bottom = 29.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 0.490196, 0, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 text = "filter"
 flat = true
 
-[node name="TextureRect2" type="TextureRect" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer/filter"]
+[node name="TextureRect2" type="TextureRect" parent="TextureRect/ButtonContainer/VBoxContainer/TopButtonContainer/filter"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -181,477 +649,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HSeparator" type="HSeparator" parent="TextureRect/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="TextureRect/ButtonContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
 margin_top = 33.0
 margin_right = 964.0
-margin_bottom = 89.0
-size_flags_vertical = 3
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer"]
-margin_top = 93.0
-margin_right = 964.0
-margin_bottom = 446.0
-custom_constants/separation = 80
-
-[node name="StatsWithLevel" type="Node" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2"]
-script = ExtResource( 6 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_right = 319.0
-margin_bottom = 353.0
-size_flags_horizontal = 3
-script = ExtResource( 8 )
-
-[node name="Name" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-margin_right = 319.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "character name"
-
-[node name="Level" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-margin_top = 18.0
-margin_right = 319.0
-margin_bottom = 32.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Level XX"
-
-[node name="HSeparator3" type="HSeparator" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
-margin_top = 36.0
-margin_right = 319.0
-margin_bottom = 51.0
-custom_constants/separation = 15
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-margin_top = 55.0
-margin_right = 319.0
-margin_bottom = 85.0
-
-[node name="TextureButton" type="TextureButton" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer"]
-self_modulate = Color( 0.0901961, 0.145098, 0.192157, 1 )
-margin_right = 100.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 100, 30 )
-texture_normal = ExtResource( 12 )
-expand = true
-
-[node name="Label" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer/TextureButton"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-text = "Level Up"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HSeparator" type="HSeparator" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
-margin_top = 89.0
-margin_right = 319.0
-margin_bottom = 104.0
-custom_constants/separation = 15
-
-[node name="HP" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-margin_top = 108.0
-margin_right = 319.0
-margin_bottom = 122.0
-
-[node name="text" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HP"]
-margin_right = 157.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "HP"
-
-[node name="value" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HP"]
-margin_left = 161.0
-margin_right = 319.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "XXXX"
-
-[node name="MANA" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-margin_top = 126.0
-margin_right = 319.0
-margin_bottom = 140.0
-
-[node name="text" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MANA"]
-margin_right = 157.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "MANA"
-
-[node name="value" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MANA"]
-margin_left = 161.0
-margin_right = 319.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "XXXX"
-
-[node name="ATK" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-margin_top = 144.0
-margin_right = 319.0
-margin_bottom = 158.0
-
-[node name="text" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/ATK"]
-margin_right = 157.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "ATK"
-
-[node name="value" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/ATK"]
-margin_left = 161.0
-margin_right = 319.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "XXXX"
-
-[node name="VIT" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-margin_top = 162.0
-margin_right = 319.0
-margin_bottom = 176.0
-
-[node name="text" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VIT"]
-margin_right = 157.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "VIT"
-
-[node name="value" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VIT"]
-margin_left = 161.0
-margin_right = 319.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "XXXX"
-
-[node name="DEF" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-margin_top = 180.0
-margin_right = 319.0
-margin_bottom = 194.0
-
-[node name="text" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/DEF"]
-margin_right = 157.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "DEF"
-
-[node name="value" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/DEF"]
-margin_left = 161.0
-margin_right = 319.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "XXXX"
-
-[node name="CritRate" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-margin_top = 198.0
-margin_right = 319.0
-margin_bottom = 212.0
-
-[node name="text" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/CritRate"]
-margin_right = 157.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Crit Rate"
-
-[node name="value" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/CritRate"]
-margin_left = 161.0
-margin_right = 319.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "XXXX"
-
-[node name="CritDamage" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-margin_top = 216.0
-margin_right = 319.0
-margin_bottom = 230.0
-
-[node name="text" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/CritDamage"]
-margin_right = 157.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Crit Damage"
-
-[node name="value" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/CritDamage"]
-margin_left = 161.0
-margin_right = 319.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "XXXX"
-
-[node name="HSeparator2" type="HSeparator" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
-margin_top = 234.0
-margin_right = 319.0
-margin_bottom = 249.0
-custom_constants/separation = 15
-
-[node name="ScrollContainer" type="ScrollContainer" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-margin_top = 253.0
-margin_right = 319.0
-margin_bottom = 353.0
-rect_min_size = Vector2( 76, 100 )
-scroll_horizontal_enabled = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/ScrollContainer"]
-margin_right = 260.0
-margin_bottom = 177.0
-custom_constants/separation = 15
-script = ExtResource( 7 )
-
-[node name="attack1" type="VBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/ScrollContainer/VBoxContainer"]
-margin_right = 260.0
-margin_bottom = 32.0
-
-[node name="attackName" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/ScrollContainer/VBoxContainer/attack1"]
-margin_right = 260.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Basic attack"
-
-[node name="attackDescription" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/ScrollContainer/VBoxContainer/attack1"]
-margin_top = 18.0
-margin_right = 260.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 260, 0 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Deal 70% ATK to 1 Enemy"
-autowrap = true
-
-[node name="attack2" type="VBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/ScrollContainer/VBoxContainer"]
-margin_top = 47.0
-margin_right = 260.0
-margin_bottom = 79.0
-
-[node name="attackName" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/ScrollContainer/VBoxContainer/attack2"]
-margin_right = 260.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Skill 2"
-
-[node name="attackDescription" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/ScrollContainer/VBoxContainer/attack2"]
-margin_top = 18.0
-margin_right = 260.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 260, 0 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Gain 30% VIT for 2 turns"
-autowrap = true
-
-[node name="attack3" type="VBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/ScrollContainer/VBoxContainer"]
-margin_top = 94.0
-margin_right = 260.0
-margin_bottom = 177.0
-
-[node name="attackName" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/ScrollContainer/VBoxContainer/attack3"]
-margin_right = 260.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Skill 3"
-
-[node name="attackDescription" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/ScrollContainer/VBoxContainer/attack3"]
-margin_top = 18.0
-margin_right = 260.0
-margin_bottom = 83.0
-rect_min_size = Vector2( 260, 0 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Deal 200% ATK to 1 Enemy
-Gain 20% DEF for 3 turns
-Heal 1 member of the team for 3 turns so this is very powerfull"
-autowrap = true
-
-[node name="ScrollContainer" type="ScrollContainer" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 399.0
-margin_right = 964.0
-margin_bottom = 353.0
-rect_min_size = Vector2( 140, 280 )
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.77
-scroll_vertical_enabled = false
-scroll_deadzone = 25
-script = ExtResource( 5 )
-
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer"]
-margin_right = 1150.0
-margin_bottom = 341.0
-mouse_filter = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/margin_right = 10
-custom_constants/margin_top = 10
-custom_constants/margin_left = 10
-custom_constants/margin_bottom = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 1140.0
-margin_bottom = 331.0
-size_flags_stretch_ratio = 2.4
-custom_constants/separation = 25
-
-[node name="ButtonContainer" type="Control" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer"]
-margin_right = 140.0
-margin_bottom = 321.0
-rect_min_size = Vector2( 140, 280 )
-
-[node name="BattlerSelector" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer" instance=ExtResource( 2 )]
-rect_scale = Vector2( 2, 2 )
-script = ExtResource( 3 )
-color_element = {
-1: Color( 1, 0.788235, 0.505882, 1 ),
-2: Color( 0.360784, 0.486275, 0.811765, 1 ),
-3: Color( 0.647059, 1, 0.976471, 1 ),
-4: Color( 0.741176, 0.309804, 0.219608, 1 )
-}
-basic_texture = SubResource( 3 )
-
-[node name="SelectedIndicator" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer/BattlerSelector" instance=ExtResource( 14 )]
-
-[node name="ButtonContainer2" type="Control" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer"]
-margin_left = 165.0
-margin_right = 305.0
-margin_bottom = 321.0
-rect_min_size = Vector2( 140, 280 )
-
-[node name="BattlerSelector" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer2" instance=ExtResource( 2 )]
-rect_scale = Vector2( 2, 2 )
-script = ExtResource( 3 )
-color_element = {
-1: Color( 1, 0.788235, 0.505882, 1 ),
-2: Color( 0.360784, 0.486275, 0.811765, 1 ),
-3: Color( 0.647059, 1, 0.976471, 1 ),
-4: Color( 0.741176, 0.309804, 0.219608, 1 )
-}
-basic_texture = SubResource( 3 )
-
-[node name="ButtonContainer3" type="Control" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer"]
-margin_left = 330.0
-margin_right = 470.0
-margin_bottom = 321.0
-rect_min_size = Vector2( 140, 280 )
-
-[node name="BattlerSelector" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer3" instance=ExtResource( 2 )]
-rect_scale = Vector2( 2, 2 )
-script = ExtResource( 3 )
-color_element = {
-1: Color( 1, 0.788235, 0.505882, 1 ),
-2: Color( 0.360784, 0.486275, 0.811765, 1 ),
-3: Color( 0.647059, 1, 0.976471, 1 ),
-4: Color( 0.741176, 0.309804, 0.219608, 1 )
-}
-basic_texture = SubResource( 3 )
-
-[node name="ButtonContainer4" type="Control" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer"]
-margin_left = 495.0
-margin_right = 635.0
-margin_bottom = 321.0
-rect_min_size = Vector2( 140, 280 )
-
-[node name="BattlerSelector" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer4" instance=ExtResource( 2 )]
-rect_scale = Vector2( 2, 2 )
-script = ExtResource( 3 )
-color_element = {
-1: Color( 1, 0.788235, 0.505882, 1 ),
-2: Color( 0.360784, 0.486275, 0.811765, 1 ),
-3: Color( 0.647059, 1, 0.976471, 1 ),
-4: Color( 0.741176, 0.309804, 0.219608, 1 )
-}
-basic_texture = SubResource( 3 )
-
-[node name="ButtonContainer5" type="Control" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer"]
-margin_left = 660.0
-margin_right = 800.0
-margin_bottom = 321.0
-rect_min_size = Vector2( 140, 280 )
-
-[node name="BattlerSelector" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer5" instance=ExtResource( 2 )]
-rect_scale = Vector2( 2, 2 )
-script = ExtResource( 3 )
-color_element = {
-1: Color( 1, 0.788235, 0.505882, 1 ),
-2: Color( 0.360784, 0.486275, 0.811765, 1 ),
-3: Color( 0.647059, 1, 0.976471, 1 ),
-4: Color( 0.741176, 0.309804, 0.219608, 1 )
-}
-basic_texture = SubResource( 3 )
-
-[node name="ButtonContainer6" type="Control" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer"]
-margin_left = 825.0
-margin_right = 965.0
-margin_bottom = 321.0
-rect_min_size = Vector2( 140, 280 )
-
-[node name="BattlerSelector" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer6" instance=ExtResource( 2 )]
-rect_scale = Vector2( 2, 2 )
-script = ExtResource( 3 )
-color_element = {
-1: Color( 1, 0.788235, 0.505882, 1 ),
-2: Color( 0.360784, 0.486275, 0.811765, 1 ),
-3: Color( 0.647059, 1, 0.976471, 1 ),
-4: Color( 0.741176, 0.309804, 0.219608, 1 )
-}
-basic_texture = SubResource( 3 )
-
-[node name="ButtonContainer7" type="Control" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer"]
-margin_left = 990.0
-margin_right = 1130.0
-margin_bottom = 321.0
-rect_min_size = Vector2( 140, 280 )
-
-[node name="BattlerSelector" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer7" instance=ExtResource( 2 )]
-rect_scale = Vector2( 2, 2 )
-script = ExtResource( 3 )
-color_element = {
-1: Color( 1, 0.788235, 0.505882, 1 ),
-2: Color( 0.360784, 0.486275, 0.811765, 1 ),
-3: Color( 0.647059, 1, 0.976471, 1 ),
-4: Color( 0.741176, 0.309804, 0.219608, 1 )
-}
-basic_texture = SubResource( 3 )
-
-[node name="HSeparator2" type="HSeparator" parent="TextureRect/MarginContainer/VBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
-margin_top = 450.0
-margin_right = 964.0
 margin_bottom = 507.0
+mouse_filter = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer"]
+[node name="BottomButtonContainer" type="HBoxContainer" parent="TextureRect/ButtonContainer/VBoxContainer"]
 margin_top = 511.0
 margin_right = 964.0
 margin_bottom = 540.0
+mouse_filter = 2
 custom_constants/separation = 150
 alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button2" type="Button" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer4"]
+[node name="Button2" type="Button" parent="TextureRect/ButtonContainer/VBoxContainer/BottomButtonContainer"]
 margin_left = 891.0
 margin_right = 964.0
 margin_bottom = 29.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 text = "select"
 flat = true
 
-[node name="TextureRect" type="TextureRect" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer4/Button2"]
+[node name="TextureRect" type="TextureRect" parent="TextureRect/ButtonContainer/VBoxContainer/BottomButtonContainer/Button2"]
 modulate = Color( 0.984314, 0.635294, 0.298039, 1 )
 show_behind_parent = true
 anchor_right = 1.0
@@ -990,10 +1017,10 @@ visible = false
 [node name="VBoxContainer" parent="CustomCharact/MarginContainer/HBoxContainer/Tab/Story/Content/MarginContainer/ScrollContainer" index="0"]
 margin_right = 280.0
 
-[connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/HBoxContainer/back" to="." method="back"]
-[connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/HBoxContainer/filter" to="." method="change_filter_visibility" binds= [ true ]]
-[connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer/TextureButton" to="CustomCharact" method="show"]
-[connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/HBoxContainer4/Button2" to="." method="togle_select"]
+[connection signal="pressed" from="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/HBoxContainer/TextureButton" to="CustomCharact" method="show"]
+[connection signal="pressed" from="TextureRect/ButtonContainer/VBoxContainer/TopButtonContainer/back" to="." method="back"]
+[connection signal="pressed" from="TextureRect/ButtonContainer/VBoxContainer/TopButtonContainer/filter" to="." method="change_filter_visibility" binds= [ true ]]
+[connection signal="pressed" from="TextureRect/ButtonContainer/VBoxContainer/BottomButtonContainer/Button2" to="." method="togle_select"]
 [connection signal="pressed" from="TextureRect/Filter/BackButton" to="." method="change_filter_visibility" binds= [ false ]]
 [connection signal="pressed" from="TextureRect/Filter/BackgroundFilter" to="." method="change_filter_visibility" binds= [ false ]]
 [connection signal="pressed" from="CustomCharact/MarginContainer/Button/TextureButton" to="CustomCharact" method="hide"]

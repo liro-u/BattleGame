@@ -1,8 +1,8 @@
 extends VBoxContainer
 
 onready var list_button = $"SortByBox"
-onready var toggle_filter_by_condition = $"../../../../MarginContainer/VBoxContainer/HBoxContainer/level"
-onready var filter_direction_indicator = $"../../../../MarginContainer/VBoxContainer/HBoxContainer/Control/DirIndicator"
+onready var toggle_filter_by_condition = $"../../../../ButtonContainer/VBoxContainer/TopButtonContainer/level"
+onready var filter_direction_indicator = $"../../../../ButtonContainer/VBoxContainer/TopButtonContainer/Control/DirIndicator"
 export var basic_color_button = Color("435666")
 var filter_tag = "level"
 var last_button = null

@@ -217,17 +217,19 @@ size_flags_horizontal = 3
 custom_constants/margin_right = -300
 custom_constants/margin_top = 100
 custom_constants/margin_left = -250
-custom_constants/margin_bottom = -100
+custom_constants/margin_bottom = 0
 
 [node name="SplashArt" type="TextureRect" parent="MarginContainer/HBoxContainer/VSeparator"]
 margin_left = -250.0
 margin_top = 100.0
 margin_right = 454.0
-margin_bottom = 660.0
+margin_bottom = 560.0
 mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource( 7 )
 expand = true
-stretch_mode = 5
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }

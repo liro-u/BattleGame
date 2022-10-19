@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/level_selector/ui/charact_selector.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/level_selector/ui/team_selector.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://asset/GUI/chara_select/back_fond.png" type="Texture" id=8]
 [ext_resource path="res://asset/font/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://asset/GUI/chara_select/back_star.png" type="Texture" id=10]
+[ext_resource path="res://src/level_selector/ui/Particles2D.gd" type="Script" id=11]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.102865, 0.970859 ), 0.0, 0.0, 0, 0, Vector2( 0.884115, 0.995399 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
@@ -66,6 +67,7 @@ preprocess = 5.0
 visibility_rect = Rect2( -524, -312, 1048, 624 )
 process_material = SubResource( 3 )
 texture = ExtResource( 10 )
+script = ExtResource( 11 )
 
 [node name="UI" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -248,13 +250,13 @@ __meta__ = {
 [node name="charact_selector" parent="." instance=ExtResource( 1 )]
 visible = false
 
-[node name="MarginContainer" parent="charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer" index="0"]
-margin_bottom = 353.0
+[node name="MarginContainer" parent="charact_selector/TextureRect/HBoxContainer/ListChar" index="0"]
+margin_bottom = 600.0
 
-[node name="HBoxContainer" parent="charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer" index="0"]
-margin_bottom = 343.0
+[node name="HBoxContainer2" parent="charact_selector/TextureRect/HBoxContainer/ListChar/MarginContainer" index="0"]
+margin_bottom = 590.0
 
-[node name="BattlerSelector" parent="charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer" index="0"]
+[node name="BattlerSelector" parent="charact_selector/TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer" index="0"]
 color_element = {
 1: Color( 1, 0.788235, 0.505882, 1 ),
 2: Color( 0.360784, 0.486275, 0.811765, 1 ),
@@ -262,7 +264,7 @@ color_element = {
 4: Color( 0.741176, 0.309804, 0.219608, 1 )
 }
 
-[node name="BattlerSelector" parent="charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer2" index="0"]
+[node name="BattlerSelector" parent="charact_selector/TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer2" index="0"]
 color_element = {
 1: Color( 1, 0.788235, 0.505882, 1 ),
 2: Color( 0.360784, 0.486275, 0.811765, 1 ),
@@ -270,7 +272,7 @@ color_element = {
 4: Color( 0.741176, 0.309804, 0.219608, 1 )
 }
 
-[node name="BattlerSelector" parent="charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer3" index="0"]
+[node name="BattlerSelector" parent="charact_selector/TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer3" index="0"]
 color_element = {
 1: Color( 1, 0.788235, 0.505882, 1 ),
 2: Color( 0.360784, 0.486275, 0.811765, 1 ),
@@ -278,7 +280,7 @@ color_element = {
 4: Color( 0.741176, 0.309804, 0.219608, 1 )
 }
 
-[node name="BattlerSelector" parent="charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer4" index="0"]
+[node name="BattlerSelector" parent="charact_selector/TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer4" index="0"]
 color_element = {
 1: Color( 1, 0.788235, 0.505882, 1 ),
 2: Color( 0.360784, 0.486275, 0.811765, 1 ),
@@ -286,7 +288,7 @@ color_element = {
 4: Color( 0.741176, 0.309804, 0.219608, 1 )
 }
 
-[node name="BattlerSelector" parent="charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer5" index="0"]
+[node name="BattlerSelector" parent="charact_selector/TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer5" index="0"]
 color_element = {
 1: Color( 1, 0.788235, 0.505882, 1 ),
 2: Color( 0.360784, 0.486275, 0.811765, 1 ),
@@ -294,7 +296,7 @@ color_element = {
 4: Color( 0.741176, 0.309804, 0.219608, 1 )
 }
 
-[node name="BattlerSelector" parent="charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer6" index="0"]
+[node name="BattlerSelector" parent="charact_selector/TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer6" index="0"]
 color_element = {
 1: Color( 1, 0.788235, 0.505882, 1 ),
 2: Color( 0.360784, 0.486275, 0.811765, 1 ),
@@ -302,7 +304,7 @@ color_element = {
 4: Color( 0.741176, 0.309804, 0.219608, 1 )
 }
 
-[node name="BattlerSelector" parent="charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer7" index="0"]
+[node name="BattlerSelector" parent="charact_selector/TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer7" index="0"]
 color_element = {
 1: Color( 1, 0.788235, 0.505882, 1 ),
 2: Color( 0.360784, 0.486275, 0.811765, 1 ),
@@ -310,11 +312,16 @@ color_element = {
 4: Color( 0.741176, 0.309804, 0.219608, 1 )
 }
 
+[connection signal="resized" from="background" to="background/Particles2D" method="update_resize"]
 [connection signal="pressed" from="UI/BackContainer/Back" to="." method="back"]
 [connection signal="want_change_char" from="UI/ListeButton/ButtonContainer/BattlerSelector" to="." method="need_choose_player"]
 [connection signal="want_change_char" from="UI/ListeButton/ButtonContainer2/BattlerSelector" to="." method="need_choose_player"]
 [connection signal="want_change_char" from="UI/ListeButton/ButtonContainer3/BattlerSelector" to="." method="need_choose_player"]
 [connection signal="player_selected" from="charact_selector" to="." method="player_selected"]
+[connection signal="set_tab_to_main" from="charact_selector/CustomCharact/MarginContainer/HBoxContainer/Tab/Stats/Content/HBoxContainer/Label" to="charact_selector/CustomCharact/MarginContainer/HBoxContainer/Tab" method="set_tab_to_main"]
+[connection signal="set_tab_to_main" from="charact_selector/CustomCharact/MarginContainer/HBoxContainer/Tab/Skills/Content/HBoxContainer/Label" to="charact_selector/CustomCharact/MarginContainer/HBoxContainer/Tab" method="set_tab_to_main"]
+[connection signal="set_tab_to_main" from="charact_selector/CustomCharact/MarginContainer/HBoxContainer/Tab/Story/Content/HBoxContainer/Label" to="charact_selector/CustomCharact/MarginContainer/HBoxContainer/Tab" method="set_tab_to_main"]
+[connection signal="pressed" from="charact_selector/CustomCharact/MarginContainer/Button/TextureButton" to="charact_selector/CustomCharact" method="hide"]
 
 [editable path="charact_selector"]
 [editable path="charact_selector/CustomCharact"]

@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource( 1 )
-quantity = 63
+quantity = 99
 objet = ExtResource( 2 )

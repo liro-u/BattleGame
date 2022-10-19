@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://asset/GUI/chara_member_select/selected.png" type="Texture" id=1]
+
+[node name="MarginContainer" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_right = -5
+custom_constants/margin_top = -5
+custom_constants/margin_left = -5
+custom_constants/margin_bottom = -5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color( 0.541176, 0.8, 1, 1 )
+margin_left = -5.0
+margin_top = -5.0
+margin_right = 1029.0
+margin_bottom = 605.0
+mouse_filter = 2
+texture = ExtResource( 1 )
+expand = true

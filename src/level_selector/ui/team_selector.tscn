@@ -249,10 +249,10 @@ __meta__ = {
 visible = false
 
 [node name="MarginContainer" parent="charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer" index="0"]
-margin_bottom = 312.0
+margin_bottom = 353.0
 
 [node name="HBoxContainer" parent="charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer" index="0"]
-margin_bottom = 302.0
+margin_bottom = 343.0
 
 [node name="BattlerSelector" parent="charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer" index="0"]
 color_element = {
@@ -317,3 +317,4 @@ color_element = {
 [connection signal="player_selected" from="charact_selector" to="." method="player_selected"]
 
 [editable path="charact_selector"]
+[editable path="charact_selector/CustomCharact"]

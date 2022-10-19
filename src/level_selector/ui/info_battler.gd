@@ -25,7 +25,7 @@ func update_info(data):
 	vit.text = str(int(stats_calculation.speed))
 	def.text = str(int(stats_calculation.defense))
 	crit_rate.text = str(int(stats_calculation.crit)) + "%"
-	crit_damage.text = str(stepify(stats_calculation.crit_mult, 0.01))
+	crit_damage.text = str(stepify(stats_calculation.crit_mult, 0.01) * 100) + "%"
 
 	
 	attack_list.update_info(data.stats_reference.attack_list)

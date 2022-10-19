@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=10 format=2]
+[gd_resource type="Resource" load_steps=12 format=2]
 
 [ext_resource path="res://Resource/stats/stats.gd" type="Script" id=1]
 [ext_resource path="res://asset/attack/helper_god.tres" type="Resource" id=2]
@@ -7,19 +7,29 @@
 [ext_resource path="res://asset/chararacters/001_testChar/collision.tres" type="Shape2D" id=5]
 [ext_resource path="res://asset/chararacters/001_testChar/icon.png" type="Texture" id=6]
 [ext_resource path="res://asset/attack/hydro_splash.tres" type="Resource" id=7]
-[ext_resource path="res://asset/chararacters/001_testChar/hight_icon.png" type="Texture" id=8]
-[ext_resource path="res://asset/chararacters/001_testChar/splash_art.png" type="Texture" id=9]
+[ext_resource path="res://asset/chararacters/001_testChar/splash_art.png" type="Texture" id=8]
+[ext_resource path="res://asset/chararacters/001_testChar/hight_icon.png" type="Texture" id=9]
+[ext_resource path="res://Resource/stats/information.gd" type="Script" id=10]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 10 )
+histoire = "origine inconnu"
+genre = "inconnu"
+temperament = "inconnu"
+age = "inconnu"
+lieu_naissance = "inconnu"
 
 [resource]
 script = ExtResource( 1 )
 name_char = "Lynn"
+information_battler = SubResource( 1 )
 element = 3
 type = 1
 rarity = "Common"
 ske = ExtResource( 4 )
 icon = ExtResource( 6 )
-hight_icon = ExtResource( 8 )
-splash_art = ExtResource( 9 )
+hight_icon = ExtResource( 9 )
+splash_art = ExtResource( 8 )
 collision = ExtResource( 5 )
 collision_position = Vector2( 2, -90 )
 starting_xp_needed = 15

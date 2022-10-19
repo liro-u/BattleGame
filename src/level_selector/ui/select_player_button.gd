@@ -47,11 +47,6 @@ func initialize(data):
 	else:
 		xp_progress = clamp(data.xp / xp_needed * 1000, 0, 999)
 	progressBar.set_progress(xp_progress)
-	if data.stats_reference.type == Type.Type.DPS:
-		TypeTexture.texture = load("res://asset/GUI/chara_select/dps.png")
-	elif data.stats_reference.type == Type.Type.SUPPORT:
-		TypeTexture.texture = load("res://asset/GUI/chara_select/support.png")
-	else:
-		TypeTexture.texture = load("res://asset/GUI/chara_select/tank.png")
-	TypeTexture.modulate = color_element[data.stats_reference.element]
+	TypeTexture.texture = ElementTypeInfo.get_type_texture(data.stats_reference.type)
+	TypeTexture.modulate = ElementTypeInfo.element_color[data.stats_reference.element]
 	

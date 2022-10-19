@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=10 format=2]
+[gd_resource type="Resource" load_steps=12 format=2]
 
 [ext_resource path="res://Resource/stats/stats.gd" type="Script" id=1]
 [ext_resource path="res://asset/chararacters/002_testChar/icon.png" type="Texture" id=2]
@@ -9,10 +9,30 @@
 [ext_resource path="res://asset/attack/fire_blast.tres" type="Resource" id=7]
 [ext_resource path="res://asset/attack/helper_god.tres" type="Resource" id=8]
 [ext_resource path="res://asset/chararacters/001_testChar/dragonbones/Lynn_sprites_ske.json" type="GDDragonBonesResource" id=9]
+[ext_resource path="res://Resource/stats/information.gd" type="Script" id=10]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 10 )
+histoire = "Marion peut paraitre très maniéré. Mais tout cela n'est qu'une façade, un mécanisme pour faire face à son passé troublant.
+
+Elle est née et a grandi dans un petit village situé au bord d'un volcan qui n'avait pas donné signe de vie depuis bien longtemps, elle a vécu confortablement jusqu'à l'âge de 15 ans environ, mais à ce moment-là, tout a changé.
+
+Seule survivante de son village suite a l'explosion de ce dernier, elle a été initiée au sang pour survivre en tuant les monstres de feu du mont. Seule, perdue et oubliée, elle devait survivre dans un monde cruel. Mais avec sa force et son empressement, elle a réussi à s'entraîner et à maitriser la magie de feu. Cela a fait d'elle la femme qu'elle est aujourd'hui.
+
+Il y a peu, elle a rejoint notre civilisation. Pour cacher sa différence et son passé, elle a appris a se comporter de la plus noble des façons sans lâcher son entrainement."
+genre = "femme"
+temperament = "Calme
+Sûre d'elle
+A l'écoute
+"
+age = "25"
+lieu_naissance = "Village de la braise
+Zone du volcan des cranes desseché"
 
 [resource]
 script = ExtResource( 1 )
 name_char = "Marion"
+information_battler = SubResource( 1 )
 element = 4
 type = 2
 rarity = "Common"

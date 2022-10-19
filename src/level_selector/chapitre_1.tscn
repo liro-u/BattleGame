@@ -31,8 +31,8 @@ __meta__ = {
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="level_selector"]
-margin_right = 1024.0
-margin_bottom = 600.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_min_size = Vector2( 1024, 600 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -108,6 +108,10 @@ color_element = {
 4: Color( 0.741176, 0.309804, 0.219608, 1 )
 }
 
+[node name="VBoxContainer" parent="team_selector/charact_selector/TextureRect/MarginContainer" index="0"]
+margin_right = 994.0
+margin_bottom = 570.0
+
 [node name="BattlerSelector" parent="team_selector/charact_selector/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/MarginContainer/HBoxContainer/ButtonContainer" index="0"]
 color_element = {
 1: Color( 1, 0.788235, 0.505882, 1 ),
@@ -164,10 +168,20 @@ color_element = {
 4: Color( 0.741176, 0.309804, 0.219608, 1 )
 }
 
+[node name="HBoxContainer" parent="team_selector/charact_selector/CustomCharact/MarginContainer" index="0"]
+margin_right = 1004.0
+margin_bottom = 580.0
+
+[node name="Button" parent="team_selector/charact_selector/CustomCharact/MarginContainer" index="1"]
+margin_right = 1004.0
+margin_bottom = 580.0
+
 [connection signal="pressed" from="level_selector/CenterContainer/VBoxContainer/Button" to="level_selector" method="select_level" binds= [ 1, 1 ]]
 [connection signal="pressed" from="level_selector/CenterContainer/VBoxContainer/Button2" to="level_selector" method="select_level" binds= [ 1, 2 ]]
 [connection signal="pressed" from="level_selector/CenterContainer/VBoxContainer/Button3" to="level_selector" method="select_level" binds= [ 1, 3 ]]
 [connection signal="pressed" from="level_selector/CenterContainer/VBoxContainer/Button4" to="level_selector" method="select_level" binds= [ 1, 4 ]]
+[connection signal="player_selected" from="team_selector/charact_selector" to="team_selector" method="player_selected"]
 
 [editable path="team_selector"]
 [editable path="team_selector/charact_selector"]
+[editable path="team_selector/charact_selector/CustomCharact"]

@@ -6,6 +6,8 @@ onready var info_list = $"TextureRect/MarginContainer/VBoxContainer/HBoxContaine
 onready var display_only = $"TextureRect/Filter/BackgroundFilter/Container/Box2"
 onready var filter_by = $"TextureRect/Filter/BackgroundFilter/Container/Box1"
 onready var filter = $"TextureRect/Filter"
+onready var custom_char_node = $CustomCharact
+
 export var charact_path = "res://player_data/charact/"
 var player = null
 var already_select = null
@@ -52,6 +54,7 @@ func reload_list_of_char():
 			files.append(file)
 	dir.list_dir_end()
 	
+	var already_selected_instance = load("res://src/GUI/select_team/alreadySelectedIndicator.tscn")
 	var new_select_char = load("res://src/GUI/select_team/selectChar.tscn")
 	var list_char_button = []
 	for file in files:
@@ -79,9 +82,17 @@ func reload_list_of_char():
 		
 		list_char_button.append(new_char_button)
 		
-		
-		player_clicked(list_char_button[0])
+		if battler in list_exeption:
+			var new_is_already_selected = already_selected_instance.instance()
+			new_char_button.overTexture.add_child(new_is_already_selected)
 
+	if list_char_button.size() > 0:
+		custom_char_node.update_list(battler_given)
+		player_clicked(list_char_button[0])
+	else:
+		custom_char_node.update_list([player])
+		custom_char_node.update_char(0)
+		
 func player_clicked(player_selected):
 	player = player_selected.data_player
 	info_list.update_info(player)
@@ -92,6 +103,7 @@ func player_clicked(player_selected):
 		button_select.text = "unselect"
 	else:
 		button_select.text = "select"
+	custom_char_node.update_char(battler_given.find(player))
 	
 
 func back():

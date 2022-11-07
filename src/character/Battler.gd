@@ -16,6 +16,7 @@ onready var textureNode : Node2D = $Viewport/texture
 onready var sprite : Sprite = $Sprite
 onready var tween_mix_value : Tween = $TweenMixValue
 onready var critical_indicator : Particles2D = $CriticalHit
+onready var damage_indicator : Label = $"Viewport2/damage_indicator"
 
 var clickable_area : ClickableArea
 var mesh2D : GDDragonBones
@@ -25,6 +26,11 @@ export var time_to_shade : float = 0.5
 
 var list_indicator_char_turn = []
 export var auto_wait_time = Vector2(0.1, 0.4)
+
+export var basic_outline_damage = Color("2d2d2d")
+export var basic_inline_damage = Color("f0f0f0")
+export var crit_outline_damage = Color("ffd561")
+export var crit_inline_damage = Color("98532b")
 #----------SETGET-----------#
 func set_owner_stats(new_value : Resource = ownerStats) -> void:
 	ownerStats = new_value
@@ -84,9 +90,10 @@ func remove_from_world():
 	var nb_battler = turn_queue.get_child_count()
 	for elem in list_indicator_char_turn.duplicate():
 		turn_queue.get_parent().battleGUI.turnline.del_this_case(elem)
-		var next_battler_index = (active_battler_index + max_nb_case - list_indicator_char_turn.size() - 1) % nb_battler
-		var next_battler_to_add = turn_queue.get_child(next_battler_index)
-		turn_queue.get_parent().battleGUI.turnline.add_case(next_battler_to_add)
+		if nb_battler > 0:
+			var next_battler_index = (active_battler_index + max_nb_case - list_indicator_char_turn.size() - 1) % nb_battler
+			var next_battler_to_add = turn_queue.get_child(next_battler_index)
+			turn_queue.get_parent().battleGUI.turnline.add_case(next_battler_to_add)
 	queue_free()
 
 func timed_update_stats():
@@ -156,7 +163,13 @@ func apply_mod(mod):
 	#manage attack
 	if mod.health < 0:
 		if mod.with_crit:
-			critical_indicator.emitting = true
+			damage_indicator.add_color_override("font_outline_modulate", crit_outline_damage)
+			damage_indicator.add_color_override("font_color", crit_inline_damage)
+		else:
+			damage_indicator.add_color_override("font_outline_modulate", basic_outline_damage)
+			damage_indicator.add_color_override("font_color", basic_inline_damage)
+		damage_indicator.text = str(round(mod.health))
+		critical_indicator.emitting = true
 		stats.health_changed(mod.health + (sqrt(pow(mod.health, 2) + pow(stats.defense, 2))) / 5)
 		stats.mana_changed(mod.mana)
 	else:

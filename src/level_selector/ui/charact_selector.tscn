@@ -3,7 +3,7 @@
 [ext_resource path="res://src/level_selector/ui/charact_selector.gd" type="Script" id=1]
 [ext_resource path="res://src/GUI/select_team/chooseCharButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/GUI/select_team/select_charact.gd" type="Script" id=3]
-[ext_resource path="res://asset/font/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://asset/font/dynamicfont/Other/Global/PoliceHeader.tres" type="DynamicFont" id=4]
 [ext_resource path="res://src/class/disableScrollBar.gd" type="Script" id=5]
 [ext_resource path="res://src/character/stats/StatsWithLevel.gd" type="Script" id=6]
 [ext_resource path="res://src/level_selector/ui/info_attack_battler.gd" type="Script" id=7]
@@ -23,7 +23,9 @@
 [ext_resource path="res://src/GUI/select_team/filter/FilterBy.gd" type="Script" id=21]
 [ext_resource path="res://src/GUI/select_team/filter/buttonFilterBy.gd" type="Script" id=22]
 [ext_resource path="res://asset/GUI/chara_member_select/arrow_dir.png" type="Texture" id=23]
-[ext_resource path="res://src/GUI/custom_charact/CustomCharact.tscn" type="PackedScene" id=24]
+[ext_resource path="res://src/GUI/OpenUI.gd" type="Script" id=24]
+[ext_resource path="res://asset/theme/Other/AttackDescription/AttackDescription.tres" type="Theme" id=25]
+[ext_resource path="res://asset/theme/UI/CharactSelector/Filter.tres" type="Theme" id=26]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.129534, 0.891192, 1 )
@@ -32,15 +34,9 @@ colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 20
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 20
-font_data = ExtResource( 4 )
-
-[node name="charact_selector" type="Control"]
+[node name="charact_selector" type="Control" groups=[
+"charact_selector_ui",
+]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -129,20 +125,23 @@ margin_top = 55.0
 margin_right = 332.0
 margin_bottom = 85.0
 
-[node name="TextureButton" type="TextureButton" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/HBoxContainer"]
-self_modulate = Color( 0.0901961, 0.145098, 0.192157, 1 )
+[node name="TextureButton" type="Button" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/HBoxContainer"]
 margin_right = 100.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 100, 30 )
-texture_normal = ExtResource( 12 )
-expand = true
+custom_colors/font_color_hover = Color( 0.470588, 0.537255, 0.686275, 1 )
+text = "Level Up"
+flat = true
+script = ExtResource( 24 )
+ui_group = "custom_char_ui"
 
-[node name="Label" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/HBoxContainer/TextureButton"]
+[node name="Label" type="TextureRect" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/HBoxContainer/TextureButton"]
+self_modulate = Color( 0.0901961, 0.145098, 0.192157, 1 )
+show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "Level Up"
-align = 1
-valign = 1
+texture = ExtResource( 12 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -307,68 +306,69 @@ margin_right = 332.0
 margin_bottom = 400.0
 rect_min_size = Vector2( 76, 100 )
 size_flags_vertical = 3
+theme = ExtResource( 25 )
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ScrollContainer"]
 margin_right = 260.0
-margin_bottom = 177.0
+margin_bottom = 204.0
 custom_constants/separation = 15
 script = ExtResource( 7 )
 
 [node name="attack1" type="VBoxContainer" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ScrollContainer/VBoxContainer"]
 margin_right = 260.0
-margin_bottom = 32.0
+margin_bottom = 38.0
 
 [node name="attackName" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ScrollContainer/VBoxContainer/attack1"]
 margin_right = 260.0
-margin_bottom = 14.0
+margin_bottom = 17.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Basic attack"
 
 [node name="attackDescription" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ScrollContainer/VBoxContainer/attack1"]
-margin_top = 18.0
+margin_top = 21.0
 margin_right = 260.0
-margin_bottom = 32.0
+margin_bottom = 38.0
 rect_min_size = Vector2( 260, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Deal 70% ATK to 1 Enemy"
 autowrap = true
 
 [node name="attack2" type="VBoxContainer" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ScrollContainer/VBoxContainer"]
-margin_top = 47.0
+margin_top = 53.0
 margin_right = 260.0
-margin_bottom = 79.0
+margin_bottom = 91.0
 
 [node name="attackName" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ScrollContainer/VBoxContainer/attack2"]
 margin_right = 260.0
-margin_bottom = 14.0
+margin_bottom = 17.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Skill 2"
 
 [node name="attackDescription" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ScrollContainer/VBoxContainer/attack2"]
-margin_top = 18.0
+margin_top = 21.0
 margin_right = 260.0
-margin_bottom = 32.0
+margin_bottom = 38.0
 rect_min_size = Vector2( 260, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Gain 30% VIT for 2 turns"
 autowrap = true
 
 [node name="attack3" type="VBoxContainer" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ScrollContainer/VBoxContainer"]
-margin_top = 94.0
+margin_top = 106.0
 margin_right = 260.0
-margin_bottom = 177.0
+margin_bottom = 204.0
 
 [node name="attackName" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ScrollContainer/VBoxContainer/attack3"]
 margin_right = 260.0
-margin_bottom = 14.0
+margin_bottom = 17.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Skill 3"
 
 [node name="attackDescription" type="Label" parent="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/ScrollContainer/VBoxContainer/attack3"]
-margin_top = 18.0
+margin_top = 21.0
 margin_right = 260.0
-margin_bottom = 83.0
+margin_bottom = 98.0
 rect_min_size = Vector2( 260, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Deal 200% ATK to 1 Enemy
@@ -560,10 +560,9 @@ margin_bottom = 29.0
 mouse_filter = 2
 
 [node name="back" type="Button" parent="TextureRect/ButtonContainer/VBoxContainer/TopButtonContainer"]
-margin_right = 63.0
+margin_right = 41.0
 margin_bottom = 29.0
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color_hover = Color( 0.172549, 0.266667, 0.34902, 1 )
+custom_colors/font_color_hover = Color( 0.470588, 0.537255, 0.686275, 1 )
 text = "back"
 flat = true
 
@@ -581,14 +580,14 @@ __meta__ = {
 
 [node name="VSeparator" type="VSeparator" parent="TextureRect/ButtonContainer/VBoxContainer/TopButtonContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 67.0
-margin_right = 803.0
+margin_left = 45.0
+margin_right = 838.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
 
 [node name="Control" type="Control" parent="TextureRect/ButtonContainer/VBoxContainer/TopButtonContainer"]
-margin_left = 807.0
-margin_right = 836.0
+margin_left = 842.0
+margin_right = 871.0
 margin_bottom = 29.0
 rect_min_size = Vector2( 29, 29 )
 
@@ -606,12 +605,11 @@ __meta__ = {
 }
 
 [node name="level" type="Button" parent="TextureRect/ButtonContainer/VBoxContainer/TopButtonContainer"]
-margin_left = 840.0
-margin_right = 899.0
+margin_left = 875.0
+margin_right = 918.0
 margin_bottom = 29.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 1, 0.490196, 0, 1 )
+custom_colors/font_color_hover = Color( 0.176471, 0.360784, 0.384314, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 text = "level"
 flat = true
@@ -628,12 +626,11 @@ __meta__ = {
 }
 
 [node name="filter" type="Button" parent="TextureRect/ButtonContainer/VBoxContainer/TopButtonContainer"]
-margin_left = 903.0
+margin_left = 922.0
 margin_right = 964.0
 margin_bottom = 29.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 1, 0.490196, 0, 1 )
+custom_colors/font_color_hover = Color( 0.176471, 0.360784, 0.384314, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 text = "filter"
 flat = true
@@ -653,12 +650,12 @@ __meta__ = {
 modulate = Color( 1, 1, 1, 0 )
 margin_top = 33.0
 margin_right = 964.0
-margin_bottom = 507.0
+margin_bottom = 516.0
 mouse_filter = 2
 size_flags_vertical = 3
 
 [node name="BottomButtonContainer" type="HBoxContainer" parent="TextureRect/ButtonContainer/VBoxContainer"]
-margin_top = 511.0
+margin_top = 520.0
 margin_right = 964.0
 margin_bottom = 540.0
 mouse_filter = 2
@@ -669,10 +666,9 @@ __meta__ = {
 }
 
 [node name="Button2" type="Button" parent="TextureRect/ButtonContainer/VBoxContainer/BottomButtonContainer"]
-margin_left = 891.0
+margin_left = 913.0
 margin_right = 964.0
-margin_bottom = 29.0
-custom_fonts/font = SubResource( 3 )
+margin_bottom = 20.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 text = "select"
@@ -693,6 +689,7 @@ __meta__ = {
 [node name="Filter" type="HBoxContainer" parent="TextureRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 26 )
 custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -700,17 +697,17 @@ __meta__ = {
 
 [node name="BackButton" type="TextureButton" parent="TextureRect/Filter"]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_right = 379.0
+margin_right = 380.0
 margin_bottom = 600.0
-size_flags_horizontal = 3
+rect_min_size = Vector2( 380, 600 )
 
 [node name="BackgroundFilter" type="TextureButton" parent="TextureRect/Filter"]
 self_modulate = Color( 0.258824, 0.243137, 0.243137, 0.870588 )
-margin_left = 379.0
+margin_left = 380.0
 margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.7
+size_flags_stretch_ratio = 1.77
 texture_normal = ExtResource( 18 )
 expand = true
 
@@ -724,31 +721,31 @@ __meta__ = {
 }
 
 [node name="Box1" type="VBoxContainer" parent="TextureRect/Filter/BackgroundFilter/Container"]
-margin_top = 182.0
-margin_right = 645.0
+margin_top = 179.0
+margin_right = 644.0
 margin_bottom = 255.0
 custom_constants/separation = 15
 script = ExtResource( 21 )
 
 [node name="SortByLabel" type="Label" parent="TextureRect/Filter/BackgroundFilter/Container/Box1"]
-margin_right = 645.0
-margin_bottom = 23.0
-custom_fonts/font = SubResource( 4 )
+margin_right = 644.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 4 )
 text = "Sort by"
 align = 1
 valign = 1
 
 [node name="SortByBox" type="HBoxContainer" parent="TextureRect/Filter/BackgroundFilter/Container/Box1"]
-margin_top = 38.0
-margin_right = 645.0
-margin_bottom = 73.0
+margin_top = 41.0
+margin_right = 644.0
+margin_bottom = 76.0
 custom_constants/separation = 15
 alignment = 1
 
 [node name="Level" type="TextureButton" parent="TextureRect/Filter/BackgroundFilter/Container/Box1/SortByBox"]
 self_modulate = Color( 0.262745, 0.337255, 0.4, 1 )
-margin_left = 100.0
-margin_right = 200.0
+margin_left = 99.0
+margin_right = 199.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 100, 35 )
 texture_normal = ExtResource( 17 )
@@ -770,8 +767,8 @@ __meta__ = {
 
 [node name="Rank" type="TextureButton" parent="TextureRect/Filter/BackgroundFilter/Container/Box1/SortByBox"]
 self_modulate = Color( 0.262745, 0.337255, 0.4, 1 )
-margin_left = 215.0
-margin_right = 315.0
+margin_left = 214.0
+margin_right = 314.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 100, 35 )
 texture_normal = ExtResource( 17 )
@@ -791,8 +788,8 @@ __meta__ = {
 
 [node name="Type" type="TextureButton" parent="TextureRect/Filter/BackgroundFilter/Container/Box1/SortByBox"]
 self_modulate = Color( 0.262745, 0.337255, 0.4, 1 )
-margin_left = 330.0
-margin_right = 430.0
+margin_left = 329.0
+margin_right = 429.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 100, 35 )
 texture_normal = ExtResource( 17 )
@@ -812,8 +809,8 @@ __meta__ = {
 
 [node name="Element" type="TextureButton" parent="TextureRect/Filter/BackgroundFilter/Container/Box1/SortByBox"]
 self_modulate = Color( 0.262745, 0.337255, 0.4, 1 )
-margin_left = 445.0
-margin_right = 545.0
+margin_left = 444.0
+margin_right = 544.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 100, 35 )
 texture_normal = ExtResource( 17 )
@@ -833,34 +830,34 @@ __meta__ = {
 
 [node name="Box2" type="VBoxContainer" parent="TextureRect/Filter/BackgroundFilter/Container"]
 margin_top = 305.0
-margin_right = 645.0
-margin_bottom = 417.0
+margin_right = 644.0
+margin_bottom = 420.0
 custom_constants/separation = 15
 script = ExtResource( 15 )
 
 [node name="DisplayOnlyLabel" type="Label" parent="TextureRect/Filter/BackgroundFilter/Container/Box2"]
-margin_right = 645.0
-margin_bottom = 23.0
-custom_fonts/font = SubResource( 4 )
+margin_right = 644.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 4 )
 text = "display only"
 align = 1
 valign = 1
 
 [node name="DisplayOnlyBox" type="VBoxContainer" parent="TextureRect/Filter/BackgroundFilter/Container/Box2"]
-margin_top = 38.0
-margin_right = 645.0
-margin_bottom = 112.0
+margin_top = 41.0
+margin_right = 644.0
+margin_bottom = 115.0
 
 [node name="Element" type="HBoxContainer" parent="TextureRect/Filter/BackgroundFilter/Container/Box2/DisplayOnlyBox"]
-margin_right = 645.0
+margin_right = 644.0
 margin_bottom = 35.0
 custom_constants/separation = 15
 alignment = 1
 
 [node name="Air" type="TextureButton" parent="TextureRect/Filter/BackgroundFilter/Container/Box2/DisplayOnlyBox/Element"]
 self_modulate = Color( 0.262745, 0.337255, 0.4, 1 )
-margin_left = 100.0
-margin_right = 200.0
+margin_left = 99.0
+margin_right = 199.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 100, 35 )
 texture_normal = ExtResource( 16 )
@@ -880,8 +877,8 @@ __meta__ = {
 
 [node name="Terre" type="TextureButton" parent="TextureRect/Filter/BackgroundFilter/Container/Box2/DisplayOnlyBox/Element"]
 self_modulate = Color( 0.262745, 0.337255, 0.4, 1 )
-margin_left = 215.0
-margin_right = 315.0
+margin_left = 214.0
+margin_right = 314.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 100, 35 )
 texture_normal = ExtResource( 16 )
@@ -901,8 +898,8 @@ __meta__ = {
 
 [node name="Feu" type="TextureButton" parent="TextureRect/Filter/BackgroundFilter/Container/Box2/DisplayOnlyBox/Element"]
 self_modulate = Color( 0.262745, 0.337255, 0.4, 1 )
-margin_left = 330.0
-margin_right = 430.0
+margin_left = 329.0
+margin_right = 429.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 100, 35 )
 texture_normal = ExtResource( 16 )
@@ -922,8 +919,8 @@ __meta__ = {
 
 [node name="Eau" type="TextureButton" parent="TextureRect/Filter/BackgroundFilter/Container/Box2/DisplayOnlyBox/Element"]
 self_modulate = Color( 0.262745, 0.337255, 0.4, 1 )
-margin_left = 445.0
-margin_right = 545.0
+margin_left = 444.0
+margin_right = 544.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 100, 35 )
 texture_normal = ExtResource( 16 )
@@ -943,7 +940,7 @@ __meta__ = {
 
 [node name="Type" type="HBoxContainer" parent="TextureRect/Filter/BackgroundFilter/Container/Box2/DisplayOnlyBox"]
 margin_top = 39.0
-margin_right = 645.0
+margin_right = 644.0
 margin_bottom = 74.0
 custom_constants/separation = 15
 alignment = 1
@@ -1011,18 +1008,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CustomCharact" parent="." instance=ExtResource( 24 )]
-visible = false
-
-[node name="VBoxContainer" parent="CustomCharact/MarginContainer/HBoxContainer/Tab/Story/Content/MarginContainer/ScrollContainer" index="0"]
-margin_right = 280.0
-
-[connection signal="pressed" from="TextureRect/HBoxContainer/SideBackground/MarginContainer/Stats/HBoxContainer/TextureButton" to="CustomCharact" method="show"]
 [connection signal="pressed" from="TextureRect/ButtonContainer/VBoxContainer/TopButtonContainer/back" to="." method="back"]
 [connection signal="pressed" from="TextureRect/ButtonContainer/VBoxContainer/TopButtonContainer/filter" to="." method="change_filter_visibility" binds= [ true ]]
 [connection signal="pressed" from="TextureRect/ButtonContainer/VBoxContainer/BottomButtonContainer/Button2" to="." method="togle_select"]
 [connection signal="pressed" from="TextureRect/Filter/BackButton" to="." method="change_filter_visibility" binds= [ false ]]
 [connection signal="pressed" from="TextureRect/Filter/BackgroundFilter" to="." method="change_filter_visibility" binds= [ false ]]
-[connection signal="pressed" from="CustomCharact/MarginContainer/Button/TextureButton" to="CustomCharact" method="hide"]
-
-[editable path="CustomCharact"]

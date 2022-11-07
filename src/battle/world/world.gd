@@ -1,5 +1,5 @@
 tool
-extends Control
+extends Node2D
 class_name BattleWorld
 
 #------VARIABLES---------#
@@ -14,6 +14,7 @@ export var task_list_data = []
 export var loot_table = []
 #loaded node path
 onready var battleGUI = $battleGUI
+onready var background = $Background
 var turn_queue : TurnQueue
 var spawn_position : SpawnPosition
 var back_ui_cancel : Area2D
@@ -62,6 +63,7 @@ func add_battler(list_battler: Array, team : int = 0) -> void:
 
 #ready
 func _ready() -> void:
+	get_tree().get_root().connect("size_changed", self, "update_size")
 	if task_list:
 		task_list.queue_free()
 	task_list = Node.new()
@@ -92,23 +94,36 @@ func _ready() -> void:
 		"level":
 			main_menu_switcher.next_scene_data = ["level_selector", data_for_level[1]]
 			var list_dup = []
+			var has_given_battler = false
 			for battler_data in list_player_battler:
 				if !battler_data.is_given:
 					list_dup.append(battler_data)
-			if list_dup.size() > 0:
+				else:
+					has_given_battler = true
+			if list_dup.size() > 0 or has_given_battler:
+				get_tree().call_group_flags(2, "button_next_level", "show")
 				next_level_switcher.next_scene_data = ["level", data_for_level[1], data_for_level[2] + 1, list_dup]
 			else:
-				next_level_switcher.next_scene_data = ["level_selector", data_for_level[1]]
+				get_tree().call_group_flags(2, "button_next_level", "hide")
 			restart_level_switcher.next_scene_data = data_for_level
 	get_tree().call_group_flags(2, "button_main_menu", "add_child", main_menu_switcher)
 	get_tree().call_group_flags(2, "button_next_level", "add_child", next_level_switcher)
 	get_tree().call_group_flags(2, "button_restart", "add_child", restart_level_switcher)
 	initialize()
+	update_size()
 
+func update_size():
+	var viewport_size = get_viewport_rect().size
+	var decalage = (viewport_size.x - 1024) / 2
+	position.x = decalage
+	battleGUI.update_size(viewport_size, decalage)
+	background.update_size(viewport_size)
+	
+	
 #init
 func initialize() -> void:
 	get_tree().get_nodes_in_group("level_name_label")[0].text = level_name
-	add_child(world.aspect.instance())
+	background.initialize(world.aspect)
 	spawn_position.team_pos = world.team_pos
 	spawn_position.enemy_pos = world.enemy_pos
 	

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/GUI/end_screen/loot_node.gd" type="Script" id=1]
-[ext_resource path="res://asset/future_asset/stone.png" type="Texture" id=2]
+[ext_resource path="res://asset/monnaie/stone.png" type="Texture" id=2]
 [ext_resource path="res://asset/GUI/endscreen/start_light.png" type="Texture" id=3]
 [ext_resource path="res://src/class/CurveTween.gd" type="Script" id=4]
 

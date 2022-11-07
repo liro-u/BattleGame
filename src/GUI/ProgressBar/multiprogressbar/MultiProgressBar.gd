@@ -9,7 +9,7 @@ export(Array, Color) var list_color = [Color.mediumspringgreen, Color.lightseagr
 export(bool) var show_nb_bar = true setget set_show_nb_bar
 export(float) var separation = 10 setget set_separation
 #theme
-export(DynamicFont) var custom_font_nb_bar_label = load("res://asset/font/dynamicfont/basic_font.tres").duplicate() setget set_custom_font_nb_bar_label
+export(DynamicFont) var custom_font_nb_bar_label setget set_custom_font_nb_bar_label
 #bar var
 var list_bar : Array = [self]
 var active_bar = self

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://asset/GUI/custom_charact/tab_skills.png" type="Texture" id=1]
 [ext_resource path="res://asset/GUI/custom_charact/icon_accessory.png" type="Texture" id=2]
@@ -17,32 +17,22 @@
 [ext_resource path="res://asset/GUI/chara_select/character_star.png" type="Texture" id=15]
 [ext_resource path="res://asset/GUI/chara_select/dps.png" type="Texture" id=16]
 [ext_resource path="res://src/GUI/ProgressBar/levelProgressBar/LevelProgressBar.tscn" type="PackedScene" id=17]
-[ext_resource path="res://asset/font/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=18]
+[ext_resource path="res://asset/GUI/chara_member_select/button_return.png" type="Texture" id=18]
 [ext_resource path="res://src/GUI/custom_charact/TabManager.gd" type="Script" id=19]
 [ext_resource path="res://src/GUI/custom_charact/TabSwitcherButton.gd" type="Script" id=20]
 [ext_resource path="res://src/GUI/custom_charact/CustomCharactManager.gd" type="Script" id=21]
+[ext_resource path="res://asset/GUI/chara_member_select/arrow_dir.png" type="Texture" id=22]
 [ext_resource path="res://src/GUI/custom_charact/Stats.gd" type="Script" id=23]
 [ext_resource path="res://src/GUI/custom_charact/ThirdDataStats.gd" type="Script" id=24]
 [ext_resource path="res://src/character/stats/StatsWithLevel.gd" type="Script" id=25]
 [ext_resource path="res://src/GUI/custom_charact/Skills.gd" type="Script" id=26]
 [ext_resource path="res://src/GUI/custom_charact/Story.gd" type="Script" id=27]
+[ext_resource path="res://asset/font/dynamicfont/Other/Global/PoliceHeader.tres" type="DynamicFont" id=28]
+[ext_resource path="res://asset/theme/Other/AttackDescription/InfoCharact.tres" type="Theme" id=29]
 
-[sub_resource type="DynamicFont" id=1]
-size = 30
-font_data = ExtResource( 18 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 20
-font_data = ExtResource( 18 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 20
-font_data = ExtResource( 18 )
-
-[sub_resource type="DynamicFont" id=4]
-font_data = ExtResource( 18 )
-
-[node name="CustomCharact" type="Control"]
+[node name="CustomCharact" type="Control" groups=[
+"custom_char_ui",
+]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 21 )
@@ -99,6 +89,7 @@ anchor_bottom = 1.0
 rect_rotation = 180.0
 rect_pivot_offset = Vector2( 30, 30 )
 texture_normal = ExtResource( 5 )
+texture_hover = ExtResource( 22 )
 stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
@@ -434,14 +425,14 @@ margin_bottom = 70.0
 
 [node name="NameChar" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/FirstData/VBoxContainer"]
 margin_right = 166.0
-margin_bottom = 35.0
-custom_fonts/font = SubResource( 1 )
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 28 )
 text = "Character"
 
 [node name="StarsList" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/FirstData/VBoxContainer"]
-margin_top = 39.0
+margin_top = 30.0
 margin_right = 166.0
-margin_bottom = 69.0
+margin_bottom = 60.0
 
 [node name="Star" type="TextureRect" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/FirstData/VBoxContainer/StarsList"]
 margin_right = 30.0
@@ -500,20 +491,20 @@ size_flags_horizontal = 3
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData/VBoxContainer"]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 52.0
-margin_bottom = 73.0
+margin_bottom = 82.0
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData/VBoxContainer"]
-margin_top = 77.0
+margin_top = 86.0
 margin_right = 52.0
 margin_bottom = 100.0
-custom_fonts/font = SubResource( 2 )
 text = "/100"
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData"]
 margin_left = 160.0
 margin_right = 280.0
 margin_bottom = 100.0
+mouse_filter = 2
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
@@ -524,51 +515,52 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = 110.0
 margin_bottom = 90.0
+mouse_filter = 2
 alignment = 1
 
-[node name="TextureButton2" type="TextureButton" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData/MarginContainer/VBoxContainer2"]
-self_modulate = Color( 0.470588, 0.537255, 0.686275, 1 )
+[node name="TextureButton2" type="Button" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData/MarginContainer/VBoxContainer2"]
 margin_right = 100.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 100, 30 )
-texture_normal = ExtResource( 14 )
+custom_colors/font_color_hover = Color( 0.172549, 0.266667, 0.34902, 1 )
+text = "Upgrade"
+flat = true
+
+[node name="Label" type="TextureRect" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData/MarginContainer/VBoxContainer2/TextureButton2"]
+self_modulate = Color( 0.470588, 0.537255, 0.686275, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 14 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData/MarginContainer/VBoxContainer2/TextureButton2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-text = "Upgrade"
-align = 1
-valign = 1
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData/MarginContainer/VBoxContainer2"]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_top = 34.0
 margin_right = 100.0
 margin_bottom = 46.0
+mouse_filter = 2
 size_flags_vertical = 3
 
-[node name="TextureButton3" type="TextureButton" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData/MarginContainer/VBoxContainer2"]
-self_modulate = Color( 0.470588, 0.537255, 0.686275, 1 )
+[node name="TextureButton3" type="Button" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData/MarginContainer/VBoxContainer2"]
 margin_top = 50.0
 margin_right = 100.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 100, 30 )
-texture_normal = ExtResource( 14 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_colors/font_color_hover = Color( 0.172549, 0.266667, 0.34902, 1 )
+text = "Awaken"
+flat = true
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData/MarginContainer/VBoxContainer2/TextureButton3"]
+[node name="Label" type="TextureRect" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/SecondData/MarginContainer/VBoxContainer2/TextureButton3"]
+self_modulate = Color( 0.470588, 0.537255, 0.686275, 1 )
+show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "Awaken"
-align = 1
-valign = 1
+texture = ExtResource( 14 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -577,6 +569,7 @@ __meta__ = {
 margin_top = 178.0
 margin_right = 280.0
 margin_bottom = 319.0
+mouse_filter = 2
 custom_constants/margin_right = 30
 custom_constants/margin_left = 30
 
@@ -587,11 +580,13 @@ script = ExtResource( 25 )
 margin_left = 30.0
 margin_right = 250.0
 margin_bottom = 141.0
+mouse_filter = 2
 script = ExtResource( 24 )
 
 [node name="HP" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/MarginContainer/ThirdData"]
 margin_right = 220.0
 margin_bottom = 14.0
+mouse_filter = 2
 
 [node name="Text" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/MarginContainer/ThirdData/HP"]
 margin_right = 184.0
@@ -609,6 +604,7 @@ text = "XXXX"
 margin_top = 18.0
 margin_right = 220.0
 margin_bottom = 32.0
+mouse_filter = 2
 
 [node name="Text" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/MarginContainer/ThirdData/MANA"]
 margin_right = 184.0
@@ -626,6 +622,7 @@ text = "XXXX"
 margin_top = 36.0
 margin_right = 220.0
 margin_bottom = 50.0
+mouse_filter = 2
 
 [node name="Text" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/MarginContainer/ThirdData/ATK"]
 margin_right = 184.0
@@ -643,6 +640,7 @@ text = "XXXX"
 margin_top = 54.0
 margin_right = 220.0
 margin_bottom = 68.0
+mouse_filter = 2
 
 [node name="Text" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/MarginContainer/ThirdData/DEF"]
 margin_right = 184.0
@@ -660,6 +658,7 @@ text = "XXXX"
 margin_top = 72.0
 margin_right = 220.0
 margin_bottom = 86.0
+mouse_filter = 2
 
 [node name="Text" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/MarginContainer/ThirdData/VIT"]
 margin_right = 184.0
@@ -678,12 +677,14 @@ self_modulate = Color( 1, 1, 1, 0 )
 margin_top = 90.0
 margin_right = 220.0
 margin_bottom = 105.0
+mouse_filter = 2
 custom_constants/separation = 15
 
 [node name="CRIT_RATE" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/MarginContainer/ThirdData"]
 margin_top = 109.0
 margin_right = 220.0
 margin_bottom = 123.0
+mouse_filter = 2
 
 [node name="Text" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/MarginContainer/ThirdData/CRIT_RATE"]
 margin_right = 180.0
@@ -701,6 +702,7 @@ text = "XXX%"
 margin_top = 127.0
 margin_right = 220.0
 margin_bottom = 141.0
+mouse_filter = 2
 
 [node name="Text" type="Label" parent="MarginContainer/HBoxContainer/Tab/Stats/Content/MarginContainer2/ScrollContainer/StatsData/MarginContainer/ThirdData/CRIT_DAMAGE"]
 margin_right = 180.0
@@ -798,60 +800,61 @@ margin_right = 240.0
 margin_bottom = 365.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource( 29 )
 custom_constants/separation = 25
 alignment = 1
 
 [node name="ATK1" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/MarginContainer2/ScrollContainer/ATKLIST"]
-margin_top = 96.0
+margin_top = 87.0
 margin_right = 240.0
-margin_bottom = 137.0
+margin_bottom = 134.0
 
 [node name="ATKName" type="Label" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/MarginContainer2/ScrollContainer/ATKLIST/ATK1"]
 margin_right = 240.0
-margin_bottom = 23.0
-custom_fonts/font = SubResource( 3 )
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 28 )
 text = "Basic Attack"
 
 [node name="ATKDescription" type="Label" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/MarginContainer2/ScrollContainer/ATKLIST/ATK1"]
-margin_top = 27.0
+margin_top = 30.0
 margin_right = 240.0
-margin_bottom = 41.0
+margin_bottom = 47.0
 text = "Deal 70% Damage to 1 enemy"
 autowrap = true
 
 [node name="ATK2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/MarginContainer2/ScrollContainer/ATKLIST"]
-margin_top = 162.0
+margin_top = 159.0
 margin_right = 240.0
-margin_bottom = 203.0
+margin_bottom = 206.0
 
 [node name="ATKName" type="Label" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/MarginContainer2/ScrollContainer/ATKLIST/ATK2"]
 margin_right = 240.0
-margin_bottom = 23.0
-custom_fonts/font = SubResource( 3 )
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 28 )
 text = "Basic Attack"
 
 [node name="ATKDescription" type="Label" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/MarginContainer2/ScrollContainer/ATKLIST/ATK2"]
-margin_top = 27.0
+margin_top = 30.0
 margin_right = 240.0
-margin_bottom = 41.0
+margin_bottom = 47.0
 text = "Deal 70% Damage to 1 enemy"
 autowrap = true
 
 [node name="ATK3" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/MarginContainer2/ScrollContainer/ATKLIST"]
-margin_top = 228.0
+margin_top = 231.0
 margin_right = 240.0
-margin_bottom = 269.0
+margin_bottom = 278.0
 
 [node name="ATKName" type="Label" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/MarginContainer2/ScrollContainer/ATKLIST/ATK3"]
 margin_right = 240.0
-margin_bottom = 23.0
-custom_fonts/font = SubResource( 3 )
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 28 )
 text = "Basic Attack"
 
 [node name="ATKDescription" type="Label" parent="MarginContainer/HBoxContainer/Tab/Skills/Content/MarginContainer2/ScrollContainer/ATKLIST/ATK3"]
-margin_top = 27.0
+margin_top = 30.0
 margin_right = 240.0
-margin_bottom = 41.0
+margin_bottom = 47.0
 text = "Deal 70% Damage to 1 enemy"
 autowrap = true
 
@@ -936,97 +939,109 @@ margin_bottom = 415.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Story/Content/MarginContainer/ScrollContainer"]
 margin_right = 268.0
-margin_bottom = 475.0
+margin_bottom = 570.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource( 29 )
 custom_constants/separation = 15
 
 [node name="Genre" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Story/Content/MarginContainer/ScrollContainer/VBoxContainer"]
 margin_right = 268.0
-margin_bottom = 38.0
+margin_bottom = 48.0
+mouse_filter = 2
 
 [node name="Name" type="Label" parent="MarginContainer/HBoxContainer/Tab/Story/Content/MarginContainer/ScrollContainer/VBoxContainer/Genre"]
 margin_right = 268.0
-margin_bottom = 19.0
-custom_fonts/font = SubResource( 4 )
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 28 )
 text = "genre :"
 
 [node name="Value" type="RichTextLabel" parent="MarginContainer/HBoxContainer/Tab/Story/Content/MarginContainer/ScrollContainer/VBoxContainer/Genre"]
-margin_top = 23.0
+margin_top = 30.0
 margin_right = 268.0
-margin_bottom = 38.0
+margin_bottom = 48.0
+mouse_filter = 2
 text = "inconnu"
 fit_content_height = true
 
 [node name="Age" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Story/Content/MarginContainer/ScrollContainer/VBoxContainer"]
-margin_top = 53.0
+margin_top = 63.0
 margin_right = 268.0
-margin_bottom = 91.0
+margin_bottom = 111.0
+mouse_filter = 2
 
 [node name="Name" type="Label" parent="MarginContainer/HBoxContainer/Tab/Story/Content/MarginContainer/ScrollContainer/VBoxContainer/Age"]
 margin_right = 268.0
-margin_bottom = 19.0
-custom_fonts/font = SubResource( 4 )
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 28 )
 text = "age :"
 
 [node name="Value" type="RichTextLabel" parent="MarginContainer/HBoxContainer/Tab/Story/Content/MarginContainer/ScrollContainer/VBoxContainer/Age"]
-margin_top = 23.0
+margin_top = 30.0
 margin_right = 268.0
-margin_bottom = 38.0
+margin_bottom = 48.0
+mouse_filter = 2
 text = "inconnu"
 fit_content_height = true
 
 [node name="LieuDeNaissance" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Story/Content/MarginContainer/ScrollContainer/VBoxContainer"]
-margin_top = 106.0
+margin_top = 126.0
 margin_right = 268.0
-margin_bottom = 144.0
+margin_bottom = 174.0
+mouse_filter = 2
 
 [node name="Name" type="Label" parent="MarginContainer/HBoxContainer/Tab/Story/Content/MarginContainer/ScrollContainer/VBoxContainer/LieuDeNaissance"]
 margin_right = 268.0
-margin_bottom = 19.0
-custom_fonts/font = SubResource( 4 )
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 28 )
 text = "lieu de naissance :"
 
 [node name="Value" type="RichTextLabel" parent="MarginContainer/HBoxContainer/Tab/Story/Content/MarginContainer/ScrollContainer/VBoxContainer/LieuDeNaissance"]
-margin_top = 23.0
+margin_top = 30.0
 margin_right = 268.0
-margin_bottom = 38.0
+margin_bottom = 48.0
+mouse_filter = 2
 text = "inconnu"
 fit_content_height = true
 
 [node name="Temperament" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Story/Content/MarginContainer/ScrollContainer/VBoxContainer"]
-margin_top = 159.0
+margin_top = 189.0
 margin_right = 268.0
-margin_bottom = 197.0
+margin_bottom = 237.0
+mouse_filter = 2
 
 [node name="Name" type="Label" parent="MarginContainer/HBoxContainer/Tab/Story/Content/MarginContainer/ScrollContainer/VBoxContainer/Temperament"]
 margin_right = 268.0
-margin_bottom = 19.0
-custom_fonts/font = SubResource( 4 )
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 28 )
 text = "temperament :"
 
 [node name="Value" type="RichTextLabel" parent="MarginContainer/HBoxContainer/Tab/Story/Content/MarginContainer/ScrollContainer/VBoxContainer/Temperament"]
-margin_top = 23.0
+margin_top = 30.0
 margin_right = 268.0
-margin_bottom = 38.0
+margin_bottom = 48.0
+mouse_filter = 2
 text = "inconnu"
 fit_content_height = true
 
 [node name="Origine" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Story/Content/MarginContainer/ScrollContainer/VBoxContainer"]
-margin_top = 212.0
+margin_top = 252.0
 margin_right = 268.0
-margin_bottom = 475.0
+margin_bottom = 570.0
+mouse_filter = 2
 
 [node name="Name" type="Label" parent="MarginContainer/HBoxContainer/Tab/Story/Content/MarginContainer/ScrollContainer/VBoxContainer/Origine"]
 margin_right = 268.0
-margin_bottom = 19.0
-custom_fonts/font = SubResource( 4 )
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 28 )
 text = "origine :"
 
 [node name="Value" type="RichTextLabel" parent="MarginContainer/HBoxContainer/Tab/Story/Content/MarginContainer/ScrollContainer/VBoxContainer/Origine"]
-margin_top = 23.0
+margin_top = 30.0
 margin_right = 268.0
-margin_bottom = 263.0
+margin_bottom = 318.0
+mouse_filter = 2
 text = "ceci est un test
 merci de ne pas juger ce con,tenu
 a bientot
@@ -1053,6 +1068,7 @@ margin_right = 60.0
 margin_bottom = 310.0
 rect_pivot_offset = Vector2( 30, 30 )
 texture_normal = ExtResource( 5 )
+texture_hover = ExtResource( 22 )
 stretch_mode = 5
 
 [node name="Button" type="Control" parent="MarginContainer"]
@@ -1062,25 +1078,30 @@ margin_right = 1004.0
 margin_bottom = 580.0
 mouse_filter = 2
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/Button"]
-self_modulate = Color( 0.286275, 0.278431, 0.396078, 1 )
+[node name="TextureButton" type="Button" parent="MarginContainer/Button"]
 margin_right = 150.0
 margin_bottom = 50.0
-texture_normal = ExtResource( 14 )
-expand = true
+custom_colors/font_color_hover = Color( 0.470588, 0.537255, 0.686275, 1 )
+text = "Retour"
+flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="MarginContainer/Button/TextureButton"]
+[node name="Label" type="TextureRect" parent="MarginContainer/Button/TextureButton"]
+self_modulate = Color( 0.286275, 0.278431, 0.396078, 1 )
+show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "Retour"
-align = 1
-valign = 1
+texture = ExtResource( 18 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/LeftArrow/Control/Arrow" to="." method="get_next_or_prev" binds= [ -1 ]]
 [connection signal="set_tab_to_main" from="MarginContainer/HBoxContainer/Tab/Stats/Content/HBoxContainer/Label" to="MarginContainer/HBoxContainer/Tab" method="set_tab_to_main"]
 [connection signal="set_tab_to_main" from="MarginContainer/HBoxContainer/Tab/Skills/Content/HBoxContainer/Label" to="MarginContainer/HBoxContainer/Tab" method="set_tab_to_main"]
 [connection signal="set_tab_to_main" from="MarginContainer/HBoxContainer/Tab/Story/Content/HBoxContainer/Label" to="MarginContainer/HBoxContainer/Tab" method="set_tab_to_main"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/RightArrow/Arrow" to="." method="get_next_or_prev"]
+[connection signal="pressed" from="MarginContainer/Button/TextureButton" to="." method="back"]

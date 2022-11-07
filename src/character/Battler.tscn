@@ -1,10 +1,10 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://src/character/Battler.gd" type="Script" id=1]
 [ext_resource path="res://player_data/charact/test20.tres" type="Resource" id=2]
 [ext_resource path="res://src/GUI/Character/CharacterGUI.gd" type="Script" id=3]
 [ext_resource path="res://src/GUI/ProgressBar/TweenProgressBar/TweenProgressBar.gd" type="Script" id=4]
-[ext_resource path="res://asset/theme/GUI.tres" type="Theme" id=5]
+[ext_resource path="res://asset/font/dynamicfont/Other/Damage/Damage.tres" type="DynamicFont" id=5]
 [ext_resource path="res://src/character/attack/attack_list.gd" type="Script" id=6]
 [ext_resource path="res://src/character/modifier/modifier_list.gd" type="Script" id=7]
 [ext_resource path="res://src/GUI/ProgressBar/multiprogressbar/MultiProgressBar.gd" type="Script" id=8]
@@ -12,28 +12,21 @@
 [ext_resource path="res://asset/GUI/lifebar/over.png" type="Texture" id=10]
 [ext_resource path="res://asset/GUI/lifebar/under.png" type="Texture" id=11]
 [ext_resource path="res://asset/curve/ease_in.tres" type="Curve" id=12]
-[ext_resource path="res://asset/font/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://asset/theme/Other/Combat/BarCombat.tres" type="Theme" id=13]
+[ext_resource path="res://asset/theme/Other/Combat/ChararcterLibele.tres" type="Theme" id=14]
 [ext_resource path="res://src/class/CurveTween.gd" type="Script" id=15]
 
-[sub_resource type="DynamicFont" id=1]
-size = 55
-outline_color = Color( 0, 0, 0, 1 )
-extra_spacing_bottom = 4
-font_data = ExtResource( 14 )
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://asset/font/font/Comfortaa-Bold.ttf"
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_top = 1
-font_data = ExtResource( 14 )
+font_data = SubResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 55
-extra_spacing_bottom = 4
-font_data = ExtResource( 14 )
-
-[sub_resource type="Shader" id=4]
+[sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
 render_mode unshaded;
 
@@ -51,45 +44,39 @@ void fragment() {
 }
 "
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0.381679, 0.984733 )
 colors = PoolColorArray( 0, 0, 0, 1, 0.25293, 0.230206, 0.230206, 1 )
 
-[sub_resource type="GradientTexture" id=6]
-gradient = SubResource( 5 )
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
 
-[sub_resource type="ShaderMaterial" id=7]
-shader = SubResource( 4 )
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 3 )
 shader_param/mix_amount = 0.0
-shader_param/gradient = SubResource( 6 )
+shader_param/gradient = SubResource( 5 )
 
-[sub_resource type="ViewportTexture" id=8]
+[sub_resource type="ViewportTexture" id=7]
+flags = 4
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="Curve" id=9]
+[sub_resource type="Curve" id=8]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="DynamicFont" id=10]
-size = 20
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-extra_spacing_top = 1
-font_data = ExtResource( 14 )
-
-[sub_resource type="Gradient" id=11]
+[sub_resource type="Gradient" id=9]
 offsets = PoolRealArray( 0, 0.114504, 0.877863, 1 )
 colors = PoolColorArray( 0.133333, 0.133333, 0.133333, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=12]
-gradient = SubResource( 11 )
+[sub_resource type="GradientTexture" id=10]
+gradient = SubResource( 9 )
 
-[sub_resource type="Curve" id=13]
+[sub_resource type="Curve" id=11]
 _data = [ Vector2( 0, 0.46319 ), 0.0, 3.54543, 0, 0, Vector2( 0.20777, 0.990798 ), 0.0, 0.0, 0, 0, Vector2( 0.782095, 0.990798 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.43865 ), -3.67226, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=14]
-curve = SubResource( 13 )
+[sub_resource type="CurveTexture" id=12]
+curve = SubResource( 11 )
 
-[sub_resource type="ParticlesMaterial" id=15]
+[sub_resource type="ParticlesMaterial" id=13]
 emission_shape = 2
 emission_box_extents = Vector3( 30, 70, 1 )
 flag_disable_z = true
@@ -98,11 +85,13 @@ gravity = Vector3( 0, 500, 0 )
 initial_velocity = 200.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_random = 0.8
-scale_curve = SubResource( 14 )
-color_ramp = SubResource( 12 )
+scale = 0.2
+scale_random = 0.1
+scale_curve = SubResource( 12 )
+color_ramp = SubResource( 10 )
 
-[sub_resource type="ViewportTexture" id=16]
+[sub_resource type="ViewportTexture" id=14]
+flags = 4
 viewport_path = NodePath("Viewport2")
 
 [node name="Battler" type="Node2D" groups=[
@@ -146,7 +135,6 @@ margin_bottom = -2480.0
 rect_min_size = Vector2( 420, 120 )
 rect_scale = Vector2( 3, 3 )
 mouse_filter = 2
-theme = ExtResource( 5 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -159,6 +147,7 @@ margin_bottom = 99.0
 mouse_filter = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme = ExtResource( 13 )
 custom_constants/separation = 5
 __meta__ = {
 "_edit_use_anchors_": false
@@ -166,29 +155,29 @@ __meta__ = {
 
 [node name="Text" type="HBoxContainer" parent="Viewport/texture/CharacterGUI/Stats"]
 margin_right = 430.0
-margin_bottom = 47.0
+margin_bottom = 41.0
 mouse_filter = 2
 size_flags_horizontal = 3
+theme = ExtResource( 14 )
 custom_constants/separation = 15
 
 [node name="Name" type="Label" parent="Viewport/texture/CharacterGUI/Stats/Text"]
-margin_right = 102.0
-margin_bottom = 47.0
+margin_right = 87.0
+margin_bottom = 41.0
 mouse_filter = 1
 text = "Lynn"
 
 [node name="Level" type="Label" parent="Viewport/texture/CharacterGUI/Stats/Text"]
-margin_left = 117.0
-margin_right = 231.0
-margin_bottom = 47.0
-text = "Niv20"
+margin_left = 102.0
+margin_right = 201.0
+margin_bottom = 41.0
+text = "Niv24"
 
 [node name="health" type="Control" parent="Viewport/texture/CharacterGUI/Stats"]
-margin_top = 52.0
+margin_top = 46.0
 margin_right = 430.0
-margin_bottom = 88.0
-rect_min_size = Vector2( 430, 36 )
-theme = ExtResource( 5 )
+margin_bottom = 79.6
+rect_min_size = Vector2( 430, 33.6 )
 script = ExtResource( 8 )
 show_value = true
 direct_color = Color( 0.172549, 1, 0, 1 )
@@ -199,8 +188,6 @@ basic_over_texture = ExtResource( 10 )
 basic_progress_texture = ExtResource( 9 )
 scale_rect = Vector2( 0.6, 0.6 )
 start_value = 150
-custom_theme = ExtResource( 5 )
-custom_font_progress_value = SubResource( 1 )
 custom_font_color_progress_value = Color( 0, 0, 0, 1 )
 alpha_curve = ExtResource( 12 )
 value_curve = ExtResource( 12 )
@@ -209,11 +196,10 @@ list_color = [ Color( 0.172549, 1, 0, 1 ), Color( 0, 0.694118, 1, 1 ) ]
 custom_font_nb_bar_label = SubResource( 2 )
 
 [node name="mana" type="Control" parent="Viewport/texture/CharacterGUI/Stats"]
-margin_top = 93.0
+margin_top = 84.0
 margin_right = 430.0
-margin_bottom = 126.6
+margin_bottom = 117.6
 rect_min_size = Vector2( 420, 33.6 )
-theme = ExtResource( 5 )
 script = ExtResource( 4 )
 show_value = true
 direct_color = Color( 0, 1, 1, 1 )
@@ -223,38 +209,41 @@ basic_under_texture = ExtResource( 11 )
 basic_over_texture = ExtResource( 10 )
 basic_progress_texture = ExtResource( 9 )
 scale_rect = Vector2( 0.6, 0.6 )
-custom_theme = ExtResource( 5 )
-custom_font_progress_value = SubResource( 3 )
 custom_font_color_progress_value = Color( 0, 0, 0, 1 )
 alpha_curve = ExtResource( 12 )
 value_curve = ExtResource( 12 )
 value_update = 100
 
 [node name="modifier_indicator" type="GridContainer" parent="Viewport/texture/CharacterGUI/Stats"]
-margin_top = 131.0
+margin_top = 122.0
 margin_right = 430.0
-margin_bottom = 131.0
+margin_bottom = 122.0
 columns = 5
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 7 )
+material = SubResource( 6 )
 scale = Vector2( 0.2, 0.2 )
-texture = SubResource( 8 )
+texture = SubResource( 7 )
 
 [node name="TweenMixValue" type="Tween" parent="."]
 script = ExtResource( 15 )
-curve = SubResource( 9 )
+curve = SubResource( 8 )
 
 [node name="Viewport2" type="Viewport" parent="."]
-size = Vector2( 142, 24 )
+size = Vector2( 294, 63 )
+own_world = true
 transparent_bg = true
+disable_3d = true
+keep_3d_linear = true
+usage = 1
 render_target_v_flip = true
 
-[node name="Label" type="Label" parent="Viewport2"]
-modulate = Color( 1, 0, 0, 1 )
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 10 )
+[node name="damage_indicator" type="Label" parent="Viewport2"]
+margin_right = 93.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "coup critique"
 
 [node name="CriticalHit" type="Particles2D" parent="."]
@@ -264,7 +253,7 @@ amount = 1
 one_shot = true
 explosiveness = 0.61
 visibility_rect = Rect2( -15, -35, 30, 70 )
-process_material = SubResource( 15 )
-texture = SubResource( 16 )
+process_material = SubResource( 13 )
+texture = SubResource( 14 )
 
 [connection signal="curve_tween" from="TweenMixValue" to="." method="set_mix_amount"]

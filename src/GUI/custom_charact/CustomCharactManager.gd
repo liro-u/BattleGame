@@ -7,11 +7,6 @@ var active_char
 var index_char
 var list_char = []
 	
-func _ready():
-	#update_list([load("res://player_data/charact/2test15.tres"), load("res://player_data/charact/test20.tres"), load("res://player_data/charact/test80.tres")])
-	#update_char(0)
-	pass
-	
 func initialize():
 	tab_node.initialize(active_char)
 	splash_node.texture = active_char.stats_reference.splash_art
@@ -31,3 +26,6 @@ func get_next_or_prev(add = 1):
 		index_char = (index_char + add) % list_char.size()
 		active_char = list_char[index_char]
 		initialize()
+
+func back():
+	hide()

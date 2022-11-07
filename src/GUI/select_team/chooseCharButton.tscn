@@ -5,18 +5,17 @@
 [ext_resource path="res://asset/GUI/chara_select/character_empty_fond.png" type="Texture" id=3]
 [ext_resource path="res://asset/GUI/chara_select/character_cadre.png" type="Texture" id=4]
 [ext_resource path="res://src/GUI/ProgressBar/levelProgressBar/LevelProgressBar.tscn" type="PackedScene" id=5]
-[ext_resource path="res://asset/font/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://asset/font/dynamicfont/Other/Global/PoliceHeader.tres" type="DynamicFont" id=6]
 [ext_resource path="res://asset/GUI/chara_select/character_star.png" type="Texture" id=7]
 
-[sub_resource type="DynamicFont" id=1]
-size = 40
-extra_spacing_bottom = -3
-font_data = ExtResource( 6 )
+[sub_resource type="Theme" id=1]
+default_font = ExtResource( 6 )
 
 [node name="BattlerSelector" type="TextureButton"]
 margin_right = 70.0
 margin_bottom = 140.0
 rect_min_size = Vector2( 70, 140 )
+theme = SubResource( 1 )
 texture_normal = ExtResource( 2 )
 expand = true
 stretch_mode = 6
@@ -164,12 +163,12 @@ margin_bottom = 23.0
 mouse_filter = 2
 size_flags_horizontal = 3
 custom_constants/margin_left = 3
-custom_constants/margin_bottom = 2
+custom_constants/margin_bottom = 3
 
 [node name="Control" type="Control" parent="Data/Down/MarginContainer"]
 margin_left = 3.0
 margin_right = 43.0
-margin_bottom = 21.0
+margin_bottom = 20.0
 
 [node name="BattlerName" type="Label" parent="Data/Down/MarginContainer/Control"]
 anchor_top = 1.0
@@ -180,7 +179,6 @@ margin_right = 83.0
 margin_bottom = 36.0814
 rect_scale = Vector2( 0.2, 0.2 )
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 1 )
 text = "Name"
 valign = 2
 __meta__ = {

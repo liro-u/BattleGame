@@ -29,6 +29,8 @@ func handle_level_changed(current_scene, data_for_next_scene : Array):
 
 func change_level(current_scene, data_for_next_scene):
 	var next_scene = null
+	var list_func = []
+	var list_param = []
 	var next_scene_name = data_for_next_scene[0]
 	match next_scene_name:
 		"level":
@@ -51,7 +53,9 @@ func change_level(current_scene, data_for_next_scene):
 				change_level(current_scene, ["level_selector", chapitre])
 		"level_selector":
 			var chapitre = data_for_next_scene[1]
-			next_scene = load("res://src/level_selector/chapitre_" + str(chapitre) + ".tscn").instance()
+			next_scene = load("res://src/GUI/baseMenu/UIManager.tscn").instance()
+			list_func.append("open_ui")
+			list_param.append(["chapitre_" + str(chapitre)])
 		_:
 			return
 	if next_scene:
@@ -63,6 +67,8 @@ func change_level(current_scene, data_for_next_scene):
 		for node in get_tree().get_nodes_in_group("switch_scene_data"):
 			node.remove_from_group("switch_scene_data")
 		add_child(next_scene)
+		for i in range(0, list_func.size()):
+			next_scene.call(list_func[i], list_param[i])
 		move_child(next_scene, 0)
 		link_all()
 

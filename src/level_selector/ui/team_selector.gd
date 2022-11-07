@@ -1,21 +1,30 @@
 extends Control
 
-onready var charact_selector = $charact_selector
 onready var list_button = $"UI/ListeButton".get_children()
-onready var leveldata_starter = $"UI/Start/Start/SwitchSceneData"
+onready var leveldata_starter = $"UI/Start/MarginContainer/VBoxContainer/Start/SwitchSceneData"
 var list_char = [null,null,null]
 var last_clicked = null
-var battler_given = []
+var battler_given = [] setget set_battler_given
 
 signal team_changed
+
+func _ready():
+	for ui in get_tree().get_nodes_in_group("charact_selector_ui"):
+		ui.connect("player_selected", self, "player_selected")
+
+func set_battler_given(new_value = battler_given.duplicate()):
+	battler_given = new_value
+	for i in range (0, new_value.size()):
+		battler_given[i].is_given = true
 	
 func need_choose_player(button_ref):
 	last_clicked = button_ref
 	var exeptions = list_char.duplicate()
 	while exeptions.has(null):
 		exeptions.erase(null)
-	charact_selector.initialize(exeptions, list_char[button_ref.get_parent().get_index()], battler_given.duplicate())
-	charact_selector.show()
+	for charact_selector in get_tree().get_nodes_in_group("charact_selector_ui"):
+		charact_selector.initialize(exeptions, list_char[button_ref.get_parent().get_index()], battler_given.duplicate())
+		charact_selector.show()
 
 func player_selected(player):
 	if list_char[last_clicked.get_parent().get_index()] == player:

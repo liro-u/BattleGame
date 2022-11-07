@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource( 1 )
 task_name = "UnNamed_Task"
-finished = false
+finished = true
 type_name = "MinMaxTurn"
 NBTurn = 5
 mini = true

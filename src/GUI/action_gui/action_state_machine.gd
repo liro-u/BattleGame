@@ -180,28 +180,6 @@ func get_next_gui():
 					var task = list_task[task_node.get_index()]
 					var star_state_node = task_node.get_node("Star").get_node("StateStar")
 					star_state_node.appear(task and task.finished)
-				#if win
-				if BaseConditionVictory.VICTORY == state_of_game:
-					#update xp battler
-					var list_team_battler = []
-					for node in get_tree().get_nodes_in_group("charact"):
-						if node.team == 0:
-							list_team_battler.append(node.ownerStats)
-					var index = 0
-					for team_battler in list_team_battler:
-						var final_team_battler = levelCalculation.add_xp(get_parent().get_parent().xp_gain, team_battler.duplicate())
-						charact_xp_ui[index].initialize(team_battler, final_team_battler)
-						charact_xp_ui[index].add_to_group("active_ui_xp_charact")
-						index += 1
-						if !team_battler.is_given:
-							var path_res = team_battler.resource_path
-							final_team_battler.take_over_path(path_res)
-							ResourceSaver.save(path_res, final_team_battler)
-					#update loot win
-					for possible_loot in get_parent().get_parent().loot_table:
-						if possible_loot.proba >= randf():
-							final_loot.append(possible_loot.loot)
-							SaverInventory.AddNewObject(possible_loot.loot)
 				#update client level
 				var client_data = load("res://player_data/client/client_data.tres")
 				var client_level_ui =  get_tree().get_nodes_in_group("client_level")[0]
@@ -234,6 +212,30 @@ func get_next_gui():
 					else:
 						client_player_animation.current_animation = "max_level"
 						client_xp_label_ui.text = "MAX LVL"
+				#if win
+				if BaseConditionVictory.VICTORY == state_of_game:
+					#update xp battler
+					var list_team_battler = []
+					for node in get_tree().get_nodes_in_group("charact"):
+						if node.team == 0:
+							list_team_battler.append(node.ownerStats)
+					var index = 0
+					for team_battler in list_team_battler:
+						var final_team_battler = levelCalculation.add_xp(get_parent().get_parent().xp_gain, team_battler.duplicate())
+						charact_xp_ui[index].initialize(team_battler, final_team_battler)
+						charact_xp_ui[index].add_to_group("active_ui_xp_charact")
+						index += 1
+						if !team_battler.is_given:
+							var path_res = team_battler.resource_path
+							final_team_battler.take_over_path(path_res)
+							ResourceSaver.save(path_res, final_team_battler)
+					#update loot win
+					for possible_loot in get_parent().get_parent().loot_table:
+						if possible_loot.proba >= randf():
+							final_loot.append(possible_loot.loot)
+							SaverInventory.AddNewObject(possible_loot.loot)
+				else:
+					get_tree().call_group_flags(2, "button_next_level", "hide")
 				
 		"choose_action":
 			active_gui = action_gui

@@ -1,14 +1,12 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://src/level_selector/ui/charact_selector.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/level_selector/ui/team_selector.gd" type="Script" id=2]
 [ext_resource path="res://src/GUI/select_team/chooseCharButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/scenel_switcher/switch_scene_data.gd" type="Script" id=4]
 [ext_resource path="res://src/level_selector/ui/load_level_button.gd" type="Script" id=5]
 [ext_resource path="res://asset/GUI/chara_select/chara_selector_fond.png" type="Texture" id=6]
-[ext_resource path="res://asset/GUI/chara_select/start_fond.png" type="Texture" id=7]
-[ext_resource path="res://asset/GUI/chara_select/back_fond.png" type="Texture" id=8]
-[ext_resource path="res://asset/font/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://asset/GUI/chara_member_select/button_submit.png" type="Texture" id=7]
+[ext_resource path="res://asset/GUI/chara_member_select/button_return.png" type="Texture" id=8]
 [ext_resource path="res://asset/GUI/chara_select/back_star.png" type="Texture" id=10]
 [ext_resource path="res://src/level_selector/ui/Particles2D.gd" type="Script" id=11]
 
@@ -31,17 +29,9 @@ scale = 0.01
 scale_random = 0.1
 scale_curve = SubResource( 2 )
 
-[sub_resource type="DynamicFont" id=4]
-size = 20
-extra_spacing_bottom = -3
-font_data = ExtResource( 9 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 30
-extra_spacing_bottom = -3
-font_data = ExtResource( 9 )
-
-[node name="team_selector" type="Control"]
+[node name="team_selector" type="Control" groups=[
+"team_selector_ui",
+]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
@@ -82,45 +72,40 @@ margin_right = 1024.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 60 )
 
-[node name="Back" type="TextureButton" parent="UI/BackContainer"]
-margin_right = 30.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 150, 60 )
-size_flags_horizontal = 3
-texture_normal = ExtResource( 8 )
-expand = true
+[node name="MarginContainer" type="MarginContainer" parent="UI/BackContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/BackContainer/Back"]
+[node name="Back" type="Button" parent="UI/BackContainer/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 95.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 75, 30 )
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.176471, 0.360784, 0.384314, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Back"
+flat = true
+
+[node name="Label" type="TextureRect" parent="UI/BackContainer/MarginContainer/Back"]
+show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-alignment = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="UI/BackContainer/Back/HBoxContainer"]
-margin_left = 58.0
-margin_top = 20.0
-margin_right = 109.0
-margin_bottom = 40.0
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Back"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="UI/BackContainer/Back/HBoxContainer"]
-margin_left = 113.0
-margin_right = 150.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 37, 60 )
-texture = ExtResource( 10 )
+texture = ExtResource( 8 )
 expand = true
-stretch_mode = 5
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ListeButton" type="HBoxContainer" parent="UI"]
 margin_top = 90.0
@@ -189,139 +174,63 @@ color_element = {
 4: Color( 0.741176, 0.309804, 0.219608, 1 )
 }
 
-[node name="Start" type="Control" parent="UI"]
+[node name="Start" type="HBoxContainer" parent="UI"]
 margin_top = 498.0
 margin_right = 1024.0
 margin_bottom = 598.0
 rect_min_size = Vector2( 0, 100 )
 mouse_filter = 2
+alignment = 2
 
-[node name="Start" type="TextureButton" parent="UI/Start"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -214.0
-margin_top = -50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 214, 100 )
-size_flags_horizontal = 3
-texture_normal = ExtResource( 7 )
-expand = true
-script = ExtResource( 5 )
+[node name="MarginContainer" type="MarginContainer" parent="UI/Start"]
+margin_left = 911.0
+margin_right = 1024.0
+margin_bottom = 100.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SwitchSceneData" type="Node" parent="UI/Start/Start"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Start/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 93.0
+margin_bottom = 80.0
+alignment = 2
+
+[node name="Start" type="Button" parent="UI/Start/MarginContainer/VBoxContainer"]
+margin_top = 31.0
+margin_right = 73.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 73, 29 )
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.0901961, 0.145098, 0.192157, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+text = "select"
+flat = true
+script = ExtResource( 5 )
+
+[node name="SwitchSceneData" type="Node" parent="UI/Start/MarginContainer/VBoxContainer/Start"]
 script = ExtResource( 4 )
 next_scene_data = [ "level", 1, 1, [  ] ]
 signal_name = "load_level"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Start/Start"]
+[node name="Label" type="TextureRect" parent="UI/Start/MarginContainer/VBoxContainer/Start"]
+self_modulate = Color( 0.984314, 0.635294, 0.298039, 1 )
+show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="UI/Start/Start/HBoxContainer"]
-margin_right = 52.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 52, 100 )
-mouse_filter = 2
-texture = ExtResource( 10 )
+texture = ExtResource( 7 )
 expand = true
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="UI/Start/Start/HBoxContainer"]
-margin_left = 56.0
-margin_top = 34.0
-margin_right = 136.0
-margin_bottom = 66.0
-custom_fonts/font = SubResource( 5 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Start"
 __meta__ = {
 "_edit_use_anchors_": false
-}
-
-[node name="charact_selector" parent="." instance=ExtResource( 1 )]
-visible = false
-
-[node name="MarginContainer" parent="charact_selector/TextureRect/HBoxContainer/ListChar" index="0"]
-margin_bottom = 600.0
-
-[node name="HBoxContainer2" parent="charact_selector/TextureRect/HBoxContainer/ListChar/MarginContainer" index="0"]
-margin_bottom = 590.0
-
-[node name="BattlerSelector" parent="charact_selector/TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer" index="0"]
-color_element = {
-1: Color( 1, 0.788235, 0.505882, 1 ),
-2: Color( 0.360784, 0.486275, 0.811765, 1 ),
-3: Color( 0.647059, 1, 0.976471, 1 ),
-4: Color( 0.741176, 0.309804, 0.219608, 1 )
-}
-
-[node name="BattlerSelector" parent="charact_selector/TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer2" index="0"]
-color_element = {
-1: Color( 1, 0.788235, 0.505882, 1 ),
-2: Color( 0.360784, 0.486275, 0.811765, 1 ),
-3: Color( 0.647059, 1, 0.976471, 1 ),
-4: Color( 0.741176, 0.309804, 0.219608, 1 )
-}
-
-[node name="BattlerSelector" parent="charact_selector/TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer3" index="0"]
-color_element = {
-1: Color( 1, 0.788235, 0.505882, 1 ),
-2: Color( 0.360784, 0.486275, 0.811765, 1 ),
-3: Color( 0.647059, 1, 0.976471, 1 ),
-4: Color( 0.741176, 0.309804, 0.219608, 1 )
-}
-
-[node name="BattlerSelector" parent="charact_selector/TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer4" index="0"]
-color_element = {
-1: Color( 1, 0.788235, 0.505882, 1 ),
-2: Color( 0.360784, 0.486275, 0.811765, 1 ),
-3: Color( 0.647059, 1, 0.976471, 1 ),
-4: Color( 0.741176, 0.309804, 0.219608, 1 )
-}
-
-[node name="BattlerSelector" parent="charact_selector/TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer5" index="0"]
-color_element = {
-1: Color( 1, 0.788235, 0.505882, 1 ),
-2: Color( 0.360784, 0.486275, 0.811765, 1 ),
-3: Color( 0.647059, 1, 0.976471, 1 ),
-4: Color( 0.741176, 0.309804, 0.219608, 1 )
-}
-
-[node name="BattlerSelector" parent="charact_selector/TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer6" index="0"]
-color_element = {
-1: Color( 1, 0.788235, 0.505882, 1 ),
-2: Color( 0.360784, 0.486275, 0.811765, 1 ),
-3: Color( 0.647059, 1, 0.976471, 1 ),
-4: Color( 0.741176, 0.309804, 0.219608, 1 )
-}
-
-[node name="BattlerSelector" parent="charact_selector/TextureRect/HBoxContainer/ListChar/MarginContainer/HBoxContainer2/HBoxContainer/ButtonContainer7" index="0"]
-color_element = {
-1: Color( 1, 0.788235, 0.505882, 1 ),
-2: Color( 0.360784, 0.486275, 0.811765, 1 ),
-3: Color( 0.647059, 1, 0.976471, 1 ),
-4: Color( 0.741176, 0.309804, 0.219608, 1 )
 }
 
 [connection signal="resized" from="background" to="background/Particles2D" method="update_resize"]
-[connection signal="pressed" from="UI/BackContainer/Back" to="." method="back"]
+[connection signal="pressed" from="UI/BackContainer/MarginContainer/Back" to="." method="back"]
 [connection signal="want_change_char" from="UI/ListeButton/ButtonContainer/BattlerSelector" to="." method="need_choose_player"]
 [connection signal="want_change_char" from="UI/ListeButton/ButtonContainer2/BattlerSelector" to="." method="need_choose_player"]
 [connection signal="want_change_char" from="UI/ListeButton/ButtonContainer3/BattlerSelector" to="." method="need_choose_player"]
-[connection signal="player_selected" from="charact_selector" to="." method="player_selected"]
-[connection signal="set_tab_to_main" from="charact_selector/CustomCharact/MarginContainer/HBoxContainer/Tab/Stats/Content/HBoxContainer/Label" to="charact_selector/CustomCharact/MarginContainer/HBoxContainer/Tab" method="set_tab_to_main"]
-[connection signal="set_tab_to_main" from="charact_selector/CustomCharact/MarginContainer/HBoxContainer/Tab/Skills/Content/HBoxContainer/Label" to="charact_selector/CustomCharact/MarginContainer/HBoxContainer/Tab" method="set_tab_to_main"]
-[connection signal="set_tab_to_main" from="charact_selector/CustomCharact/MarginContainer/HBoxContainer/Tab/Story/Content/HBoxContainer/Label" to="charact_selector/CustomCharact/MarginContainer/HBoxContainer/Tab" method="set_tab_to_main"]
-[connection signal="pressed" from="charact_selector/CustomCharact/MarginContainer/Button/TextureButton" to="charact_selector/CustomCharact" method="hide"]
-
-[editable path="charact_selector"]
-[editable path="charact_selector/CustomCharact"]

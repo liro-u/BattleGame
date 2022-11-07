@@ -12,3 +12,6 @@ onready var action_state_machine = $ActionStateMachine
 func initialize(turn_queue : TurnQueue) -> void:
 	turnline.initialise(turn_queue.get_children(), turn_queue.active_battler_index)
 	
+func update_size(size, decalage):
+	rect_size = size
+	rect_position.x = -decalage

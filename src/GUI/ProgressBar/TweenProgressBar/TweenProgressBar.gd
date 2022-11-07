@@ -33,8 +33,8 @@ var current_value : int
 var max_value : int
 var rest_value : int
 #theme
-export(Theme) var custom_theme = load("res://asset/theme/GUI.tres") setget set_theme
-export(DynamicFont) var custom_font_progress_value = load("res://asset/font/dynamicfont/basic_font.tres").duplicate() setget set_custom_font_progress_value
+export(Theme) var custom_theme setget set_theme
+export(DynamicFont) var custom_font_progress_value setget set_custom_font_progress_value
 export(Color) var custom_font_color_progress_value = Color.wheat setget set_custom_font_color_progress_value
 #curve
 export(Curve) var alpha_curve = load("res://asset/curve/ease_in.tres")

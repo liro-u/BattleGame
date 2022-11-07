@@ -6,7 +6,6 @@ onready var info_list = $"TextureRect/HBoxContainer/SideBackground/MarginContain
 onready var display_only = $"TextureRect/Filter/BackgroundFilter/Container/Box2"
 onready var filter_by = $"TextureRect/Filter/BackgroundFilter/Container/Box1"
 onready var filter = $"TextureRect/Filter"
-onready var custom_char_node = $CustomCharact
 
 export var charact_path = "res://player_data/charact/"
 var player = null
@@ -86,12 +85,13 @@ func reload_list_of_char():
 			var new_is_already_selected = already_selected_instance.instance()
 			new_char_button.overTexture.add_child(new_is_already_selected)
 
-	if list_char_button.size() > 0:
-		custom_char_node.update_list(battler_given)
-		player_clicked(list_char_button[0])
-	else:
-		custom_char_node.update_list([player])
-		custom_char_node.update_char(0)
+	for custom_char_node in get_tree().get_nodes_in_group("custom_char_ui"):
+		if list_char_button.size() > 0:
+			custom_char_node.update_list(battler_given)
+			player_clicked(list_char_button[0])
+		else:
+			custom_char_node.update_list([player])
+			custom_char_node.update_char(0)
 		
 func player_clicked(player_selected):
 	player = player_selected.data_player
@@ -103,7 +103,8 @@ func player_clicked(player_selected):
 		button_select.text = "unselect"
 	else:
 		button_select.text = "select"
-	custom_char_node.update_char(battler_given.find(player))
+	for custom_char_node in get_tree().get_nodes_in_group("custom_char_ui"):
+		custom_char_node.update_char(battler_given.find(player))
 	
 
 func back():

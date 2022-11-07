@@ -1,4 +1,4 @@
-extends TextureButton
+extends Button
 
 onready var level_data_switcher = $"SwitchSceneData"
 

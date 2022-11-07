@@ -7,8 +7,8 @@ export(Color) var grey_color = Color("c0000000") setget set_grey_color
 export(bool) var disabled = false setget set_disabled
 export(int) var mana_cost = 15 setget set_mana_cost
 export(int) var turn_needed = 1 setget set_turn_needed
-export(DynamicFont) var font_mana = load("res://asset/font/dynamicfont/attackIcon/mana_font.tres").duplicate() setget set_mana_font
-export(DynamicFont) var font_turn = load("res://asset/font/dynamicfont/attackIcon/turn_font.tres").duplicate() setget set_turn_font
+export(DynamicFont) var font_mana  setget set_mana_font
+export(DynamicFont) var font_turn  setget set_turn_font
 var mana_cost_label
 var turn_needed_label
 var grey_rect

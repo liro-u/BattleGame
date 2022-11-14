@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Resource/inventaire/monnaie/monnaie.gd" type="Script" id=1]
+[ext_resource path="res://asset/monnaie/stone.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+things_name = "gemme"
+description = ""
+max_quantity = -1
+texture = ExtResource( 2 )

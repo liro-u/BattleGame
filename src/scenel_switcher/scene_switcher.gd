@@ -41,6 +41,7 @@ func change_level(current_scene, data_for_next_scene):
 			if level_data:
 				next_scene = load("res://BattleWorld.tscn").instance()
 				next_scene.world = level_data.world
+				next_scene.team_is_given = (level_data.team_given.size() > 0)
 				next_scene.list_player_battler = list_team_battler
 				next_scene.list_enemy_battler = level_data.list_enemy_battler
 				next_scene.condition_victory_script = level_data.condition_victory_script

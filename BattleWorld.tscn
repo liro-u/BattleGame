@@ -38,7 +38,9 @@ _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 1.4, 0.0, 0, 0 ]
 [sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[node name="BattleWorld" type="Node2D"]
+[node name="BattleWorld" type="Node2D" groups=[
+"battle_world",
+]]
 script = ExtResource( 2 )
 world = ExtResource( 3 )
 list_player_battler = [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 15 ) ]
@@ -118,9 +120,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -151.5
+margin_left = -180.5
 margin_top = -150.0
-margin_right = 151.5
+margin_right = 180.5
 mouse_filter = 2
 custom_constants/separation = 20
 script = ExtResource( 21 )
@@ -148,7 +150,6 @@ base_curve = ExtResource( 27 )
 duration = 0.4
 start_at = Vector2( 0, -10 )
 end_at = Vector2( 0, 10 )
-state_is_start = false
 
 [node name="MarginContainer" type="MarginContainer" parent="battleGUI/ActionStateMachine/SelectTarget"]
 margin_left = 55.0
@@ -188,7 +189,6 @@ base_curve = ExtResource( 27 )
 duration = 0.4
 start_at = Vector2( 0, -10 )
 end_at = Vector2( 0, 10 )
-state_is_start = false
 
 [node name="ActionGUI" parent="battleGUI/ActionStateMachine" instance=ExtResource( 11 )]
 margin_top = 0.0

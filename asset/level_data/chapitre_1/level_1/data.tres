@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=13 format=2]
+[gd_resource type="Resource" load_steps=14 format=2]
 
 [ext_resource path="res://asset/level_data/chapitre_1/level_1/task/task_1.tres" type="Resource" id=1]
 [ext_resource path="res://asset/level_data/chapitre_1/level_1/task/task_2.tres" type="Resource" id=2]
@@ -9,25 +9,29 @@
 [ext_resource path="res://src/battle/condition_victory/base_victory_condition.gd" type="Script" id=7]
 [ext_resource path="res://asset/world/world_test3/test3.tres" type="Resource" id=8]
 [ext_resource path="res://player_data/charact/test20.tres" type="Resource" id=9]
-[ext_resource path="res://asset/level_data/chapitre_1/level_1/loot/commonGoldPack.tres" type="Resource" id=10]
+[ext_resource path="res://asset/level_data/chapitre_1/level_1/loot/direct_gold_500.tres" type="Resource" id=10]
 [ext_resource path="res://asset/level_data/chapitre_1/level_1/given_char/given.tres" type="Resource" id=11]
+[ext_resource path="res://asset/level_data/chapitre_1/level_1/loot/commonGoldPack.tres" type="Resource" id=12]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 6 )
 stats_reference = ExtResource( 4 )
 is_given = false
+locked = true
 level = 60
 xp = 0.0
 stars = 1
 
 [resource]
 script = ExtResource( 5 )
+unlocked = true
 level_name = "1-1"
 world = ExtResource( 8 )
+team_given = [  ]
 battler_given = [ ExtResource( 11 ) ]
 xp_gain = 150.0
 list_player_battler = [ ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ) ]
 list_enemy_battler = [ SubResource( 1 ), ExtResource( 9 ) ]
 condition_victory_script = ExtResource( 7 )
 task = [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ]
-loot_table = [ ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ) ]
+loot_table = [ ExtResource( 10 ), ExtResource( 12 ) ]

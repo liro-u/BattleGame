@@ -9,7 +9,8 @@ onready var type_node = $Content/MarginContainer2/ScrollContainer/StatsData/Firs
 
 #second data node
 onready var level_progress_bar_node = $Content/MarginContainer2/ScrollContainer/StatsData/SecondData/LevelProgressBar
-
+onready var upgrade_button = $"Content/MarginContainer2/ScrollContainer/StatsData/SecondData/MarginContainer/VBoxContainer2/Upgrade"
+onready var awaken_button = $"Content/MarginContainer2/ScrollContainer/StatsData/SecondData/MarginContainer/VBoxContainer2/Awaken"
 #third data node
 onready var third_data_node = $Content/MarginContainer2/ScrollContainer/StatsData/MarginContainer/ThirdData
 
@@ -35,3 +36,6 @@ func initialize(data):
 	level_progress_bar_node.set_progress(xp_progress)
 	#init stats data
 	third_data_node.update_info(data)
+	#disable button if given
+	awaken_button.disabled = data.is_given
+	upgrade_button.disabled = data.is_given

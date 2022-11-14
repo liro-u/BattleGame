@@ -10,6 +10,7 @@
 script = ExtResource( 4 )
 stats_reference = ExtResource( 2 )
 is_given = false
+locked = true
 level = 3
 xp = 0.0
 stars = 1
@@ -18,17 +19,21 @@ stars = 1
 script = ExtResource( 4 )
 stats_reference = ExtResource( 2 )
 is_given = false
+locked = true
 level = 80
 xp = 0.0
 stars = 1
 
 [resource]
 script = ExtResource( 3 )
+unlocked = true
 level_name = "1-4"
 world = ExtResource( 1 )
+team_given = [  ]
 battler_given = [  ]
 xp_gain = 5000.0
 list_player_battler = [ SubResource( 2 ) ]
 list_enemy_battler = [ SubResource( 1 ) ]
 condition_victory_script = ExtResource( 5 )
 task = [ null, null, null ]
+loot_table = [  ]

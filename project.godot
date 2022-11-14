@@ -102,7 +102,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "GoldPack",
 "language": "GDScript",
-"path": "res://Resource/inventaire/custom/goldPack.gd"
+"path": "res://Resource/inventaire/objet/custom/monnaiePack.gd"
 }, {
 "base": "Resource",
 "class": "InformationBattler",
@@ -134,6 +134,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Resource/task/MinMaxTurn.gd"
 }, {
+"base": "Resource",
+"class": "Monnaie",
+"language": "GDScript",
+"path": "res://Resource/inventaire/monnaie/monnaie.gd"
+}, {
 "base": "Control",
 "class": "MovableTexture",
 "language": "GDScript",
@@ -147,7 +152,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "ObjetRes",
 "language": "GDScript",
-"path": "res://Resource/inventaire/objet.gd"
+"path": "res://Resource/inventaire/objet/objet.gd"
 }, {
 "base": "Resource",
 "class": "OwnerStats",
@@ -173,11 +178,6 @@ _global_script_classes=[ {
 "class": "RequiredBattler",
 "language": "GDScript",
 "path": "res://Resource/task/RequiredBattler.gd"
-}, {
-"base": "Resource",
-"class": "Ressource",
-"language": "GDScript",
-"path": "res://Resource/ressource/ressource.gd"
 }, {
 "base": "Node",
 "class": "SaverInventory",
@@ -355,6 +355,7 @@ _global_script_class_icons={
 "LootProb": "",
 "MinMaxBat": "",
 "MinMaxTurn": "",
+"Monnaie": "",
 "MovableTexture": "",
 "MultiProgressBar": "",
 "ObjetRes": "",
@@ -363,7 +364,6 @@ _global_script_class_icons={
 "Possession": "",
 "RechargeMana": "",
 "RequiredBattler": "",
-"Ressource": "",
 "SaverInventory": "",
 "SceneSwitcher": "",
 "SpawnPosition": "",

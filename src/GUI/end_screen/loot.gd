@@ -36,7 +36,8 @@ func next_loot():
 
 func show_next_loot(loot):
 	var node_to_show = get_children()[loot_index % max_loot_on_screen]
-	node_to_show.texture.texture = loot.objet.texture
+	node_to_show.texture.texture = loot.things.texture
+	node_to_show.label.text = str(loot.quantity)
 	node_to_show.appear()
 
 func hide_all():

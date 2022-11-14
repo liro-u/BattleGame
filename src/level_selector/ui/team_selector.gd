@@ -23,7 +23,7 @@ func need_choose_player(button_ref):
 	while exeptions.has(null):
 		exeptions.erase(null)
 	for charact_selector in get_tree().get_nodes_in_group("charact_selector_ui"):
-		charact_selector.initialize(exeptions, list_char[button_ref.get_parent().get_index()], battler_given.duplicate())
+		charact_selector.initialize(exeptions, list_char[button_ref.get_parent().get_index()], battler_given.duplicate(), false)
 		charact_selector.show()
 
 func player_selected(player):
@@ -51,7 +51,24 @@ func back():
 
 func reset():
 	for child in list_button:
-		child.get_child(0).reset()
+		var node = child.get_child(0)
+		node.reset()
+		node.disabled = false
 	list_char = [null,null,null]
 	last_clicked = null
 	battler_given = []
+
+func set_team(team):
+	list_char = team.duplicate()
+	leveldata_starter.next_scene_data[3] = list_char.duplicate()
+	#update visual
+	var index = 0
+	for child in list_button:
+		var node = child.get_child(0)
+		node.disabled = true
+		if list_char.size() > index:
+			node.initialize(list_char[index])
+			print(index)
+			index += 1
+		else:
+			node.disabled_visualy()

@@ -1,14 +1,14 @@
 [gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://asset/GUI/custom_charact/background.png" type="Texture" id=1]
-[ext_resource path="res://asset/monnaie/stone.png" type="Texture" id=2]
+[ext_resource path="res://src/GUI/baseMenu/monnaie_bar/monnaieBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://asset/GUI/home_page_asset/btn_login.png" type="Texture" id=3]
 [ext_resource path="res://asset/GUI/home_page_asset/btn_settings.png" type="Texture" id=4]
 [ext_resource path="res://asset/GUI/home_page_asset/profile.png" type="Texture" id=5]
 [ext_resource path="res://asset/GUI/home_page_asset/btn_mail.png" type="Texture" id=6]
-[ext_resource path="res://asset/GUI/home_page_asset/cureency_fond.png" type="Texture" id=7]
-[ext_resource path="res://asset/monnaie/stamina.png" type="Texture" id=8]
-[ext_resource path="res://asset/monnaie/gold.png" type="Texture" id=9]
+[ext_resource path="res://player_data/monnaie/gold.tres" type="Resource" id=7]
+[ext_resource path="res://player_data/monnaie/gemme.tres" type="Resource" id=8]
+[ext_resource path="res://player_data/monnaie/stamina.tres" type="Resource" id=9]
 [ext_resource path="res://asset/GUI/home_page_asset/btn_characters.png" type="Texture" id=10]
 [ext_resource path="res://asset/GUI/home_page_asset/btn_battle.png" type="Texture" id=11]
 [ext_resource path="res://asset/GUI/home_page_asset/btn_supply.png" type="Texture" id=12]
@@ -180,95 +180,10 @@ margin_left = 504.0
 margin_right = 1004.0
 margin_bottom = 585.0
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
-margin_right = 500.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 500, 70 )
-texture = ExtResource( 7 )
-expand = true
-stretch_mode = 6
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/TextureRect"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_constants/margin_right = 10
-custom_constants/margin_top = 10
-custom_constants/margin_left = 10
-custom_constants/margin_bottom = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TopBarre" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/TextureRect/MarginContainer"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 490.0
-margin_bottom = 60.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Energie" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/TextureRect/MarginContainer/TopBarre"]
-margin_right = 157.0
-margin_bottom = 50.0
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer2/TextureRect/MarginContainer/TopBarre/Energie"]
-margin_right = 50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-texture = ExtResource( 8 )
-expand = true
-stretch_mode = 6
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/TextureRect/MarginContainer/TopBarre/Energie"]
-margin_left = 54.0
-margin_top = 18.0
-margin_right = 99.0
-margin_bottom = 32.0
-text = "128/98"
-
-[node name="Gold" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/TextureRect/MarginContainer/TopBarre"]
-margin_left = 161.0
-margin_right = 318.0
-margin_bottom = 50.0
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer2/TextureRect/MarginContainer/TopBarre/Gold"]
-margin_right = 50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-texture = ExtResource( 9 )
-expand = true
-stretch_mode = 6
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/TextureRect/MarginContainer/TopBarre/Gold"]
-margin_left = 54.0
-margin_top = 18.0
-margin_right = 126.0
-margin_bottom = 32.0
-text = "99.999.999"
-
-[node name="Cristaux" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/TextureRect/MarginContainer/TopBarre"]
-margin_left = 322.0
-margin_right = 480.0
-margin_bottom = 50.0
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer2/TextureRect/MarginContainer/TopBarre/Cristaux"]
-margin_right = 50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 6
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/TextureRect/MarginContainer/TopBarre/Cristaux"]
-margin_left = 54.0
-margin_top = 18.0
-margin_right = 86.0
-margin_bottom = 32.0
-text = "1280"
+[node name="MonnaieBar" parent="MarginContainer/HBoxContainer/VBoxContainer2" groups=[
+"update_data",
+] instance=ExtResource( 2 )]
+list_monnaie = [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 8 ) ]
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 74.0
@@ -363,6 +278,7 @@ rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 10 )
 expand = true
 script = ExtResource( 16 )
+ui_group = "charact_selector_ui"
 
 [node name="Supplies" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 299.0

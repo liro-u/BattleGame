@@ -11,6 +11,9 @@ onready var TypeTexture = $Data/Up/ClassType
 
 export var color_element = {}
 export(Texture) var basic_texture 
+export(Texture) var disabled_texture
+export(Color) var disabled_color
+export(Color) var locked_color
 signal want_change_char
 
 func _init():
@@ -21,6 +24,8 @@ func want_change():
 
 func reset():
 	selected_battler_texture.texture = basic_texture
+	selected_battler_texture.self_modulate = Color("fff")
+	disabled = false
 	show_data(false)
 
 func show_data(need_show = true):
@@ -28,7 +33,15 @@ func show_data(need_show = true):
 		data.show()
 	else:
 		data.hide()
-		
+
+func locked_visible():
+	disabled = true
+	selected_battler_texture.self_modulate = locked_color
+	
+func disabled_visualy():
+	selected_battler_texture.texture = disabled_texture
+	selected_battler_texture.self_modulate = disabled_color
+	
 func initialize(data):
 	selected_battler_texture.texture = data.stats_reference.hight_icon
 	name_label.text = data.stats_reference.name_char
@@ -49,4 +62,8 @@ func initialize(data):
 	progressBar.set_progress(xp_progress)
 	TypeTexture.texture = ElementTypeInfo.get_type_texture(data.stats_reference.type)
 	TypeTexture.modulate = ElementTypeInfo.element_color[data.stats_reference.element]
+	if data.locked:
+		locked_visible()
+	else:
+		show_data()
 	

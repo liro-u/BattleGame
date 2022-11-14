@@ -12,8 +12,12 @@ func initialize():
 	splash_node.texture = active_char.stats_reference.splash_art
 
 func update_list(new_list):
-	if new_list.size():
-		list_char = new_list
+	var temp_list = []
+	for battler in new_list:
+		if not battler.locked:
+			temp_list.append(battler)
+	if temp_list.size() > 0:
+		list_char = temp_list
 
 func update_char(index):
 	if index < list_char.size():

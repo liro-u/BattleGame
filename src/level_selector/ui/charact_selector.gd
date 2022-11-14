@@ -6,6 +6,7 @@ onready var info_list = $"TextureRect/HBoxContainer/SideBackground/MarginContain
 onready var display_only = $"TextureRect/Filter/BackgroundFilter/Container/Box2"
 onready var filter_by = $"TextureRect/Filter/BackgroundFilter/Container/Box1"
 onready var filter = $"TextureRect/Filter"
+onready var select_button = $"TextureRect/ButtonContainer/VBoxContainer/BottomButtonContainer/Button2"
 
 export var charact_path = "res://player_data/charact/"
 var player = null
@@ -14,6 +15,7 @@ var list_exeption = []
 var selected_indicator
 var start_battler_given = []
 var battler_given = []
+var show_locked = false
 
 signal player_selected
 
@@ -21,7 +23,12 @@ func _ready():
 	display_only.connect("filter_change", self, "reload_list_of_char")
 	filter_by.connect("filter_change", self, "reload_list_of_char")
 	
-func initialize(exeptions = [], asociate_select = null, given_battler = []):
+func initialize(exeptions = [], asociate_select = null, given_battler = [], show_locked_file = true):
+	show_locked = show_locked_file
+	if show_locked:
+		select_button.hide()
+	else:
+		select_button.show()
 	change_filter_visibility(false)
 	button_select.text = "select"
 	player = null
@@ -57,7 +64,9 @@ func reload_list_of_char():
 	var new_select_char = load("res://src/GUI/select_team/selectChar.tscn")
 	var list_char_button = []
 	for file in files:
-		battler_given.append(load("res://player_data/charact/" + file))
+		var data = load("res://player_data/charact/" + file)
+		if show_locked or not data.locked:
+			battler_given.append(data)
 		
 	battler_given = display_only.display_only(battler_given)
 	battler_given = filter_by.filter_by(battler_given)
@@ -75,7 +84,6 @@ func reload_list_of_char():
 		new_char_button.data_player = battler
 		
 		new_char_button.initialize(battler)
-		new_char_button.show_data(true)
 		
 		new_char_button.connect("want_change_char", self, "player_clicked")
 		
@@ -105,7 +113,6 @@ func player_clicked(player_selected):
 		button_select.text = "select"
 	for custom_char_node in get_tree().get_nodes_in_group("custom_char_ui"):
 		custom_char_node.update_char(battler_given.find(player))
-	
 
 func back():
 	hide()

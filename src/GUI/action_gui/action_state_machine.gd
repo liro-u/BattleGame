@@ -194,6 +194,20 @@ func get_next_gui():
 				client_level_ui.set_value(client_data.level)
 				#if win
 				if BaseConditionVictory.VICTORY == state_of_game:
+					#update level
+					var battle_world = get_tree().get_nodes_in_group("battle_world")[0]
+					var chapitre = battle_world.data_for_level[1]
+					var level = battle_world.data_for_level[2] + 1
+					var data_level = load("res://asset/level_data/chapitre_" + str(chapitre) + "/level_" + str(level) + "/data.tres")
+					if data_level:
+						if data_level.team_given.size() > 0:
+							get_tree().call_group_flags(2, "button_next_level", "hide")
+						elif not data_level.unlocked:
+							data_level.unlocked = true
+							ResourceSaver.save(data_level.resource_path, data_level)
+					else:
+						get_tree().call_group_flags(2, "button_next_level", "hide")
+					#update client data
 					if client_data.level < client_data.max_level:
 						var final_client_data = levelCalculation.add_xp_client(get_parent().get_parent().xp_gain, client_data.duplicate())
 						yield(get_tree().create_timer(1), "timeout")
@@ -212,8 +226,6 @@ func get_next_gui():
 					else:
 						client_player_animation.current_animation = "max_level"
 						client_xp_label_ui.text = "MAX LVL"
-				#if win
-				if BaseConditionVictory.VICTORY == state_of_game:
 					#update xp battler
 					var list_team_battler = []
 					for node in get_tree().get_nodes_in_group("charact"):
@@ -232,8 +244,12 @@ func get_next_gui():
 					#update loot win
 					for possible_loot in get_parent().get_parent().loot_table:
 						if possible_loot.proba >= randf():
-							final_loot.append(possible_loot.loot)
-							SaverInventory.AddNewObject(possible_loot.loot)
+							var loot = possible_loot.loot
+							final_loot.append(loot)
+							if loot.things is ObjetRes:
+								SaverInventory.addNewObject(loot)
+							elif loot.things is Monnaie:
+								SaverInventory.addNewMonnaie(loot)
 				else:
 					get_tree().call_group_flags(2, "button_next_level", "hide")
 				

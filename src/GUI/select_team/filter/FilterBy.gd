@@ -12,7 +12,7 @@ signal filter_change
 class CustomSorter:
 	var filter_direction = false
 		
-	func _init(BoolDir):
+	func _init(BoolDir = false):
 		filter_direction = BoolDir
 	
 	func filter_by_level(a, b):
@@ -50,6 +50,13 @@ class CustomSorter:
 			if a.stars > b.stars:
 				return true
 		return false
+	
+	func filter_by_unlocked(a, b):
+		if a.locked == b.locked:
+			return true
+		elif a.locked and not b.locked:
+			return false
+		return true
 		
 func _ready():
 	for child in list_button.get_children():
@@ -87,4 +94,5 @@ func filter_by(battlers):
 			battlers.sort_custom(CustomSorter.new(filter_direction), "filter_by_element")
 		"rank":
 			battlers.sort_custom(CustomSorter.new(filter_direction), "filter_by_rank")
+	battlers.sort_custom(CustomSorter.new(), "filter_by_unlocked")
 	return battlers

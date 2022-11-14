@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/level_selector/Chapitre.gd" type="Script" id=1]
+[ext_resource path="res://src/level_selector/load_level_button.gd" type="Script" id=2]
 [ext_resource path="res://src/level_selector/ui/manage_level.gd" type="Script" id=5]
 [ext_resource path="res://asset/GUI/chara_select/chara_selector_fond.png" type="Texture" id=6]
 
@@ -56,9 +57,11 @@ margin_bottom = 20.0
 custom_colors/font_color_hover = Color( 0.176471, 0.360784, 0.384314, 1 )
 text = "level 1"
 flat = true
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+level_select_path = NodePath("../../..")
 
 [node name="Button2" type="Button" parent="level_selector/CenterContainer/VBoxContainer"]
 margin_left = 85.0
@@ -67,6 +70,9 @@ margin_bottom = 20.0
 custom_colors/font_color_hover = Color( 0.176471, 0.360784, 0.384314, 1 )
 text = "level 2"
 flat = true
+script = ExtResource( 2 )
+level = 2
+level_select_path = NodePath("../../..")
 
 [node name="Button3" type="Button" parent="level_selector/CenterContainer/VBoxContainer"]
 margin_left = 170.0
@@ -75,6 +81,9 @@ margin_bottom = 20.0
 custom_colors/font_color_hover = Color( 0.176471, 0.360784, 0.384314, 1 )
 text = "level 3"
 flat = true
+script = ExtResource( 2 )
+level = 3
+level_select_path = NodePath("../../..")
 
 [node name="Button4" type="Button" parent="level_selector/CenterContainer/VBoxContainer"]
 margin_left = 255.0
@@ -83,9 +92,8 @@ margin_bottom = 20.0
 custom_colors/font_color_hover = Color( 0.176471, 0.360784, 0.384314, 1 )
 text = "level 4"
 flat = true
+script = ExtResource( 2 )
+level = 4
+level_select_path = NodePath("../../..")
 
 [connection signal="pressed" from="TextureRect" to="." method="back"]
-[connection signal="pressed" from="level_selector/CenterContainer/VBoxContainer/Button" to="level_selector" method="select_level" binds= [ 1, 1 ]]
-[connection signal="pressed" from="level_selector/CenterContainer/VBoxContainer/Button2" to="level_selector" method="select_level" binds= [ 1, 2 ]]
-[connection signal="pressed" from="level_selector/CenterContainer/VBoxContainer/Button3" to="level_selector" method="select_level" binds= [ 1, 3 ]]
-[connection signal="pressed" from="level_selector/CenterContainer/VBoxContainer/Button4" to="level_selector" method="select_level" binds= [ 1, 4 ]]

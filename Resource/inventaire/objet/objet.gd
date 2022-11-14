@@ -1,7 +1,7 @@
 extends Resource
 class_name ObjetRes
 
-export(String) var object_name
+export(String) var things_name
 export(String) var description
 export(Texture) var texture
 export(int) var max_quantity

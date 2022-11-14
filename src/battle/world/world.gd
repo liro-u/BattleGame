@@ -20,6 +20,7 @@ var spawn_position : SpawnPosition
 var back_ui_cancel : Area2D
 var condition_victory : Node
 var task_list : Node
+var team_is_given : bool
 
 export(PackedScene) var battler_scene
 
@@ -100,7 +101,7 @@ func _ready() -> void:
 					list_dup.append(battler_data)
 				else:
 					has_given_battler = true
-			if list_dup.size() > 0 or has_given_battler:
+			if (list_dup.size() > 0) and (not has_given_battler) and (not team_is_given):
 				get_tree().call_group_flags(2, "button_next_level", "show")
 				next_level_switcher.next_scene_data = ["level", data_for_level[1], data_for_level[2] + 1, list_dup]
 			else:

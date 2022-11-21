@@ -3,7 +3,7 @@ class_name levelCalculation
 	
 static func add_xp(xp_gain, battler_data):
 	var level = battler_data.level
-	var client_data =  load("res://player_data/client/client_data.tres")
+	var client_data =  load(Global.dataFolderPreset + "://player_data/client/client_data.tres")
 	if level < client_data.level and level < client_data.max_level:
 		var xp = battler_data.xp + xp_gain
 		var starting_xp = battler_data.stats_reference.starting_xp_needed

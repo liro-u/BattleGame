@@ -11,7 +11,8 @@ func clicked():
 	var team_data = data[3]
 	data[3] = update_team_data(team_data)
 	switcher.next_scene_data = data
-	emit_signal("is_clicked")
+	if StaminaManager.tryRemoveStamina(StaminaManager.load_stamina_cost(data[1], data[2])) and data[3].size() > 0:
+		emit_signal("is_clicked")
 	
 func update_team_data(team_data):
 	var index = 0

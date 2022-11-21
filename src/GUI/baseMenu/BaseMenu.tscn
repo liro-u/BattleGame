@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://asset/GUI/custom_charact/background.png" type="Texture" id=1]
 [ext_resource path="res://src/GUI/baseMenu/monnaie_bar/monnaieBar.tscn" type="PackedScene" id=2]
@@ -6,9 +6,6 @@
 [ext_resource path="res://asset/GUI/home_page_asset/btn_settings.png" type="Texture" id=4]
 [ext_resource path="res://asset/GUI/home_page_asset/profile.png" type="Texture" id=5]
 [ext_resource path="res://asset/GUI/home_page_asset/btn_mail.png" type="Texture" id=6]
-[ext_resource path="res://player_data/monnaie/gold.tres" type="Resource" id=7]
-[ext_resource path="res://player_data/monnaie/gemme.tres" type="Resource" id=8]
-[ext_resource path="res://player_data/monnaie/stamina.tres" type="Resource" id=9]
 [ext_resource path="res://asset/GUI/home_page_asset/btn_characters.png" type="Texture" id=10]
 [ext_resource path="res://asset/GUI/home_page_asset/btn_battle.png" type="Texture" id=11]
 [ext_resource path="res://asset/GUI/home_page_asset/btn_supply.png" type="Texture" id=12]
@@ -183,7 +180,7 @@ margin_bottom = 585.0
 [node name="MonnaieBar" parent="MarginContainer/HBoxContainer/VBoxContainer2" groups=[
 "update_data",
 ] instance=ExtResource( 2 )]
-list_monnaie = [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 8 ) ]
+list_monnaie = [ "res://player_data/monnaie/stamina.tres", "res://player_data/monnaie/gold.tres", "res://player_data/monnaie/gemme.tres" ]
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 74.0
@@ -221,6 +218,7 @@ texture_normal = ExtResource( 14 )
 expand = true
 stretch_mode = 4
 script = ExtResource( 16 )
+ui_group = "task_ui"
 
 [node name="Party" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 155.0

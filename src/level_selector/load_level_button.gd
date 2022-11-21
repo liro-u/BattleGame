@@ -9,7 +9,7 @@ var data_level
 func _ready():
 	level_select = get_node(level_select_path)
 	chapitre = level_select.chapitre
-	data_level = load("res://asset/level_data/chapitre_" + str(chapitre) + "/level_" + str(level) + "/data.tres")
+	data_level = load(Global.dataFolderPreset + "://player_data/level_data/chapitre_" + str(chapitre) + "/level_" + str(level) + "/data.tres")
 	initialize()
 	connect("pressed", level_select, "select_level", [level, data_level])
 

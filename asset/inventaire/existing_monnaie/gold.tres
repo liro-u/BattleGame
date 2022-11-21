@@ -9,3 +9,4 @@ things_name = "gold"
 description = ""
 max_quantity = -1
 texture = ExtResource( 2 )
+group_updater = ""

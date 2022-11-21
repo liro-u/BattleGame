@@ -1,6 +1,6 @@
 extends TextureRect
 
-export(Array, Resource) var list_monnaie
+export(Array, String, FILE) var list_monnaie
 
 onready var bar_box = $MarginContainer/TopBarre
 

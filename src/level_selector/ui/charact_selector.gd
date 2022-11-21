@@ -8,7 +8,7 @@ onready var filter_by = $"TextureRect/Filter/BackgroundFilter/Container/Box1"
 onready var filter = $"TextureRect/Filter"
 onready var select_button = $"TextureRect/ButtonContainer/VBoxContainer/BottomButtonContainer/Button2"
 
-export var charact_path = "res://player_data/charact/"
+var charact_path = Global.dataFolderPreset + "://player_data/charact/"
 var player = null
 var already_select = null
 var list_exeption = []
@@ -64,7 +64,7 @@ func reload_list_of_char():
 	var new_select_char = load("res://src/GUI/select_team/selectChar.tscn")
 	var list_char_button = []
 	for file in files:
-		var data = load("res://player_data/charact/" + file)
+		var data = load(charact_path + file)
 		if show_locked or not data.locked:
 			battler_given.append(data)
 		

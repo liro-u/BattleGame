@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/level_selector/Chapitre.gd" type="Script" id=1]
 [ext_resource path="res://src/level_selector/load_level_button.gd" type="Script" id=2]
+[ext_resource path="res://asset/GUI/quest_asset/quest_mission_btn.png" type="Texture" id=3]
 [ext_resource path="res://src/level_selector/ui/manage_level.gd" type="Script" id=5]
 [ext_resource path="res://asset/GUI/chara_select/chara_selector_fond.png" type="Texture" id=6]
 
@@ -96,4 +97,43 @@ script = ExtResource( 2 )
 level = 4
 level_select_path = NodePath("../../..")
 
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 580.0
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="MarginContainer/Control"]
+margin_right = 100.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 30 )
+custom_colors/font_color_hover = Color( 0.176471, 0.360784, 0.384314, 1 )
+text = "Back"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Control/Button"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+expand = true
+
 [connection signal="pressed" from="TextureRect" to="." method="back"]
+[connection signal="pressed" from="MarginContainer/Control/Button" to="." method="back"]

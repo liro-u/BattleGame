@@ -37,3 +37,4 @@ list_enemy_battler = [ SubResource( 1 ) ]
 condition_victory_script = ExtResource( 5 )
 task = [ null, null, null ]
 loot_table = [  ]
+stamina_cost = 7

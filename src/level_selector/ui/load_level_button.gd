@@ -8,5 +8,5 @@ func _init():
 	connect("pressed", self, "load_level")
 
 func load_level():
-	if SaverInventory.tryRemoveStamina(0) and level_data_switcher.next_scene_data[3].size() > 0:
+	if StaminaManager.tryRemoveStamina(StaminaManager.load_stamina_cost(level_data_switcher.next_scene_data[1], level_data_switcher.next_scene_data[2])) and level_data_switcher.next_scene_data[3].size() > 0:
 		emit_signal("load_level")

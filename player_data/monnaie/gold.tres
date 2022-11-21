@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource( 1 )
-quantity = 5500
+quantity = 11500
 things = ExtResource( 2 )

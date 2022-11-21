@@ -181,7 +181,7 @@ func get_next_gui():
 					var star_state_node = task_node.get_node("Star").get_node("StateStar")
 					star_state_node.appear(task and task.finished)
 				#update client level
-				var client_data = load("res://player_data/client/client_data.tres")
+				var client_data = load(Global.dataFolderPreset + "://player_data/client/client_data.tres")
 				var client_level_ui =  get_tree().get_nodes_in_group("client_level")[0]
 				var client_xp_label_ui = get_tree().get_nodes_in_group("gain_client_xp")[0]
 				var client_player_animation = get_tree().get_nodes_in_group("client_level_player_animation")[0]
@@ -192,17 +192,20 @@ func get_next_gui():
 					value_ratio = (client_data.xp / levelCalculation.xp_needed_for_level(client_data.level + 1, client_data.starting_xp_needed, client_data.level_palier)) * 999
 				client_level_ui.set_progress(value_ratio)
 				client_level_ui.set_value(client_data.level)
+				var battle_world = get_tree().get_nodes_in_group("battle_world")[0]
+				var chapitre = battle_world.data_for_level[1]
+				var level = battle_world.data_for_level[2]
+				if not StaminaManager.check_enought_stamina(StaminaManager.load_stamina_cost(chapitre, level)):
+					get_tree().call_group_flags(2, "button_restart", "hide")
 				#if win
 				if BaseConditionVictory.VICTORY == state_of_game:
 					#update level
-					var battle_world = get_tree().get_nodes_in_group("battle_world")[0]
-					var chapitre = battle_world.data_for_level[1]
-					var level = battle_world.data_for_level[2] + 1
-					var data_level = load("res://asset/level_data/chapitre_" + str(chapitre) + "/level_" + str(level) + "/data.tres")
+					level += 1
+					var data_level = load(Global.dataFolderPreset + "://player_data/level_data/chapitre_" + str(chapitre) + "/level_" + str(level) + "/data.tres")
 					if data_level:
-						if data_level.team_given.size() > 0:
+						if not StaminaManager.check_enought_stamina(data_level.stamina_cost) or data_level.team_given.size() > 0:
 							get_tree().call_group_flags(2, "button_next_level", "hide")
-						elif not data_level.unlocked:
+						if not data_level.unlocked:
 							data_level.unlocked = true
 							ResourceSaver.save(data_level.resource_path, data_level)
 					else:

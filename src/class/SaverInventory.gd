@@ -1,6 +1,29 @@
 extends Node
 class_name SaverInventory
 
+static func copy_directory_recursively(p_from : String, p_to : String) -> void:
+	var directory = Directory.new()
+	if not directory.dir_exists(p_to):
+		directory.make_dir_recursive(p_to)
+	if directory.open(p_from) == OK:
+		directory.list_dir_begin(true)
+		var file_name = directory.get_next()
+		while (file_name != "" && file_name != "." && file_name != ".."):
+			if directory.current_is_dir():
+				copy_directory_recursively(p_from + "/" + file_name, p_to + "/" + file_name)
+			else:
+				directory.copy(p_from + "/" + file_name, p_to + "/" + file_name)
+			file_name = directory.get_next()
+	else:
+		push_warning("Error copying " + p_from + " to " + p_to)
+		
+static func first_creation_data():
+	var destination = "user://player_data/"
+	var directory = Directory.new();
+	if not directory.dir_exists(destination):
+		var source = "res://player_data/"
+		copy_directory_recursively(source, destination)
+	
 static func get_all_file(path):
 	var files = []
 	var dir = Directory.new()
@@ -24,11 +47,11 @@ static func check_existing_resource(new_file_name, files, path):
 	return last_file
 
 static func addNewMonnaie(monnaie):
-	var path = "res://player_data/monnaie/"
+	var path = Global.dataFolderPreset + "://player_data/monnaie/"
 	addNewThings(monnaie, path)
 	
 static func addNewObject(object):
-	var path = "res://player_data/inventaire/"
+	var path = Global.dataFolderPreset + "://player_data/inventaire/"
 	addNewThings(object, path)
 
 static func addNewThings(newThings, path):
@@ -41,18 +64,11 @@ static func addNewThings(newThings, path):
 	var last_file = check_existing_resource(new_file_name, files, path)
 	#if there is an existing things before, add its quantity to the new one
 	if last_file:
-		newThings.quantity += last_file.quantity
+		last_file.quantity += newThings.quantity
+	else:
+		last_file = newThings
 	#check if things quantity dosen't exced max_quantity (if max_quantity != 1)
 	if max_quantity > -1:
-		newThings.quantity = min(newThings.quantity, max_quantity)
+		last_file.quantity = min(last_file.quantity, max_quantity)
 	#save the new things
-	print(path + new_file_name, " -- ", newThings.resource_path)
-	ResourceSaver.save(path + new_file_name, newThings)
-
-static func tryRemoveStamina(nb_stam):
-	var current_stamina = load("res://player_data/monnaie/stamina.tres")
-	if current_stamina.quantity >= nb_stam:
-		current_stamina.quantity -= nb_stam
-		ResourceSaver.save(current_stamina.resource_path, current_stamina)
-		return true
-	return false
+	ResourceSaver.save(last_file.resource_path, last_file)

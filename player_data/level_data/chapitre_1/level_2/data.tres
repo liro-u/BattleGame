@@ -1,13 +1,13 @@
 [gd_resource type="Resource" load_steps=10 format=2]
 
-[ext_resource path="res://asset/level_data/chapitre_1/level_2/task/task_1.tres" type="Resource" id=1]
+[ext_resource path="res://player_data/level_data/chapitre_1/level_2/task/task_1.tres" type="Resource" id=1]
 [ext_resource path="res://asset/chararacters/001_testChar/stats.tres" type="Resource" id=2]
 [ext_resource path="res://asset/world/world_test1/test1.tres" type="Resource" id=3]
 [ext_resource path="res://Resource/level_data/levelData.gd" type="Script" id=4]
 [ext_resource path="res://Resource/stats/ownerStats.gd" type="Script" id=5]
 [ext_resource path="res://src/battle/condition_victory/base_victory_condition.gd" type="Script" id=6]
 [ext_resource path="res://player_data/charact/test20.tres" type="Resource" id=7]
-[ext_resource path="res://asset/level_data/chapitre_1/level_2/given_team/given1.tres" type="Resource" id=8]
+[ext_resource path="res://player_data/level_data/chapitre_1/level_2/given_team/given1.tres" type="Resource" id=8]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 5 )
@@ -31,3 +31,4 @@ list_enemy_battler = [ SubResource( 1 ) ]
 condition_victory_script = ExtResource( 6 )
 task = [ ExtResource( 1 ), null, null ]
 loot_table = [  ]
+stamina_cost = 3

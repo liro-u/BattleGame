@@ -9,3 +9,4 @@ things_name = "stamina"
 description = ""
 max_quantity = 120
 texture = ExtResource( 2 )
+group_updater = "stamina_updater"

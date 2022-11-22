@@ -2,9 +2,7 @@
 
 [ext_resource path="res://asset/GUI/chara_member_select/selected.png" type="Texture" id=1]
 
-[node name="SelectedIndicator" type="MarginContainer" groups=[
-"selected_indicator",
-]]
+[node name="SelectedIndicator" type="MarginContainer" groups=["selected_indicator"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

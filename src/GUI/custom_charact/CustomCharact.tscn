@@ -30,15 +30,10 @@
 [ext_resource path="res://asset/font/dynamicfont/Other/Global/PoliceHeader.tres" type="DynamicFont" id=28]
 [ext_resource path="res://asset/theme/Other/AttackDescription/InfoCharact.tres" type="Theme" id=29]
 
-[node name="CustomCharact" type="Control" groups=[
-"custom_char_ui",
-]]
+[node name="CustomCharact" type="Control" groups=["custom_char_ui"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 21 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -87,13 +82,11 @@ mouse_filter = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_rotation = 180.0
+rect_scale = Vector2( 0.75, 0.75 )
 rect_pivot_offset = Vector2( 30, 30 )
 texture_normal = ExtResource( 5 )
 texture_hover = ExtResource( 22 )
 stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VSeparator3" type="VSeparator" parent="MarginContainer/HBoxContainer"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -127,14 +120,12 @@ expand = true
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/LeftSlot/SlotLefter/BackSlot"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Slot" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftSlot/SlotLefter/BackSlot/CenterContainer"]
+modulate = Color( 1, 1, 1, 0.490196 )
 margin_left = 13.0
 margin_top = 12.0
-margin_right = 46.0
+margin_right = 49.0
 margin_bottom = 48.0
 texture = ExtResource( 10 )
 __meta__ = {
@@ -161,6 +152,7 @@ __meta__ = {
 }
 
 [node name="Slot" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftSlot/SlotLefter3/BackSlot/CenterContainer"]
+modulate = Color( 1, 1, 1, 0.490196 )
 margin_left = 5.0
 margin_top = 9.0
 margin_right = 54.0
@@ -192,6 +184,7 @@ __meta__ = {
 }
 
 [node name="Slot" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftSlot/SlotLefter2/BackSlot3/CenterContainer"]
+modulate = Color( 1, 1, 1, 0.490196 )
 margin_left = 3.0
 margin_top = 15.0
 margin_right = 56.0
@@ -211,10 +204,13 @@ custom_constants/margin_left = -250
 custom_constants/margin_bottom = 0
 
 [node name="SplashArt" type="TextureRect" parent="MarginContainer/HBoxContainer/VSeparator"]
-margin_left = -250.0
-margin_top = 100.0
-margin_right = 454.0
-margin_bottom = 560.0
+anchor_left = -0.722
+anchor_right = 1.0
+margin_left = -427.013
+margin_top = 41.167
+margin_right = 276.98
+margin_bottom = 501.167
+rect_scale = Vector2( 1.25, 1.25 )
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -253,6 +249,7 @@ __meta__ = {
 }
 
 [node name="Slot2" type="TextureRect" parent="MarginContainer/HBoxContainer/RightSlot/SlotLefter4/BackSlot3/CenterContainer"]
+modulate = Color( 1, 1, 1, 0.490196 )
 margin_left = 13.0
 margin_top = 10.0
 margin_right = 47.0
@@ -276,11 +273,9 @@ expand = true
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/RightSlot/SlotLefter5/BackSlot3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Slot" type="TextureRect" parent="MarginContainer/HBoxContainer/RightSlot/SlotLefter5/BackSlot3/CenterContainer"]
+modulate = Color( 1, 1, 1, 0.490196 )
 margin_left = 6.0
 margin_top = 7.0
 margin_right = 54.0
@@ -307,6 +302,7 @@ __meta__ = {
 }
 
 [node name="Slot" type="TextureRect" parent="MarginContainer/HBoxContainer/RightSlot/SlotLefter6/BackSlot3/CenterContainer"]
+modulate = Color( 1, 1, 1, 0.490196 )
 margin_left = 11.0
 margin_top = 8.0
 margin_right = 49.0
@@ -321,10 +317,11 @@ margin_bottom = 560.0
 custom_constants/separation = 0
 
 [node name="Tab" type="Control" parent="MarginContainer/HBoxContainer"]
-margin_left = 594.0
-margin_right = 894.0
+margin_left = 605.093
+margin_right = 905.093
 margin_bottom = 560.0
 rect_min_size = Vector2( 300, 0 )
+rect_scale = Vector2( 1.061, 1 )
 script = ExtResource( 19 )
 selected_color = Color( 0.286275, 0.278431, 0.396078, 1 )
 base_color = Color( 0.470588, 0.537255, 0.686275, 1 )
@@ -867,9 +864,6 @@ texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
 script = ExtResource( 27 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Content" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tab/Story"]
 anchor_right = 1.0
@@ -1066,6 +1060,7 @@ margin_bottom = 560.0
 margin_top = 250.0
 margin_right = 60.0
 margin_bottom = 310.0
+rect_scale = Vector2( 0.75, 0.75 )
 rect_pivot_offset = Vector2( 30, 30 )
 texture_normal = ExtResource( 5 )
 texture_hover = ExtResource( 22 )
@@ -1082,11 +1077,8 @@ mouse_filter = 2
 margin_right = 150.0
 margin_bottom = 50.0
 custom_colors/font_color_hover = Color( 0.470588, 0.537255, 0.686275, 1 )
-text = "Retour"
+text = "Back"
 flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="TextureRect" parent="MarginContainer/Button/TextureButton"]
 self_modulate = Color( 0.286275, 0.278431, 0.396078, 1 )

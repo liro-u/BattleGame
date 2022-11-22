@@ -20,9 +20,6 @@ texture_normal = ExtResource( 2 )
 expand = true
 stretch_mode = 6
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 color_element = {
 1: Color( 1, 0.788235, 0.505882, 1 ),
 2: Color( 0.360784, 0.486275, 0.811765, 1 ),

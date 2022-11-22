@@ -24,16 +24,11 @@ gradient = SubResource( 1 )
 [sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 1.4, 0.0, 0, 0 ]
 
-[node name="TaskUI" type="Control" groups=[
-"task_ui",
-]]
+[node name="TaskUI" type="Control" groups=["task_ui"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureButton" type="TextureButton" parent="."]
 anchor_right = 1.0
@@ -98,9 +93,9 @@ margin_bottom = 100.0
 custom_constants/separation = 100
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 100.0
+margin_top = 119.0
 margin_right = 262.0
-margin_bottom = 460.0
+margin_bottom = 386.0
 rect_min_size = Vector2( 250, 0 )
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
@@ -128,7 +123,7 @@ text = "   Monthly"
 [node name="Achievments" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer3" instance=ExtResource( 2 )]
 margin_top = 210.0
 margin_bottom = 260.0
-text = "   Achievments"
+text = "   Achievements"
 
 [node name="Event1" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer3" instance=ExtResource( 2 )]
 margin_top = 280.0
@@ -172,9 +167,9 @@ margin_bottom = 30.0
 custom_constants/separation = 30
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 34.0
+margin_top = -20.0
 margin_right = 622.0
-margin_bottom = 134.0
+margin_bottom = 83.0
 rect_min_size = Vector2( 0, 100 )
 custom_constants/margin_right = 35
 custom_constants/margin_top = 30
@@ -185,7 +180,7 @@ script = ExtResource( 9 )
 margin_left = 25.0
 margin_top = 30.0
 margin_right = 587.0
-margin_bottom = 100.0
+margin_bottom = 103.0
 rect_min_size = Vector2( 0, 70 )
 custom_constants/margin_top = 40
 custom_constants/margin_bottom = 20
@@ -193,7 +188,7 @@ custom_constants/margin_bottom = 20
 [node name="TextureProgress" type="TextureProgress" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer"]
 margin_top = 40.0
 margin_right = 562.0
-margin_bottom = 50.0
+margin_bottom = 53.0
 max_value = 10.0
 step = 0.001
 value = 1.0
@@ -210,14 +205,14 @@ curve = SubResource( 5 )
 margin_left = 25.0
 margin_top = 30.0
 margin_right = 587.0
-margin_bottom = 100.0
+margin_bottom = 103.0
 custom_constants/margin_right = -15
 custom_constants/margin_left = -15
 
 [node name="StarList" type="HBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer2"]
 margin_left = -15.0
 margin_right = 577.0
-margin_bottom = 70.0
+margin_bottom = 73.0
 custom_constants/separation = 0
 script = ExtResource( 7 )
 stars_instance = ExtResource( 8 )
@@ -225,18 +220,18 @@ stars_instance = ExtResource( 8 )
 [node name="VSeparator2" type="VSeparator" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer2/StarList"]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 562.0
-margin_bottom = 70.0
+margin_bottom = 73.0
 size_flags_horizontal = 3
 
 [node name="VBoxContainer4" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer2/StarList" instance=ExtResource( 8 )]
 margin_left = 562.0
 margin_right = 592.0
-margin_bottom = 70.0
+margin_bottom = 73.0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 138.0
+margin_top = 90.0
 margin_right = 622.0
-margin_bottom = 460.0
+margin_bottom = 412.0
 size_flags_vertical = 3
 custom_constants/margin_right = 40
 custom_constants/margin_left = 40
@@ -244,7 +239,7 @@ custom_constants/margin_left = 40
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer"]
 margin_left = 40.0
 margin_right = 582.0
-margin_bottom = 322.0
+margin_bottom = 365.0
 scroll_horizontal_enabled = false
 script = ExtResource( 6 )
 h = false
@@ -332,6 +327,6 @@ __meta__ = {
 }
 
 [connection signal="pressed" from="TextureButton" to="." method="back"]
-[connection signal="curve_tween" from="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/TextureProgress/CurveTween" to="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/TextureProgress" method="_on_CurveTween_curve_tween"]
 [connection signal="curve_tween" from="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/TextureProgress/CurveTween" to="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2" method="_on_CurveTween_curve_tween"]
+[connection signal="curve_tween" from="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/TextureProgress/CurveTween" to="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/TextureProgress" method="_on_CurveTween_curve_tween"]
 [connection signal="pressed" from="MarginContainer/TextureRect/MarginContainer/MarginContainer/Control/Button" to="." method="back"]

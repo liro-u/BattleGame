@@ -14,7 +14,7 @@ func initialize():
 	progressBar.set_value(task_finished)
 	star_list.initialize(nb_task, task_finished)
 	yield(get_tree().create_timer(1), "timeout")
-	progressBar.tween_to_value(task_finished + 3)
+	progressBar.tween_to_value(task_finished + 5)
 
 func _on_CurveTween_curve_tween(sat):
 	if star_list.next_star and sat >= star_list.next_star.nb_star:

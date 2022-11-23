@@ -27,8 +27,8 @@ colors = PoolColorArray( 0, 0, 0, 0.305882 )
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
 
-[sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0.111446, 0.181818 ), 0.0, 0.0, 0, 0, Vector2( 0.536145, 0.854545 ), 0.0282073, 0.0282073, 0, 0, Vector2( 0.96988, 0.145455 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 1.4, 0.0, 0, 0 ]
@@ -167,7 +167,7 @@ text = "   Event 3"
 
 [node name="CurveTween" type="Tween" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer"]
 script = ExtResource( 12 )
-curve = SubResource( 3 )
+curve = SubResource( 6 )
 
 [node name="HSeparator3" type="HSeparator" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2"]
 self_modulate = Color( 1, 1, 1, 0 )

@@ -9,9 +9,6 @@ onready var button = $MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer
 var task 
 
 export var color_finished = Color("5d5d5d")
-
-func _ready():
-	initialize(load("res://player_data/task/task_4.tres"))
 	
 func initialize(data):
 	task = data

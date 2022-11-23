@@ -14,9 +14,7 @@
 [ext_resource path="res://asset/GUI/home_page_asset/btn_inventory.png" type="Texture" id=15]
 [ext_resource path="res://src/GUI/OpenUI.gd" type="Script" id=16]
 
-[node name="BaseMenu" type="Control" groups=[
-"base_menu_ui",
-]]
+[node name="BaseMenu" type="Control" groups=["base_menu_ui"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -177,9 +175,7 @@ margin_left = 504.0
 margin_right = 1004.0
 margin_bottom = 585.0
 
-[node name="MonnaieBar" parent="MarginContainer/HBoxContainer/VBoxContainer2" groups=[
-"update_data",
-] instance=ExtResource( 2 )]
+[node name="MonnaieBar" parent="MarginContainer/HBoxContainer/VBoxContainer2" groups=["update_data"] instance=ExtResource( 2 )]
 list_monnaie = [ "res://player_data/monnaie/stamina.tres", "res://player_data/monnaie/gold.tres", "res://player_data/monnaie/gemme.tres" ]
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
@@ -205,13 +201,14 @@ rect_min_size = Vector2( 175, 0 )
 custom_constants/separation = 30
 
 [node name="Quest" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_right = 175.0
-margin_bottom = 125.0
+margin_left = 44.746
+margin_top = 77.607
+margin_right = 169.746
+margin_bottom = 202.607
 alignment = 2
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer/VBoxContainer/Quest"]
-margin_left = 50.0
-margin_right = 175.0
+margin_right = 125.0
 margin_bottom = 125.0
 rect_min_size = Vector2( 125, 125 )
 texture_normal = ExtResource( 14 )
@@ -221,9 +218,10 @@ script = ExtResource( 16 )
 ui_group = "task_ui"
 
 [node name="Party" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 155.0
-margin_right = 175.0
-margin_bottom = 280.0
+margin_left = 48.736
+margin_top = 197.198
+margin_right = 173.736
+margin_bottom = 322.198
 
 [node name="TextureButton2" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer/VBoxContainer/Party"]
 margin_right = 125.0
@@ -235,9 +233,10 @@ stretch_mode = 4
 script = ExtResource( 16 )
 
 [node name="Inventory" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 310.0
-margin_right = 175.0
-margin_bottom = 435.0
+margin_left = 48.599
+margin_top = 307.071
+margin_right = 173.599
+margin_bottom = 432.071
 
 [node name="TextureButton3" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer/VBoxContainer/Inventory"]
 margin_right = 125.0
@@ -273,13 +272,14 @@ margin_bottom = 295.0
 margin_right = 100.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
+rect_scale = Vector2( 1.6, 1.4 )
 texture_normal = ExtResource( 10 )
 expand = true
 script = ExtResource( 16 )
 ui_group = "charact_selector_ui"
 
 [node name="Supplies" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 299.0
+margin_top = 341.0
 margin_right = 150.0
 margin_bottom = 449.0
 rect_min_size = Vector2( 150, 150 )

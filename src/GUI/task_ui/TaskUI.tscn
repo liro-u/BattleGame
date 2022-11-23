@@ -144,35 +144,42 @@ margin_bottom = 470.0
 custom_constants/separation = 20
 
 [node name="Daily" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer3" instance=ExtResource( 2 )]
+mouse_filter = 1
 
 [node name="Weekly" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer3" instance=ExtResource( 2 )]
 margin_top = 70.0
 margin_bottom = 120.0
+mouse_filter = 1
 text = "   Weekly"
 
 [node name="Monthly" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer3" instance=ExtResource( 2 )]
 margin_top = 140.0
 margin_bottom = 190.0
+mouse_filter = 1
 text = "   Monthly"
 
 [node name="Achievments" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer3" instance=ExtResource( 2 )]
 margin_top = 210.0
 margin_bottom = 260.0
+mouse_filter = 1
 text = "   Achievments"
 
 [node name="Event1" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer3" instance=ExtResource( 2 )]
 margin_top = 280.0
 margin_bottom = 330.0
+mouse_filter = 1
 text = "   Event 1"
 
 [node name="Event2" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer3" instance=ExtResource( 2 )]
 margin_top = 350.0
 margin_bottom = 400.0
+mouse_filter = 1
 text = "   Event 2"
 
 [node name="Event3" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer3" instance=ExtResource( 2 )]
 margin_top = 420.0
 margin_bottom = 470.0
+mouse_filter = 1
 text = "   Event 3"
 
 [node name="CurveTween" type="Tween" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer"]

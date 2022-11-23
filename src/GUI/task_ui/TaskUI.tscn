@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/GUI/task_ui/TaskRecap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/GUI/task_ui/TaskTab.tscn" type="PackedScene" id=2]
@@ -26,7 +26,13 @@ colors = PoolColorArray( 0, 0, 0, 0.305882 )
 gradient = SubResource( 1 )
 
 [sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 1.4, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
 [node name="TaskUI" type="Control" groups=[
 "task_ui",
@@ -130,6 +136,7 @@ scroll_horizontal_enabled = false
 script = ExtResource( 6 )
 h = false
 v = true
+duration = 0.5
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer"]
 margin_right = 250.0
@@ -167,6 +174,10 @@ text = "   Event 2"
 margin_top = 420.0
 margin_bottom = 470.0
 text = "   Event 3"
+
+[node name="CurveTween" type="Tween" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer"]
+script = ExtResource( 12 )
+curve = SubResource( 3 )
 
 [node name="HSeparator3" type="HSeparator" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -232,7 +243,7 @@ script = ExtResource( 10 )
 
 [node name="CurveTween" type="Tween" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/TextureProgress"]
 script = ExtResource( 12 )
-curve = SubResource( 3 )
+curve = SubResource( 4 )
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2"]
 margin_left = 25.0
@@ -284,6 +295,7 @@ script = ExtResource( 6 )
 h = false
 v = true
 scroll_value = 92
+duration = 0.5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ScrollContainer"]
 margin_right = 512.0
@@ -327,6 +339,10 @@ margin_top = 460.0
 margin_right = 512.0
 margin_bottom = 460.0
 custom_constants/separation = 0
+
+[node name="CurveTween" type="Tween" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ScrollContainer"]
+script = ExtResource( 12 )
+curve = SubResource( 5 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 margin_left = 528.0
@@ -410,9 +426,11 @@ __meta__ = {
 
 [connection signal="pressed" from="TextureButton" to="." method="back"]
 [connection signal="pressed" from="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2/HSeparator4/TextureButton" to="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer" method="add_v_scroll" binds= [ -1 ]]
+[connection signal="curve_tween" from="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/CurveTween" to="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer" method="_on_CurveTween_curve_tween"]
 [connection signal="pressed" from="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2/HSeparator3/TextureButton" to="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer" method="add_v_scroll"]
 [connection signal="curve_tween" from="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/TextureProgress/CurveTween" to="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/TextureProgress" method="_on_CurveTween_curve_tween"]
 [connection signal="curve_tween" from="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/TextureProgress/CurveTween" to="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2" method="_on_CurveTween_curve_tween"]
+[connection signal="curve_tween" from="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ScrollContainer/CurveTween" to="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ScrollContainer" method="_on_CurveTween_curve_tween"]
 [connection signal="pressed" from="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/TextureButton" to="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ScrollContainer" method="add_v_scroll" binds= [ -1 ]]
 [connection signal="pressed" from="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/TextureButton2" to="MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ScrollContainer" method="add_v_scroll"]
 [connection signal="pressed" from="MarginContainer/TextureRect/MarginContainer/MarginContainer/Control/Button" to="." method="back"]

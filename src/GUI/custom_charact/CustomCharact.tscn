@@ -30,9 +30,7 @@
 [ext_resource path="res://asset/font/dynamicfont/Other/Global/PoliceHeader.tres" type="DynamicFont" id=28]
 [ext_resource path="res://asset/theme/Other/AttackDescription/InfoCharact.tres" type="Theme" id=29]
 
-[node name="CustomCharact" type="Control" groups=[
-"custom_char_ui",
-]]
+[node name="CustomCharact" type="Control" groups=["custom_char_ui"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 21 )

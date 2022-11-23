@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource( 1 )
 task_name = "UnNamed_Task"
+description = "No Description For This Task :("
 finished = true
 type_name = "MinMaxTurn"
 NBTurn = 5

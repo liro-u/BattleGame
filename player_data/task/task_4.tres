@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Resource/task/MinMaxBat.gd" type="Script" id=1]
+[ext_resource path="res://Resource/inventaire/possession.gd" type="Script" id=2]
+[ext_resource path="res://asset/inventaire/existing_object/commonGoldPack.tres" type="Resource" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+quantity = 100
+things = ExtResource( 3 )
+
+[resource]
+script = ExtResource( 1 )
+task_name = "kill10"
+description = "Collect all things"
+finished = true
+reward = SubResource( 1 )
+type_name = "MinMaxBat"
+bat_nb = 0
+mini = true
+element_filter = [ 3 ]

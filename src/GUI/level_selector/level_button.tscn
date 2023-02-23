@@ -1,0 +1,139 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://asset/GUI/quest_asset/star_empty.png" type="Texture" id=1]
+[ext_resource path="res://asset/GUI/squest_asset/squest_level_box.png" type="Texture" id=2]
+[ext_resource path="res://src/GUI/level_selector/level_button.gd" type="Script" id=4]
+[ext_resource path="res://src/GUI/level_selector/load_level_button.gd" type="Script" id=5]
+[ext_resource path="res://src/GUI/level_selector/Star.gd" type="Script" id=6]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+margin_top = 40.0
+margin_right = 612.0
+margin_bottom = 140.0
+mouse_filter = 2
+custom_constants/separation = 0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator" type="VSeparator" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 61.0
+margin_bottom = 100.0
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="NinePatchRect" parent="."]
+margin_left = 61.0
+margin_right = 244.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+texture = ExtResource( 2 )
+patch_margin_left = 11
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 13
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/VBoxContainer"]
+margin_right = 183.0
+margin_bottom = 30.0
+mouse_filter = 2
+size_flags_vertical = 3
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/VBoxContainer/MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 178.0
+margin_bottom = 25.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SubTitle" type="Label" parent="TextureRect/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_right = 131.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "Story"
+valign = 1
+
+[node name="StarContainer" type="HBoxContainer" parent="TextureRect/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_left = 135.0
+margin_right = 173.0
+margin_bottom = 20.0
+mouse_filter = 2
+
+[node name="Star1" type="TextureRect" parent="TextureRect/VBoxContainer/MarginContainer/HBoxContainer/StarContainer"]
+margin_right = 10.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 10, 0 )
+mouse_filter = 2
+texture = ExtResource( 1 )
+expand = true
+script = ExtResource( 6 )
+
+[node name="Star2" type="TextureRect" parent="TextureRect/VBoxContainer/MarginContainer/HBoxContainer/StarContainer"]
+margin_left = 14.0
+margin_right = 24.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 10, 0 )
+mouse_filter = 2
+texture = ExtResource( 1 )
+expand = true
+script = ExtResource( 6 )
+
+[node name="Star3" type="TextureRect" parent="TextureRect/VBoxContainer/MarginContainer/HBoxContainer/StarContainer"]
+margin_left = 28.0
+margin_right = 38.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 10, 0 )
+mouse_filter = 2
+texture = ExtResource( 1 )
+expand = true
+script = ExtResource( 6 )
+
+[node name="Title" type="Label" parent="TextureRect/VBoxContainer"]
+margin_top = 30.0
+margin_right = 183.0
+margin_bottom = 100.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "1 - 1"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+flat = true
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator2" type="VSeparator" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 244.0
+margin_right = 612.0
+margin_bottom = 100.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.0

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Resource/task/ElementCondition.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+task_name = "Test"
+description = "No Description For This Task :("
+finished = false
+type_name = "ElementCondition"
+element_list = [ 4, 3 ]
+besoin = true
+au_moins = true
+ou = false

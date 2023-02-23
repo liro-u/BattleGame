@@ -86,7 +86,6 @@ func _ready() -> void:
 			new_task.task_data = dat_task
 			task_list.add_child(new_task)
 			
-	randomize()
 	condition_victory.set_script(condition_victory_script)
 	var main_menu_switcher = SwitchSceneData.new()
 	var next_level_switcher = SwitchSceneData.new("is_clicked")

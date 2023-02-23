@@ -1,7 +1,7 @@
 extends TaskBaseScript
 class_name TaskElementCondition
 
-func _ready():
+func ready_herit():
 	add_to_group("element_condition")
 	
 func check_element_condition(battlers):
@@ -14,15 +14,13 @@ func check_element_condition(battlers):
 			if task_data.besoin:
 				if task_data.ou:
 					if element_condition.has(elem):
-						task_data.finished = true
-						save_task_data()
+						finish_task()
 				else:
 					if element_condition.has(elem):
 						element_condition.erase(elem)
 			else:
 				if not element_condition.has(elem):
-					task_data.finished = true
-					save_task_data()
+					finish_task()
 		else:
 			if task_data.besoin:
 				if element_condition.has(elem):
@@ -36,19 +34,15 @@ func check_element_condition(battlers):
 		if task_data.besoin:
 			if not task_data.ou:
 				if element_condition.size() == 0:
-					task_data.finished = true
-					save_task_data()
+					finish_task()
 	else:
 		if task_data.besoin:
 			if list_bat.size() == 0:
-				task_data.finished = true
-				save_task_data()
+				finish_task()
 		else:
 			if task_data.ou:
 				if list_element.size() == 0:
-					task_data.finished = true
-					save_task_data()
+					finish_task()
 			else:
 				if list_element.size() < element_condition.size():
-					task_data.finished = true
-					save_task_data()
+					finish_task()

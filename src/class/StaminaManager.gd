@@ -18,7 +18,7 @@ static func check_enought_stamina(nb_stam):
 	return false
 	
 static func load_stamina_cost(chapitre, level):
-	var data = load(Global.dataFolderPreset + "://player_data/level_data/chapitre_" + str(chapitre) + "/level_" + str(level) + "/data.tres")
+	var data = load(Global.dataFolderPreset + "://player_data/level_data/story/chapitre_" + str(chapitre) + "/level_" + str(level) + "/data.tres")
 	return data.stamina_cost
 
 class StaminaUpdater:
@@ -38,7 +38,7 @@ class StaminaUpdater:
 	func add_n_stamina(n):
 		var stam_gain = current_stamina.duplicate()
 		stam_gain.quantity = n
-		SaverInventory.addNewMonnaie(stam_gain)
+		SaverInventory.addNewThings(stam_gain)
 		tree.call_group("stamina_updater", "update")
 		
 	func init_stamina():

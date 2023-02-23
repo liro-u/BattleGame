@@ -25,7 +25,6 @@ name_char = "Lynn"
 information_battler = SubResource( 1 )
 element = 3
 type = 1
-rarity = "Common"
 ske = ExtResource( 4 )
 icon = ExtResource( 6 )
 hight_icon = ExtResource( 9 )

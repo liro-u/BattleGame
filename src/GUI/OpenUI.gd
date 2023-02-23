@@ -11,3 +11,4 @@ func open_ui():
 		if ui.has_method("initialize"):
 			ui.callv("initialize", argument)
 		ui.show()
+	get_tree().call_group_flags(2, "update_data", "update_data")

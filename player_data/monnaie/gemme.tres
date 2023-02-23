@@ -7,3 +7,4 @@
 script = ExtResource( 1 )
 quantity = 0
 things = ExtResource( 2 )
+locked = false

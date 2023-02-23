@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://asset/GUI/quest_asset/quest_tab.png" type="Texture" id=1]
+[ext_resource path="res://asset/GUI/quest_asset/quest_fleche.png" type="Texture" id=2]
+[ext_resource path="res://src/GUI/task_ui/TaskTab.gd" type="Script" id=3]
+
+[node name="TaskTab" type="Button"]
+margin_right = 250.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 250, 50 )
+mouse_filter = 1
+custom_colors/font_color_hover = Color( 0.176471, 0.360784, 0.384314, 1 )
+text = "   Daily"
+flat = true
+align = 0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+visible = false
+margin_left = 220.0
+margin_right = 250.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 30, 0 )
+texture = ExtResource( 2 )
+expand = true

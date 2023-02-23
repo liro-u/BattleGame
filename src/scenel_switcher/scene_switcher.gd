@@ -4,7 +4,7 @@ class_name SceneSwitcher
 onready var color_rect = $ColorRect
 onready var tween = $tween
 
-export(PackedScene) var first_scene = load("res://src/level_selector/chapitre_1.tscn")
+export(PackedScene) var first_scene
 
 func _init():
 	add_to_group("level_switcher")
@@ -37,7 +37,7 @@ func change_level(current_scene, data_for_next_scene):
 			var chapitre = data_for_next_scene[1]
 			var level = data_for_next_scene[2]
 			var list_team_battler = data_for_next_scene[3]
-			var level_data = load(Global.dataFolderPreset + "://player_data/level_data/chapitre_" + str(chapitre) + "/level_" + str(level) + "/data.tres")
+			var level_data = load(Global.dataFolderPreset + "://player_data/level_data/story/chapitre_" + str(chapitre) + "/level_" + str(level) + "/data.tres")
 			if level_data:
 				next_scene = load("res://BattleWorld.tscn").instance()
 				next_scene.world = level_data.world
@@ -56,7 +56,7 @@ func change_level(current_scene, data_for_next_scene):
 			var chapitre = data_for_next_scene[1]
 			next_scene = load("res://src/GUI/baseMenu/UIManager.tscn").instance()
 			list_func.append("open_ui")
-			list_param.append(["chapitre_" + str(chapitre)])
+			list_param.append(["chapitre", ["chapitre_" + str(chapitre)]])
 		_:
 			return
 	if next_scene:

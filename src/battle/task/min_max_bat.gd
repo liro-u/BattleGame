@@ -1,7 +1,7 @@
 extends TaskBaseScript
 class_name TaskMinMaxBat
 
-func _ready():
+func ready_herit():
 	add_to_group("min_max_bat_condition")
 
 
@@ -18,7 +18,6 @@ func check_min_max_bat(battlers):
 				nb_bat += 1
 	#au moins X combatant                                         #pas plus de X combatatant
 	if (task_data.mini and nb_bat >= task_data.bat_nb) or (not task_data.mini and nb_bat <= task_data.bat_nb):
-		task_data.finished = true
-		save_task_data()
+		finish_task()
 
 	

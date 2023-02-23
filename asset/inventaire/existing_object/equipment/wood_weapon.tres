@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Resource/inventaire/objet/objet.gd" type="Script" id=1]
+[ext_resource path="res://asset/weapon/sword/wooden-sword.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+things_name = "wood sword"
+description = "a common weapon"
+texture = ExtResource( 2 )
+max_quantity = 1
+sell_price = 500
+category = 1

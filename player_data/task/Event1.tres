@@ -5,4 +5,9 @@
 [resource]
 script = ExtResource( 1 )
 task_list_name = "Event 1"
+next_update_timestamp = 0
+duration_before_refresh = 0
 task_list = [  ]
+nb_task_to_claim = 0
+nb_task_claimed = 0
+priority = 100

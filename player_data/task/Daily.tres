@@ -1,61 +1,13 @@
-[gd_resource type="Resource" load_steps=14 format=2]
+[gd_resource type="Resource" load_steps=2 format=2]
 
 [ext_resource path="res://Resource/task/list_task.gd" type="Script" id=1]
-[ext_resource path="res://asset/inventaire/existing_object/commonGoldPack.tres" type="Resource" id=2]
-[ext_resource path="res://Resource/inventaire/possession.gd" type="Script" id=3]
-[ext_resource path="res://Resource/task/MinMaxBat.gd" type="Script" id=4]
-[ext_resource path="res://asset/monnaie/gold.png" type="Texture" id=5]
-[ext_resource path="res://asset/inventaire/existing_monnaie/gold.tres" type="Resource" id=6]
-[ext_resource path="res://Resource/inventaire/objet/objet.gd" type="Script" id=7]
-
-[sub_resource type="Resource" id=1]
-script = ExtResource( 3 )
-quantity = 100
-things = ExtResource( 2 )
-
-[sub_resource type="Resource" id=2]
-script = ExtResource( 4 )
-task_name = "kill50"
-description = "Collect all things"
-finished = true
-reward = SubResource( 1 )
-type_name = "MinMaxBat"
-bat_nb = 0
-mini = true
-element_filter = [ 3 ]
-
-[sub_resource type="Resource" id=3]
-script = ExtResource( 3 )
-quantity = 5000
-things = ExtResource( 6 )
-
-[sub_resource type="Resource" id=4]
-script = ExtResource( 7 )
-things_name = "gold_pack_5k"
-description = "+ 5K Gold when used"
-texture = ExtResource( 5 )
-max_quantity = 99
-data = SubResource( 3 )
-sell_price = -1
-categorie = "box"
-
-[sub_resource type="Resource" id=5]
-script = ExtResource( 3 )
-quantity = 3
-things = SubResource( 4 )
-
-[sub_resource type="Resource" id=6]
-script = ExtResource( 4 )
-task_name = "kill50"
-description = "try reching level 100"
-finished = false
-reward = SubResource( 5 )
-type_name = "MinMaxBat"
-bat_nb = 0
-mini = true
-element_filter = [ 3 ]
 
 [resource]
 script = ExtResource( 1 )
 task_list_name = "Daily"
-task_list = [ SubResource( 2 ), SubResource( 6 ) ]
+next_update_timestamp = 0
+duration_before_refresh = 86400
+task_list = [ null, null, null, null, null ]
+nb_task_to_claim = 10
+nb_task_claimed = 3
+priority = 0

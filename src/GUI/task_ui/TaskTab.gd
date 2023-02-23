@@ -1,6 +1,6 @@
 extends Button
 
-var task_list = []
+var task_data
 onready var indicator = $HBoxContainer/TextureRect
 
 func select():

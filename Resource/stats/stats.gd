@@ -5,7 +5,6 @@ export(String) var name_char = "Default"
 export(Resource) var information_battler
 export(int) var element = Element.Element.NONE
 export(int) var type = Type.Type.NONE
-export(String) var rarity = "Common"
 export(GDDragonBonesResource) var ske
 export(Texture) var icon
 export(Texture) var hight_icon

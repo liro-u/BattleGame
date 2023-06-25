@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://src/character/Battler.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/battle/world/world.gd" type="Script" id=2]
@@ -6,15 +6,14 @@
 [ext_resource path="res://src/GUI/battle/Background_parr_layer.gd" type="Script" id=4]
 [ext_resource path="res://src/GUI/turn_line/turnline.gd" type="Script" id=5]
 [ext_resource path="res://asset/GUI/turnline/arrow.png" type="Texture" id=6]
-[ext_resource path="res://asset/chararacters/001_testChar/icon.png" type="Texture" id=7]
+[ext_resource path="res://asset/chararacters/001_lynn/icon.png" type="Texture" id=7]
 [ext_resource path="res://asset/GUI/turnline/line.png" type="Texture" id=8]
 [ext_resource path="res://asset/GUI/animGui/anim_gui_curve.tres" type="Curve" id=9]
 [ext_resource path="res://src/GUI/battle/BattleGUI.gd" type="Script" id=10]
 [ext_resource path="res://src/GUI/action_gui/ActionGUI.tscn" type="PackedScene" id=11]
-[ext_resource path="res://player_data/charact/2test15.tres" type="Resource" id=12]
-[ext_resource path="res://player_data/charact/test1.tres" type="Resource" id=13]
-[ext_resource path="res://player_data/charact/test20.tres" type="Resource" id=14]
-[ext_resource path="res://player_data/charact/test60.tres" type="Resource" id=15]
+[ext_resource path="res://player_data/charact/gareth.tres" type="Resource" id=12]
+[ext_resource path="res://player_data/charact/lynn.tres" type="Resource" id=13]
+[ext_resource path="res://player_data/charact/marion.tres" type="Resource" id=14]
 [ext_resource path="res://asset/theme/Other/Combat/GlobalCombat.tres" type="Theme" id=16]
 [ext_resource path="res://src/GUI/action_gui/action_state_machine.gd" type="Script" id=20]
 [ext_resource path="res://src/GUI/animationGui/animGui.gd" type="Script" id=21]
@@ -41,10 +40,9 @@ _data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 [node name="BattleWorld" type="Node2D" groups=[
 "battle_world",
 ]]
-position = Vector2( -512, 0 )
 script = ExtResource( 2 )
 world = ExtResource( 3 )
-list_player_battler = [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 15 ) ]
+list_player_battler = [ ExtResource( 12 ), ExtResource( 13 ) ]
 list_enemy_battler = [ ExtResource( 14 ), ExtResource( 12 ) ]
 battler_scene = ExtResource( 1 )
 
@@ -54,8 +52,8 @@ script = ExtResource( 34 )
 [node name="battleGUI" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 512.0
-margin_right = 512.0
+margin_right = 1024.0
+margin_bottom = 600.0
 mouse_filter = 2
 theme = ExtResource( 16 )
 script = ExtResource( 10 )
@@ -151,7 +149,6 @@ base_curve = ExtResource( 27 )
 duration = 0.4
 start_at = Vector2( 0, -10 )
 end_at = Vector2( 0, 10 )
-state_is_start = false
 
 [node name="MarginContainer" type="MarginContainer" parent="battleGUI/ActionStateMachine/SelectTarget"]
 margin_left = 55.0
@@ -191,7 +188,6 @@ base_curve = ExtResource( 27 )
 duration = 0.4
 start_at = Vector2( 0, -10 )
 end_at = Vector2( 0, 10 )
-state_is_start = false
 
 [node name="ActionGUI" parent="battleGUI/ActionStateMachine" instance=ExtResource( 11 )]
 margin_top = 0.0

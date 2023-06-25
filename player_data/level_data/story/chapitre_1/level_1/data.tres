@@ -5,11 +5,11 @@
 [ext_resource path="res://src/battle/condition_victory/base_victory_condition.gd" type="Script" id=3]
 [ext_resource path="res://player_data/level_data/story/chapitre_1/level_1/task/task_3.tres" type="Resource" id=4]
 [ext_resource path="res://asset/world/world_test3/test3.tres" type="Resource" id=5]
-[ext_resource path="res://player_data/charact/test20.tres" type="Resource" id=6]
+[ext_resource path="res://player_data/charact/marion.tres" type="Resource" id=6]
 [ext_resource path="res://player_data/level_data/story/chapitre_1/level_1/loot/commonGoldPack.tres" type="Resource" id=7]
 [ext_resource path="res://player_data/level_data/story/chapitre_1/level_1/task/task_2.tres" type="Resource" id=8]
 [ext_resource path="res://player_data/level_data/story/chapitre_1/level_1/loot/direct_gold_500.tres" type="Resource" id=9]
-[ext_resource path="res://asset/chararacters/001_testChar/stats.tres" type="Resource" id=10]
+[ext_resource path="res://asset/chararacters/001_lynn/stats.tres" type="Resource" id=10]
 [ext_resource path="res://player_data/level_data/story/chapitre_1/level_1/given_char/given.tres" type="Resource" id=11]
 [ext_resource path="res://player_data/level_data/story/chapitre_1/level_1/task/task_1.tres" type="Resource" id=12]
 

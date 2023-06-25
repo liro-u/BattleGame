@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource( 1 )
 chapterName = "chapitre 2"
-sub_title = "Le retour du démon de feu"
+sub_title = "le retour du demon"
 unlocked = false

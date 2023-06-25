@@ -7,7 +7,7 @@
 [ext_resource path="res://asset/chararacters/003_dahlia/dahlia_splash.png" type="Texture" id=5]
 [ext_resource path="res://asset/attack/helper_god.tres" type="Resource" id=6]
 [ext_resource path="res://asset/attack/green_bump.tres" type="Resource" id=7]
-[ext_resource path="res://asset/chararacters/001_testChar/dragonbones/Lynn_sprites_ske.json" type="GDDragonBonesResource" id=8]
+[ext_resource path="res://asset/chararacters/001_lynn/dragonbones/Lynn_sprites_ske.json" type="GDDragonBonesResource" id=8]
 [ext_resource path="res://asset/chararacters/003_dahlia/collision.tres" type="Shape2D" id=9]
 
 [sub_resource type="Resource" id=1]
@@ -31,7 +31,7 @@ script = ExtResource( 1 )
 name_char = "Dahlia"
 information_battler = SubResource( 1 )
 element = 1
-type = 3
+type = 1
 ske = ExtResource( 8 )
 icon = ExtResource( 3 )
 hight_icon = ExtResource( 4 )

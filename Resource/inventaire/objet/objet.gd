@@ -8,3 +8,4 @@ export(int) var max_quantity
 export(Resource) var data
 export(int) var sell_price
 export(int) var category #1 -> equipment / 2 -> consumable / 3 -> rune / 4 -> material
+

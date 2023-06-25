@@ -1,0 +1,56 @@
+[gd_resource type="Resource" load_steps=10 format=2]
+
+[ext_resource path="res://asset/attack/hydro_splash.tres" type="Resource" id=1]
+[ext_resource path="res://asset/attack/air_slash.tres" type="Resource" id=2]
+[ext_resource path="res://asset/attack/helper_god.tres" type="Resource" id=3]
+[ext_resource path="res://Resource/stats/stats.gd" type="Script" id=4]
+[ext_resource path="res://Resource/stats/information.gd" type="Script" id=5]
+[ext_resource path="res://asset/monster/001_slime/collision.tres" type="Shape2D" id=6]
+[ext_resource path="res://asset/monster/001_slime/dragonbones/monster_slime_ske.json" type="GDDragonBonesResource" id=7]
+[ext_resource path="res://asset/monster/001_slime/dragonbones/monster_slime_tex.png" type="Texture" id=8]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 5 )
+histoire = "origine inconnu"
+genre = "inconnu"
+temperament = "inconnu"
+age = "inconnu"
+lieu_naissance = "inconnu"
+
+[resource]
+script = ExtResource( 4 )
+name_char = "Slime"
+information_battler = SubResource( 1 )
+element = 1
+type = 1
+ske = ExtResource( 7 )
+icon = ExtResource( 8 )
+hight_icon = ExtResource( 8 )
+splash_art = ExtResource( 8 )
+collision = ExtResource( 6 )
+collision_position = Vector2( 2, -90 )
+starting_xp_needed = 15
+level_palier = {
+0: 0,
+2: 10,
+9: 15,
+14: 90,
+19: 120
+}
+health_gain = 17.1
+mana_gain = 0.6
+strength_gain = 4.3
+defense_gain = 2.1
+speed_gain = 3.2
+crit_gain = 0.2
+crit_mult_gain = 0.001
+magie_gain = 5.0
+max_health = 341.9
+max_mana = 100.0
+strength = 85.0
+defense = 34.3
+speed = 14.0
+crit = 6.5
+crit_mult = 1.0
+magie = 80.0
+attack_list = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 1 ) ]

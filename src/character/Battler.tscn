@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://src/character/Battler.gd" type="Script" id=1]
-[ext_resource path="res://player_data/charact/test20.tres" type="Resource" id=2]
+[ext_resource path="res://player_data/charact/marion.tres" type="Resource" id=2]
 [ext_resource path="res://src/GUI/Character/CharacterGUI.gd" type="Script" id=3]
 [ext_resource path="res://src/GUI/ProgressBar/TweenProgressBar/TweenProgressBar.gd" type="Script" id=4]
 [ext_resource path="res://asset/font/dynamicfont/Other/Damage/Damage.tres" type="DynamicFont" id=5]

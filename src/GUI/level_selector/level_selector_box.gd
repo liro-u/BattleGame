@@ -2,13 +2,33 @@ extends VBoxContainer
 
 onready var last_sep = $HSeparator2
 var next_right
+
+func _custom_sort_function(a, b):
+	var pattern = "level_(\\d+)"  # Regular expression pattern to match "level" followed by a number
+	var regex = RegEx.new()
+	regex.compile(pattern)
 	
+	var match_a = regex.search(a)
+	var match_b = regex.search(b)
+	
+	if match_a and match_b:
+		var number_a = int(match_a.get_string(1))
+		var number_b = int(match_b.get_string(1))
+		
+		return number_a < number_b  # Compare the numeric values
+	else:
+		return a < b  # If regular expression doesn't match, use regular string comparison
+
+
 func initialize(chap):
 	next_right = false
 	var path = Global.dataFolderPreset + "://player_data/level_data/story/" + chap
 	for index in range(1, get_child_count() - 1):
 		get_child(index).queue_free()
 	var level_path = SaverInventory.get_all_file(path)
+	level_path.sort_custom(self, "_custom_sort_function")
+	print(level_path)
+	
 	var first_new_node = true
 	for level_data in level_path:
 		if level_data != "chapitre_data.tres":

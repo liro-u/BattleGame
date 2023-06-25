@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource( 1 )
 chapterName = "chapitre 3"
-sub_title = "La contre attaque des geant de glace sur la ville de porningrade"
-unlock = false
+sub_title = "le grand commencement"
+unlocked = false

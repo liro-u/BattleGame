@@ -24,7 +24,7 @@ func _ready():
 	display_only.connect("filter_change", self, "reload_list_of_char")
 	filter_by.connect("filter_change", self, "reload_list_of_char")
 	
-func initialize(exeptions = [], asociate_select = null, given_battler = [], show_locked_file = false, show_select_button = false):
+func initialize(exeptions = [], asociate_select = null, given_battler = [], show_locked_file = true, show_select_button = false):
 	show_locked = show_locked_file
 	show_select = show_select_button
 	if show_select:

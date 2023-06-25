@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://asset/curve/ease_in.tres" type="Curve" id=1]
-[ext_resource path="res://asset/chararacters/001_testChar/icon.png" type="Texture" id=2]
+[ext_resource path="res://asset/chararacters/001_lynn/icon.png" type="Texture" id=2]
 [ext_resource path="res://asset/GUI/lifebar/progress.png" type="Texture" id=3]
 [ext_resource path="res://asset/GUI/lifebar/under.png" type="Texture" id=4]
 [ext_resource path="res://asset/GUI/lifebar/over.png" type="Texture" id=5]

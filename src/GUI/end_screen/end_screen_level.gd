@@ -34,7 +34,10 @@ func initialize(bat = battler_data, f_bat = final_battler_data):
 	final_level = final_battler_data.level
 	#init for actual level and xp
 	max_xp_for_level = levelCalculation.xp_needed_for_level(level, starting_xp, level_palier)
-	xp_bar.set_value(xp / max_xp_for_level * 100)
+	if (max_xp_for_level * 100 != 0):
+		xp_bar.set_value(xp / max_xp_for_level * 100)
+	else :
+		xp_bar.set_value(0)
 	
 	texture.texture = battler_data.stats_reference.hight_icon
 

@@ -12,7 +12,7 @@ turn = 1
 texture = ""
 with_weakness = true
 with_crit = true
-health = -17.0
+health = -70.0
 shield = 0.0
 mana = 0.0
 strength = 0.0
@@ -25,9 +25,7 @@ magie = 0.0
 [resource]
 script = ExtResource( 2 )
 attack_name = "air slash"
-attack_description = "une attaque qui envoie du vent sa mere
-c'est a peu pres tout
-elle n'inflige que quelque degat"
+attack_description = "Inflige des dégâts de vent à 1 ennemi"
 icon = ExtResource( 3 )
 mana_cost = 12
 element = 3

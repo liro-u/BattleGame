@@ -37,7 +37,7 @@ level_palier = {
 14: 90,
 19: 120
 }
-health_gain = 17.1
+health_gain = 16.3
 mana_gain = 0.6
 strength_gain = 4.3
 defense_gain = 2.1
@@ -45,7 +45,7 @@ speed_gain = 3.2
 crit_gain = 0.2
 crit_mult_gain = 0.001
 magie_gain = 5.0
-max_health = 341.9
+max_health = 175.0
 max_mana = 100.0
 strength = 85.0
 defense = 34.3

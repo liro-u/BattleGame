@@ -1,1 +1,1 @@
-{"width":2048,"imagePath":"monster_wolf_tex.png","height":1024,"name":"monster_wolf","SubTexture":[{"y":1,"frameX":-109,"frameHeight":2000,"frameY":-815,"width":1815,"frameWidth":2000,"height":647,"name":"monster_wolf","x":1}]}
+{"width":2048,"imagePath":"wolf_tex.png","height":1024,"name":"wolf","SubTexture":[{"frameY":-815,"y":1,"frameWidth":2000,"frameX":-109,"frameHeight":2000,"width":1815,"height":647,"name":"monster_wolf","x":1}]}

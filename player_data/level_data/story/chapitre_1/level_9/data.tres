@@ -8,7 +8,7 @@
 [ext_resource path="res://asset/world/world_test3/test3.tres" type="Resource" id=6]
 [ext_resource path="res://asset/monster/002_wolf/stats.tres" type="Resource" id=7]
 
-[sub_resource type="Resource" id=1]
+[sub_resource type="Resource" id=5]
 script = ExtResource( 4 )
 stats_reference = ExtResource( 1 )
 is_given = false
@@ -17,7 +17,7 @@ level = 10
 xp = 0.0
 stars = 1
 
-[sub_resource type="Resource" id=5]
+[sub_resource type="Resource" id=6]
 script = ExtResource( 4 )
 stats_reference = ExtResource( 1 )
 is_given = false
@@ -51,9 +51,9 @@ level_name = "1-9"
 world = ExtResource( 6 )
 team_given = [  ]
 battler_given = [  ]
-xp_gain = 5000.0
+xp_gain = 300.0
 list_player_battler = [ SubResource( 3 ) ]
-list_enemy_battler = [ SubResource( 1 ), SubResource( 5 ), SubResource( 4 ) ]
+list_enemy_battler = [ SubResource( 5 ), SubResource( 6 ), SubResource( 4 ) ]
 condition_victory_script = ExtResource( 5 )
 task = [ null, null, null ]
 loot_table = [  ]

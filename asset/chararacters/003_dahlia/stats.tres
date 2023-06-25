@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=11 format=2]
+[gd_resource type="Resource" load_steps=12 format=2]
 
 [ext_resource path="res://Resource/stats/stats.gd" type="Script" id=1]
 [ext_resource path="res://Resource/stats/information.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://asset/attack/green_bump.tres" type="Resource" id=7]
 [ext_resource path="res://asset/chararacters/001_lynn/dragonbones/Lynn_sprites_ske.json" type="GDDragonBonesResource" id=8]
 [ext_resource path="res://asset/chararacters/003_dahlia/collision.tres" type="Shape2D" id=9]
+[ext_resource path="res://asset/attack/air_slash.tres" type="Resource" id=10]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
@@ -43,7 +44,7 @@ speed_gain = 3.5
 crit_gain = 0.015
 crit_mult_gain = 0.004
 magie_gain = 4.6
-max_health = 170.0
+max_health = 400.0
 max_mana = 130.0
 strength = 50.0
 defense = 32.0
@@ -51,4 +52,4 @@ speed = 10.0
 crit = 1.0
 crit_mult = 1.0
 magie = 80.0
-attack_list = [ ExtResource( 6 ), ExtResource( 7 ) ]
+attack_list = [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 10 ) ]

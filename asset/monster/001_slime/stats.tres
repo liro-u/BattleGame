@@ -1,8 +1,7 @@
-[gd_resource type="Resource" load_steps=11 format=2]
+[gd_resource type="Resource" load_steps=10 format=2]
 
 [ext_resource path="res://asset/attack/hydro_splash.tres" type="Resource" id=1]
 [ext_resource path="res://asset/attack/air_slash.tres" type="Resource" id=2]
-[ext_resource path="res://asset/attack/helper_god.tres" type="Resource" id=3]
 [ext_resource path="res://Resource/stats/stats.gd" type="Script" id=4]
 [ext_resource path="res://Resource/stats/information.gd" type="Script" id=5]
 [ext_resource path="res://asset/monster/001_slime/collision.tres" type="Shape2D" id=6]
@@ -54,4 +53,4 @@ speed = 8.0
 crit = 6.5
 crit_mult = 1.0
 magie = 80.0
-attack_list = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 1 ) ]
+attack_list = [ ExtResource( 2 ), ExtResource( 1 ) ]

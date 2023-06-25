@@ -8,4 +8,4 @@ script = ExtResource( 2 )
 name_world = "aries landscape"
 aspect = ExtResource( 1 )
 team_pos = [ Vector2( 130, 410 ), Vector2( 255, 490 ), Vector2( 125, 540 ) ]
-enemy_pos = [ Vector2( 755, 410 ), Vector2( 895, 490 ), Vector2( 940, 540 ) ]
+enemy_pos = [ Vector2( 755, 410 ), Vector2( 895, 490 ), Vector2( 700, 540 ) ]

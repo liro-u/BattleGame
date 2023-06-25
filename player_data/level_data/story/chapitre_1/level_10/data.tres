@@ -7,7 +7,7 @@
 [ext_resource path="res://src/battle/condition_victory/base_victory_condition.gd" type="Script" id=5]
 [ext_resource path="res://asset/world/world_test3/test3.tres" type="Resource" id=6]
 
-[sub_resource type="Resource" id=1]
+[sub_resource type="Resource" id=4]
 script = ExtResource( 4 )
 stats_reference = ExtResource( 2 )
 is_given = true
@@ -16,7 +16,7 @@ level = 80
 xp = 0.0
 stars = 2
 
-[sub_resource type="Resource" id=2]
+[sub_resource type="Resource" id=5]
 script = ExtResource( 4 )
 stats_reference = ExtResource( 1 )
 is_given = false
@@ -40,10 +40,10 @@ unlocked = false
 level_name = "1-10"
 world = ExtResource( 6 )
 team_given = [  ]
-battler_given = [ SubResource( 1 ) ]
-xp_gain = 5000.0
+battler_given = [ SubResource( 4 ) ]
+xp_gain = 322.0
 list_player_battler = [ SubResource( 3 ) ]
-list_enemy_battler = [ SubResource( 2 ) ]
+list_enemy_battler = [ SubResource( 5 ) ]
 condition_victory_script = ExtResource( 5 )
 task = [ null, null, null ]
 loot_table = [  ]

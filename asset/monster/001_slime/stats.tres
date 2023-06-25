@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=10 format=2]
+[gd_resource type="Resource" load_steps=11 format=2]
 
 [ext_resource path="res://asset/attack/hydro_splash.tres" type="Resource" id=1]
 [ext_resource path="res://asset/attack/air_slash.tres" type="Resource" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://asset/monster/001_slime/collision.tres" type="Shape2D" id=6]
 [ext_resource path="res://asset/monster/001_slime/dragonbones/monster_slime_ske.json" type="GDDragonBonesResource" id=7]
 [ext_resource path="res://asset/monster/001_slime/dragonbones/monster_slime_tex.png" type="Texture" id=8]
+[ext_resource path="res://asset/monster/001_slime/monster_slime_icon.png" type="Texture" id=9]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 5 )
@@ -24,7 +25,7 @@ information_battler = SubResource( 1 )
 element = 1
 type = 1
 ske = ExtResource( 7 )
-icon = ExtResource( 8 )
+icon = ExtResource( 9 )
 hight_icon = ExtResource( 8 )
 splash_art = ExtResource( 8 )
 collision = ExtResource( 6 )

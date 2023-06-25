@@ -10,7 +10,7 @@
 [ext_resource path="res://asset/chararacters/001_lynn/dragonbones/Lynn_sprites_ske.json" type="GDDragonBonesResource" id=8]
 [ext_resource path="res://asset/chararacters/001_lynn/collision.tres" type="Shape2D" id=9]
 
-[sub_resource type="StreamTexture" id=1]
+[sub_resource type="StreamTexture" id=3]
 flags = 4
 load_path = "res://.import/icon.png-2372c1b6b87e168d0928d124b748b642.stex"
 
@@ -29,7 +29,7 @@ information_battler = SubResource( 2 )
 element = 3
 type = 1
 ske = ExtResource( 8 )
-icon = SubResource( 1 )
+icon = SubResource( 3 )
 hight_icon = ExtResource( 6 )
 splash_art = ExtResource( 7 )
 collision = ExtResource( 9 )

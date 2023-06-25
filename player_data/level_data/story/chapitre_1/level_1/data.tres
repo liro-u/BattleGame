@@ -18,7 +18,7 @@ script = ExtResource( 1 )
 stats_reference = ExtResource( 11 )
 is_given = false
 locked = true
-level = 1
+level = 60
 xp = 0.0
 stars = 1
 

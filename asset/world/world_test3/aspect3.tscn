@@ -35,6 +35,7 @@ scale_curve = SubResource( 4 )
 [node name="Node2D" type="Node2D"]
 
 [node name="Particles2D" type="Particles2D" parent="."]
+visible = false
 position = Vector2( 512, -60 )
 z_index = -1
 amount = 30

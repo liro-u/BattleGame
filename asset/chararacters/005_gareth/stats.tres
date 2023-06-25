@@ -12,19 +12,11 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
-histoire = "dahlia the dryade is one of the guardian of the forest who enjoys singing when she is alone. She is kind and protective, but also very shy and a bit fearful.
-
-Physically, dahlia is in good shape. She is average-height .
-
-She grew up in an upper class village of dryade. She was summoned by an habitant of the forest in need of help.
-
-dahlia's best friend is another dryade just born who is 162  years old. They are inseparable."
-genre = "femme"
-temperament = "douce
-protectrice"
-age = "857"
-lieu_naissance = "la foret du jalon
-dans le sanctuaire des dryades"
+histoire = "Gareth, a formidable warrior crackling with electric power, commands a presence as striking as the lightning that courses through his veins. Born under a fateful storm, Gareth wields his electrifying abilities with unparalleled mastery, channeling bolts of energy to vanquish his foes. His stoic demeanor and focused determination lend an air of intensity to his every move. Though Gareth may seem distant and formidable, his electric power serves as a formidable reminder of his unwavering strength and the sheer force he brings to bear against any who dare to challenge him."
+genre = "male"
+temperament = "electric"
+age = "25"
+lieu_naissance = "the center "
 
 [resource]
 script = ExtResource( 1 )

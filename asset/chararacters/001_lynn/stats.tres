@@ -16,9 +16,9 @@ load_path = "res://.import/icon.png-2372c1b6b87e168d0928d124b748b642.stex"
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 5 )
-histoire = "origine inconnu"
-genre = "inconnu"
-temperament = "inconnu"
+histoire = "Lynn, a skilled and mysterious female adventurer, wanders the realms in pursuit of thrilling quests. Her expertise in stealth and agility, combined with her proficiency with daggers, make her an invaluable asset in any mission. Lynn's enigmatic nature and quiet presence often lead her to play a smaller, yet crucial, role in the grand tales of the realm, as she covertly infiltrates strongholds, retrieves ancient artifacts, and embraces the excitement and challenges that come with a life of adventure."
+genre = "women"
+temperament = "calm"
 age = "inconnu"
 lieu_naissance = "inconnu"
 

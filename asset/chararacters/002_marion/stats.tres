@@ -13,21 +13,12 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 5 )
-histoire = "Marion peut paraitre très maniéré. Mais tout cela n'est qu'une façade, un mécanisme pour faire face à son passé troublant.
-
-Elle est née et a grandi dans un petit village situé au bord d'un volcan qui n'avait pas donné signe de vie depuis bien longtemps, elle a vécu confortablement jusqu'à l'âge de 15 ans environ, mais à ce moment-là, tout a changé.
-
-Seule survivante de son village suite a l'explosion de ce dernier, elle a été initiée au sang pour survivre en tuant les monstres de feu du mont. Seule, perdue et oubliée, elle devait survivre dans un monde cruel. Mais avec sa force et son empressement, elle a réussi à s'entraîner et à maitriser la magie de feu. Cela a fait d'elle la femme qu'elle est aujourd'hui.
-
-Il y a peu, elle a rejoint notre civilisation. Pour cacher sa différence et son passé, elle a appris a se comporter de la plus noble des façons sans lâcher son entrainement."
-genre = "femme"
-temperament = "Calme
-Sûre d'elle
-A l'écoute
+histoire = "Marion, a noble and valiant female knight, carries the weight of honor and chivalry upon her shoulders. Born into a prestigious lineage of warriors, Marion was raised with a strict code of conduct and an unwavering dedication to justice. Clad in gleaming armor and wielding her mighty sword, she journeys through the land, upholding the virtues of bravery, compassion, and righteousness. Marion's noble origins and unyielding resolve grant her a commanding presence on the battlefield, where she leads her comrades in the face of adversity. Though her role may be prominent in the realm's legends, her unwavering commitment to protect the innocent and fight for what is right fuels her noble spirit and shapes her legacy as a beacon of hope in a world longing for heroes."
+genre = "women"
+temperament = "Calm
 "
 age = "25"
-lieu_naissance = "Village de la braise
-Zone du volcan des cranes desseché"
+lieu_naissance = "volcano village"
 
 [resource]
 script = ExtResource( 4 )

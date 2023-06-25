@@ -1,3 +1,3 @@
 extends Node
 
-var force_first_creation = false
+var force_first_creation = true

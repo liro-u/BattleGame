@@ -12,19 +12,11 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
-histoire = "dahlia the dryade is one of the guardian of the forest who enjoys singing when she is alone. She is kind and protective, but also very shy and a bit fearful.
-
-Physically, dahlia is in good shape. She is average-height .
-
-She grew up in an upper class village of dryade. She was summoned by an habitant of the forest in need of help.
-
-dahlia's best friend is another dryade just born who is 162  years old. They are inseparable."
-genre = "femme"
-temperament = "douce
-protectrice"
-age = "857"
-lieu_naissance = "la foret du jalon
-dans le sanctuaire des dryades"
+histoire = "Namika, an otherworldly water being, possesses an icy demeanor and the unique ability to heal. Her touch, as cool as the depths she hails from, brings relief to the wounded and restores vitality. Though her role may be distant and detached, Namika's healing prowess serves as a stark reminder of the uncompromising power of her elemental nature, leaving those who benefit from her gifts in awe and grateful for her icy benevolence."
+genre = "women"
+temperament = "gentle"
+age = "38"
+lieu_naissance = "the cool river"
 
 [resource]
 script = ExtResource( 1 )

@@ -1,17 +1,18 @@
-[gd_resource type="Resource" load_steps=8 format=2]
+[gd_resource type="Resource" load_steps=9 format=2]
 
-[ext_resource path="res://asset/world/world_test2/test2.tres" type="Resource" id=1]
+[ext_resource path="res://asset/monster/001_slime/stats.tres" type="Resource" id=1]
 [ext_resource path="res://asset/chararacters/001_lynn/stats.tres" type="Resource" id=2]
 [ext_resource path="res://Resource/level_data/levelData.gd" type="Script" id=3]
 [ext_resource path="res://Resource/stats/ownerStats.gd" type="Script" id=4]
 [ext_resource path="res://src/battle/condition_victory/base_victory_condition.gd" type="Script" id=5]
+[ext_resource path="res://asset/world/world_test3/test3.tres" type="Resource" id=6]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 4 )
-stats_reference = ExtResource( 2 )
+stats_reference = ExtResource( 1 )
 is_given = false
 locked = true
-level = 3
+level = 8
 xp = 0.0
 stars = 1
 
@@ -28,12 +29,12 @@ stars = 1
 script = ExtResource( 3 )
 unlocked = false
 level_name = "1-7"
-world = ExtResource( 1 )
+world = ExtResource( 6 )
 team_given = [  ]
 battler_given = [  ]
-xp_gain = 5000.0
+xp_gain = 3000.0
 list_player_battler = [ SubResource( 2 ) ]
-list_enemy_battler = [ SubResource( 1 ) ]
+list_enemy_battler = [ SubResource( 1 ), SubResource( 1 ) ]
 condition_victory_script = ExtResource( 5 )
 task = [ null, null, null ]
 loot_table = [  ]

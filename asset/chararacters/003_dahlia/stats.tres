@@ -12,19 +12,11 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
-histoire = "dahlia the dryade is one of the guardian of the forest who enjoys singing when she is alone. She is kind and protective, but also very shy and a bit fearful.
-
-Physically, dahlia is in good shape. She is average-height .
-
-She grew up in an upper class village of dryade. She was summoned by an habitant of the forest in need of help.
-
-dahlia's best friend is another dryade just born who is 162  years old. They are inseparable."
-genre = "femme"
-temperament = "douce
-protectrice"
+histoire = "Dalhia, a gentle girl with a love for flowers, brings beauty and serenity to the realm. Her deep connection to nature's wonders inspires others to appreciate the simplest joys and find solace in the delicate blooms she adores. Though her role may be small, Dalhia's nurturing spirit and unwavering appreciation for the world's natural beauty leave an indelible mark on those she encounters."
+genre = "women"
+temperament = "sleepy"
 age = "857"
-lieu_naissance = "la foret du jalon
-dans le sanctuaire des dryades"
+lieu_naissance = "the secret forest"
 
 [resource]
 script = ExtResource( 1 )

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Resource/loot/lootProb.gd" type="Script" id=1]
+[ext_resource path="res://Resource/inventaire/possession.gd" type="Script" id=2]
+[ext_resource path="res://asset/inventaire/existing_object/consumable/commonGoldPack.tres" type="Resource" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+quantity = 3
+things = ExtResource( 3 )
+locked = false
+
+[resource]
+script = ExtResource( 1 )
+loot = SubResource( 1 )
+proba = 0.3

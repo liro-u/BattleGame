@@ -1,0 +1,365 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://asset/GUI/inventory_asset/bg.png" type="Texture" id=1]
+[ext_resource path="res://src/GUI/task_ui/task_tab.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/GUI/baseMenu/monnaie_bar/monnaieBar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/GUI/inventaire/itemSlot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://asset/GUI/btn_back_02.png" type="Texture" id=5]
+[ext_resource path="res://asset/GUI/quest_asset/separator.png" type="Texture" id=6]
+[ext_resource path="res://asset/weapon/sword/weapon1.png" type="Texture" id=7]
+[ext_resource path="res://asset/GUI/inventory_asset/item_slot_3.png" type="Texture" id=8]
+[ext_resource path="res://asset/GUI/inventory_asset/item_details_bg.png" type="Texture" id=9]
+[ext_resource path="res://src/GUI/inventaire/InventoryUI.gd" type="Script" id=10]
+[ext_resource path="res://src/GUI/inventaire/ItemBox.gd" type="Script" id=11]
+[ext_resource path="res://src/class/disableScrollBar.gd" type="Script" id=12]
+[ext_resource path="res://asset/GUI/inventory_asset/btn_use.png" type="Texture" id=13]
+[ext_resource path="res://src/GUI/inventaire/ItemDetails.gd" type="Script" id=14]
+
+[node name="InventoryUI" type="Control" groups=[
+"inventory_ui",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UI" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 30
+custom_constants/margin_top = 10
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+margin_left = 30.0
+margin_top = 10.0
+margin_right = 994.0
+margin_bottom = 570.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopPart" type="HBoxContainer" parent="UI/VBoxContainer"]
+margin_right = 964.0
+margin_bottom = 70.0
+
+[node name="ReturnBox" type="VBoxContainer" parent="UI/VBoxContainer/TopPart"]
+margin_right = 40.0
+margin_bottom = 70.0
+alignment = 1
+
+[node name="ReturnButton" type="TextureButton" parent="UI/VBoxContainer/TopPart/ReturnBox"]
+margin_top = 15.0
+margin_right = 40.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 40, 40 )
+texture_normal = ExtResource( 5 )
+expand = true
+
+[node name="VSeparator" type="VSeparator" parent="UI/VBoxContainer/TopPart"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 44.0
+margin_right = 460.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+custom_constants/separation = 0
+
+[node name="MonnaieBar" parent="UI/VBoxContainer/TopPart" instance=ExtResource( 3 )]
+margin_left = 464.0
+margin_right = 964.0
+list_monnaie = [ "res://player_data/monnaie/stamina.tres", "res://player_data/monnaie/gold.tres", "res://player_data/monnaie/gemme.tres" ]
+
+[node name="BottomPart" type="HBoxContainer" parent="UI/VBoxContainer"]
+margin_top = 74.0
+margin_right = 964.0
+margin_bottom = 560.0
+size_flags_vertical = 3
+custom_constants/separation = 15
+
+[node name="ItemBox" type="Control" parent="UI/VBoxContainer/BottomPart"]
+margin_right = 700.0
+margin_bottom = 486.0
+rect_min_size = Vector2( 700, 0 )
+size_flags_vertical = 3
+script = ExtResource( 11 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/BottomPart/ItemBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="VBoxContainer" parent="UI/VBoxContainer/BottomPart/ItemBox/HBoxContainer"]
+margin_right = 226.0
+margin_bottom = 486.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.29
+custom_constants/separation = 0
+
+[node name="Equipment" parent="UI/VBoxContainer/BottomPart/ItemBox/HBoxContainer/Button" instance=ExtResource( 2 )]
+margin_right = 226.0
+rect_min_size = Vector2( 200, 50 )
+text = "Equipment"
+
+[node name="Consumables" parent="UI/VBoxContainer/BottomPart/ItemBox/HBoxContainer/Button" instance=ExtResource( 2 )]
+margin_top = 50.0
+margin_right = 226.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 200, 50 )
+text = "Consumable"
+
+[node name="Runes" parent="UI/VBoxContainer/BottomPart/ItemBox/HBoxContainer/Button" instance=ExtResource( 2 )]
+margin_top = 100.0
+margin_right = 226.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 200, 50 )
+text = "Runes"
+
+[node name="Materials" parent="UI/VBoxContainer/BottomPart/ItemBox/HBoxContainer/Button" instance=ExtResource( 2 )]
+margin_top = 150.0
+margin_right = 226.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 200, 50 )
+text = "Materials"
+
+[node name="TextureRect" type="TextureRect" parent="UI/VBoxContainer/BottomPart/ItemBox/HBoxContainer"]
+margin_left = 226.0
+margin_right = 231.0
+margin_bottom = 486.0
+rect_min_size = Vector2( 5, 0 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="ItemBox" type="MarginContainer" parent="UI/VBoxContainer/BottomPart/ItemBox/HBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 231.0
+margin_right = 700.0
+margin_bottom = 486.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/VBoxContainer/BottomPart/ItemBox/HBoxContainer/ItemBox"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 459.0
+margin_bottom = 476.0
+script = ExtResource( 12 )
+h = false
+v = true
+
+[node name="ItemSlotBox" type="GridContainer" parent="UI/VBoxContainer/BottomPart/ItemBox/HBoxContainer/ItemBox/ScrollContainer"]
+margin_right = 449.0
+margin_bottom = 466.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/hseparation = 6
+columns = 5
+
+[node name="ItemSlot" parent="UI/VBoxContainer/BottomPart/ItemBox/HBoxContainer/ItemBox/ScrollContainer/ItemSlotBox" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 85.0
+margin_bottom = 85.0
+
+[node name="ItemSlot6" parent="UI/VBoxContainer/BottomPart/ItemBox/HBoxContainer/ItemBox/ScrollContainer/ItemSlotBox" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 91.0
+margin_right = 176.0
+margin_bottom = 85.0
+
+[node name="ItemSlot7" parent="UI/VBoxContainer/BottomPart/ItemBox/HBoxContainer/ItemBox/ScrollContainer/ItemSlotBox" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 182.0
+margin_right = 267.0
+margin_bottom = 85.0
+
+[node name="ItemSlot8" parent="UI/VBoxContainer/BottomPart/ItemBox/HBoxContainer/ItemBox/ScrollContainer/ItemSlotBox" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 273.0
+margin_right = 358.0
+margin_bottom = 85.0
+
+[node name="ItemSlot9" parent="UI/VBoxContainer/BottomPart/ItemBox/HBoxContainer/ItemBox/ScrollContainer/ItemSlotBox" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 364.0
+margin_right = 449.0
+margin_bottom = 85.0
+
+[node name="ItemSlot2" parent="UI/VBoxContainer/BottomPart/ItemBox/HBoxContainer/ItemBox/ScrollContainer/ItemSlotBox" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 89.0
+margin_right = 85.0
+margin_bottom = 174.0
+
+[node name="ItemSlot3" parent="UI/VBoxContainer/BottomPart/ItemBox/HBoxContainer/ItemBox/ScrollContainer/ItemSlotBox" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 91.0
+margin_top = 89.0
+margin_right = 176.0
+margin_bottom = 174.0
+
+[node name="ItemSlot4" parent="UI/VBoxContainer/BottomPart/ItemBox/HBoxContainer/ItemBox/ScrollContainer/ItemSlotBox" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 182.0
+margin_top = 89.0
+margin_right = 267.0
+margin_bottom = 174.0
+
+[node name="ItemSlot5" parent="UI/VBoxContainer/BottomPart/ItemBox/HBoxContainer/ItemBox/ScrollContainer/ItemSlotBox" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 273.0
+margin_top = 89.0
+margin_right = 358.0
+margin_bottom = 174.0
+
+[node name="TextureRect2" type="TextureRect" parent="UI/VBoxContainer/BottomPart"]
+margin_left = 715.0
+margin_right = 720.0
+margin_bottom = 486.0
+rect_min_size = Vector2( 5, 0 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="ItemDetails" type="TextureRect" parent="UI/VBoxContainer/BottomPart"]
+self_modulate = Color( 1, 1, 1, 0.12549 )
+margin_left = 735.0
+margin_right = 964.0
+margin_bottom = 486.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 9 )
+expand = true
+script = ExtResource( 14 )
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/VBoxContainer/BottomPart/ItemDetails"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 15
+custom_constants/margin_top = 15
+custom_constants/margin_left = 15
+custom_constants/margin_bottom = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/BottomPart/ItemDetails/MarginContainer"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 214.0
+margin_bottom = 471.0
+custom_constants/separation = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/BottomPart/ItemDetails/MarginContainer/VBoxContainer"]
+margin_right = 199.0
+margin_bottom = 70.0
+custom_constants/separation = 15
+
+[node name="TextureRect" type="TextureRect" parent="UI/VBoxContainer/BottomPart/ItemDetails/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 70.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+texture = ExtResource( 8 )
+expand = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/VBoxContainer/BottomPart/ItemDetails/MarginContainer/VBoxContainer/HBoxContainer/TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 15
+custom_constants/margin_top = 15
+custom_constants/margin_left = 15
+custom_constants/margin_bottom = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="UI/VBoxContainer/BottomPart/ItemDetails/MarginContainer/VBoxContainer/HBoxContainer/TextureRect/MarginContainer"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 55.0
+margin_bottom = 55.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 7 )
+expand = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/BottomPart/ItemDetails/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 85.0
+margin_right = 123.0
+margin_bottom = 70.0
+
+[node name="Label" type="Label" parent="UI/VBoxContainer/BottomPart/ItemDetails/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 38.0
+margin_bottom = 14.0
+text = "Name"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/BottomPart/ItemDetails/MarginContainer/VBoxContainer"]
+margin_top = 100.0
+margin_right = 199.0
+margin_bottom = 166.0
+
+[node name="Label" type="Label" parent="UI/VBoxContainer/BottomPart/ItemDetails/MarginContainer/VBoxContainer/VBoxContainer"]
+margin_right = 199.0
+margin_bottom = 14.0
+text = "Description :"
+
+[node name="Label2" type="Label" parent="UI/VBoxContainer/BottomPart/ItemDetails/MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 199.0
+margin_bottom = 66.0
+text = "blblllfld
+fdklfd
+fdkfd"
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/VBoxContainer/BottomPart/ItemDetails/MarginContainer/VBoxContainer"]
+margin_top = 196.0
+margin_right = 199.0
+margin_bottom = 228.0
+
+[node name="Button" type="Button" parent="UI/VBoxContainer/BottomPart/ItemDetails/MarginContainer/VBoxContainer/CenterContainer"]
+margin_left = 49.0
+margin_right = 149.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 100, 32 )
+text = "Utiliser"
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="UI/VBoxContainer/BottomPart/ItemDetails/MarginContainer/VBoxContainer/CenterContainer/Button"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="UI/VBoxContainer/TopPart/ReturnBox/ReturnButton" to="." method="back"]

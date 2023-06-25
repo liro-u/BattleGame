@@ -6,6 +6,7 @@
 [node name="Monnaie" type="HBoxContainer"]
 margin_right = 157.0
 margin_bottom = 50.0
+rect_min_size = Vector2( 20, 0 )
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 __meta__ = {
@@ -26,3 +27,10 @@ margin_top = 18.0
 margin_right = 99.0
 margin_bottom = 32.0
 text = "128/98"
+
+[node name="VSeparator" type="VSeparator" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 103.0
+margin_right = 113.0
+margin_bottom = 50.0
+custom_constants/separation = 10

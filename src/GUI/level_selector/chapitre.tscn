@@ -1,0 +1,354 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://asset/GUI/squest_asset/squest_ch_list.png" type="Texture" id=1]
+[ext_resource path="res://asset/GUI/squest_asset/squest_ch_box.png" type="Texture" id=2]
+[ext_resource path="res://asset/GUI/squest_asset/squest_level_list.png" type="Texture" id=3]
+[ext_resource path="res://asset/GUI/squest_asset/squest_bg.png" type="Texture" id=4]
+[ext_resource path="res://asset/GUI/squest_asset/squest_link.png" type="Texture" id=5]
+[ext_resource path="res://asset/GUI/squest_asset/squest_level_box.png" type="Texture" id=6]
+[ext_resource path="res://src/GUI/level_selector/ui/manage_level.gd" type="Script" id=7]
+[ext_resource path="res://src/GUI/level_selector/ButtonLevelChapter.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/GUI/level_selector/Chapitre.gd" type="Script" id=9]
+[ext_resource path="res://src/class/disableScrollBar.gd" type="Script" id=10]
+[ext_resource path="res://src/GUI/baseMenu/monnaie_bar/monnaieBar.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/GUI/level_selector/level_button.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/class/takeChildSize.gd" type="Script" id=13]
+[ext_resource path="res://src/GUI/level_selector/seperator_level.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/GUI/level_selector/level_selector_box.gd" type="Script" id=15]
+[ext_resource path="res://src/GUI/level_selector/ChapterBox.gd" type="Script" id=16]
+
+[node name="chapitre" type="Control" groups=[
+"chapitre_ui",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="level_selector" type="Control" parent="." groups=[
+"level_selector_node",
+]]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_right = 20
+custom_constants/margin_top = 5
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 25.0
+margin_top = 5.0
+margin_right = 1004.0
+margin_bottom = 570.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_right = 979.0
+margin_bottom = 70.0
+size_flags_vertical = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 150.0
+margin_bottom = 70.0
+alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 14.0
+margin_right = 150.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 150, 42 )
+mouse_filter = 2
+size_flags_vertical = 0
+script = ExtResource( 13 )
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Control"]
+margin_right = 100.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 150, 42 )
+custom_colors/font_color_hover = Color( 0.176471, 0.360784, 0.384314, 1 )
+text = "Back"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Control/Button"]
+self_modulate = Color( 0.105882, 0.168627, 0.227451, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+patch_margin_left = 19
+patch_margin_top = 21
+patch_margin_right = 18
+patch_margin_bottom = 21
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 154.0
+margin_right = 475.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+
+[node name="MonnaieBar" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 11 )]
+margin_left = 479.0
+margin_right = 979.0
+size_flags_vertical = 0
+list_monnaie = [ "res://player_data/monnaie/stamina.tres", "res://player_data/monnaie/gold.tres", "res://player_data/monnaie/gemme.tres" ]
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 74.0
+margin_right = 979.0
+margin_bottom = 565.0
+size_flags_vertical = 3
+custom_constants/separation = 25
+
+[node name="TextureRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 300.0
+margin_bottom = 491.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.46
+texture = ExtResource( 1 )
+patch_margin_left = 12
+patch_margin_top = 13
+patch_margin_right = 12
+patch_margin_bottom = 14
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect/ScrollContainer"]
+margin_right = 300.0
+margin_bottom = 491.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 15
+custom_constants/margin_top = 15
+custom_constants/margin_left = 15
+custom_constants/margin_bottom = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChapterBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect/ScrollContainer/MarginContainer"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 285.0
+margin_bottom = 476.0
+mouse_filter = 2
+custom_constants/separation = 10
+script = ExtResource( 16 )
+
+[node name="ButtonLevel" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect/ScrollContainer/MarginContainer/ChapterBox" instance=ExtResource( 8 )]
+
+[node name="ButtonLevel2" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect/ScrollContainer/MarginContainer/ChapterBox" instance=ExtResource( 8 )]
+margin_top = 60.0
+margin_bottom = 110.0
+
+[node name="ButtonLevel3" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect/ScrollContainer/MarginContainer/ChapterBox" instance=ExtResource( 8 )]
+margin_top = 120.0
+margin_bottom = 170.0
+
+[node name="TextureRect2" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 325.0
+margin_right = 979.0
+margin_bottom = 491.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 16
+patch_margin_bottom = 15
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+v = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect2/ScrollContainer2"]
+margin_right = 642.0
+margin_bottom = 620.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 15
+custom_constants/margin_top = 0
+custom_constants/margin_left = 15
+custom_constants/margin_bottom = 0
+
+[node name="level_selector_box" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect2/ScrollContainer2/MarginContainer"]
+margin_left = 15.0
+margin_right = 627.0
+margin_bottom = 620.0
+mouse_filter = 2
+custom_constants/separation = 10
+script = ExtResource( 15 )
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect2/ScrollContainer2/MarginContainer/level_selector_box"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 612.0
+margin_bottom = 30.0
+mouse_filter = 2
+custom_constants/separation = 30
+
+[node name="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect2/ScrollContainer2/MarginContainer/level_selector_box" instance=ExtResource( 12 )]
+
+[node name="HBoxContainer3" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect2/ScrollContainer2/MarginContainer/level_selector_box" instance=ExtResource( 14 )]
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect2/ScrollContainer2/MarginContainer/level_selector_box"]
+margin_top = 260.0
+margin_right = 612.0
+margin_bottom = 360.0
+mouse_filter = 2
+custom_constants/separation = 0
+
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect2/ScrollContainer2/MarginContainer/level_selector_box/HBoxContainer2"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 367.0
+margin_bottom = 100.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.0
+
+[node name="TextureRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect2/ScrollContainer2/MarginContainer/level_selector_box/HBoxContainer2"]
+margin_left = 367.0
+margin_right = 550.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+texture = ExtResource( 6 )
+patch_margin_left = 11
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 13
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect2/ScrollContainer2/MarginContainer/level_selector_box/HBoxContainer2"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 550.0
+margin_right = 612.0
+margin_bottom = 100.0
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect2/ScrollContainer2/MarginContainer/level_selector_box"]
+margin_top = 370.0
+margin_right = 612.0
+margin_bottom = 470.0
+mouse_filter = 2
+
+[node name="VSeparator3" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect2/ScrollContainer2/MarginContainer/level_selector_box/HBoxContainer4"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 143.0
+margin_bottom = 100.0
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect2/ScrollContainer2/MarginContainer/level_selector_box/HBoxContainer4"]
+self_modulate = Color( 1, 0.729412, 0.368627, 1 )
+margin_left = 147.0
+margin_right = 464.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.2
+texture = ExtResource( 5 )
+expand = true
+
+[node name="VSeparator4" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect2/ScrollContainer2/MarginContainer/level_selector_box/HBoxContainer4"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 468.0
+margin_right = 612.0
+margin_bottom = 100.0
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect2/ScrollContainer2/MarginContainer/level_selector_box"]
+margin_top = 480.0
+margin_right = 612.0
+margin_bottom = 580.0
+mouse_filter = 2
+custom_constants/separation = 0
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect2/ScrollContainer2/MarginContainer/level_selector_box/HBoxContainer5"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 61.0
+margin_bottom = 100.0
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect2/ScrollContainer2/MarginContainer/level_selector_box/HBoxContainer5"]
+margin_left = 61.0
+margin_right = 244.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+texture = ExtResource( 6 )
+patch_margin_left = 11
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 13
+
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect2/ScrollContainer2/MarginContainer/level_selector_box/HBoxContainer5"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 244.0
+margin_right = 612.0
+margin_bottom = 100.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.0
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureRect2/ScrollContainer2/MarginContainer/level_selector_box"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 590.0
+margin_right = 612.0
+margin_bottom = 620.0
+mouse_filter = 2
+custom_constants/separation = 30
+
+[connection signal="minimum_size_changed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Control/Button" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Control" method="apply_child_size"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Control/Button" to="." method="back"]

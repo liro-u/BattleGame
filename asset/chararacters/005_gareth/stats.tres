@@ -1,0 +1,62 @@
+[gd_resource type="Resource" load_steps=11 format=2]
+
+[ext_resource path="res://Resource/stats/stats.gd" type="Script" id=1]
+[ext_resource path="res://Resource/stats/information.gd" type="Script" id=2]
+[ext_resource path="res://asset/chararacters/005_gareth/Gareth.png" type="Texture" id=3]
+[ext_resource path="res://asset/chararacters/005_gareth/gareth_card.png" type="Texture" id=4]
+[ext_resource path="res://asset/chararacters/005_gareth/gareth_icon.png" type="Texture" id=5]
+[ext_resource path="res://asset/attack/helper_god.tres" type="Resource" id=6]
+[ext_resource path="res://asset/attack/green_bump.tres" type="Resource" id=7]
+[ext_resource path="res://asset/chararacters/001_lynn/dragonbones/Lynn_sprites_ske.json" type="GDDragonBonesResource" id=8]
+[ext_resource path="res://asset/chararacters/005_gareth/collision.tres" type="Shape2D" id=9]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+histoire = "dahlia the dryade is one of the guardian of the forest who enjoys singing when she is alone. She is kind and protective, but also very shy and a bit fearful.
+
+Physically, dahlia is in good shape. She is average-height .
+
+She grew up in an upper class village of dryade. She was summoned by an habitant of the forest in need of help.
+
+dahlia's best friend is another dryade just born who is 162  years old. They are inseparable."
+genre = "femme"
+temperament = "douce
+protectrice"
+age = "857"
+lieu_naissance = "la foret du jalon
+dans le sanctuaire des dryades"
+
+[resource]
+script = ExtResource( 1 )
+name_char = "Gareth"
+information_battler = SubResource( 1 )
+element = 3
+type = 3
+ske = ExtResource( 8 )
+icon = ExtResource( 5 )
+hight_icon = ExtResource( 4 )
+splash_art = ExtResource( 3 )
+collision = ExtResource( 9 )
+collision_position = Vector2( 2, -90 )
+starting_xp_needed = 0
+level_palier = {
+0: 0,
+3: 530
+}
+health_gain = 13.0
+mana_gain = 0.29
+strength_gain = 3.0
+defense_gain = 2.8
+speed_gain = 3.5
+crit_gain = 0.015
+crit_mult_gain = 0.004
+magie_gain = 4.6
+max_health = 170.0
+max_mana = 130.0
+strength = 50.0
+defense = 32.0
+speed = 10.0
+crit = 1.0
+crit_mult = 1.0
+magie = 80.0
+attack_list = [ ExtResource( 6 ), ExtResource( 7 ) ]

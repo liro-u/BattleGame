@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Resource/task/list_task.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+task_list_name = "Event 3"
+next_update_timestamp = 0
+duration_before_refresh = 0
+task_list = [  ]
+nb_task_to_claim = 0
+nb_task_claimed = 0
+priority = 100

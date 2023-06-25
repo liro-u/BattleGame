@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/character/attack/attack_list.gd"
 }, {
+"base": "ScrollContainer",
+"class": "AutoScroll",
+"language": "GDScript",
+"path": "res://src/class/AutoScroll.gd"
+}, {
 "base": "Node",
 "class": "BaseConditionVictory",
 "language": "GDScript",
@@ -64,6 +69,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/character/stats/BattlerStats.gd"
 }, {
+"base": "Resource",
+"class": "Category",
+"language": "GDScript",
+"path": "res://Resource/inventaire/Category.gd"
+}, {
+"base": "Resource",
+"class": "ChapterData",
+"language": "GDScript",
+"path": "res://Resource/level_data/chapterData.gd"
+}, {
 "base": "Area2D",
 "class": "ClickableArea",
 "language": "GDScript",
@@ -78,6 +93,11 @@ _global_script_classes=[ {
 "class": "CurveTween",
 "language": "GDScript",
 "path": "res://src/class/CurveTween.gd"
+}, {
+"base": "ScrollContainer",
+"class": "DisableScrollBar",
+"language": "GDScript",
+"path": "res://src/class/disableScrollBar.gd"
 }, {
 "base": "Resource",
 "class": "Element",
@@ -99,6 +119,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/class/element_type_info.gd"
 }, {
+"base": "BaseTask",
+"class": "GlobalBaseTask",
+"language": "GDScript",
+"path": "res://Resource/task/GlobalBaseTask.gd"
+}, {
 "base": "Resource",
 "class": "GoldPack",
 "language": "GDScript",
@@ -109,10 +134,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Resource/stats/information.gd"
 }, {
+"base": "TextureButton",
+"class": "ItemSlot",
+"language": "GDScript",
+"path": "res://src/GUI/inventaire/itemSlot.gd"
+}, {
 "base": "Resource",
 "class": "LevelData",
 "language": "GDScript",
 "path": "res://Resource/level_data/levelData.gd"
+}, {
+"base": "Resource",
+"class": "ListTask",
+"language": "GDScript",
+"path": "res://Resource/task/list_task.gd"
 }, {
 "base": "Control",
 "class": "LootNode",
@@ -234,10 +269,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/battle/task/TaskBaseScript.gd"
 }, {
+"base": "Node",
+"class": "TaskCategory",
+"language": "GDScript",
+"path": "res://src/battle/task/TaskCategory.gd"
+}, {
 "base": "TaskBaseScript",
 "class": "TaskElementCondition",
 "language": "GDScript",
 "path": "res://src/battle/task/element_condition.gd"
+}, {
+"base": "Node",
+"class": "TaskManager",
+"language": "GDScript",
+"path": "res://src/class/TaskManager.gd"
 }, {
 "base": "TaskBaseScript",
 "class": "TaskMinMaxBat",
@@ -297,7 +342,7 @@ _global_script_classes=[ {
 "base": "TextureButton",
 "class": "chooseCharButton",
 "language": "GDScript",
-"path": "res://src/level_selector/ui/select_player_button.gd"
+"path": "res://src/GUI/level_selector/ui/select_player_button.gd"
 }, {
 "base": "Node",
 "class": "dev_tool",
@@ -340,22 +385,29 @@ _global_script_class_icons={
 "Attack": "",
 "AttackIcon": "",
 "AttackList": "",
+"AutoScroll": "",
 "BaseConditionVictory": "",
 "BaseTask": "",
 "BattleGUI": "",
 "BattleWorld": "",
 "Battler": "",
 "BattlerStats": "",
+"Category": "",
+"ChapterData": "",
 "ClickableArea": "",
 "ClientData": "",
 "CurveTween": "",
+"DisableScrollBar": "",
 "Element": "",
 "ElementCalculation": "",
 "ElementCondition": "",
 "ElementTypeInfo": "",
+"GlobalBaseTask": "",
 "GoldPack": "",
 "InformationBattler": "",
+"ItemSlot": "",
 "LevelData": "",
+"ListTask": "",
 "LootNode": "",
 "LootProb": "",
 "MinMaxBat": "",
@@ -380,7 +432,9 @@ _global_script_class_icons={
 "SwitchSceneData": "",
 "TabSwitcherButton": "",
 "TaskBaseScript": "",
+"TaskCategory": "",
 "TaskElementCondition": "",
+"TaskManager": "",
 "TaskMinMaxBat": "",
 "TaskMinMaxTurn": "",
 "TaskRequiredBat": "",
@@ -404,7 +458,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Battle Game"
+config/name="Heroes of the stars"
 config/description="un tour par tour qui prend place dans un monde fantasy ui melange des combat intense et du gacha "
 run/main_scene="res://src/scenel_switcher/scene_switcher.tscn"
 config/icon="res://icon.png"
@@ -413,6 +467,7 @@ config/icon="res://icon.png"
 
 Screenshot="*res://devlog/screenshot.gd"
 Global="*res://src/autoLoad/Global.gd"
+Debug="*res://src/autoLoad/Debug.gd"
 
 [display]
 

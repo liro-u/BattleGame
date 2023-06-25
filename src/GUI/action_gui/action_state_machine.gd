@@ -201,7 +201,7 @@ func get_next_gui():
 				if BaseConditionVictory.VICTORY == state_of_game:
 					#update level
 					level += 1
-					var data_level = load(Global.dataFolderPreset + "://player_data/level_data/chapitre_" + str(chapitre) + "/level_" + str(level) + "/data.tres")
+					var data_level = load(Global.dataFolderPreset + "://player_data/level_data/story/chapitre_" + str(chapitre) + "/level_" + str(level) + "/data.tres")
 					if data_level:
 						if not StaminaManager.check_enought_stamina(data_level.stamina_cost) or data_level.team_given.size() > 0:
 							get_tree().call_group_flags(2, "button_next_level", "hide")
@@ -209,6 +209,11 @@ func get_next_gui():
 							data_level.unlocked = true
 							ResourceSaver.save(data_level.resource_path, data_level)
 					else:
+						var data_chapter = load(Global.dataFolderPreset + "://player_data/level_data/story/chapitre_" + str(chapitre + 1) + "/chapitre_data.tres")
+						if data_chapter:
+							if not data_chapter.unlocked:
+								data_chapter.unlocked = true
+								ResourceSaver.save(data_chapter.resource_path, data_chapter)
 						get_tree().call_group_flags(2, "button_next_level", "hide")
 					#update client data
 					if client_data.level < client_data.max_level:
@@ -249,10 +254,7 @@ func get_next_gui():
 						if possible_loot.proba >= randf():
 							var loot = possible_loot.loot
 							final_loot.append(loot)
-							if loot.things is ObjetRes:
-								SaverInventory.addNewObject(loot)
-							elif loot.things is Monnaie:
-								SaverInventory.addNewMonnaie(loot)
+							SaverInventory.addNewThings(loot)
 				else:
 					get_tree().call_group_flags(2, "button_next_level", "hide")
 				

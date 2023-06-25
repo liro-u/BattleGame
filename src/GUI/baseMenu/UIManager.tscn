@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/GUI/baseMenu/BaseMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/GUI/baseMenu/UIManager.gd" type="Script" id=2]
 [ext_resource path="res://asset/theme/Other/Global/global.tres" type="Theme" id=3]
 [ext_resource path="res://src/GUI/task_ui/TaskUI.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/level_selector/ui/charact_selector.tscn" type="PackedScene" id=16]
+[ext_resource path="res://src/GUI/inventaire/InventoryUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/GUI/level_selector/ui/charact_selector.tscn" type="PackedScene" id=16]
 [ext_resource path="res://src/GUI/custom_charact/CustomCharact.tscn" type="PackedScene" id=17]
-[ext_resource path="res://src/level_selector/ui/team_selector.tscn" type="PackedScene" id=18]
-[ext_resource path="res://src/level_selector/chapitre_1.tscn" type="PackedScene" id=19]
+[ext_resource path="res://src/GUI/level_selector/ui/team_selector.tscn" type="PackedScene" id=18]
+[ext_resource path="res://src/GUI/level_selector/chapitre.tscn" type="PackedScene" id=19]
 [ext_resource path="res://src/scenel_switcher/parent_switcher_indicator.gd" type="Script" id=20]
 
 [node name="OtherUi" type="Control"]
@@ -24,7 +25,7 @@ __meta__ = {
 [node name="TaskUI" parent="." instance=ExtResource( 4 )]
 visible = false
 
-[node name="chapitre_1" parent="." instance=ExtResource( 19 )]
+[node name="chapitre" parent="." instance=ExtResource( 19 )]
 visible = false
 
 [node name="team_selector" parent="." instance=ExtResource( 18 )]
@@ -34,6 +35,9 @@ visible = false
 visible = false
 
 [node name="CustomCharact" parent="." instance=ExtResource( 17 )]
+visible = false
+
+[node name="InventoryUI" parent="." instance=ExtResource( 5 )]
 visible = false
 
 [node name="ParentSwitchIndicator" type="Node" parent="."]

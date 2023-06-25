@@ -3,3 +3,4 @@ class_name Possession
 
 export(int) var quantity
 export(Resource) var things
+export(bool) var locked = false

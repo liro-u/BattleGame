@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/class/CurveTween.gd" type="Script" id=1]
+[ext_resource path="res://src/class/AutoScroll.gd" type="Script" id=2]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 1.0, 0, 1, Vector2( 1, 1 ), 1.0, 0.0, 1, 0 ]
+
+[node name="ScrollContainer" type="ScrollContainer"]
+margin_right = 173.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+text_path = NodePath("SubTitle")
+
+[node name="SubTitle" type="Label" parent="."]
+margin_right = 385.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 173, 30 )
+size_flags_horizontal = 0
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "no sub title no sub title no sub title no sub title no sub title "
+valign = 1
+
+[node name="CurveTween" type="Tween" parent="."]
+script = ExtResource( 1 )
+curve = SubResource( 1 )
+
+[connection signal="curve_tween" from="CurveTween" to="." method="scroll_h"]
+[connection signal="tween_all_completed" from="CurveTween" to="." method="wait_time"]

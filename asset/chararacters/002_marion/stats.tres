@@ -1,0 +1,68 @@
+[gd_resource type="Resource" load_steps=12 format=2]
+
+[ext_resource path="res://asset/attack/fire_blast.tres" type="Resource" id=1]
+[ext_resource path="res://asset/attack/air_slash.tres" type="Resource" id=2]
+[ext_resource path="res://asset/attack/helper_god.tres" type="Resource" id=3]
+[ext_resource path="res://Resource/stats/stats.gd" type="Script" id=4]
+[ext_resource path="res://Resource/stats/information.gd" type="Script" id=5]
+[ext_resource path="res://asset/chararacters/002_marion/hight_icon.png" type="Texture" id=6]
+[ext_resource path="res://asset/chararacters/002_marion/icon.png" type="Texture" id=7]
+[ext_resource path="res://asset/chararacters/002_marion/splash_art.png" type="Texture" id=8]
+[ext_resource path="res://asset/chararacters/002_marion/dragonbones/Marion_sprite_ske.json" type="GDDragonBonesResource" id=9]
+[ext_resource path="res://asset/chararacters/002_marion/collision.tres" type="Shape2D" id=10]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 5 )
+histoire = "Marion peut paraitre très maniéré. Mais tout cela n'est qu'une façade, un mécanisme pour faire face à son passé troublant.
+
+Elle est née et a grandi dans un petit village situé au bord d'un volcan qui n'avait pas donné signe de vie depuis bien longtemps, elle a vécu confortablement jusqu'à l'âge de 15 ans environ, mais à ce moment-là, tout a changé.
+
+Seule survivante de son village suite a l'explosion de ce dernier, elle a été initiée au sang pour survivre en tuant les monstres de feu du mont. Seule, perdue et oubliée, elle devait survivre dans un monde cruel. Mais avec sa force et son empressement, elle a réussi à s'entraîner et à maitriser la magie de feu. Cela a fait d'elle la femme qu'elle est aujourd'hui.
+
+Il y a peu, elle a rejoint notre civilisation. Pour cacher sa différence et son passé, elle a appris a se comporter de la plus noble des façons sans lâcher son entrainement."
+genre = "femme"
+temperament = "Calme
+Sûre d'elle
+A l'écoute
+"
+age = "25"
+lieu_naissance = "Village de la braise
+Zone du volcan des cranes desseché"
+
+[resource]
+script = ExtResource( 4 )
+name_char = "Marion"
+information_battler = SubResource( 1 )
+element = 4
+type = 1
+ske = ExtResource( 9 )
+icon = ExtResource( 7 )
+hight_icon = ExtResource( 6 )
+splash_art = ExtResource( 8 )
+collision = ExtResource( 10 )
+collision_position = Vector2( 2, -90 )
+starting_xp_needed = 15
+level_palier = {
+0: 0,
+2: 10,
+9: 15,
+14: 90,
+19: 120
+}
+health_gain = 16.2
+mana_gain = 0.3
+strength_gain = 5.0
+defense_gain = 3.0
+speed_gain = 2.5
+crit_gain = 0.03
+crit_mult_gain = 0.003
+magie_gain = 5.0
+max_health = 356.2
+max_mana = 95.7
+strength = 92.0
+defense = 43.5
+speed = 6.0
+crit = 3.0
+crit_mult = 1.0
+magie = 40.0
+attack_list = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 1 ) ]

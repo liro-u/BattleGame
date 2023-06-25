@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Resource/inventaire/possession.gd" type="Script" id=1]
+[ext_resource path="res://asset/inventaire/existing_object/equipment/stick_weapon.tres" type="Resource" id=2]
+
+[resource]
+script = ExtResource( 1 )
+quantity = 1
+things = ExtResource( 2 )
+locked = false

@@ -27,7 +27,7 @@ stars = 1
 
 [resource]
 script = ExtResource( 3 )
-unlocked = true
+unlocked = false
 level_name = "1-6"
 world = ExtResource( 6 )
 team_given = [  ]
